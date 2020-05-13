@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Wall
+  - floor
+  - Brige
+  - Bound
+  - Sward
+  - Slot
+  - WeaponSlot
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - gameStart
+  - NPC
+  - Player
+  - UIPanel
+  - 
+  - Brige
+  - Wall
+  - floor
+  - Bound
+  - Camera
+  - 
+  - wormPassage
+  - Monster
+  - Door
+  - Portal
+  - Sward
+  - item
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 3921761463
+    locked: 0
+  - name: UIPanel
+    uniqueID: 276845241
+    locked: 0
