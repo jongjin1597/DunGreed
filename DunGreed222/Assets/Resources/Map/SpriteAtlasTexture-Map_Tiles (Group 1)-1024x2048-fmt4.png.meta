@@ -1,0 +1,3836 @@
+fileFormatVersion: 2
+guid: a66791b9a4c3a6e48938b7c7c64744cd
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4100793776746503733
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_0
+  - first:
+      213: 1618754101575386596
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_1
+  - first:
+      213: -31316174072562677
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_2
+  - first:
+      213: 6411222571035425608
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_3
+  - first:
+      213: 8259807019840506423
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_4
+  - first:
+      213: 6231568885497763782
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_5
+  - first:
+      213: -5664301793347361286
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_6
+  - first:
+      213: -2732992337862599989
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_7
+  - first:
+      213: -3099774895942448629
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_8
+  - first:
+      213: -1583696822249201926
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_9
+  - first:
+      213: -1869440309439016736
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_10
+  - first:
+      213: 5531378169268163027
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_11
+  - first:
+      213: -7259820771106675892
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_12
+  - first:
+      213: -211348434551451274
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_13
+  - first:
+      213: 3294340643973672534
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_14
+  - first:
+      213: 3875749615750276409
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_15
+  - first:
+      213: 5365554230425754788
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_16
+  - first:
+      213: -3050101281585436532
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_17
+  - first:
+      213: -3852314634880668677
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_18
+  - first:
+      213: -7122673676291097246
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_19
+  - first:
+      213: 1571172729217394166
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_20
+  - first:
+      213: -7745217539122139090
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_21
+  - first:
+      213: -7544487138019274343
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_22
+  - first:
+      213: -1372346813864097661
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_23
+  - first:
+      213: -2487456885199607684
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_24
+  - first:
+      213: 2511990620671692891
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_25
+  - first:
+      213: 4431923046511473572
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_26
+  - first:
+      213: -8292775479568480493
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_27
+  - first:
+      213: 4619405744393564496
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_28
+  - first:
+      213: 4497463167000016720
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_29
+  - first:
+      213: 3248020490785539949
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_30
+  - first:
+      213: -8756645972059851916
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_31
+  - first:
+      213: -3831342105785599477
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_32
+  - first:
+      213: 398734941363803974
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_33
+  - first:
+      213: -6618762585119570259
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_34
+  - first:
+      213: 8905579433811715003
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_35
+  - first:
+      213: 2438322883132169320
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_36
+  - first:
+      213: -8457083326808267109
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_37
+  - first:
+      213: 5266337057341752533
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_38
+  - first:
+      213: -463328486237220271
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_39
+  - first:
+      213: -8567808990041149264
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_40
+  - first:
+      213: -7918858434786118455
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_41
+  - first:
+      213: -5889861466588104725
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_42
+  - first:
+      213: 490878129553179283
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_43
+  - first:
+      213: 298607391857362303
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_44
+  - first:
+      213: -7368984064088044495
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_45
+  - first:
+      213: 7315156681613949297
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_46
+  - first:
+      213: 5759309462448836265
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_47
+  - first:
+      213: -6758585655225929444
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_48
+  - first:
+      213: -5806392666641301150
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_49
+  - first:
+      213: 2910188922652526819
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_50
+  - first:
+      213: 1787979655440592557
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_51
+  - first:
+      213: 3125700741429737560
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_52
+  - first:
+      213: 5572165220293604362
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_53
+  - first:
+      213: 2142370549942714473
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_54
+  - first:
+      213: -2926977748530909219
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_55
+  - first:
+      213: -3527828628854790827
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_56
+  - first:
+      213: 5994599601893860092
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_57
+  - first:
+      213: -8347327542587839961
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_58
+  - first:
+      213: -7197887801845540293
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_59
+  - first:
+      213: 1014534301097452235
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_60
+  - first:
+      213: 4846562387539621112
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_61
+  - first:
+      213: 2981563021824001031
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_62
+  - first:
+      213: -62641250100626886
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_63
+  - first:
+      213: 2991958248894306242
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_64
+  - first:
+      213: -4372562464804821131
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_65
+  - first:
+      213: 7435534746061855618
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_66
+  - first:
+      213: -7080098114342141976
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_67
+  - first:
+      213: -1208331161492421692
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_68
+  - first:
+      213: -2411233698747997337
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_69
+  - first:
+      213: -5656436177738735487
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_70
+  - first:
+      213: -5589015295507143589
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_71
+  - first:
+      213: 5548783021597050258
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_72
+  - first:
+      213: 1008024002807956089
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_73
+  - first:
+      213: -7117652878813288688
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_74
+  - first:
+      213: -4547497402329484068
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_75
+  - first:
+      213: 1650979513541342848
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_76
+  - first:
+      213: -3782648320699406581
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_77
+  - first:
+      213: 6448408813354046034
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_78
+  - first:
+      213: 7069864346300263949
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_79
+  - first:
+      213: 6921647717781910831
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_80
+  - first:
+      213: 4101883813592057652
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_81
+  - first:
+      213: 3555615672790806605
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_82
+  - first:
+      213: 5156608720017511881
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_83
+  - first:
+      213: 640231898028961146
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_84
+  - first:
+      213: 1823023703393223063
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_85
+  - first:
+      213: 41267771368934426
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_86
+  - first:
+      213: -2970851837395677757
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_87
+  - first:
+      213: 6952040579496681341
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_88
+  - first:
+      213: -6551233051498251906
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_89
+  - first:
+      213: 4686825466922898178
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_90
+  - first:
+      213: -7190056655947790036
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_91
+  - first:
+      213: 4196435460252380418
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_92
+  - first:
+      213: 4580852735274627434
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_93
+  - first:
+      213: 5023384538761272475
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_94
+  - first:
+      213: 7932982090920483026
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_95
+  - first:
+      213: -7619963379611029015
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_96
+  - first:
+      213: -9026149489125689867
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_97
+  - first:
+      213: -4545475890597915087
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_98
+  - first:
+      213: 7135223743326348051
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_99
+  - first:
+      213: 6164387268741119926
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_100
+  - first:
+      213: -1762612104884797568
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_101
+  - first:
+      213: 5625621245974331459
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_102
+  - first:
+      213: -4609410996197197613
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_103
+  - first:
+      213: -4131332123739309716
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_104
+  - first:
+      213: 3659738213059363344
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_105
+  - first:
+      213: 7563550942827444311
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_106
+  - first:
+      213: -8841419828411219019
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_107
+  - first:
+      213: -8108711076138200372
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_108
+  - first:
+      213: -4307921399496712842
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_109
+  - first:
+      213: 3664266345344148091
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_110
+  - first:
+      213: 9162701805533622661
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_111
+  - first:
+      213: 21424108042414837
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_112
+  - first:
+      213: 1709952529899199077
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_113
+  - first:
+      213: -2954668120807192070
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_114
+  - first:
+      213: 2303972852589498580
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_115
+  - first:
+      213: 576719876444774882
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_116
+  - first:
+      213: 5963439319486350632
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_117
+  - first:
+      213: 8401177613017632053
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_118
+  - first:
+      213: 8027403634973523203
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_119
+  - first:
+      213: 1067683510010420362
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_120
+  - first:
+      213: -4028849371322577038
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_121
+  - first:
+      213: -5870935517924027989
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_122
+  - first:
+      213: -6211091795215020120
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_123
+  - first:
+      213: -4463351375486062863
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_124
+  - first:
+      213: -3633754767099314413
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_125
+  - first:
+      213: -4187407703890510214
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_126
+  - first:
+      213: -4622099344628298876
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_127
+  - first:
+      213: -1917322746591947902
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_128
+  - first:
+      213: -1283377201870512207
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_129
+  - first:
+      213: -8641785225751617232
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_130
+  - first:
+      213: 1677965059183441122
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_131
+  - first:
+      213: 6727777718310726067
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_132
+  - first:
+      213: -2568554446311205320
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_133
+  - first:
+      213: -6885945513262910561
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_134
+  - first:
+      213: -1572074802928569062
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_135
+  - first:
+      213: 5593919854710657070
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_136
+  - first:
+      213: -9046823980012885128
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_137
+  - first:
+      213: -322267521644182152
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_138
+  - first:
+      213: -409236033990835605
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_139
+  - first:
+      213: 2725096745078049691
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_140
+  - first:
+      213: 5514128706458119841
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_141
+  - first:
+      213: 2186089970069030235
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_142
+  - first:
+      213: -7618480844966174148
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_143
+  - first:
+      213: 7787692482277779852
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_144
+  - first:
+      213: -8612866208730106110
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_145
+  - first:
+      213: 6274727280917131439
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_146
+  - first:
+      213: -1696669583668220738
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_147
+  - first:
+      213: -5324482968837048605
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_148
+  - first:
+      213: -1485952824809410757
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_149
+  - first:
+      213: 3057650258516829776
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_150
+  - first:
+      213: 9200304939969549708
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_151
+  - first:
+      213: 5076904447065722170
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_152
+  - first:
+      213: 9220797966551536145
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_153
+  - first:
+      213: -8235783127150875112
+    second: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_154
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 816
+        width: 688
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60aa547900b15c84f9f8ec7b70365935
+      internalID: -4100793776746503733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_1
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 499
+        width: 654
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c3b68166d006ab488bd540a249fb873
+      internalID: 1618754101575386596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 350
+        width: 695
+        height: 145
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14a469ef7e0ef824baf101c890b7d990
+      internalID: -31316174072562677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_3
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 1095
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee75b4786f552ba4196e36fee3e3ac61
+      internalID: 6411222571035425608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_4
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 1119
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56be28766b9fbca42b6ab05b3534bbaa
+      internalID: 8259807019840506423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_5
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 1516
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fee86813c0e2e5440b3a7813c185d1eb
+      internalID: 6231568885497763782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_6
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 1276
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78ec286d28c0b2840bf5798647fe407c
+      internalID: -5664301793347361286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_7
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 1242
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8510805e54e55b4f981a5263ee0bc80
+      internalID: -2732992337862599989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_8
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 1445
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be7c62b7edf93584dae5da6599b405fc
+      internalID: -3099774895942448629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_9
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 1428
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47a6005c6f106104a9814c16092fe4ad
+      internalID: -1583696822249201926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_10
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 1555
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64cf1c7375ac8bc40a6ed7737a364bc9
+      internalID: -1869440309439016736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_11
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 1753
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9afdcd82cb87fe848ba140920586c677
+      internalID: 5531378169268163027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_12
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 1618
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d62c133734b6b8e41be21cbbb50a9f41
+      internalID: -7259820771106675892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_13
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 1584
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f21948d3d547674f8b6520b82d5e394
+      internalID: -211348434551451274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_14
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 1516
+        width: 20
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55103cac9ff5f604284f4131ea9cbb31
+      internalID: 3294340643973672534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_15
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 1479
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b96ebf66cb1c994d8ab2ce8c539f59c
+      internalID: 3875749615750276409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_16
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 1357
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bcf84790188a054d83b47cffb541dd6
+      internalID: 5365554230425754788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_17
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 1393
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 252ee031f7ee6d24ea33162e1a0bdd74
+      internalID: -3050101281585436532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_18
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 928
+        width: 322
+        height: 142
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfb26e00044d98ac0800000000000000
+      internalID: -3852314634880668677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_19
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1928
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26db4a9670e272d90800000000000000
+      internalID: -7122673676291097246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_20
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1912
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f5a8c5d54dedc510800000000000000
+      internalID: 1571172729217394166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_21
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1894
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e20ff702fa5738490800000000000000
+      internalID: -7745217539122139090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1883
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9919bdd9be89c4790800000000000000
+      internalID: -7544487138019274343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_23
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 1901
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 388cdf208d174fce0800000000000000
+      internalID: -1372346813864097661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_24
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 1904
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c78e39b5427ca7dd0800000000000000
+      internalID: -2487456885199607684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_25
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 1865
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b50df3019226cd220800000000000000
+      internalID: 2511990620671692891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_26
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 1865
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a3fe2b878a518d30800000000000000
+      internalID: 4431923046511473572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_27
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 1849
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 317404a63a42aec80800000000000000
+      internalID: -8292775479568480493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_28
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 1849
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0513af3cc0d6b1040800000000000000
+      internalID: 4619405744393564496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_29
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 1831
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 057707bfbe23a6e30800000000000000
+      internalID: 4497463167000016720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_30
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 1864
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6746787d69431d20800000000000000
+      internalID: 3248020490785539949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_31
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 1830
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 473748312e42a7680800000000000000
+      internalID: -8756645972059851916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_32
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 1828
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0af6a377a654dac0800000000000000
+      internalID: -3831342105785599477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_33
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 1848
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 647968b0157988500800000000000000
+      internalID: 398734941363803974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_34
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 1834
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da64d4d1f7e6524a0800000000000000
+      internalID: -6618762585119570259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_35
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 1794
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb32f5faf49f69b70800000000000000
+      internalID: 8905579433811715003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_36
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 1801
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86c9cc05eb9a6d120800000000000000
+      internalID: 2438322883132169320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_37
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 1762
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b96e6b5958762aa80800000000000000
+      internalID: -8457083326808267109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_38
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 1762
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d4c452c6a9c51940800000000000000
+      internalID: 5266337057341752533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_39
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 1762
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 152d283523de199f0800000000000000
+      internalID: -463328486237220271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_40
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 1782
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b0f2352e17091980800000000000000
+      internalID: -8567808990041149264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_41
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 1744
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c4b7ff95309a1290800000000000000
+      internalID: -7918858434786118455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_42
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 1737
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be731c3b332034ea0800000000000000
+      internalID: -5889861466588104725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_43
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 1727
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 392860cde03ffc600800000000000000
+      internalID: 490878129553179283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_44
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 1719
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f75c6fe37ddd42400800000000000000
+      internalID: 298607391857362303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_45
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 1727
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13c8488490c1cb990800000000000000
+      internalID: -7368984064088044495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_46
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 1710
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 179bceb9e38a48560800000000000000
+      internalID: 7315156681613949297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_47
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 1715
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ae0fc4217d2def40800000000000000
+      internalID: 5759309462448836265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_48
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 1642
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c113534b72ea432a0800000000000000
+      internalID: -6758585655225929444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_49
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 1638
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 261896e12ac8b6fa0800000000000000
+      internalID: -5806392666641301150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_50
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 1624
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e80bf30861136820800000000000000
+      internalID: 2910188922652526819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_51
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 1624
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dae6924060e20d810800000000000000
+      internalID: 1787979655440592557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_52
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 1623
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 858381f7348b06b20800000000000000
+      internalID: 3125700741429737560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_53
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 1607
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a04f269cebe445d40800000000000000
+      internalID: 5572165220293604362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_54
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 1663
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96008961aaa3bbd10800000000000000
+      internalID: 2142370549942714473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_55
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 1591
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddfa759de394167d0800000000000000
+      internalID: -2926977748530909219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_56
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 1735
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55528a4ad82aa0fc0800000000000000
+      internalID: -3527828628854790827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_57
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 1709
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf2e491c398113350800000000000000
+      internalID: 5994599601893860092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_58
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 1691
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72aa73873d5582c80800000000000000
+      internalID: -8347327542587839961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_59
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 1692
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3a11e52e27fb1c90800000000000000
+      internalID: -7197887801845540293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_60
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 1691
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc2ec555299541e00800000000000000
+      internalID: 1014534301097452235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_61
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 1677
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f4711330d2724340800000000000000
+      internalID: 4846562387539621112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_62
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 1674
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 704824775c3a06920800000000000000
+      internalID: 2981563021824001031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_63
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 1674
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3a377b6d14712ff0800000000000000
+      internalID: -62641250100626886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_64
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 1716
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c71520ec22958920800000000000000
+      internalID: 2991958248894306242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_65
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 1678
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5772a17ea998153c0800000000000000
+      internalID: -4372562464804821131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_66
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 1660
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28b5716d473503760800000000000000
+      internalID: 7435534746061855618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_67
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 1659
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ef39b7e6407ebd90800000000000000
+      internalID: -7080098114342141976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_68
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 1589
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c3853ce5352b3fe0800000000000000
+      internalID: -1208331161492421692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_69
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 1551
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 763acabe9b3998ed0800000000000000
+      internalID: -2411233698747997337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_70
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 1564
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 180e633f34d4081b0800000000000000
+      internalID: -5656436177738735487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_71
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 1571
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b54621b5334df62b0800000000000000
+      internalID: -5589015295507143589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_72
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 1571
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 295c20a62cc310d40800000000000000
+      internalID: 5548783021597050258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_73
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1556
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9728f646d783dfd00800000000000000
+      internalID: 1008024002807956089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_74
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 1539
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0172ccbea64093d90800000000000000
+      internalID: -7117652878813288688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_75
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 1524
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd4b32dc43b04e0c0800000000000000
+      internalID: -4547497402329484068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_76
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 1519
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 086341cce1579e610800000000000000
+      internalID: 1650979513541342848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_77
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 1535
+        width: 17
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b07eb76c465518bc0800000000000000
+      internalID: -3782648320699406581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_78
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 1520
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 252577e86a95d7950800000000000000
+      internalID: 6448408813354046034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_79
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 1465
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0e2d6b4a243d1260800000000000000
+      internalID: 7069864346300263949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_80
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 1449
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f25b8c64de1ae0060800000000000000
+      internalID: 6921647717781910831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_81
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 1483
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43744138891dce830800000000000000
+      internalID: 4101883813592057652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_82
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 1465
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d40f18ead95185130800000000000000
+      internalID: 3555615672790806605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_83
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 1447
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c5535a5f44ff8740800000000000000
+      internalID: 5156608720017511881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_84
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 1447
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7de3e7e48f82e800800000000000000
+      internalID: 640231898028961146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_85
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 1429
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 791ced1466eac4910800000000000000
+      internalID: 1823023703393223063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_86
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 1429
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1c0e15c1dc929000800000000000000
+      internalID: 41267771368934426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_87
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 1447
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cdc6bf7ef965c6d0800000000000000
+      internalID: -2970851837395677757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_88
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 1439
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7f1005d21c9a7060800000000000000
+      internalID: 6952040579496681341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_89
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 1454
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e79f5a4ef385515a0800000000000000
+      internalID: -6551233051498251906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_90
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 1422
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20391382ee2fa0140800000000000000
+      internalID: 4686825466922898178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_91
+      rect:
+        serializedVersion: 2
+        x: 785
+        y: 1318
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c298c43e099c73c90800000000000000
+      internalID: -7190056655947790036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_92
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 1365
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20d223341dbbc3a30800000000000000
+      internalID: 4196435460252380418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_93
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 1358
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a61bb66da45729f30800000000000000
+      internalID: 4580852735274627434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_94
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 1358
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9c1e0b7f95a6b540800000000000000
+      internalID: 5023384538761272475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_95
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 1383
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d8d9d25e2d971e60800000000000000
+      internalID: 7932982090920483026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_96
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 1347
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e1bcc4bda3704690800000000000000
+      internalID: -7619963379611029015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_97
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 1364
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f5f61bbcdcacb280800000000000000
+      internalID: -9026149489125689867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_98
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 1347
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1361fcda2c93be0c0800000000000000
+      internalID: -4545475890597915087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_99
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 1329
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31366e5c038650360800000000000000
+      internalID: 7135223743326348051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_100
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 1310
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bf31438f8d4c8550800000000000000
+      internalID: 6164387268741119926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_101
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 1311
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08fb98b11a1f987e0800000000000000
+      internalID: -1762612104884797568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_102
+      rect:
+        serializedVersion: 2
+        x: 697
+        y: 1293
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 340c037a7b8321e40800000000000000
+      internalID: 5625621245974331459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_103
+      rect:
+        serializedVersion: 2
+        x: 697
+        y: 1275
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d8f2e3ee151800c0800000000000000
+      internalID: -4609410996197197613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_104
+      rect:
+        serializedVersion: 2
+        x: 697
+        y: 1259
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c69bb5b725f8aa6c0800000000000000
+      internalID: -4131332123739309716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_105
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 1262
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0128350c3800ac230800000000000000
+      internalID: 3659738213059363344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_106
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 1226
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 758fcc3528127f860800000000000000
+      internalID: 7563550942827444311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_107
+      rect:
+        serializedVersion: 2
+        x: 747
+        y: 1192
+        width: 20
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b344798287fc4580800000000000000
+      internalID: -8841419828411219019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_108
+      rect:
+        serializedVersion: 2
+        x: 747
+        y: 1172
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc2d180fc32187f80800000000000000
+      internalID: -8108711076138200372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_109
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 1139
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67dd1bebf403734c0800000000000000
+      internalID: -4307921399496712842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_110
+      rect:
+        serializedVersion: 2
+        x: 747
+        y: 1121
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7228a4b3d61ad230800000000000000
+      internalID: 3664266345344148091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_111
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 1026
+        width: 68
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58179adfeb4782f70800000000000000
+      internalID: 9162701805533622661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_112
+      rect:
+        serializedVersion: 2
+        x: 937
+        y: 359
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fa6f7ddc1d1c4000800000000000000
+      internalID: 21424108042414837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_113
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 363
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56a1c6724c8fab710800000000000000
+      internalID: 1709952529899199077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_114
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 88
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af9cd16aff8eef6d0800000000000000
+      internalID: -2954668120807192070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_115
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 392
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d09dba3a1b59ff10800000000000000
+      internalID: 2303972852589498580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_116
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 910
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e1e56a0cabe00800800000000000000
+      internalID: 576719876444774882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_117
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 1046
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 825c495277462c250800000000000000
+      internalID: 5963439319486350632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_118
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 1171
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53d41e6178af69470800000000000000
+      internalID: 8401177613017632053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_119
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 1168
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30db6433311176f60800000000000000
+      internalID: 8027403634973523203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_120
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 1156
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8c96bade7c21de00800000000000000
+      internalID: 1067683510010420362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_121
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 1329
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27f03c0b7d6a618c0800000000000000
+      internalID: -4028849371322577038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_122
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 1312
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba11ae2804f368ea0800000000000000
+      internalID: -5870935517924027989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_123
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 1709
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8af8dd68be4cdc9a0800000000000000
+      internalID: -6211091795215020120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_124
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 1752
+        width: 19
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fee664629dfe02c0800000000000000
+      internalID: -4463351375486062863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_125
+      rect:
+        serializedVersion: 2
+        x: 767
+        y: 1155
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31fb922ba4f429dc0800000000000000
+      internalID: -3633754767099314413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_126
+      rect:
+        serializedVersion: 2
+        x: 804
+        y: 1080
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7e3fdf01e653e5c0800000000000000
+      internalID: -4187407703890510214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_127
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 1147
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48b4dde82210bdfb0800000000000000
+      internalID: -4622099344628298876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_128
+      rect:
+        serializedVersion: 2
+        x: 883
+        y: 393
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2835c91de1d4465e0800000000000000
+      internalID: -1917322746591947902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_129
+      rect:
+        serializedVersion: 2
+        x: 955
+        y: 359
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bf5ca90c37803ee0800000000000000
+      internalID: -1283377201870512207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_130
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 1848
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0312bd19f16321880800000000000000
+      internalID: -8641785225751617232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_131
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 1825
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e47522c454594710800000000000000
+      internalID: 1677965059183441122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_132
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 1728
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b9e2b3803edd5d50800000000000000
+      internalID: 6727777718310726067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_133
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 1674
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 836de510759aa5cd0800000000000000
+      internalID: -2568554446311205320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_134
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 1405
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f93f44bf9053070a0800000000000000
+      internalID: -6885945513262910561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_135
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 1068
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a15b913cb4ede2ae0800000000000000
+      internalID: -1572074802928569062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_136
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 1497
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e209802587891ad40800000000000000
+      internalID: 5593919854710657070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_137
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 1655
+        width: 14
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87ba8d5b589337280800000000000000
+      internalID: -9046823980012885128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_138
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1699
+        width: 14
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 875c0c18563178bf0800000000000000
+      internalID: -322267521644182152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_139
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1773
+        width: 17
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b62cfaccef9125af0800000000000000
+      internalID: -409236033990835605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_140
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 1422
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9b43fc2d0d71d520800000000000000
+      internalID: 2725096745078049691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_141
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 1718
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ae683ae7de168c40800000000000000
+      internalID: 5514128706458119841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_142
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 1819
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b554201de3d865e10800000000000000
+      internalID: 2186089970069030235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_143
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 1835
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c326ca33908b54690800000000000000
+      internalID: -7618480844966174148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_144
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 1876
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c89a52a3d01731c60800000000000000
+      internalID: 7787692482277779852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_145
+      rect:
+        serializedVersion: 2
+        x: 923
+        y: 399
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2073daae0d3f87880800000000000000
+      internalID: -8612866208730106110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_146
+      rect:
+        serializedVersion: 2
+        x: 803
+        y: 1116
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa0b481973f441750800000000000000
+      internalID: 6274727280917131439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_147
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 1781
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebcee34c0083478e0800000000000000
+      internalID: -1696669583668220738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_148
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 1752
+        width: 46
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e6b9dd33f2ab16b0800000000000000
+      internalID: -5324482968837048605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_149
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 1625
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3f2f3c57c5d06be0800000000000000
+      internalID: -1485952824809410757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_150
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 1313
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 056e642c5b4fe6a20800000000000000
+      internalID: 3057650258516829776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_151
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 1633
+        width: 16
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c85182cf89c0eaf70800000000000000
+      internalID: 9200304939969549708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_152
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 1579
+        width: 15
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3d04fd22b9c47640800000000000000
+      internalID: 5076904447065722170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_153
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 1122
+        width: 35
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 112d2fd85ead6ff70800000000000000
+      internalID: 9220797966551536145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Map_Tiles (Group 1)-1024x2048-fmt4_154
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1095
+        width: 80
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81e240381ee94bd80800000000000000
+      internalID: -8235783127150875112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
