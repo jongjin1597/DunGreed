@@ -257,13 +257,6 @@ public class Player : cSingleton<Player>
         foot.enabled = true;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Bound"))
-        {
 
-            cCameramanager.GetInstance.SetBound(collision);
-        }
-    }
 
 }
