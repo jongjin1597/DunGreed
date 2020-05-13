@@ -12,14 +12,21 @@ public class cBound : MonoBehaviour
         {
 
             cCameramanager.GetInstance.SetBound(collision);
-            this.transform.parent.GetComponent<cMap>().SetPlayer(true);
+
+            transform.parent.parent.GetComponent<cMapManager>().SetNowMap(this.transform.parent.gameObject);
+            GameObject Map = transform.parent.parent.GetComponent<cMapManager>()._CloseMapList.Find(x => x == transform.parent);
+            if (Map) 
+            {
+                transform.parent.parent.GetComponent<cMapManager>()._OpenMapList.Add(Map);
+                transform.parent.parent.GetComponent<cMapManager>()._CloseMapList.Remove(Map);
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            this.transform.parent.GetComponent<cMap>().SetPlayer(false);
+            transform.parent.parent.GetComponent<cMapManager>().SetNowMap(null); 
         }
     }
 }

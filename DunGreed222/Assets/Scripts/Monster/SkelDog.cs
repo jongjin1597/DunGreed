@@ -16,11 +16,12 @@ public class SkelDog : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawRay(_rigid.position, Vector3.down, new Color(0, 1, 0));
+        Vector3 _Dir = Player.GetInstance.transform.position - transform.position;
+        Debug.DrawRay(_rigid.position, _Dir.normalized*2, new Color(0, 1, 0));
 
         if (_rigid.velocity.y < 0)
         {
-            RaycastHit2D rayHit = Physics2D.Raycast(_rigid.position, Vector3.down * 2.5f, 1, LayerMask.GetMask("floor"));
+            RaycastHit2D rayHit = Physics2D.Raycast(_rigid.position, _Dir * 2f, 1, LayerMask.GetMask("floor"));
         }
     }
 }
