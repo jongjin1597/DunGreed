@@ -5,28 +5,28 @@ using UnityEngine;
 public class cMapManager : MonoBehaviour
 {
     //현제 맵
-    public Transform _NowMap;
+    private Transform _NowMap =null;
     //열린맵 리스트
     public List<Transform> _OpenMapList = new List<Transform>();
     //닫힌맵리스트
     public List<Transform> _CloseMapList = new List<Transform>();
     //현제맵에 몬스터가 있나여부
-    public bool _isMonster = true;
+    private bool _isMonster = true;
     //맵에있는 몬스터
     private List<Transform> _MonsterList = new List<Transform>();
     //문리스트
     public List<cDoor> _DoorList = new List<cDoor>(); 
     //문여닫이용 델리게이트, 열린맵 리스트에 집어넣기용
-    public delegate void _Door();
+    private delegate void _Door();
     //문닫기
-    public _Door _DoorClose;
+    private _Door _DoorClose;
     //문열기
-    public _Door _DoorOpen;
+    private _Door _DoorOpen;
       private void Awake()
     {
-        _NowMap = transform.GetChild(0);
-        _OpenMapList.Add(transform.GetChild(1));
-        for(int i =2; i < transform.childCount; ++i)
+
+        _OpenMapList.Add(transform.GetChild(0));
+        for(int i =1; i < transform.childCount; ++i)
         {
             _CloseMapList.Add(transform.GetChild(i));
         }
@@ -51,33 +51,52 @@ public class cMapManager : MonoBehaviour
             }
         }
     }
-    public void ClearDoor(Transform NowMap)
+    public void DoorSetting(Transform NowMap)
     {
-        if (NowMap != null)
+        //현제맵에있는 문 딜리게이트에서 제거
+        if (_NowMap != null) 
         {
-            Transform Door = NowMap.Find("Door");
-            _DoorList.Clear();
-            for (int i = 0; i < Door.transform.childCount; ++i)
+            Transform _NowMapDoor = _NowMap.Find("Door");
+            if (_NowMapDoor.transform.childCount != 0)
             {
-                _DoorOpen -= Door.transform.GetChild(i).GetComponent<cDoor>().Open;
-                _DoorClose -= Door.transform.GetChild(i).GetComponent<cDoor>().Close;
+                for (int i = 0; i < _NowMapDoor.transform.childCount; ++i)
+                {
+                    _DoorOpen -= _NowMapDoor.transform.GetChild(i).GetComponent<cDoor>().Open;
+                    _DoorClose -= _NowMapDoor.transform.GetChild(i).GetComponent<cDoor>().Close;
+                }
             }
         }
+        //이동한 맵 문 델리게이트 추가 및 문리스트에 추가
+        Transform Door = NowMap.Find("Door");
+        _DoorList.Clear();
+        for (int i = 0; i < Door.transform.childCount; ++i)
+        {
+            _DoorList.Add(Door.transform.GetChild(i).GetComponent<cDoor>());
+
+        }
+        for (int i = 0; i < Door.transform.childCount; ++i)
+        {
+            _DoorOpen += Door.transform.GetChild(i).GetComponent<cDoor>().Open;
+            _DoorClose += Door.transform.GetChild(i).GetComponent<cDoor>().Close;
+        }
+        
     }
     public void SetNowMap(Transform NowMap)
     {
         if (NowMap != null)
         {
-            ClearDoor(NowMap);
+            DoorSetting(NowMap);
             _NowMap = NowMap;
-
             _MonsterList.Clear();
-            //GameObject Monster = transform.GetChild(0).Find("Monster").GetComponent<GameObject>();
-            //for (int i = 0; i < Monster.transform.childCount; ++i)
+            //Transform Monster = _NowMap.GetChild(0).Find("Monster");
+            //if (Monster.transform.childCount != 0)
             //{
-            //    _MonsterList.Add(Monster.transform.GetChild(i).gameObject);
+            //    for (int i = 0; i < Monster.transform.childCount; ++i)
+            //    {
+            //        _MonsterList.Add(Monster.transform.GetChild(i));
+            //    }
             //}
-            //if(_MonsterList.Count == 0)
+            //if (_MonsterList.Count == 0)
             //{
             //    _isMonster = false;
             //}
@@ -85,17 +104,7 @@ public class cMapManager : MonoBehaviour
             //{
             //    _isMonster = true;
             //}
-            Transform Door = _NowMap.Find("Door");
-            for (int i = 0; i < Door.transform.childCount; ++i)
-            {
-                _DoorList.Add(Door.transform.GetChild(i).GetComponent<cDoor>());
-
-            }
-            for (int i = 0; i < Door.transform.childCount; ++i)
-            {
-                _DoorOpen += Door.transform.GetChild(i).GetComponent<cDoor>().Open;
-                _DoorClose += Door.transform.GetChild(i).GetComponent<cDoor>().Close;
-            }
+          
         }
     }
 }
