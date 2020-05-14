@@ -44,6 +44,13 @@ public class cWeaPon : MonoBehaviour
         }
         _Ani.speed = _NowWeaPon._AttackSpeed;
         _SpriteRend.sprite = _NowWeaPon._ItemIcon;
+        Player.GetInstance._MinDamage = 0;
+        Player.GetInstance._MaxDamage = 0;
+
+
+        Player.GetInstance._MinDamage += _NowWeaPon._MinAttackDamage;
+        Player.GetInstance._MaxDamage += _NowWeaPon._MaxAttackDamage;
+
     }
 
     private void Update()

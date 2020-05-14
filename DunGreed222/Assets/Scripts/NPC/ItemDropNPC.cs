@@ -5,12 +5,13 @@ public class ItemDropNPC : cNPC
 {
     //아이템 하나만 떨어뜨리기용 변수
     private int _ItemCount;
-    private void Start()
+    protected override void Awake()
     {
-        _ButtonF = transform.GetChild(0).gameObject;
-
+        base.Awake();
         _ItemCount = 0;
+
     }
+    
     
     private void Update()
     {

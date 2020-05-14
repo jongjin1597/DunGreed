@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bat : MonoBehaviour
+public class Bat : cCharacter
 {
     Rigidbody2D _rigid;
     SpriteRenderer _Renderer;
     public int _moveRangeX;
     public int _moveRangeY;
-    //public GameObject Player;
-    void Awake()
+   protected override void Awake()
     {
-        _Renderer = gameObject.GetComponentInChildren<SpriteRenderer>();
-
+        base.Awake();
         _rigid = GetComponent<Rigidbody2D>();
         Invoke("MoveRange", 1);
     }
@@ -22,14 +20,14 @@ public class Bat : MonoBehaviour
     {
         _rigid.velocity = new Vector2(_moveRangeX, _moveRangeY);
 
-        //if (Player.transform.position.x < this.transform.position.x)
-        //{
-        //    _Renderer.flipX = true;
-        //}
-        //if (Player.transform.position.x > this.transform.position.x)
-        //{
-        //    _Renderer.flipX = false;
-        //}
+        if (Player.GetInstance.transform.position.x < this.transform.position.x)
+        {
+            _Renderer.flipX = true;
+        }
+        if (Player.GetInstance.transform.position.x > this.transform.position.x)
+        {
+            _Renderer.flipX = false;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D other)

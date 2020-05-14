@@ -24,14 +24,12 @@ public class cMapManager : MonoBehaviour
     private _Door _DoorOpen;
       private void Awake()
     {
-
         _OpenMapList.Add(transform.GetChild(0));
         for(int i =1; i < transform.childCount; ++i)
         {
             _CloseMapList.Add(transform.GetChild(i));
         }
         SetNowMap(_OpenMapList[0]);
-
     }
     void Update()
     {

@@ -6,9 +6,9 @@ public class FoodNPC : cNPC
 
     //음식점
     public GameObject _FoodTable;
-    private void Start()
+    protected override void Awake()
     {
-        _ButtonF = transform.GetChild(0).gameObject;
+        base.Awake();
     }
     
     private void Update()

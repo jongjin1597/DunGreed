@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkelDog : MonoBehaviour
+public class SkelDog : cCharacter
 {
     Rigidbody2D _rigid;
 
 
     // Start is called before the first frame update
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         _rigid = GetComponent<Rigidbody2D>();
     }
 

@@ -5,19 +5,15 @@ using UnityEngine;
 //씬이동시 플레이어 시작지점
 public class cStartPoint : MonoBehaviour
 {
-    public string _startPoint;// 맵이동시 캐릭터 이동위치
-    private Player _Player;
-    private cCameramanager _Camera;
+    public int _startPoint;// 맵이동시 캐릭터 이동위치
 
     void Start()
     {
-        _startPoint = "Start";
-        _Player = FindObjectOfType<Player>();
-        _Camera = FindObjectOfType<cCameramanager>();
-        if (_startPoint == _Player._CurrentMapName)
+        _startPoint = 1;
+        if (_startPoint == Player.GetInstance._CurrentMapNum)
         {
-            _Camera.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, _Camera.transform.position.z);
-            _Player.transform.position = this.transform.position;
+            cCameramanager.GetInstance.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, cCameramanager.GetInstance.transform.position.z);
+            Player.GetInstance.transform.position = this.transform.position;
         }
     }
 

@@ -12,37 +12,34 @@ enum State
     Damage,
     Die
 }
-public class Player : cSingleton<Player>
+
+//플레이어
+public class Player : cCharacter
 {
     //현제 게이지
     public cDash _Dash;
-    //현재맵
-    //private cMap _NowMap;
     //싱글톤변수
-    private static Player instance;
-
-    //이동할맵이름   
-    public string _CurrentMapName;
+    private static Player _instacne;
+    //이동할맵번호   
+    public int _CurrentMapNum;
+    //체력
     public cHP _health;
-    private float _InitHealth = 80;
     //포만감
     public cFoodGauge _Food;
-
+    //방어력세팅
+    public float Defense { set { value = _Defense; } }
+    //공격력세팅
+    public float _MinDamage { get { return _MinAtteckDamage; } set { value = _MinAtteckDamage; } }
+    public float _MaxDamage { get { return _MaxAttackDamage; } set { value = _MaxAttackDamage; } }
     //이동
     float _horizontalMove;
-    //이동속도
-    public float _MaxSpeed = 3f;
     //점프파워
     public float _JumpPower = 3f;
     //캐릭터상태
     private State _state = State.Idle;
     //리지드바디
     private Rigidbody2D _Rigidbody;
-    //스프라이트랜더러
-    private SpriteRenderer _Renderer;
-    //애니매이터
-    private Animator _Animator;
-
+    
 
     //최대대시횟수
     private int _DashCount=3;
@@ -58,15 +55,47 @@ public class Player : cSingleton<Player>
 
     protected override void Awake()
     {
-        base.Awake();
         //_health.Initialize(_InitHealth, _InitHealth);
+        if (_instacne == null)
+        {
+            base.Awake();
+            _instacne = this;
+            DontDestroyOnLoad(gameObject);
+            _initHP = 80;
+            
+            _health.Initialize(_initHP, _initHP);
+            _Rigidbody = gameObject.GetComponent<Rigidbody2D>();
 
-        _health.Initialize(_InitHealth, _InitHealth);
-        _Rigidbody = gameObject.GetComponent<Rigidbody2D>();
-        _Renderer = gameObject.GetComponentInChildren<SpriteRenderer>();
-        _Animator = gameObject.GetComponentInChildren<Animator>();
+            _MoveSpeed = 5.0f;
+        }
+        else if(_instacne != null)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
+    public static Player GetInstance
+    {
+        get
+        {
+            //싱글톤이 없다. 
+            if (_instacne == null)
+            {
+                //그러면 씬에서 찾아온다.
+                _instacne = GameObject.FindObjectOfType(typeof(Player)) as Player;
+            }
+            //싱글톤이 없다.
+            if (_instacne == null)
+            {
+                //새로운 오브젝트를 만들어서 거기다 싱글톤을 넣어서 만든다.
+                var gameObject = new GameObject(typeof(Player).ToString());
+                _instacne = gameObject.AddComponent<Player>();
+                //DontDestroyOnLoad(gameObject); -> 씬으로 넘어 갈 때 나는 파괘되지 않는다.
+            }
+            //그리고 반환한다.
+            return _instacne;
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -136,7 +165,7 @@ public class Player : cSingleton<Player>
                 if (rayHit.distance < 1.2f)
                 {
                     _JumpCount = 2;
-                    _Animator.SetBool("Jump", false);
+                    _Anim.SetBool("Jump", false);
                 }
             }
         }
@@ -164,13 +193,13 @@ public class Player : cSingleton<Player>
         _state = State.Move;
 
         _Rigidbody.AddForce(Vector2.right * _horizontalMove*2, ForceMode2D.Impulse);
-        if(_Rigidbody.velocity.x> _MaxSpeed)
+        if(_Rigidbody.velocity.x> _MoveSpeed)
         {
-            _Rigidbody.velocity = new Vector2(_MaxSpeed, _Rigidbody.velocity.y);
+            _Rigidbody.velocity = new Vector2(_MoveSpeed, _Rigidbody.velocity.y);
         }
-        else if (_Rigidbody.velocity.x < _MaxSpeed*(-1))
+        else if (_Rigidbody.velocity.x < _MoveSpeed * (-1))
         {
-            _Rigidbody.velocity = new Vector2(_MaxSpeed*(-1), _Rigidbody.velocity.y);
+            _Rigidbody.velocity = new Vector2(_MoveSpeed * (-1), _Rigidbody.velocity.y);
         }
         if(_horizontalMove ==0)
         {
@@ -190,7 +219,7 @@ public class Player : cSingleton<Player>
         _state = State.Jump;
         _Rigidbody.velocity = Vector3.zero;
         _Rigidbody.AddForce(Vector2.up * _JumpPower, ForceMode2D.Impulse);
-        _Animator.SetBool("Jump", true);
+        _Anim.SetBool("Jump", true);
         _JumpCount -= 1;      
         _isJump = false;
         _state = State.Idle;
@@ -232,12 +261,12 @@ public class Player : cSingleton<Player>
     {
         if (Input.GetAxisRaw("Horizontal") == 0)
         {
-            _Animator.SetBool("Run", false);
+            _Anim.SetBool("Run", false);
             _state = State.Idle;
         }
         else
         {
-            _Animator.SetBool("Run", true);
+            _Anim.SetBool("Run", true);
         }
     }
 

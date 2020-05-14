@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ovibos : MonoBehaviour
+public class Ovibos : cCharacter
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    protected override void Awake() 
+    { 
+    base.Awake();
+
     }
+
 
     // Update is called once per frame
     void Update()

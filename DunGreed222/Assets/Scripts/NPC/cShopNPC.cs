@@ -8,10 +8,10 @@ public class cShopNPC : cNPC
     bool _isActiveShop=false;
     //상점
     public GameObject _Shop;
-    protected void Awake()
+    protected override void Awake()
     {
-        _ButtonF = transform.GetChild(0).gameObject;
 
+        base.Awake();
     }
 
     void Update()
