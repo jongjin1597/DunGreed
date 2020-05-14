@@ -4,14 +4,8 @@ using UnityEngine;
 
 public class RadGiantBat : cCharacter
 {
-    AnemyBullet anemybullet;
-<<<<<<< HEAD
-  
-=======
-    SpriteRenderer _Renderer;
-    Animator Anim;
+    AnemyBullet anemybullet;  
 
->>>>>>> 2253c268ee9a7502bab3cad140033721bb27d7fe
     public float shootDelay = 4f; //총알 딜레이
     float shootTimer = 0; //총알 타이머
 

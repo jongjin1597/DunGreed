@@ -4,31 +4,19 @@ using UnityEngine;
 
 public class Ovibos : cCharacter
 {
-<<<<<<< HEAD
-    protected override void Awake() 
-    { 
-    base.Awake();
-
-=======
     Rigidbody2D _rigid;
-    Animator _Anim;
     Vector2 dir;
-    SpriteRenderer _Renderer;
 
     float speed = 6f;
 
-    // Start is called before the first frame update
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         _rigid = GetComponent<Rigidbody2D>();
-        _Anim = GetComponent<Animator>();
-        _Renderer = GetComponentInChildren<SpriteRenderer>();
-        //Footbox = gameObject.GetComponentInChildren<GameObject>();
->>>>>>> 2253c268ee9a7502bab3cad140033721bb27d7fe
     }
 
-
-    // Update is called once per frame
+    
     void Update()
     {
 

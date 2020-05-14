@@ -5,9 +5,7 @@ using UnityEngine;
 public class SkelDog : cCharacter
 {
     Rigidbody2D _rigid;
-    Animator _Anim;
     Vector2 dir;
-    SpriteRenderer _Renderer;
 
     float runDelay = 2f; //런 딜레이
     float runTimer = 0; //런 타이머
