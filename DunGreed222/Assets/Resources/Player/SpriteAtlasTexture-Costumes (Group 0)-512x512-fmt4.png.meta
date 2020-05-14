@@ -776,6 +776,9 @@ TextureImporter:
   - first:
       213: -3826899053013979942
     second: SpriteAtlasTexture-Costumes (Group 0)-512x512-fmt4_257
+  - first:
+      213: -6346969592353502415
+    second: SpriteAtlasTexture-Costumes (Group 0)-512x512-fmt4_258
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
