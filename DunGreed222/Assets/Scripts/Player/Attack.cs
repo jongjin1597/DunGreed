@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    public Transform Player;
-    public Transform target;
+  
+
 
    // private Vector3 dir;
 
@@ -28,7 +28,7 @@ public class Attack : MonoBehaviour
 
     void Update()
     {
-        rotateCenter = Player.transform.position;
+        rotateCenter = Player.GetInstance.transform.position;
         //Debug.Log("로테이션 센터 좌표: " + rotateCenter);
         mousePos = Input.mousePosition;
         //Debug.Log("마우스 좌표: " + mousePos);
@@ -37,7 +37,7 @@ public class Attack : MonoBehaviour
 
         mousePos = Vector2.ClampMagnitude(mousePos, _Radius);
         //Debug.Log("마우스 수정 좌표: " + mousePos);
-        target.transform.position = rotateCenter + mousePos;
+        this.transform.position = rotateCenter + mousePos;
         //WeaPon.transform.position = rotateCenter + mousePos;
        
 

@@ -17,10 +17,11 @@ public class cWeaPon : MonoBehaviour
     private RuntimeAnimatorController _SwardAni;
     //창 애니매이션
     private RuntimeAnimatorController _SpearAni;
-
+    private cAttack _AttackMotion;
     void Awake()
     {
-          _Ani=transform.GetComponent<Animator>();
+        _AttackMotion = FindObjectOfType<cAttack>();
+          _Ani =transform.GetComponent<Animator>();
           _SpriteRend = transform.GetComponent<SpriteRenderer>();
         _SwardAni =Resources.Load<RuntimeAnimatorController>("Animaition/Weapon/Sward/Sward");
         _SpearAni = Resources.Load<RuntimeAnimatorController>("Animaition/Weapon/Spear/Spear");
@@ -50,7 +51,7 @@ public class cWeaPon : MonoBehaviour
 
         Player.GetInstance._MinDamage += _NowWeaPon._MinAttackDamage;
         Player.GetInstance._MaxDamage += _NowWeaPon._MaxAttackDamage;
-
+        _AttackMotion.SetItemMotion(_NowWeaPon);
     }
 
     private void Update()
@@ -59,7 +60,7 @@ public class cWeaPon : MonoBehaviour
         {
        
             _Ani.SetTrigger("AttackCheck");
-        
+            _AttackMotion.Attack();
 
         }
 
