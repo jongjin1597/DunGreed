@@ -44,7 +44,7 @@ public class SkelDog : MonoBehaviour
         {
             _rigid.velocity = new Vector2(dir.normalized.x * speed, _rigid.position.y);
         }
-       
+
 
         if (Player.GetInstance.transform.position.x < this.transform.position.x)
         {
@@ -70,7 +70,16 @@ public class SkelDog : MonoBehaviour
                     _rigid.velocity = new Vector2(attackSpeed, 3f);
                 }
             }
-        }
-    }
 
+            Vector3 _Dir = Player.GetInstance.transform.position - transform.position;
+            Debug.DrawRay(_rigid.position, _Dir.normalized * 2, new Color(0, 1, 0));
+
+            if (_rigid.velocity.y < 0)
+            {
+                rayHit = Physics2D.Raycast(_rigid.position, _Dir * 2f, 1, LayerMask.GetMask("floor"));
+
+            }
+        }
+
+    }
 }
