@@ -7,7 +7,11 @@ public class LittleGhost : cCharacter
     AnemyBullet anemybullet;
  
     Rigidbody2D _rigid;
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 2253c268ee9a7502bab3cad140033721bb27d7fe
     public float attackDelay = 4f; //어택 딜레이
     float attackTimer = 0; //어택 타이머
     float speed = 0.5f;
@@ -22,14 +26,18 @@ public class LittleGhost : cCharacter
     {
         if (_Anim.GetCurrentAnimatorStateInfo(0).IsName("LittleGhostAttack"))
         {
-            speed = 1.4f;
+            speed = 3f;
         }
         else
         {
-            speed = 0.5f;
+            speed = 1.5f;
         }
         Vector2 dir = (Player.GetInstance.transform.position - this.transform.position);
+<<<<<<< HEAD
         _rigid.velocity = new Vector2(dir.x * speed, dir.y * speed);
+=======
+        _rigid.velocity = new Vector2(dir.normalized.x * speed, dir.y * speed);
+>>>>>>> 2253c268ee9a7502bab3cad140033721bb27d7fe
 
         attackTimer += Time.deltaTime;
 

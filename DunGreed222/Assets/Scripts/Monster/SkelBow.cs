@@ -2,34 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Banshee : cCharacter
+public class SkelBow : MonoBehaviour
 {
     AnemyBullet anemybullet;
-<<<<<<< HEAD
- 
-=======
-    SpriteRenderer _Renderer;
-    Animator Anim;
->>>>>>> 2253c268ee9a7502bab3cad140033721bb27d7fe
+    public SpriteRenderer _Renderer;
+
+    Animator _Anim;
 
     public float shootDelay = 4f; //총알 딜레이
     float shootTimer = 0; //총알 타이머
 
-   protected override void Awake()
+
+    public Transform Skel;
+    public float _Radius;
+
+    void Awake()
     {
-        base.Awake();
         anemybullet = GetComponentInChildren<AnemyBullet>();
+        _Anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         shootTimer += Time.deltaTime;
 
         if (shootTimer > shootDelay) //쿨타임이 지났는지
         {
             _Anim.SetTrigger("Fire");
-
             shootTimer = 0; //쿨타임 초기화
         }
 
@@ -41,16 +41,20 @@ public class Banshee : cCharacter
         {
             _Renderer.flipX = false;
         }
+             
+
+        Vector3 dir = (Player.GetInstance.transform.position - Skel.transform.position);
+        this.transform.position = Skel.transform.position + (dir.normalized*_Radius);
+
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
     }
 
     public void AnimationEvent()
     {
-        for (int i = 0; i < 12; ++i)
-        {
-            Vector3 dirVec = new Vector3(Mathf.Cos(Mathf.PI * 2 * i / 12), Mathf.Sin(Mathf.PI * 2 * i / 12));
-            dirVec += this.transform.position;
-            float angle = 30 * i;
-            anemybullet.ShootControl(dirVec, angle);
-        }
+        Vector2 dir = (Player.GetInstance.transform.position - this.transform.position);
+        float angle = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;
+        anemybullet.ShootControl(this.transform.position, angle);
     }
 }
