@@ -11,7 +11,6 @@ public class RadBat : MonoBehaviour
     Rigidbody2D _rigid;
     public int _moveRangeX;
     public int _moveRangeY;
-    public GameObject Player;
 
     public float shootDelay = 4f; //총알 딜레이
     float shootTimer = 0; //총알 타이머
@@ -45,11 +44,11 @@ public class RadBat : MonoBehaviour
             _rigid.velocity = Vector2.zero;
         }
 
-        if(Player.transform.position.x < this.transform.position.x)
+        if(Player.GetInstance.transform.position.x < this.transform.position.x)
         {
             _Renderer.flipX = true;
         }
-        if (Player.transform.position.x > this.transform.position.x)
+        if (Player.GetInstance.transform.position.x > this.transform.position.x)
         {
             _Renderer.flipX = false;
         }
@@ -80,7 +79,7 @@ public class RadBat : MonoBehaviour
     {
         for (int i = 0; i < 10; ++i)
         {
-            Vector2 dir = (Player.transform.position - this.transform.position);
+            Vector2 dir = (Player.GetInstance.transform.position - this.transform.position);
             float angle = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;
             anemybullet.ShootControl(this.transform.position, angle);
         }

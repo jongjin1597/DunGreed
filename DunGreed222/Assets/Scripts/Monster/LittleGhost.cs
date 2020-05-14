@@ -8,7 +8,6 @@ public class LittleGhost : MonoBehaviour
     SpriteRenderer _Renderer;
     Animator Anim;
     Rigidbody2D _rigid;
-    public GameObject Player;
 
     public float attackDelay = 4f; //어택 딜레이
     float attackTimer = 0; //어택 타이머
@@ -25,14 +24,14 @@ public class LittleGhost : MonoBehaviour
     {
         if (Anim.GetCurrentAnimatorStateInfo(0).IsName("LittleGhostAttack"))
         {
-            speed = 1.4f;
+            speed = 3f;
         }
         else
         {
-            speed = 0.5f;
+            speed = 1.5f;
         }
-        Vector2 dir = (Player.transform.position - this.transform.position);
-        _rigid.velocity = new Vector2(dir.x * speed, dir.y * speed);
+        Vector2 dir = (Player.GetInstance.transform.position - this.transform.position);
+        _rigid.velocity = new Vector2(dir.normalized.x * speed, dir.y * speed);
 
         attackTimer += Time.deltaTime;
 
@@ -43,11 +42,11 @@ public class LittleGhost : MonoBehaviour
             attackTimer = 0; //쿨타임 초기화
         }
 
-        if (Player.transform.position.x < this.transform.position.x)
+        if (Player.GetInstance.transform.position.x < this.transform.position.x)
         {
             _Renderer.flipX = true;
         }
-        if (Player.transform.position.x > this.transform.position.x)
+        if (Player.GetInstance.transform.position.x > this.transform.position.x)
         {
             _Renderer.flipX = false;
         }

@@ -7,7 +7,6 @@ public class GiantBat : MonoBehaviour
     AnemyBullet anemybullet;
     SpriteRenderer _Renderer;
     Animator Anim;
-    public GameObject Player;
 
     public float shootDelay = 4f; //총알 딜레이
     float shootTimer = 0; //총알 타이머
@@ -32,11 +31,11 @@ public class GiantBat : MonoBehaviour
             shootTimer = 0; //쿨타임 초기화
         }
 
-        if (Player.transform.position.x < this.transform.position.x)
+        if (Player.GetInstance.transform.position.x < this.transform.position.x)
         {
             _Renderer.flipX = true;
         }
-        if (Player.transform.position.x > this.transform.position.x)
+        if (Player.GetInstance.transform.position.x > this.transform.position.x)
         {
             _Renderer.flipX = false;
         }
@@ -44,7 +43,7 @@ public class GiantBat : MonoBehaviour
 
     public void AnimationEvent()
     {
-        dir = (Player.transform.position - this.transform.position);
+        dir = (Player.GetInstance.transform.position - this.transform.position);
         for (float i = 0f; i <= 0.8f; i += 0.4f)
         {
             Invoke("Attack", i);
