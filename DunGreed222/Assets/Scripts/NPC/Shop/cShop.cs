@@ -72,21 +72,6 @@ public class cShop : MonoBehaviour,IPointerEnterHandler
 
         }
     }
-
-    private void Update()
-    {
-        //수정할것
-           for (int i = 0; i < _ShopSlotList.Count; ++i)
-            {
-                if (_ShopSlotList[i]._Check == true)
-                {
-                    ReMove(_ShopSlotList[i]);
-                    Setting();
-                }
-
-            }
-        
-    }
     //리스트에서 삭제
     public void ReMove(cShopSLot Slot)
     {

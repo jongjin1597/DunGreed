@@ -20,22 +20,19 @@ public class cDash :MonoBehaviour
     //활성화
     public void SetEnabled(int DashCount)
     {
-        if (DashCount <0)
+        if (DashCount < 3 && DashCount > -1)
         {
-            return;
+            _DashSlot[DashCount].SetActive(true);
         }
-        _DashSlot[DashCount].SetActive(true);
 
     }
     //비활성화
     public void SetEnabledfasle(int DashCount)
     {
-        if (DashCount >2)
+        if (DashCount < 3&& DashCount>-1)
         {
-            return;
+            _DashSlot[DashCount].SetActive(false);
         }
-        _DashSlot[DashCount].SetActive(false);
-
     }
   
 }

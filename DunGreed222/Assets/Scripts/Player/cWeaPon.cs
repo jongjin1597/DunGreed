@@ -57,9 +57,12 @@ public class cWeaPon : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Time.timeScale != 0)
         {
-            _AttackMotion._Attack();
+            if (Input.GetMouseButtonDown(0))
+            {
+                _AttackMotion._Attack();
+            }
         }
 
        

@@ -99,57 +99,61 @@ public class Player : cCharacter
     // Update is called once per frame
     void Update()
     {
-        //이동
-        _horizontalMove = Input.GetAxisRaw("Horizontal");
-        //점프상태
-        if (Input.GetKeyDown(KeyCode.Space) && !Input.GetKey(KeyCode.S))
-        {
-            _isJump = true;
-        }
-        
-        AnimationUpdate();
-        //hp확인
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            _health.MyCurrentValue -= 10;
-        }
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            _health.MyCurrentValue += 10;
-        }
 
-        //마우스포지션 불러오기
-        _MousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-    
-        //마우스좌표에따라 캐릭터 회전
-        if (_MousePosition.x < transform.position.x)
+        if (Time.timeScale != 0)
         {
-            _Renderer.flipX = true;
-        }
-        else if (_MousePosition.x > transform.position.x)
-        {
-            _Renderer.flipX = false;
-        }
-
-        //대시횟수 충전
-            _Time += Time.deltaTime;
-        if (_Time >= 1.0f)
-        {
-
-            if (_DashCount < 3)
+            //이동
+            _horizontalMove = Input.GetAxisRaw("Horizontal");
+            //점프상태
+            if (Input.GetKeyDown(KeyCode.Space) && !Input.GetKey(KeyCode.S))
             {
-                _Dash.SetEnabled(_DashCount);
-                _DashCount += 1;
+                _isJump = true;
             }
-                _Time = 0;
-        }
 
-        //HP0되면 죽는것
-        if (_health.MyCurrentValue == 0)
-        {
-            _state = State.Die;
-        }       
+            AnimationUpdate();
+            //hp확인
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                _health.MyCurrentValue -= 10;
+            }
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                _health.MyCurrentValue += 10;
+            }
+
+            //마우스포지션 불러오기
+            _MousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+
+            //마우스좌표에따라 캐릭터 회전
+            if (_MousePosition.x < transform.position.x)
+            {
+                _Renderer.flipX = true;
+            }
+            else if (_MousePosition.x > transform.position.x)
+            {
+                _Renderer.flipX = false;
+            }
+
+            //대시횟수 충전
+            _Time += Time.deltaTime;
+            if (_Time >= 1.0f)
+            {
+
+                if (_DashCount < 3)
+                {
+                    _Dash.SetEnabled(_DashCount);
+                    _DashCount += 1;
+                }
+                _Time = 0;
+            }
+
+            //HP0되면 죽는것
+            if (_health.MyCurrentValue == 0)
+            {
+                _state = State.Die;
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -174,12 +178,11 @@ public class Player : cCharacter
      
         if (Input.GetMouseButtonDown(1))
         {
-            if (_DashCount == 0)
-            {
-                return;
-            }
         
-            StartCoroutine("Dash");
+            if (_DashCount != 0)
+            {
+                StartCoroutine("Dash");
+            }
         }
     }
 
@@ -229,7 +232,7 @@ public class Player : cCharacter
     {
 
         //대시횟수가 0이아니거나 대시상태가 아닐때 실행
-        if (_state != State.Dash || _DashCount > 0)
+        if (_state != State.Dash)
         {
             _state = State.Dash;
             _DashEffect.Play();
@@ -244,14 +247,14 @@ public class Player : cCharacter
             }
             if (_DashEffect.isPlaying)
             {
-                while (_Index < 10)
+                while (_Index < 4)
                 {
 
                     _Index += 1;
                     _Rigidbody.velocity = Vector3.zero;
                     Vector2 m_vecLerp = Vector2.Lerp(_StartPoint, (Vector2)_StartPoint + (_Direction * _Range), (float)_Index / 4.0f);
                     _Rigidbody.MovePosition(m_vecLerp);
-                    yield return new WaitForSeconds(0.004f);
+                    yield return new WaitForSeconds(0.005f);
                 }
             }
             _Dash.SetEnabledfasle(_DashCount - 1);

@@ -36,6 +36,7 @@ public class cShopNPC : cNPC
         {
             _Shop.transform.position = new Vector3(-785, 538, 0);
             cInventory.GetInstance.SetActive();
+            Time.timeScale = 1;
             _isActiveShop = false;
         }
     }
@@ -46,6 +47,7 @@ public class cShopNPC : cNPC
         {
             _Shop.transform.position = new Vector3(389, 538, 0);
             cInventory.GetInstance.SetActive();
+            Time.timeScale = 0;
             _isActiveShop = true;
         }
     }

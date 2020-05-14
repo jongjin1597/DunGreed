@@ -12,6 +12,7 @@ public class cAttack : MonoBehaviour
     public float _Radius;
     public delegate void _AttackStart();
     public _AttackStart _Attack;
+
     void Awake()
     {
         _Attack += Attack;
@@ -35,16 +36,20 @@ public class cAttack : MonoBehaviour
     }
     void Update()
     {
-        rotateCenter = Player.GetInstance.transform.position;
-        mousePos = Input.mousePosition;
-        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-        mousePos = (mousePos - rotateCenter);
+        if (Time.timeScale != 0)
+        {
+            rotateCenter = Player.GetInstance.transform.position;
+            mousePos = Input.mousePosition;
+            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+            mousePos = (mousePos - rotateCenter);
 
-        mousePos = Vector2.ClampMagnitude(mousePos, _Radius);
-        this.transform.position = rotateCenter + mousePos;
-    }
+            mousePos = Vector2.ClampMagnitude(mousePos, _Radius);
+            this.transform.position = rotateCenter + mousePos;
+        }
+        }
     private void Attack()
     {
+
         _Ani.SetTrigger("AttackCheck");
     }
     private void OnTriggerEnter2D(Collider2D collision)

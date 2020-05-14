@@ -11,25 +11,23 @@ public class cWeaPonMove : MonoBehaviour
 
     void Update()
     {
-        Vector3 _mousePos = Input.mousePosition; //마우스 좌표 저장
-        Vector3 _oPosition = transform.position;
-        Vector3 target = Camera.main.ScreenToWorldPoint(_mousePos);
-        float dy = target.y - _oPosition.y;
-        float dx = target.x - _oPosition.x;
-        float rotateDegree = Mathf.Atan2(dy, dx) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, rotateDegree);
-        
-        rotateCenter = Player.GetInstance.transform.position;
-        Vector3 _Position = (target - rotateCenter);
-        //Debug.Log("로테이션 센터 좌표: " + rotateCenter);
+        if (Time.timeScale != 0)
+        {
+            Vector3 _mousePos = Input.mousePosition; //마우스 좌표 저장
+            Vector3 _oPosition = transform.position;
+            Vector3 target = Camera.main.ScreenToWorldPoint(_mousePos);
+            float dy = target.y - _oPosition.y;
+            float dx = target.x - _oPosition.x;
+            float rotateDegree = Mathf.Atan2(dy, dx) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, rotateDegree);
 
-        _Position = Vector2.ClampMagnitude(_Position, _Radius);
-        //Debug.Log("마우스 수정 좌표: " + mousePos);
-        this.transform.position = rotateCenter + _Position;
-        //WeaPon.transform.position = rotateCenter + mousePos;
+            rotateCenter = Player.GetInstance.transform.position;
+            Vector3 _Position = (target - rotateCenter);
+            
+            _Position = Vector2.ClampMagnitude(_Position, _Radius);
+            this.transform.position = rotateCenter + _Position;
+            
 
-
-
-        // WeaPon.Attack();
-    }
+        }
+     }
 }

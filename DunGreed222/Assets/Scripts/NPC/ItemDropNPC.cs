@@ -33,7 +33,7 @@ public class ItemDropNPC : cNPC
         if (_RandNum >= 0 && _RandNum < 6)
         {
             GameObject _DropNode = null;
-            _DropNode = (GameObject)Instantiate(Resources.Load("Prefabs/DropNode"));
+            _DropNode = (GameObject)Instantiate(Resources.Load("Prefabs/Item/DropNode"));
             _DropNode.transform.position = this.transform.position;
 
             Item _ItemValue = cDataBaseManager.GetInstance._ItemList[_RandNum];
