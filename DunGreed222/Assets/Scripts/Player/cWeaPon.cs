@@ -25,6 +25,7 @@ public class cWeaPon : MonoBehaviour
           _SpriteRend = transform.GetComponent<SpriteRenderer>();
         _SwardAni =Resources.Load<RuntimeAnimatorController>("Animaition/Weapon/Sward/Sward");
         _SpearAni = Resources.Load<RuntimeAnimatorController>("Animaition/Weapon/Spear/Spear");
+        _AttackMotion._Attack += Attack;
     }
     //현제 무기 세팅(무기장착시 세팅)
     public void SetWeaPon(Item _WeaPonNum)
@@ -58,14 +59,14 @@ public class cWeaPon : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-       
-            _Ani.SetTrigger("AttackCheck");
-            _AttackMotion.Attack();
-
+            _AttackMotion._Attack();
         }
 
        
         //WeaPon.transform.position = rotateCenter + mousePos;
     }
-
+    void Attack()
+    {
+        _Ani.SetTrigger("AttackCheck");
+    }
 }

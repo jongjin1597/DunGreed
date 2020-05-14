@@ -10,9 +10,12 @@ public class cAttack : MonoBehaviour
     private Vector3 mousePos;
 
     public float _Radius;
+    public delegate void _AttackStart();
+    public _AttackStart _Attack;
     void Awake()
     {
-  
+        _Attack += Attack;
+        _Attack += cCameramanager.GetInstance.VibrateForTime;
         _Ani = GetComponent<Animator>();
         _SwardAni = Resources.Load<RuntimeAnimatorController>("Animaition/Weapon/Sward/Swing");
     }
@@ -40,7 +43,7 @@ public class cAttack : MonoBehaviour
         mousePos = Vector2.ClampMagnitude(mousePos, _Radius);
         this.transform.position = rotateCenter + mousePos;
     }
-    public void Attack()
+    private void Attack()
     {
         _Ani.SetTrigger("AttackCheck");
     }
