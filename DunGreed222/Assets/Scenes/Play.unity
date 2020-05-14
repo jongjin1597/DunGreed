@@ -3898,7 +3898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 852071ebf5262474c97ef3c9306bdccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startPoint: 
+  _startPoint: 0
 --- !u!4 &71908287
 Transform:
   m_ObjectHideFlags: 0
@@ -3946,7 +3946,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 265}
   m_SizeDelta: {x: 20, y: 620}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -47725,10 +47725,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 762a5f049abb14b4fae1f00a7e2b76fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _NowMap: {fileID: 0}
   _OpenMapList: []
   _CloseMapList: []
-  _isMonster: 1
   _DoorList: []
 --- !u!4 &808358434
 Transform:
@@ -100651,7 +100649,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1687943564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101093,7 +101091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c3afd41e67f74b4dae40cb56a5f5d93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _HPText: {fileID: 0}
+  _HPText: {fileID: 105814643}
 --- !u!1 &1700363740
 GameObject:
   m_ObjectHideFlags: 0

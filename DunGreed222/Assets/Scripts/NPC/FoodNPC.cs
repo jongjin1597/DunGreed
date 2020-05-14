@@ -31,9 +31,11 @@ public class FoodNPC : cNPC
     {
         if (Active) {
             _FoodTable.gameObject.SetActive(true);
+            Time.timeScale = 0;
         }
        else if (!Active)
         {
+            Time.timeScale = 1;
             _FoodTable.gameObject.SetActive(false);
         }
     }

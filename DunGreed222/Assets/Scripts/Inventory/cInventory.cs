@@ -38,6 +38,8 @@ public class cInventory :  cSingleton<cInventory>
     float X = -278.0f;
     //프리펩 설정용 Y좌표
     float Y = -51.0f;
+
+
     protected override void Awake()
     {
         base.Awake();
@@ -97,7 +99,7 @@ public class cInventory :  cSingleton<cInventory>
        ItemImageChange(_WeaPonSlotList[0]);
         _NowWeaPon.SetWeaPon(_WeaPonSlotList[0]._item);
         AddItem(cDataBaseManager.GetInstance._ItemList[1]);
-        
+
         //옵저버패턴
         cGameManager.GetInstance._DeleGateGold += SetGold;
 
@@ -110,7 +112,18 @@ public class cInventory :  cSingleton<cInventory>
     public void SetActive()
     {
         _ActiveInventory = !_ActiveInventory;
-        _Inventory.gameObject.SetActive(_ActiveInventory);
+        if (_ActiveInventory)
+        {
+            Time.timeScale = 1;
+            _Inventory.gameObject.SetActive(false);
+        }
+        else if (!_ActiveInventory)
+        {
+            Time.timeScale = 0;
+            _Inventory.gameObject.SetActive(true);
+        }
+
+       
     }
     //인벤토리에 골드 세팅하는 함수
     public void SetGold()

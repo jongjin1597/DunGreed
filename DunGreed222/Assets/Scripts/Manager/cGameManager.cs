@@ -21,6 +21,10 @@ public class cGameManager : cSingleton<cGameManager>
     protected override void Awake()
     {
         base.Awake();
+      
+    }
+    private void Start()
+    {
         _DeleGateGold();
     }
 
