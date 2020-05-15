@@ -5,7 +5,9 @@ using UnityEngine;
 //무기 회전용 스크립트
 public class cWeaPonMove : MonoBehaviour
 {
+    private Vector3 rotateCenter;
 
+    public float _Radius;
 
     void Update()
     {
@@ -19,8 +21,12 @@ public class cWeaPonMove : MonoBehaviour
             float rotateDegree = Mathf.Atan2(dy, dx) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, rotateDegree);
 
-          
-          
+            rotateCenter = Player.GetInstance.transform.position;
+            Vector3 _Position = (target - rotateCenter);
+            
+            _Position = Vector2.ClampMagnitude(_Position, _Radius);
+            this.transform.position = rotateCenter + _Position;
+            
 
         }
      }

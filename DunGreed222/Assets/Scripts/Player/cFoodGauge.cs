@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class cFoodGauge : MonoBehaviour
 {
+    static public cFoodGauge instance;
     //포만감게이지
     private Image _Gauge;
     //포만감
@@ -35,9 +36,17 @@ public class cFoodGauge : MonoBehaviour
 
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
             _Gauge = transform.GetChild(1).GetComponent<Image>();
             _FoodText.text = _CurrentValue + "  /  " + _MaxValue;
-      
+        }
+        else if (instance != null)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void Update()

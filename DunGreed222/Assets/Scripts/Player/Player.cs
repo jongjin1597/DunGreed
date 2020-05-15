@@ -53,8 +53,6 @@ public class Player : cCharacter
     private Vector2 _MousePosition;
     public BoxCollider2D foot;
 
-    //회전용변수
-    private bool _Rotate = false;
     protected override void Awake()
     {
         //_health.Initialize(_InitHealth, _InitHealth);
@@ -127,29 +125,15 @@ public class Player : cCharacter
             _MousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
 
-
-
-
-
-
             //마우스좌표에따라 캐릭터 회전
             if (_MousePosition.x < transform.position.x)
             {
-                if (_Rotate)
-                {
-                    transform.Rotate(new Vector3(0, 180, 0));
-                    _Rotate = false;
-                }
+                _Renderer.flipX = true;
             }
             else if (_MousePosition.x > transform.position.x)
             {
-                if (!_Rotate)
-                {
-                    transform.rotation = Quaternion.identity;
-                    _Rotate = true;
-                }
-                }
-
+                _Renderer.flipX = false;
+            }
 
             //대시횟수 충전
             _Time += Time.deltaTime;

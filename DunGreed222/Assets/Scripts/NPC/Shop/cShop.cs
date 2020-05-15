@@ -21,7 +21,7 @@ public class cShop : MonoBehaviour,IPointerEnterHandler
             Transform newSlot = Instantiate(_SlotPrefeb);
 
             newSlot.name = "Slot" + (i + 1);
-            newSlot.SetParent(transform);
+            newSlot.parent = transform;
             newSlot.localPosition = new Vector3(0, _SlotYPosition, 0);
             _ShopSlotList.Add(newSlot.GetComponent<cShopSLot>());
             newSlot.GetComponent<cShopSLot>()._SlotNum = i;

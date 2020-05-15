@@ -25,7 +25,7 @@ public class cGameManager : cSingleton<cGameManager>
     }
     private void Start()
     {
-        _DeleGateGold?.Invoke();
+        _DeleGateGold();
     }
 
     private void Update()

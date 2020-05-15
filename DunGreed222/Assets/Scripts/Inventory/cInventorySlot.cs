@@ -75,7 +75,7 @@ public class cInventorySlot : MonoBehaviour,IDragHandler, IPointerExitHandler,IE
     public void OnDrag(PointerEventData eventData)
     {
         if (transform.childCount > 0)
-            transform.GetChild(0).SetParent(cInventory.GetInstance._DraggingItem);
+            transform.GetChild(0).parent = cInventory.GetInstance._DraggingItem;
         cInventory.GetInstance._DraggingItem.GetChild(0).position = eventData.position;
     }
     //마우스가 슬롯위에있을때 아이템이있으면 판넬로 설명창 뛰움
@@ -85,7 +85,7 @@ public class cInventorySlot : MonoBehaviour,IDragHandler, IPointerExitHandler,IE
         if (_isItem)
         {
             _Panel.gameObject.SetActive(true);
-            _Panel.transform.SetParent(cInventory.GetInstance._GetPanel);
+            _Panel.transform.parent = cInventory.GetInstance._GetPanel;
         }
     }
 
@@ -93,20 +93,16 @@ public class cInventorySlot : MonoBehaviour,IDragHandler, IPointerExitHandler,IE
     public void OnPointerExit(PointerEventData eventData)
     {
         cInventory.GetInstance._EnteredSlot = null;
-        //if (cInventory.GetInstance._GetPanel.childCount != 0)
-        //{
-        //    cInventory.GetInstance._GetPanel.GetChild(0).SetParent(transform);
-        //    transform.GetChild(0).localPosition = Vector3.zero;
-        //}
-        _Panel.gameObject.SetActive(false);
 
+        _Panel.gameObject.SetActive(false);
+       
     }
 
     //드래그 끝날때 끝나는 슬롯이 뭐냐에 따라 효과다름 
     public void OnEndDrag(PointerEventData eventData)
     {
         //아까 옮긴 아이템을 다시 자기자식으로 옮김
-        cInventory.GetInstance._DraggingItem.GetChild(0).SetParent(transform);
+        cInventory.GetInstance._DraggingItem.GetChild(0).parent = transform;
         transform.GetChild(0).localPosition = Vector3.zero;
         
         if (cInventory.GetInstance._EnteredSlot != null)
