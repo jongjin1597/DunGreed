@@ -75,15 +75,26 @@ public class cWeaPon : MonoBehaviour
 
     IEnumerator Attack()
     {
-        if(!_Ani.GetCurrentAnimatorStateInfo(0).IsName("Attack1"))
+        if (_NowWeaPon._Type == ItemType.Sword)
         {
-            _AttackMotion._Attack();
-        yield return null;
+            if (!_Ani.GetCurrentAnimatorStateInfo(0).IsName("Attack1"))
+            {
+                yield return new WaitForSeconds(0.25f);
+                _AttackMotion._Attack();
+            }
+            else if (!_Ani.GetCurrentAnimatorStateInfo(0).IsName("Attack2"))
+            {
+                yield return new WaitForSeconds(0.25f);
+                _AttackMotion._Attack();
+            }
         }
-        else if (!_Ani.GetCurrentAnimatorStateInfo(0).IsName("Attack2"))
+        else if (_NowWeaPon._Type == ItemType.Spear)
         {
-            _AttackMotion._Attack();
-            yield return null;
+            if (!_Ani.GetCurrentAnimatorStateInfo(0).IsName("Attack1"))
+            {
+                _AttackMotion._Attack();
+                yield return null;
+            }
         }
     }
 }
