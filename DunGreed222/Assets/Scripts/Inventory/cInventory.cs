@@ -58,7 +58,7 @@ public class cInventory :  cSingleton<cInventory>
                 Transform newSlot = Instantiate(_Slot);
               
                 newSlot.name = "Slot" + (i + 1) + "." + (j + 1);
-                newSlot.parent = _Inventory.transform;
+                newSlot.SetParent(_Inventory.transform);
                 newSlot.localPosition= new Vector3(X,Y,0);
                 _InventorySlot.Add(newSlot.GetComponent<cInventorySlot>());
                 newSlot.GetComponent<cInventorySlot>()._number = i * 5 + j;
@@ -75,7 +75,7 @@ public class cInventory :  cSingleton<cInventory>
         {
             Transform WeaponSLot = Instantiate(_WeaPonSlot);
             WeaponSLot.name = "WeaPon" + i;
-            WeaponSLot.parent = _Inventory.transform;
+            WeaponSLot.SetParent(_Inventory.transform);
             WeaponSLot.localPosition = new Vector3(X, Y, 0);
             _WeaPonSlotList.Add(WeaponSLot.GetComponent<cInventorySlot>());
             WeaponSLot.GetComponent<cInventorySlot>()._number = i + 1;
@@ -88,7 +88,7 @@ public class cInventory :  cSingleton<cInventory>
         {
             Transform ShildSlot = Instantiate(_ShildSlot);
             ShildSlot.name = "Shild" + i;
-            ShildSlot.parent = _Inventory.transform;
+            ShildSlot.SetParent(_Inventory.transform);
             ShildSlot.localPosition = new Vector3(X, Y, 0);
             _ShildSlotList.Add(ShildSlot.GetComponent<cInventorySlot>());
             ShildSlot.GetComponent<cInventorySlot>()._number = i + 1;
@@ -98,8 +98,12 @@ public class cInventory :  cSingleton<cInventory>
        _WeaPonSlotList[0]._item = cDataBaseManager.GetInstance._ItemList[0];
        ItemImageChange(_WeaPonSlotList[0]);
         _NowWeaPon.SetWeaPon(_WeaPonSlotList[0]._item);
+        AddItem(cDataBaseManager.GetInstance._ItemList[0]);
         AddItem(cDataBaseManager.GetInstance._ItemList[1]);
-
+        AddItem(cDataBaseManager.GetInstance._ItemList[2]);
+        AddItem(cDataBaseManager.GetInstance._ItemList[3]);
+        AddItem(cDataBaseManager.GetInstance._ItemList[4]);
+        AddItem(cDataBaseManager.GetInstance._ItemList[5]);
         //옵저버패턴
         cGameManager.GetInstance._DeleGateGold += SetGold;
 

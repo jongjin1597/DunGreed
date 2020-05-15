@@ -24,7 +24,7 @@ public class cFoodSlotList : MonoBehaviour
                 Transform newSlot = Instantiate(_Slot);
 
                 newSlot.name = "Slot" + (i + 1);
-                newSlot.parent = transform;
+                newSlot.SetParent(transform);
                 newSlot.localPosition = new Vector3(25f, Y, 0);
                 _FoodSlotList.Add(newSlot.GetComponent<cFoodSlot>());
             Y -= 217;

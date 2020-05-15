@@ -53,6 +53,7 @@ public class Player : cCharacter
     private Vector2 _MousePosition;
     public BoxCollider2D foot;
 
+    private bool _isPosition = false;
     protected override void Awake()
     {
         //_health.Initialize(_InitHealth, _InitHealth);
@@ -128,11 +129,19 @@ public class Player : cCharacter
             //마우스좌표에따라 캐릭터 회전
             if (_MousePosition.x < transform.position.x)
             {
-                _Renderer.flipX = true;
-            }
+                if (_isPosition)
+                {
+                    transform.rotation = Quaternion.Euler(0, 180, 0);
+                    _isPosition = false;
+                 }
+           }
             else if (_MousePosition.x > transform.position.x)
             {
-                _Renderer.flipX = false;
+                if (!_isPosition)
+                {
+                    transform.rotation = Quaternion.identity;
+                    _isPosition = true;
+                }
             }
 
             //대시횟수 충전

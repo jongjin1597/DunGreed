@@ -6,10 +6,8 @@ public class cAttack : MonoBehaviour
 {
     Animator _Ani;
     RuntimeAnimatorController _SwardAni;
-    private Vector3 rotateCenter;
-    private Vector3 mousePos;
+    RuntimeAnimatorController _SpearAni;
 
-    public float _Radius;
     public delegate void _AttackStart();
     public _AttackStart _Attack;
 
@@ -19,6 +17,7 @@ public class cAttack : MonoBehaviour
         _Attack += cCameramanager.GetInstance.VibrateForTime;
         _Ani = GetComponent<Animator>();
         _SwardAni = Resources.Load<RuntimeAnimatorController>("Animaition/Weapon/Sward/Swing");
+       _SpearAni = Resources.Load<RuntimeAnimatorController>("Animaition/Weapon/Spear/SpearAttack");
     }
     public void SetItemMotion(Item item)
     {
@@ -27,26 +26,14 @@ public class cAttack : MonoBehaviour
             _Ani.runtimeAnimatorController = _SwardAni;
         }
 
-        else if (item._Type == ItemType.Sword)
+        else if (item._Type == ItemType.Spear)
         {
-
+            _Ani.runtimeAnimatorController = _SpearAni;
         }
         _Ani.speed = item._AttackSpeed;
 
     }
-    void Update()
-    {
-        if (Time.timeScale != 0)
-        {
-            rotateCenter = Player.GetInstance.transform.position;
-            mousePos = Input.mousePosition;
-            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-            mousePos = (mousePos - rotateCenter);
 
-            mousePos = Vector2.ClampMagnitude(mousePos, _Radius);
-            this.transform.position = rotateCenter + mousePos;
-        }
-        }
     private void Attack()
     {
 
