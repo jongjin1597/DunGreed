@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class cHP : MonoBehaviour
 {
-    static public cHP instance;
     //HP바
     private Image _Gauge;
     //HP수치
@@ -37,16 +36,9 @@ public class cHP : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
+ 
             _Gauge = GetComponentInChildren<Image>();
-        }
-        else if( instance != null)
-        {
-            Destroy(this.gameObject);
-        }
+
     }
 
     private void Update()

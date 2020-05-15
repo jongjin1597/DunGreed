@@ -6,6 +6,8 @@ public class cAttack : MonoBehaviour
 {
     Animator _Ani;
     RuntimeAnimatorController _SwardAni;
+    RuntimeAnimatorController _SpearAni;
+
     private Vector3 rotateCenter;
     private Vector3 mousePos;
 
@@ -19,18 +21,22 @@ public class cAttack : MonoBehaviour
         _Attack += cCameramanager.GetInstance.VibrateForTime;
         _Ani = GetComponent<Animator>();
         _SwardAni = Resources.Load<RuntimeAnimatorController>("Animaition/Weapon/Sward/Swing");
+        _SpearAni = Resources.Load<RuntimeAnimatorController>("Animaition/Weapon/Spear/SpearFX"); 
     }
     public void SetItemMotion(Item item)
     {
-        if(item._Type == ItemType.Sword)
+  
+        if (item._Type == ItemType.Sword)
         {
             _Ani.runtimeAnimatorController = _SwardAni;
+
         }
 
-        else if (item._Type == ItemType.Sword)
+        else if (item._Type == ItemType.Spear)
         {
-
+            _Ani.runtimeAnimatorController = _SpearAni;
         }
+     
         _Ani.speed = item._AttackSpeed;
 
     }
@@ -49,7 +55,6 @@ public class cAttack : MonoBehaviour
         }
     private void Attack()
     {
-
         _Ani.SetTrigger("AttackCheck");
     }
     private void OnTriggerEnter2D(Collider2D collision)
