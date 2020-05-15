@@ -7,7 +7,9 @@ public class Ovibos : cCharacter
     Rigidbody2D _rigid;
     Vector2 dir;
 
-    float speed = 6f;
+    float speed = 8f;
+    bool dash = false;
+    float Chack = 0f;
 
     protected override void Awake()
     {
@@ -19,28 +21,51 @@ public class Ovibos : cCharacter
     
     void Update()
     {
+        Chack += Time.deltaTime;
 
-        if (Player.GetInstance.transform.position.x < this.transform.position.x)
+        if(_rigid.velocity == Vector2.zero)
         {
-            _Renderer.flipX = true;
-            //attackSpeed *= 1;
+            _Anim.SetBool("Run", false);
         }
-        if (Player.GetInstance.transform.position.x > this.transform.position.x)
-        {
-            _Renderer.flipX = false;
-            //attackSpeed *= -1;
-        }
-       
 
+        if (_Anim.GetCurrentAnimatorStateInfo(0).IsName("OvibosMove"))
+        {
+            dash = true;
+        }
+        else
+        {
+            dash = false;           
+        }
+
+        if (!dash)
+        {
+            if (Player.GetInstance.transform.position.x < this.transform.position.x)
+            {
+                _Renderer.flipX = true;
+            }
+            if (Player.GetInstance.transform.position.x > this.transform.position.x)
+            {
+                _Renderer.flipX = false;
+            }
+        }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (Chack >= 4f)
         {
-            _Anim.SetBool("Run", true);
-            dir = (Player.GetInstance.transform.position - this.transform.position);
-            _rigid.velocity = new Vector2(dir.normalized.x * speed, _rigid.position.y);
+            if (other.gameObject.CompareTag("Player"))
+            {
+                _Anim.SetBool("Run", true);
+                dir = (Player.GetInstance.transform.position - this.transform.position);
+                float dashSpeed = 1.5f;
+                if (Player.GetInstance.transform.position.x < this.transform.position.x)
+                {
+                    dashSpeed *= -1;
+                }
+                _rigid.velocity = new Vector2((dir.normalized.x * speed) + dashSpeed, _rigid.position.y);
+            }
+            Chack = 0;
         }
     }
 
