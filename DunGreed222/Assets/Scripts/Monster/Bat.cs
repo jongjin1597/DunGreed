@@ -5,7 +5,6 @@ using UnityEngine;
 public class Bat : cCharacter
 {
     Rigidbody2D _rigid;
-    SpriteRenderer _Renderer;
     public int _moveRangeX;
     public int _moveRangeY;
    protected override void Awake()

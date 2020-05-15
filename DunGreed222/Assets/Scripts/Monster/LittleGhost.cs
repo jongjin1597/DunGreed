@@ -5,7 +5,7 @@ using UnityEngine;
 public class LittleGhost : cCharacter
 {
     AnemyBullet anemybullet;
- 
+
     Rigidbody2D _rigid;
 
     public float attackDelay = 4f; //어택 딜레이
@@ -29,8 +29,6 @@ public class LittleGhost : cCharacter
             speed = 1.5f;
         }
         Vector2 dir = (Player.GetInstance.transform.position - this.transform.position);
-
-        _rigid.velocity = new Vector2(dir.x * speed, dir.y * speed);
 
         _rigid.velocity = new Vector2(dir.normalized.x * speed, dir.y * speed);
 
