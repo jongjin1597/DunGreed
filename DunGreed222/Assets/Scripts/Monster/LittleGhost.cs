@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LittleGhost : cCharacter
+public class LittleGhost : cMonster
 {
-    AnemyBullet anemybullet;
 
     Rigidbody2D _rigid;
 
@@ -14,7 +13,6 @@ public class LittleGhost : cCharacter
     protected override void Awake()
     {
         base.Awake();
-        anemybullet = GetComponentInChildren<AnemyBullet>();
         _rigid = GetComponent<Rigidbody2D>();
     }
 

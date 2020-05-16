@@ -104,6 +104,7 @@ public class cInventory :  cSingleton<cInventory>
         AddItem(cDataBaseManager.GetInstance._ItemList[3]);
         AddItem(cDataBaseManager.GetInstance._ItemList[4]);
         AddItem(cDataBaseManager.GetInstance._ItemList[5]);
+        AddItem(cDataBaseManager.GetInstance._ItemList[6]);
         //옵저버패턴
         cGameManager.GetInstance._DeleGateGold += SetGold;
 

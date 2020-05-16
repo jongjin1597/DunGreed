@@ -35,17 +35,20 @@ public class cWeaPon : MonoBehaviour
         {
             _Ani.runtimeAnimatorController = _SwardAni;
             _SpriteRend.sortingOrder = 4;
+            transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -90));
 
         }
         else if (_WeaPonNum._Type == ItemType.Spear)
         {
             _Ani.runtimeAnimatorController = _SpearAni;
             _SpriteRend.sortingOrder = 10;
+            transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -90));
         }
         else if (_WeaPonNum._Type == ItemType.Gun)
         {
             _Ani.runtimeAnimatorController = null;
             _SpriteRend.sortingOrder = 10;
+            transform.localRotation = Quaternion.identity;
         }
         _Ani.speed = _NowWeaPon._AttackSpeed;
         _SpriteRend.sprite = _NowWeaPon._ItemIcon;
@@ -56,6 +59,7 @@ public class cWeaPon : MonoBehaviour
         Player.GetInstance._MinDamage += _NowWeaPon._MinAttackDamage;
         Player.GetInstance._MaxDamage += _NowWeaPon._MaxAttackDamage;
         _AttackMotion.SetItemMotion(_NowWeaPon);
+       
     }
 
     private void Update()

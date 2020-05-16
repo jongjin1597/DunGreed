@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3168626453977344519}
   - component: {fileID: 3168626453977344516}
   m_Layer: 0
-  m_Name: Skel
+  m_Name: SkelArcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -181,8 +181,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.41, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 3168626454444903933}
+  m_Children: []
   m_Father: {fileID: 3168626453977344517}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -267,51 +266,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d40deb9034df3a0428fcc696f2818b4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Renderer: {fileID: 3168626453977344514}
   shootDelay: 4
   Skel: {fileID: 3168626453977344517}
   _Radius: 0.5
---- !u!1 &3168626454444903930
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3168626454444903933}
-  - component: {fileID: 3168626454444903932}
-  m_Layer: 0
-  m_Name: BulletFire
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3168626454444903933
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3168626454444903930}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.41, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 3168626454011066085}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3168626454444903932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3168626454444903930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 021f37a5b87683d45afee0cc47e73571, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 929193190522785281, guid: 3b07dce63111dba478bcc75aadd33f8b, type: 3}
