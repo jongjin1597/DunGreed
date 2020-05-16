@@ -14,7 +14,7 @@ public class cWeaPonUI: MonoBehaviour
         _SlotIamge1 = transform.GetChild(1).GetChild(0).GetComponent<Image>();
         _SlotIamge2 = transform.GetChild(0).GetChild(0).GetComponent<Image>();
         _SlotIamge1.sprite = cInventory.GetInstance.GetWeaponSlot(0)._item._ItemIcon;
-        _SlotIamge2.sprite = cInventory.GetInstance.GetWeaponSlot(1)._item._ItemIcon;
+       // _SlotIamge2.sprite = cInventory.GetInstance.GetWeaponSlot(1)._item._ItemIcon;
         //SetItem();
     }
 

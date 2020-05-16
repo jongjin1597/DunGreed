@@ -94,23 +94,23 @@ public class cInventory :  cSingleton<cInventory>
             ShildSlot.GetComponent<cInventorySlot>()._number = i + 1;
             X += 353.0f;
         }
-        //기본무기 세팅
-       _WeaPonSlotList[0]._item = cDataBaseManager.GetInstance._ItemList[0];
-       ItemImageChange(_WeaPonSlotList[0]);
+
+        //AddItem(cDataBaseManager.GetInstance._ItemList[2]);
+        //AddItem(cDataBaseManager.GetInstance._ItemList[3]);
+        //AddItem(cDataBaseManager.GetInstance._ItemList[4]);
+        //AddItem(cDataBaseManager.GetInstance._ItemList[5]);
+        //AddItem(cDataBaseManager.GetInstance._ItemList[6]);
+        _WeaPonSlotList[0]._item = cDataBaseManager.GetInstance._ItemList[0];
+        ItemImageChange(_WeaPonSlotList[0]);
         _NowWeaPon.SetWeaPon(_WeaPonSlotList[0]._item);
-        AddItem(cDataBaseManager.GetInstance._ItemList[0]);
-        AddItem(cDataBaseManager.GetInstance._ItemList[1]);
+
         AddItem(cDataBaseManager.GetInstance._ItemList[2]);
-        AddItem(cDataBaseManager.GetInstance._ItemList[3]);
-        AddItem(cDataBaseManager.GetInstance._ItemList[4]);
         AddItem(cDataBaseManager.GetInstance._ItemList[5]);
-        AddItem(cDataBaseManager.GetInstance._ItemList[6]);
         //옵저버패턴
         cGameManager.GetInstance._DeleGateGold += SetGold;
 
     
 }
-
 
 
     //인벤토리 껏다켰다하는 함수
@@ -170,9 +170,10 @@ public class cInventory :  cSingleton<cInventory>
     //아이템 이미지 체인지
     public void ItemImageChange(cInventorySlot Slot)
     {
- 
+       
             Slot.SetItem(Slot._item);
             Slot.transform.GetChild(0).GetComponent<Image>().sprite = Slot._item._ItemIcon;
+       
     }
 }
 

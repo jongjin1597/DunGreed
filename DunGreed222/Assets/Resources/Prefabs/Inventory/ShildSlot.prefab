@@ -223,17 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _number: 0
-  _item:
-    _ItemID: 0
-    _ItemName: 
-    _ItemDescrIption: 
-    _ItemIcon: {fileID: 0}
-    _Type: 0
-    _MinAttackDamage: 0
-    _MaxAttackDamage: 0
-    _AttackSpeed: 0
-    _Quality: 0
-    _ItemPrice: 0
+  _item: {fileID: 1666817930744483443, guid: 224f24beb9dcff145a1fb179ae9e8c00, type: 3}
   _isItem: 0
   _Panel: {fileID: 6956431715137044211}
   _SlotType: 2

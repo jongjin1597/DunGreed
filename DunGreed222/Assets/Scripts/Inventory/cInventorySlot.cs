@@ -16,7 +16,7 @@ public class cInventorySlot : MonoBehaviour,IDragHandler, IPointerExitHandler,IE
     //슬롯넘버
     public int _number;
     //현제슬롯에 있는 아이템
-    public Item _item=null;
+    public Item _item;
     //아이템이 있냐없냐
     public bool _isItem =false;
     //아이템 설명창
@@ -29,6 +29,7 @@ public class cInventorySlot : MonoBehaviour,IDragHandler, IPointerExitHandler,IE
     private string _ItemType;
     private void Awake()
     {
+
         _Panel.gameObject.SetActive(false);
 
         _Weapon = FindObjectOfType<cWeaPon>();
@@ -36,39 +37,41 @@ public class cInventorySlot : MonoBehaviour,IDragHandler, IPointerExitHandler,IE
     //아이템 판넬에 셋팅
     public void SetItem(Item _Item)
     {
-        Sprite Image = _Item._ItemIcon;
-        _item = _Item;
-        if (Image != null)
+        if (_Item != null)
         {
-            _isItem = true;
-        }
-        else if (Image == null)
-        {
-            _isItem = false;
-        }
+            Sprite Image = _Item._ItemIcon;
+            _item = _Item;
+            if (Image != null)
+            {
+                _isItem = true;
+            }
+            else if (Image == null)
+            {
+                _isItem = false;
+            }
 
-        if (_item._Type == ItemType.Sword)
-        {
-            _ItemType = "한손(주무기)";
+            if (_item._Type == ItemType.Sword)
+            {
+                _ItemType = "한손(주무기)";
+            }
+            else
+            {
+                _ItemType = "양손(주무기)";
+            }
+            if (_item._Quality == ItemQuality.Normal)
+            {
+                _ItemQuality = "일반 아이템";
+            }
+            else if (_item._Quality == ItemQuality.Rare)
+            {
+                _ItemQuality = "희귀 아이템";
+            }
+            else if (_item._Quality == ItemQuality.Unique)
+            {
+                _ItemQuality = "전설 아이템";
+            }
+            _Panel.SetPanel(_item._ItemName, _item._MinAttackDamage, _item._MaxAttackDamage, _item._AttackSpeed, _item._ItemDescrIption, _ItemType, _ItemQuality, _Item._ItemIcon);
         }
-        else
-        {
-            _ItemType = "양손(주무기)";
-        }
-        if(_item._Quality == ItemQuality.Normal)
-        {
-            _ItemQuality = "일반 아이템";
-        }
-        else if (_item._Quality == ItemQuality.Rare)
-        {
-            _ItemQuality = "희귀 아이템";
-        }
-        else if (_item._Quality == ItemQuality.Unique)
-        {
-            _ItemQuality = "전설 아이템";
-        }
-        _Panel.SetPanel(_item._ItemName, _item._MinAttackDamage, _item._MaxAttackDamage, _item._AttackSpeed, _item._ItemDescrIption, _ItemType, _ItemQuality, _Item._ItemIcon);
-    
     }
   
     //드래그중일때 인벤토리 밑의 드래깅 아이템 밑으로 아이템 부모를바꿈

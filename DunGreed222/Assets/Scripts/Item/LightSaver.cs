@@ -19,6 +19,7 @@ public class LightSaver : Shortrange
         _ItemPrice = 2000;//아이템가격
 
     }
+
     public override void Skill()
     {
 

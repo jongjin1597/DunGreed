@@ -14,6 +14,7 @@ public enum ItemQuality
     Rare,
     Unique
 }
+
 [System.Serializable]
 public class Item : MonoBehaviour
 {                                      
@@ -34,6 +35,8 @@ public class Item : MonoBehaviour
     }
     public virtual void Skill() { }
     public virtual void Attack() { }
+
+
 }
 public class Shortrange : Item
 {
@@ -46,9 +49,7 @@ public class Shortrange : Item
     public override void Attack()
     { }
 
-
 }
-
 public class Longrange : Item
 {
     protected List<cBullet> _BulletPoll = new List<cBullet>(); //풀에 담을
@@ -64,6 +65,7 @@ public class Longrange : Item
     { }
     public override void Attack()
     { }
+
     public virtual void FireBulet(Vector2 Position, float _angle)
     {
      

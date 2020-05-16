@@ -19,9 +19,8 @@ public class Berdysh : Shortrange
         _ItemIcon = Resources.Load<Sprite>("Itemp/Berdysh");//아이템 이미지
         _ItemPrice = 1000;//아이템가격
     }
-   
 
-    public override void Skill()
+public override void Skill()
     {
 
     }

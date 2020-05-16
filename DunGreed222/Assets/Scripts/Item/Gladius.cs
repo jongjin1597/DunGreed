@@ -19,8 +19,6 @@ public class Gladius : Shortrange
         _ItemPrice = 1000;//아이템가격
         
     }
-  
-
 
     public override void Skill()
     {
