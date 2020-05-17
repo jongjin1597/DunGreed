@@ -11,6 +11,7 @@ TagManager:
   - Sward
   - Slot
   - WeaponSlot
+  - MonsterHitBox
   layers:
   - Default
   - TransparentFX

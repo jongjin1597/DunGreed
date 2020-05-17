@@ -19,7 +19,7 @@ public class Banshee : cLongLangeMonster
             cBullet _Bullet = obj.GetComponent<cBullet>();
             _Bullet._Speed = 5.0f;
             _Bullet._Damage = Random.Range(11, 14);
-            
+            _Bullet._Player = false;
             //총알 발사하기 전까지는 비활성화 해준다.
             _Bullet.transform.SetParent(transform);
             _Bullet.gameObject.SetActive(false);
