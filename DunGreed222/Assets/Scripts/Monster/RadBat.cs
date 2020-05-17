@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RadBat : cLongLangeMonster
-{
-  
-   
+{ 
     Rigidbody2D _rigid;
     public int _moveRangeX;
     public int _moveRangeY;
