@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GiantBat : cMonster
+public class GiantBat : cLongLangeMonster
 {
 
     public float shootDelay = 4f; //총알 딜레이

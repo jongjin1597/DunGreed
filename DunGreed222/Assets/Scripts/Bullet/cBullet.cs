@@ -6,16 +6,12 @@ public class cBullet : MonoBehaviour
 {
     public float _Damage;
     public float _Speed;
+    //회전하는총알
     public Transform _transform;
-
+    //이총알이 플레이어용인지 몬스터용인지
+    public bool _Player=true;
     public bool _Start = true;
-    private void Awake()
-    {
-        if (_transform != null)
-        {
-            _transform.eulerAngles = new Vector3(0f, 0.0f, 0f);
-        }
-    }
+ 
     void Update()
     {
         if (_Start)
@@ -24,5 +20,23 @@ public class cBullet : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
 
+        if (_Player) 
+        {
+            if (collision.CompareTag("Monster"))
+            {
+        
+            }
+        }
+        else if (!_Player)
+        {
+            if (collision.CompareTag("Player"))
+            {
+               float dam =_Damage - Player.GetInstance._Defense;
+                Player.GetInstance._health.MyCurrentValue -= dam;
+            }
+        }
+    }
 }

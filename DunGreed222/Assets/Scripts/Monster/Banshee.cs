@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Banshee : cMonster
+public class Banshee : cLongLangeMonster
 {
   
 
@@ -19,6 +19,7 @@ public class Banshee : cMonster
             cBullet _Bullet = obj.GetComponent<cBullet>();
             _Bullet._Speed = 5.0f;
             _Bullet._Damage = Random.Range(11, 14);
+            
             //총알 발사하기 전까지는 비활성화 해준다.
             _Bullet.transform.SetParent(transform);
             _Bullet.gameObject.SetActive(false);
@@ -73,8 +74,9 @@ public class Banshee : cMonster
             _BulletPoll[_CurBulletIndex].transform.position = Dir;
 
             _BulletPoll[_CurBulletIndex].transform.rotation = Quaternion.Euler(0f, 0f, _angle);
+            _BulletPoll[_CurBulletIndex]._transform.rotation = Quaternion.Euler(0f, 0f, 0);
+        _BulletPoll[_CurBulletIndex].gameObject.SetActive(true);
 
-            _BulletPoll[_CurBulletIndex].gameObject.SetActive(true);
           StartCoroutine("ActiveBullet", _BulletPoll[_CurBulletIndex]);
             if (_CurBulletIndex >= _MaxBullet - 1)
             {
@@ -86,6 +88,7 @@ public class Banshee : cMonster
             }
 
     }
+
     IEnumerator ActiveBullet(cBullet Bullet)
     {
         yield return new WaitForSeconds(3.0f);

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LittleGhost : cMonster
+public class LittleGhost : cShortMonster
 {
 
     Rigidbody2D _rigid;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RadBat : cMonster
+public class RadBat : cLongLangeMonster
 {
   
    

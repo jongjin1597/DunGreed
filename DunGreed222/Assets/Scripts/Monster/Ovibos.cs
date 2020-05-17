@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ovibos : cCharacter
+public class Ovibos : cShortMonster
 {
     Rigidbody2D _rigid;
     Vector2 dir;

@@ -104,8 +104,8 @@ public class cInventory :  cSingleton<cInventory>
         ItemImageChange(_WeaPonSlotList[0]);
         _NowWeaPon.SetWeaPon(_WeaPonSlotList[0]._item);
 
-        AddItem(cDataBaseManager.GetInstance._ItemList[2]);
         AddItem(cDataBaseManager.GetInstance._ItemList[5]);
+        AddItem(cDataBaseManager.GetInstance._ItemList[6]);
         //옵저버패턴
         cGameManager.GetInstance._DeleGateGold += SetGold;
 
