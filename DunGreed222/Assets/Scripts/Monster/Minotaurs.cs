@@ -59,13 +59,12 @@ public class Minotaurs : cShortMonster
             }
         }
     }
-
-    void OnTriggerStay2D(Collider2D other)
+    public void Dash()
     {
         if (Chack >= 8f)
         {
-            if (other.gameObject.CompareTag("Player"))
-            {
+            //if (other.gameObject.CompareTag("Player"))
+            //{
                 _Anim.SetBool("Run", true);
                 dir = (Player.GetInstance.transform.position - this.transform.position);
                 float dashSpeed = 1.5f;
@@ -74,8 +73,12 @@ public class Minotaurs : cShortMonster
                     dashSpeed *= -1;
                 }
                 _rigid.velocity = new Vector2((dir.normalized.x * speed) + dashSpeed, _rigid.position.y);
-            }
+           // }
             Chack = 0;
         }
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        
     }
 }

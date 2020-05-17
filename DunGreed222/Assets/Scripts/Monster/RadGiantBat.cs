@@ -17,7 +17,8 @@ public class RadGiantBat : cLongLangeMonster
             GameObject obj = Instantiate(Resources.Load("Prefabs/Bullet/BatBullet")) as GameObject;
             cBullet _Bullet = obj.GetComponent<cBullet>();
             _Bullet._Speed = 5.0f;
-           // _Bullet._Damage = Random.Range(11, 14);
+            // _Bullet._Damage = Random.Range(11, 14);
+            _Bullet._Player = false;
             //큰박쥐는 총알 잠시 멈춘다
             _Bullet._Start = false;
             _Bullet.transform.SetParent(transform);

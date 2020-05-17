@@ -5,11 +5,11 @@ using UnityEngine;
 //몬스터, 플레이어 최상단
 public class cCharacter : MonoBehaviour
 {
-    public float _initHP;//체력
-    public float _MinAtteckDamage;//최소공격력
-    public float _MaxAttackDamage;//최대공격력
+    public int _initHP;//체력
+    public int _MinAtteckDamage;//최소공격력
+    public int _MaxAttackDamage;//최대공격력
     public float _MoveSpeed;//이동속도
-    public float _Defense;//방어력
+    public int _Defense;//방어력
     protected SpriteRenderer _Renderer;
     protected Animator _Anim;
     protected virtual void Awake()

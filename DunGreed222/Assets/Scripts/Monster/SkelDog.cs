@@ -12,12 +12,15 @@ public class SkelDog : cShortMonster
     float speed = 4f;
 
     float Chack = 0f;
-
+    BoxCollider2D _Box;
     // Start is called before the first frame update
     protected override void Awake()
     {
         base.Awake();
 
+        _MinAtteckDamage = 10;
+         _MaxAttackDamage= 12;
+        _Box = GetComponent<BoxCollider2D>();
         _rigid = GetComponent<Rigidbody2D>();
         _Anim = GetComponent<Animator>();
         _Renderer = GetComponentInChildren<SpriteRenderer>();
@@ -64,16 +67,14 @@ public class SkelDog : cShortMonster
         {
             _Renderer.flipX = false;
         }
-    
+
     }
 
-
-    void OnTriggerStay2D(Collider2D other)
+    public void Attack()
     {
         if (Chack >= 4f)
         {
-            if (other.gameObject.CompareTag("Player"))
-            {
+     
                 _Anim.SetBool("Attack", true);
                 _rigid.velocity = Vector2.zero;
                 float attackSpeed = 3.0f;
@@ -82,9 +83,30 @@ public class SkelDog : cShortMonster
                     attackSpeed *= -1;
                 }
                 _rigid.velocity = new Vector2(attackSpeed, 4f);
-            }
-            Chack = 0;           
+            Chack = 0;
         }
     }
+    // 플레이어랑 충돌했을때 플레이어한테 데미지 입히기위함
+    //공격용박스
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            if (_Box.enabled)
+            {
+                int Attack = Random.Range(_MinAtteckDamage, _MaxAttackDamage);
+                int _dam = Attack - Player.GetInstance._Defense;
+                Player.GetInstance._health.MyCurrentValue -= _dam;
+            }
+            }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
 
+        //피격판정및 공격판정 스타트용
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Attack();
+        }
+    }
 }

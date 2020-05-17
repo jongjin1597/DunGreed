@@ -30,7 +30,7 @@ public class cHP : MonoBehaviour
             else _CurrentValue = value;
 
             _CurrentFill = _CurrentValue / _MaxValue;
-            _HPText.text = _CurrentValue + "  /  " + _MaxValue;
+            _HPText.text = (int)_CurrentValue + "  /  " + (int)_MaxValue;
         }
     }
 

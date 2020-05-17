@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class cBullet : MonoBehaviour
 {
-    public float _Damage;
+    public int _Damage;
     public float _Speed;
     //회전하는총알
     public Transform _transform;
@@ -34,9 +34,10 @@ public class cBullet : MonoBehaviour
         {
             if (collision.CompareTag("Player"))
             {
-               float dam =_Damage - Player.GetInstance._Defense;
+               int dam =_Damage - Player.GetInstance._Defense;
                 Player.GetInstance._health.MyCurrentValue -= dam;
             }
         }
+        gameObject.SetActive(false);
     }
 }

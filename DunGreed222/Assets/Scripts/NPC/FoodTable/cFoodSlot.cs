@@ -101,12 +101,12 @@ public class cFoodSlot : MonoBehaviour,IPointerClickHandler,IPointerEnterHandler
 
                 if (_Food._FoodEffect1 == "최대 체력")
                 {
-                    Player.GetInstance._health.HealHP(_Food._FoodStat1, true);
+                    Player.GetInstance._health.HealHP((int)_Food._FoodStat1, true);
 
                 }
                 else if (_Food._FoodEffect2 == "최대 체력")
                 {
-                    Player.GetInstance._health.HealHP(_Food._FoodStat2, true);
+                    Player.GetInstance._health.HealHP((int)_Food._FoodStat2, true);
                 }
 
                 Player.GetInstance._Food._MyCurrentValue += _Food._Satiety;
