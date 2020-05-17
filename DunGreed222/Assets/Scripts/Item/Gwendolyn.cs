@@ -5,9 +5,9 @@ using UnityEngine.PlayerLoop;
 
 public class Gwendolyn : Shortrange
 {
-    public Gwendolyn(Sprite itemImage)
-      : base(itemImage)
+    protected override void Awake()
     {
+     
         _ItemID = 10;
         _ItemName = "그웬돌린";//아이템이름
         _ItemDescrIption = "마력을 흡수하는 푸른 돌을 깍아 만든 창";//아이템설명
@@ -16,7 +16,7 @@ public class Gwendolyn : Shortrange
         _MaxAttackDamage = 22;//최대데미지
         _AttackSpeed = 2f;//공격속도
         _Quality = ItemQuality.Unique;//아이템등급    
-        _ItemIcon = itemImage;//아이템 이미지
+        _ItemIcon = Resources.Load<Sprite>("Itemp/Gwendolyn");//아이템 이미지
         _ItemPrice = 2000;//아이템가격
     }
 

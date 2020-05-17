@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkelDog : cCharacter
+public class SkelDog : cShortMonster
 {
     Rigidbody2D _rigid;
     Vector2 dir;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bat : cCharacter
+public class Bat : cShortMonster
 {
     Rigidbody2D _rigid;
     public int _moveRangeX;

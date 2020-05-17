@@ -5,6 +5,7 @@ using UnityEngine;
 public class cDataBaseManager : cSingleton<cDataBaseManager>
 {
 
+    Item item;
     //아이템 리스트
     public  List<Item> _ItemList = new List<Item>();
     //음식 리스트
@@ -13,14 +14,17 @@ public class cDataBaseManager : cSingleton<cDataBaseManager>
     {
         base.Awake();
         //검
-        _ItemList.Add(new cShortSward(Resources.Load<Sprite>("Itemp/BasicShortSword_New")));
-        _ItemList.Add(new Gladius(Resources.Load<Sprite>("Itemp/Gladius")));
-        _ItemList.Add(new LightSaver(Resources.Load<Sprite>("Itemp/LightSaber")));
-        //창
-        _ItemList.Add(new Halberd(Resources.Load<Sprite>("Itemp/Halberd")));
-        _ItemList.Add(new Berdysh(Resources.Load<Sprite>("Itemp/Berdysh")));
-        _ItemList.Add(new Gwendolyn(Resources.Load<Sprite>("Itemp/Gwendolyn")));
+        _ItemList.Add(this.gameObject.AddComponent<cShortSward>());
+        _ItemList.Add(this.gameObject.AddComponent<Gladius>());
+        _ItemList.Add(this.gameObject.AddComponent<LightSaver>());
+        //창       
+        _ItemList.Add(this.gameObject.AddComponent<Berdysh>());
+        _ItemList.Add(this.gameObject.AddComponent<Halberd>());
+        _ItemList.Add(this.gameObject.AddComponent<Gwendolyn>());
 
+        //총
+        _ItemList.Add(this.gameObject.AddComponent<cCrossBow>());
+       
         //음식 
         _FoodList.Add(new cFood("계란후라이", "위력", 10.0f, "최대 체력", 8, 60, 450, 6, Resources.Load<Sprite>("UI/food/02_FriedEgg")));
         _FoodList.Add(new cFood("디럭스 버거", "위력", 5.0f, "방어력", 4, 55, 340, 8, Resources.Load<Sprite>("UI/food/09_DeluxeBurger")));
@@ -33,5 +37,5 @@ public class cDataBaseManager : cSingleton<cDataBaseManager>
         //_FoodList.Add(new cFood("계란후라이", "위력", 10.0f, "최대 체력", 8, 60, 450, 6, Resources.Load<Sprite>("UI/food/02_FriedEgg")));
 
     }
-
+  
 }

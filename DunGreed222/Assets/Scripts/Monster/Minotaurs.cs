@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Minotaurs : cCharacter
+public class Minotaurs : cShortMonster
 {
     Rigidbody2D _rigid;
     Vector2 dir;

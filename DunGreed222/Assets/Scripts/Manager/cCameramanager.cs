@@ -63,7 +63,7 @@ public class cCameramanager : cSingleton<cCameramanager>
 
     public void VibrateForTime()
     {
-        _ShakeTime = 0.2f;
+        _ShakeTime = 0.1f;
     }
     //카메라영역설정
     public void SetBound(Collider2D newBound)

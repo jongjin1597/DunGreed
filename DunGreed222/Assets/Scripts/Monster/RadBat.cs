@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RadBat : cCharacter
+public class RadBat : cLongLangeMonster
 {
-    AnemyBullet anemybullet;
+  
    
     Rigidbody2D _rigid;
     public int _moveRangeX;
@@ -15,7 +15,19 @@ public class RadBat : cCharacter
     protected override void Awake()
     {
         base.Awake();
-        anemybullet = GetComponentInChildren<AnemyBullet>();
+        _MaxBullet = 10;
+        for (int i = 0; i < _MaxBullet; ++i)
+        {
+            GameObject Obj = Instantiate(Resources.Load("Prefabs/Bullet/BabyBatBullet")) as GameObject;
+            cBullet _bullet = Obj.gameObject.GetComponent<cBullet>();
+            _bullet._Speed = 5.0f;
+            _bullet._Damage = Random.Range(11, 14);
+            _bullet.transform.SetParent(transform);
+            //총알 발사하기 전까지는 비활성화 해준다.
+            Obj.gameObject.SetActive(false);
+
+            _BulletPoll.Add(_bullet);
+        }
         _rigid = GetComponent<Rigidbody2D>();
         Invoke("MoveRange", 1);
     }
@@ -74,12 +86,43 @@ public class RadBat : cCharacter
 
     public void AnimationEvent()
     {
-        for (int i = 0; i < 10; ++i)
+        for (int i = 0; i < _MaxBullet; ++i)
         {
             Vector2 dir = (Player.GetInstance.transform.position - this.transform.position);
             float angle = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;
-            anemybullet.ShootControl(this.transform.position, angle);
+            FireBulet( angle);
         }
 
+    }
+    public  void FireBulet( float _angle)
+    {
+
+        ////발사되어야할 순번의 총알이 이전에 발사한 후로 아직 날아가고 있는 중이라면, 발사를 못하게 한다.
+        if (_BulletPoll[_CurBulletIndex].gameObject.activeSelf)
+        {
+            return;
+        }
+
+
+            _BulletPoll[_CurBulletIndex].transform.position = this.transform.position;
+
+            _BulletPoll[_CurBulletIndex].transform.rotation = Quaternion.Euler(0f, 0f, _angle);
+
+            _BulletPoll[_CurBulletIndex].gameObject.SetActive(true);
+        StartCoroutine("ActiveBullet", _BulletPoll[_CurBulletIndex]);
+        if (_CurBulletIndex >= _MaxBullet - 1)
+        {
+            _CurBulletIndex = 0;
+        }
+        else
+        {
+            _CurBulletIndex++;
+        }
+
+    }
+    IEnumerator ActiveBullet(cBullet Bullet)
+    {
+        yield return new WaitForSeconds(3.0f);
+        Bullet.gameObject.SetActive(false);
     }
 }
