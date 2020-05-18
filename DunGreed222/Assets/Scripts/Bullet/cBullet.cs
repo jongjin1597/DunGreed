@@ -38,6 +38,6 @@ public class cBullet : MonoBehaviour
                 Player.GetInstance._health.MyCurrentValue -= dam;
             }
         }
-        gameObject.SetActive(false);
+        
     }
 }

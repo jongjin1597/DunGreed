@@ -5,8 +5,8 @@ using UnityEngine;
 //무기 회전용 스크립트
 public class cWeaPonMove : MonoBehaviour
 {
-    
 
+  
     void Update()
     {
         if (Time.timeScale != 0)

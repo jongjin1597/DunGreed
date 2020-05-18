@@ -30,6 +30,8 @@ public class SkelBow : cLongLangeMonster
 
         _BulletPoll.Add(_Bullet);
 
+ 
+
     }
 
     // Update is called once per frame
@@ -69,6 +71,7 @@ public class SkelBow : cLongLangeMonster
     }
 
 
+
     public void FireBulet(float _angle)
     {
 
@@ -78,7 +81,6 @@ public class SkelBow : cLongLangeMonster
             return;
         }
 
-
         _BulletPoll[_CurBulletIndex].transform.position = transform.position;
 
         _BulletPoll[_CurBulletIndex].transform.rotation = Quaternion.Euler(0f, 0f, _angle);
@@ -86,8 +88,8 @@ public class SkelBow : cLongLangeMonster
         _BulletPoll[_CurBulletIndex].gameObject.SetActive(true);
         StartCoroutine("ActiveBullet", _BulletPoll[_CurBulletIndex]);
 
-
     }
+
     IEnumerator ActiveBullet(cBullet Bullet)
     {
         yield return new WaitForSeconds(3.0f);

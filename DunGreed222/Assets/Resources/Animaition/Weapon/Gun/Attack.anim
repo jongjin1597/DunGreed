@@ -54,13 +54,6 @@ AnimationClip:
   - time: 1
     functionName: AnimationEvent
     data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 1
-    functionName: AnimationEvent
-    data: 
     objectReferenceParameter: {fileID: 11500000, guid: 326a5ec51c9bcd04c8e319c484a83369,
       type: 3}
     floatParameter: 0

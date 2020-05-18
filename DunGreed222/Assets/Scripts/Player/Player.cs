@@ -52,6 +52,8 @@ public class Player : cCharacter
     //마우스포지션
     private Vector2 _MousePosition;
     public BoxCollider2D foot;
+    private Transform _WeaPon;
+
 
     private bool _isPosition = false;
     protected override void Awake()
@@ -68,6 +70,7 @@ public class Player : cCharacter
             _Rigidbody = gameObject.GetComponent<Rigidbody2D>();
             _DashEffect = transform.GetChild(5).GetComponent<ParticleSystem>();
             _MoveSpeed = 5.0f;
+            _WeaPon = transform.GetChild(3).GetChild(1);
         }
         else if(_instacne != null)
         {
@@ -132,6 +135,7 @@ public class Player : cCharacter
                 if (_isPosition)
                 {
                     transform.rotation = Quaternion.Euler(0, 180, 0);
+                    _WeaPon.localRotation = Quaternion.Euler(-180, 0, 0);
                     _isPosition = false;
                  }
            }
@@ -140,6 +144,8 @@ public class Player : cCharacter
                 if (!_isPosition)
                 {
                     transform.rotation = Quaternion.identity;
+
+                    _WeaPon.localRotation = Quaternion.Euler(0, 0, 0);
                     _isPosition = true;
                 }
             }
