@@ -74,8 +74,8 @@ public class SkelDog : cShortMonster
     {
         if (Chack >= 4f)
         {
-     
-                _Anim.SetBool("Attack", true);
+            _Box.enabled = true;
+            _Anim.SetBool("Attack", true);
                 _rigid.velocity = Vector2.zero;
                 float attackSpeed = 3.0f;
                 if (Player.GetInstance.transform.position.x < this.transform.position.x)
@@ -96,10 +96,14 @@ public class SkelDog : cShortMonster
             {
                 int Attack = Random.Range(_MinAtteckDamage, _MaxAttackDamage);
                 int _dam = Attack - Player.GetInstance._Defense;
-                Player.GetInstance._health.MyCurrentValue -= _dam;
+                Player.GetInstance._health.MyCurrentValue -= _dam;              
             }
-            }
+
+            
+        }
+        _Box.enabled = false;
     }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
 
