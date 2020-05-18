@@ -17,6 +17,7 @@ public class SkelBow : cLongLangeMonster
     {
         base.Awake();
         _MaxBullet = 3;
+        _Renderer = transform.parent.GetComponent<SpriteRenderer>();
         for (int i = 0; i < _MaxBullet; ++i)
         {
             GameObject obj = Instantiate(Resources.Load("Prefabs/Bullet/Arrow")) as GameObject;
