@@ -16,21 +16,20 @@ public class SkelBow : cLongLangeMonster
     protected override void Awake()
     {
         base.Awake();
-        _MaxBullet = 3;
+      
         _Renderer = transform.parent.GetComponent<SpriteRenderer>();
-        for (int i = 0; i < _MaxBullet; ++i)
-        {
+ 
             GameObject obj = Instantiate(Resources.Load("Prefabs/Bullet/Arrow")) as GameObject;
             cBullet _Bullet = obj.GetComponent<cBullet>();
             _Bullet._Speed = 5.0f;
             _Bullet._Player = false;
            // _Bullet._Damage = Random.Range(11, 14);
-            _Bullet.transform.SetParent(transform);
+            _Bullet.transform.SetParent(transform.parent);
             //총알 발사하기 전까지는 비활성화 해준다.
             _Bullet.gameObject.SetActive(false);
 
             _BulletPoll.Add(_Bullet);
-        }
+   
     }
    
     // Update is called once per frame
@@ -72,28 +71,13 @@ public class SkelBow : cLongLangeMonster
 
 public void FireBulet( float _angle)
 {
-
-    //발사되어야할 순번의 총알이 이전에 발사한 후로 아직 날아가고 있는 중이라면, 발사를 못하게 한다.
-    if (_BulletPoll[_CurBulletIndex].gameObject.activeSelf)
-    {
-        return;
-    }
-
-
     _BulletPoll[_CurBulletIndex].transform.position = transform.position;
 
     _BulletPoll[_CurBulletIndex].transform.rotation = Quaternion.Euler(0f, 0f, _angle);
 
     _BulletPoll[_CurBulletIndex].gameObject.SetActive(true);
         StartCoroutine("ActiveBullet", _BulletPoll[_CurBulletIndex]);
-        if (_CurBulletIndex >= _MaxBullet - 1)
-        {
-            _CurBulletIndex = 0;
-        }
-        else
-        {
-            _CurBulletIndex++;
-        }
+       
 
     }
     IEnumerator ActiveBullet(cBullet Bullet)

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public enum ItemType
 {
+    OneShot,
     Gun,
     Sword,
     Spear
@@ -54,8 +55,9 @@ public class Longrange : Item
 {
     protected List<cBullet> _BulletPoll = new List<cBullet>(); //풀에 담을
 
+    public float _Delay;
     protected int _MaxBullet;
-    protected int curBulletIndex = 0;     //현재 장전된 총알의 인덱스
+    protected int _CurBulletIndex = 0;     //현재 장전된 총알의 인덱스
     protected override void Awake()
     {
 

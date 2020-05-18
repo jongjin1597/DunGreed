@@ -34,7 +34,7 @@ public class cAttack : MonoBehaviour
             _Ani.runtimeAnimatorController = _SpearAni;
             _Attack += cCameramanager.GetInstance.VibrateForTime;
         }
-        else if (item._Type == ItemType.Gun)
+        else if (item._Type == ItemType.Gun||item._Type ==ItemType.OneShot)
         {
             _Ani.runtimeAnimatorController = _GunAni;
             _Attack -= cCameramanager.GetInstance.VibrateForTime;
