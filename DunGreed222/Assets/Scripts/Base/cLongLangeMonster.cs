@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class cLongLangeMonster : cCharacter
+public class cLongLangeMonster : cMonsterBase
 {
    protected cBullet _Anemybullet;
     protected List<cBullet> _BulletPoll = new List<cBullet>();

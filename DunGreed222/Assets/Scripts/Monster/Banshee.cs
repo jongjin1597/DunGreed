@@ -55,8 +55,8 @@ public class Banshee : cLongLangeMonster
     {
         for (int i = 0; i < _MaxBullet; ++i)
         {
-            Vector3 dirVec = new Vector3(Mathf.Cos(Mathf.PI * 2 * i / 12), Mathf.Sin(Mathf.PI * 2 * i / 12));
-            dirVec += this.transform.position;
+           // Vector3 dirVec = new Vector3(Mathf.Cos(Mathf.PI * 2 * i / 12), Mathf.Sin(Mathf.PI * 2 * i / 12));
+            Vector3 dirVec = this.transform.position;
             float angle = 30 * i;
             FireBulet(dirVec,angle);
         }
