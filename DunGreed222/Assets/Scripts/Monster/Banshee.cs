@@ -8,7 +8,7 @@ public class Banshee : cLongLangeMonster
 
     public float shootDelay = 4f; //총알 딜레이
     float shootTimer = 0; //총알 타이머
-
+    private List<GameObject> _BulletList = new List<GameObject>();
    protected override void Awake()
     {
         base.Awake();
@@ -18,7 +18,7 @@ public class Banshee : cLongLangeMonster
             GameObject obj = Instantiate(Resources.Load("Prefabs/Bullet/BansheeBullet")) as GameObject;
             cBullet _Bullet = obj.GetComponent<cBullet>();
             _Bullet._Speed = 5.0f;
-            _Bullet._Damage = Random.Range(11, 14);
+            _Bullet._Damage = 9;
             _Bullet._BulletState = BulletState.Monster;
             //총알 발사하기 전까지는 비활성화 해준다.
             _Bullet.transform.SetParent(transform);
@@ -72,10 +72,10 @@ public class Banshee : cLongLangeMonster
 
 
             _BulletPoll[_CurBulletIndex].transform.position = Dir;
-
             _BulletPoll[_CurBulletIndex].transform.rotation = Quaternion.Euler(0f, 0f, _angle);
-            _BulletPoll[_CurBulletIndex]._transform.rotation = Quaternion.Euler(0f, 0f, 0);
-        _BulletPoll[_CurBulletIndex].gameObject.SetActive(true);
+            _BulletPoll[_CurBulletIndex]._Start = true;
+            _BulletPoll[_CurBulletIndex]._ChildBullet.rotation = Quaternion.Euler(0f, 0f, 0);
+             _BulletPoll[_CurBulletIndex].gameObject.SetActive(true);
 
           StartCoroutine("ActiveBullet", _BulletPoll[_CurBulletIndex]);
             if (_CurBulletIndex >= _MaxBullet - 1)

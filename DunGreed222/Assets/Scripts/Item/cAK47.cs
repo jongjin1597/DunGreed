@@ -54,8 +54,8 @@ public class cAK47: Longrange
         _BulletPoll[_CurBulletIndex].transform.position = Position;
       
             _BulletPoll[_CurBulletIndex].transform.rotation = Quaternion.Euler(0f, 0f, _angle);
-
-            _BulletPoll[_CurBulletIndex].gameObject.SetActive(true);
+        _BulletPoll[_CurBulletIndex]._Start = true;
+        _BulletPoll[_CurBulletIndex].gameObject.SetActive(true);
              StartCoroutine("ActiveBullet", _BulletPoll[_CurBulletIndex]);
             if (_CurBulletIndex >= _MaxBullet - 1)
             {

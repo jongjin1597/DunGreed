@@ -79,7 +79,7 @@ public class RadGiantBat : cLongLangeMonster
         _BulletPoll[_CurBulletIndex].transform.position = Dir;
 
         _BulletPoll[_CurBulletIndex].transform.rotation = Quaternion.Euler(0f, 0f, _angle);
-
+    
         _BulletPoll[_CurBulletIndex].gameObject.SetActive(true);
 
 
