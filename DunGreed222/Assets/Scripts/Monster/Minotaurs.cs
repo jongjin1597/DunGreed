@@ -81,4 +81,8 @@ public class Minotaurs : cShortMonster
     {
         
     }
+    public override void HIT(int dam)
+    {
+
+    }
 }

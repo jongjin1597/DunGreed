@@ -20,7 +20,7 @@ public class cSniper : Longrange
             _Bullet.transform.SetParent(transform);
             //총알 발사하기 전까지는 비활성화 해준다.
             _Bullet.gameObject.SetActive(false);
-
+            _Bullet._BulletState = BulletState.Player;
             _BulletPoll.Add(_Bullet);
         }
         _Delay = 1;
@@ -31,6 +31,7 @@ public class cSniper : Longrange
         _MinAttackDamage = 30;//최소데미지
         _MaxAttackDamage = 41;//최대데미지
         _AttackSpeed = 1f;//공격속도
+
         _Quality = ItemQuality.Normal;//아이템등급    
         _ItemIcon = Resources.Load<Sprite>("Itemp/MatchlockGun");//아이템 이미지
         _ItemPrice = 700;//아이템가격

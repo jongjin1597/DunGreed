@@ -96,7 +96,7 @@ public class SkelDog : cShortMonster
             {
                 int Attack = Random.Range(_MinAtteckDamage, _MaxAttackDamage);
                 int _dam = Attack - Player.GetInstance._Defense;
-                Player.GetInstance._health.MyCurrentValue -= _dam;              
+                Player.GetInstance.HIT(_dam);            
             }
 
             
@@ -112,5 +112,9 @@ public class SkelDog : cShortMonster
         {
             Attack();
         }
+    }
+    public override void HIT(int dam)
+    {
+
     }
 }

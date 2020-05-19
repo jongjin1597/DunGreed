@@ -48,4 +48,8 @@ public class LittleGhost : cShortMonster
             _Renderer.flipX = false;
         }
     }
+    public override void HIT(int dam)
+    {
+
+    }
 }

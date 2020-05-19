@@ -308,6 +308,10 @@ public class Player : cCharacter
         foot.enabled = true;
     }
 
+    public override void HIT(int dam)
+    {
+        _health.MyCurrentValue -= dam;
 
+    }
 
 }

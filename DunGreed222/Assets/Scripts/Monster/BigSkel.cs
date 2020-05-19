@@ -64,4 +64,8 @@ public class BigSkel : cShortMonster
             Chack = 0;
         }
     }
+    public override void HIT(int dam)
+    {
+
+    }
 }

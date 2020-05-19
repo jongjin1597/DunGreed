@@ -18,7 +18,7 @@ public class RadGiantBat : cLongLangeMonster
             cBullet _Bullet = obj.GetComponent<cBullet>();
             _Bullet._Speed = 5.0f;
             // _Bullet._Damage = Random.Range(11, 14);
-            _Bullet._Player = false;
+            _Bullet._BulletState = BulletState.Monster;
             //큰박쥐는 총알 잠시 멈춘다
             _Bullet._Start = false;
             _Bullet.transform.SetParent(transform);
@@ -105,5 +105,9 @@ public class RadGiantBat : cLongLangeMonster
         yield return new WaitForSeconds(3.0f);
         Bullet._Start = false;
         Bullet.gameObject.SetActive(false);
+    }
+    public override void HIT(int dam)
+    {
+
     }
 }

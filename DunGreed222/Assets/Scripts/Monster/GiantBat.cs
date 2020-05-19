@@ -18,7 +18,7 @@ public class GiantBat : cLongLangeMonster
             GameObject Obj = Instantiate(Resources.Load("Prefabs/Bullet/BatBullet")) as GameObject;
             cBullet _Bullet = Obj.GetComponent<cBullet>();
             _Bullet._Speed = 5.0f;
-            _Bullet._Player = false;
+            _Bullet._BulletState = BulletState.Monster;
             //_Bullet._Damage = Random.Range(11, 14);
             _Bullet.transform.SetParent(transform);
             //총알 발사하기 전까지는 비활성화 해준다.
@@ -100,5 +100,8 @@ public class GiantBat : cLongLangeMonster
         yield return new WaitForSeconds(3.0f);
         Bullet.gameObject.SetActive(false);
     }
+    public override void HIT(int dam)
+    {
 
+    }
 }

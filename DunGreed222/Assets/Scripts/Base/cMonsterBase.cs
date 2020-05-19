@@ -10,4 +10,8 @@ public class cMonsterBase : cCharacter
     {
         base.Awake();
      }
+    public override void HIT(int dam)
+    {
+
+    }
 }

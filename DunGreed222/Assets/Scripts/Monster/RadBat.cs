@@ -20,7 +20,7 @@ public class RadBat : cLongLangeMonster
             cBullet _bullet = Obj.gameObject.GetComponent<cBullet>();
             _bullet._Speed = 5.0f;
             _bullet._Damage = Random.Range(11, 14);
-            _bullet._Player = false;
+            _bullet._BulletState = BulletState.Monster;
             _bullet.transform.SetParent(transform);
             //총알 발사하기 전까지는 비활성화 해준다.
             Obj.gameObject.SetActive(false);
@@ -123,5 +123,9 @@ public class RadBat : cLongLangeMonster
     {
         yield return new WaitForSeconds(3.0f);
         Bullet.gameObject.SetActive(false);
+    }
+    public override void HIT(int dam)
+    {
+
     }
 }

@@ -49,4 +49,8 @@ public class Bat : cShortMonster
         float naxtMoveRange = Random.Range(2f, 4f);
         Invoke("MoveRange", naxtMoveRange);
     }
+    public override void HIT(int dam)
+    {
+
+    }
 }

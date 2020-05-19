@@ -20,7 +20,7 @@ public class cMT8 : Longrange
             _Bullet.transform.SetParent(transform);
             //총알 발사하기 전까지는 비활성화 해준다.
             _Bullet.gameObject.SetActive(false);
-
+            _Bullet._BulletState = BulletState.Player;
             _BulletPoll.Add(_Bullet);
         }
         _Delay = 0.03f;
@@ -32,6 +32,7 @@ public class cMT8 : Longrange
         _MaxAttackDamage = 5;//최대데미지
         _AttackSpeed = 10.53f;//공격속도
         _Quality = ItemQuality.Rare;//아이템등급    
+
         _ItemIcon = Resources.Load<Sprite>("Itemp/Rifle0");//아이템 이미지
         _ItemPrice = 1500;//아이템가격
 

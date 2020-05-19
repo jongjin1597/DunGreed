@@ -19,4 +19,8 @@ public class cCharacter : MonoBehaviour
 
         _Anim = gameObject.GetComponentInChildren<Animator>();
     }
+    public virtual void  HIT(int dam)
+    {
+
+    }
 }

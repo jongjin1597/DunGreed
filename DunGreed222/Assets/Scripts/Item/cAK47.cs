@@ -20,7 +20,7 @@ public class cAK47: Longrange
             _Bullet.transform.SetParent(transform);
             //총알 발사하기 전까지는 비활성화 해준다.
             _Bullet.gameObject.SetActive(false);
-
+            _Bullet._BulletState = BulletState.Player;
             _BulletPoll.Add(_Bullet);
         }
         _Delay = 0.03f;

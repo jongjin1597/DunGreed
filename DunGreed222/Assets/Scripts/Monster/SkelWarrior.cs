@@ -80,4 +80,8 @@ public class SkelWarrior : cShortMonster
         }
         sword.transform.Rotate(new Vector3(0, 0, swordZ), Space.Self);
     }
+    public override void HIT(int dam)
+    {
+
+    }
 }
