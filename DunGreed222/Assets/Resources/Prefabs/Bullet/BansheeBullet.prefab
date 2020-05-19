@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6715204998322692634}
   - component: {fileID: 1873462147058464822}
   - component: {fileID: 3688536534414501041}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BansheeBullet0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8323043320446919801}
   - component: {fileID: 4537013269945787601}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: BansheeBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,5 +155,5 @@ MonoBehaviour:
   _Damage: 0
   _Speed: 0
   _transform: {fileID: 6715204998322692634}
-  _Player: 1
+  _BulletState: 0
   _Start: 1

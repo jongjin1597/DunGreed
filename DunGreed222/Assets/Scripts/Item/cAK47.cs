@@ -52,7 +52,7 @@ public class cAK47: Longrange
         }
 
         _BulletPoll[_CurBulletIndex].transform.position = Position;
-
+      
             _BulletPoll[_CurBulletIndex].transform.rotation = Quaternion.Euler(0f, 0f, _angle);
 
             _BulletPoll[_CurBulletIndex].gameObject.SetActive(true);

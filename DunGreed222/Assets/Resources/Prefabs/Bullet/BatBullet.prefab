@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5395903027418261346}
   - component: {fileID: 5721068960614352092}
   - component: {fileID: -8936503596530631911}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BatBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ MonoBehaviour:
   _Damage: 0
   _Speed: 0
   _transform: {fileID: 0}
-  _Player: 1
+  _BulletState: 0
   _Start: 1
 --- !u!58 &-8936503596530631911
 CircleCollider2D:

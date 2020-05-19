@@ -13,20 +13,18 @@ public class RadBat : cLongLangeMonster
     protected override void Awake()
     {
         base.Awake();
-        _MaxBullet = 10;
-        for (int i = 0; i < _MaxBullet; ++i)
-        {
+        _MaxBullet =1;
+
             GameObject Obj = Instantiate(Resources.Load("Prefabs/Bullet/BabyBatBullet")) as GameObject;
             cBullet _bullet = Obj.gameObject.GetComponent<cBullet>();
             _bullet._Speed = 5.0f;
-            _bullet._Damage = Random.Range(11, 14);
+            _bullet._Damage = 3;
             _bullet._BulletState = BulletState.Monster;
             _bullet.transform.SetParent(transform);
             //총알 발사하기 전까지는 비활성화 해준다.
             Obj.gameObject.SetActive(false);
-
             _BulletPoll.Add(_bullet);
-        }
+
         _rigid = GetComponent<Rigidbody2D>();
         Invoke("MoveRange", 1);
     }
@@ -85,13 +83,10 @@ public class RadBat : cLongLangeMonster
 
     public void AnimationEvent()
     {
-        for (int i = 0; i < _MaxBullet; ++i)
-        {
+     
             Vector2 dir = (Player.GetInstance.transform.position - this.transform.position);
             float angle = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;
             FireBulet( angle);
-        }
-
     }
     public  void FireBulet( float _angle)
     {

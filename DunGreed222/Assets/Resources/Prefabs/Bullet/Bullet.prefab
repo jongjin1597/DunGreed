@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7314636756879567289}
   - component: {fileID: 1276881928619925698}
   - component: {fileID: 1348854821792546988}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CrashImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 5929324602719931675}
   - component: {fileID: 197405102551623524}
   - component: {fileID: 7260327000282354003}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +227,7 @@ MonoBehaviour:
   _Damage: 0
   _Speed: 0
   _transform: {fileID: 0}
-  _Player: 1
+  _BulletState: 0
   _Start: 1
 --- !u!95 &7260327000282354003
 Animator:

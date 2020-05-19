@@ -20,9 +20,9 @@ public class SkelBoss : cLongLangeMonster
             cBullet _Bullet = obj.GetComponent<cBullet>();
             _Bullet._Speed = 5.0f;
             //_Bullet._Damage = Random.Range(11, 14);
-            _Bullet._Player = false;
+            _Bullet._BulletState = BulletState.Boss;
             //총알 발사하기 전까지는 비활성화 해준다.
-            _Bullet.transform.SetParent(transform);
+            _Bullet.transform.SetParent(BossBack);
             _Bullet.gameObject.SetActive(false);
 
             _BulletPoll.Add(_Bullet);
@@ -79,7 +79,6 @@ public class SkelBoss : cLongLangeMonster
     IEnumerator ActiveBullet(cBullet Bullet)
     {
         yield return new WaitForSeconds(3.0f);
-        Bullet.transform.parent = BossBack;
-
+        _BulletPoll[_CurBulletIndex].gameObject.SetActive(false);
     }
 }

@@ -23,7 +23,16 @@ public class cBullet : MonoBehaviour
 
     private void Awake()
     {
-        _Anim = GetComponent<Animator>();
+       
+        if (transform.childCount==0)
+        {
+            _Anim = GetComponent<Animator>();
+   
+        }
+        else if(transform.childCount >= 1)
+        {
+            _Anim = transform.GetChild(0).GetComponent<Animator>();
+        }
     }
     void Update()
     {
@@ -38,12 +47,18 @@ public class cBullet : MonoBehaviour
 
         if (_BulletState==BulletState.Player) 
         {
-            if (collision.CompareTag("Monster"))
+            if (collision.CompareTag("MonsterHitBox"))
             {
                 cMonsterBase Monster;
                 Monster = collision.GetComponent<cMonsterBase>();
-               int dam = _Damage - Monster._Defense;
+                int dam = _Damage - Monster._Defense;
                 Monster.HIT(dam);
+                _Anim.SetTrigger("Fire");
+                _Start = false;
+                if (_Anim.GetCurrentAnimatorStateInfo(0).IsName("PlayerBulletCrash") && _Anim.GetCurrentAnimatorStateInfo(0).length>=1)
+                {
+                    this.gameObject.SetActive(false);
+                }
             }
         }
         else if (_BulletState == BulletState.Monster)
@@ -52,6 +67,11 @@ public class cBullet : MonoBehaviour
             {
                int dam =_Damage - Player.GetInstance._Defense;
                 Player.GetInstance.HIT(dam);
+                _Anim.SetTrigger("Fire");
+                //if (_Anim.GetCurrentAnimatorStateInfo(0).length >= 1)
+                //{
+                    this.gameObject.SetActive(false);
+                //}
             }
         }
         else if (_BulletState == BulletState.Boss)
