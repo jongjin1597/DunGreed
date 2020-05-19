@@ -24,8 +24,8 @@ public class Item : MonoBehaviour
     public string _ItemDescrIption                   ;              //아이템설명
     public Sprite _ItemIcon                          ;              //아이템이미지
     public  ItemType _Type                           ;              //아이템타입
-    public float _MinAttackDamage                    ;              //공격최소데미지
-    public float _MaxAttackDamage                    ;              //공격최대데미지
+    public int _MinAttackDamage                    ;              //공격최소데미지
+    public int _MaxAttackDamage                    ;              //공격최대데미지
     public float _AttackSpeed                        ;              //공격속도
     public ItemQuality _Quality                      ;              //아이템등급
     public float _ItemPrice                          ;              //아이템 가격

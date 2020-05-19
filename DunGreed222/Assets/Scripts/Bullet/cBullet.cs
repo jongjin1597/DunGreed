@@ -51,6 +51,15 @@ public class cBullet : MonoBehaviour
                 cMonsterBase Monster;
                 Monster = collision.GetComponent<cMonsterBase>();
                 int dam = _Damage - Monster._Defense;
+                if (Player.GetInstance.isCritical())
+                {
+                    dam = (dam - Monster._Defense) + (dam * (Player.GetInstance._CriticalDamage / 100));
+                }
+                else if (!Player.GetInstance.isCritical())
+                {
+                    dam = (dam - Monster._Defense);
+                }
+       
                 Monster.HIT(dam);
                 _Anim.SetTrigger("Fire");
                 _Start = false;

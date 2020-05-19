@@ -13,7 +13,7 @@ public class LightSaver : Shortrange
         _ItemIcon = Resources.Load<Sprite>("Itemp/LightSaber");//
         _Type = ItemType.Sword;//아이템타입
         _MinAttackDamage = 12;//최소데미지
-        _MaxAttackDamage = 12f;//최대데미지
+        _MaxAttackDamage = 12;//최대데미지
         _AttackSpeed = 3.28f;//공격속도
         _Quality = ItemQuality.Unique;//아이템등급
         _ItemPrice = 2000;//아이템가격

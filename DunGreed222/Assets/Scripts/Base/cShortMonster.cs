@@ -10,7 +10,7 @@ public class cShortMonster : cMonsterBase
         base.Awake();
 
     }
-    public override void HIT(int dam)
+    public override void MonsterHIT(int dam, bool isCritical)
     {
 
     }

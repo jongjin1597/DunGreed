@@ -31,12 +31,12 @@ TagManager:
   - floor
   - Bound
   - Camera
-  - 
+  - MiniMap
   - wormPassage
   - Monster
   - Door
   - Portal
-  - Sward
+  - WeaPon
   - item
   - 
   - 
