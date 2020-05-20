@@ -54,8 +54,8 @@ public class cShortSward : Shortrange
         if (!_Skill)
         {
             Player.GetInstance.SetAttackSpeed(-10);
-        }
         Player.GetInstance._Buff.SetTrigger("BuffOff");
+        }
 
 
     }

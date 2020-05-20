@@ -57,8 +57,8 @@ public class cMT8 : Longrange
         {
 
             Player.GetInstance._Power -= 30;
-        }
         Player.GetInstance._Buff.SetTrigger("BuffOff");
+        }
 
     }
     //총알 발사

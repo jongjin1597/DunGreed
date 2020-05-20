@@ -56,8 +56,8 @@ public class Gladius : Shortrange
 
             Player.GetInstance._Power -= 20;
 
-        }
         Player.GetInstance._Buff.SetTrigger("BuffOff");
+        }
     }
     public override void StopCorutin()
     {

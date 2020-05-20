@@ -94,8 +94,8 @@ public class Kar98 : Longrange
         {
             Bullet._Damage -= 30;
 
-        }
         Player.GetInstance._Buff.SetTrigger("BuffOff");
+        }
     }
     public override void StopCorutin()
     {

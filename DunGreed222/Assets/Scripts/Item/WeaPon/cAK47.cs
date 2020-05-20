@@ -89,8 +89,8 @@ public class cAK47: Longrange
         {
             Player.GetInstance._MoveSpeed -= 6;
 
-        }
         Player.GetInstance._Buff.SetTrigger("BuffOff");
+        }
 
     }
     public override void StopCorutin()

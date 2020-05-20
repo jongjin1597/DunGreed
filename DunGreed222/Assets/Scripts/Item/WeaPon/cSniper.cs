@@ -57,8 +57,8 @@ public class cSniper : Longrange
         {
 
             _Delay = 1f;
-        }
         Player.GetInstance._Buff.SetTrigger("BuffOff");
+        }
 
     }
     //총알 발사

@@ -56,9 +56,9 @@ public class Halberd : Shortrange
         {
             Player.GetInstance.SetAttackSpeed(-50);
 
+        Player.GetInstance._Buff.SetTrigger("BuffOff");
         }
 
-        Player.GetInstance._Buff.SetTrigger("BuffOff");
 
     }
     public override void StopCorutin()

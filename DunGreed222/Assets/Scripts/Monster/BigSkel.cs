@@ -20,7 +20,7 @@ public class BigSkel : cShortMonster
 
         _rigid = GetComponent<Rigidbody2D>();
         _Anim = GetComponent<Animator>();
-        _Renderer = GetComponentInChildren<SpriteRenderer>();
+        //_Renderer = GetComponentInChildren<SpriteRenderer>();
         //Footbox = gameObject.GetComponentInChildren<GameObject>();
         _Anim.SetBool("Run", true);
     }

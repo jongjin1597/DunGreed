@@ -56,8 +56,8 @@ public class Gwendolyn : Shortrange
         {
             Player.GetInstance._CriticalDamage -= 30;
 
-        }
         Player.GetInstance._Buff.SetTrigger("BuffOff");
+        }
     }
     public override void StopCorutin()
     {

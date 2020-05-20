@@ -55,8 +55,8 @@ public class Berdysh : Shortrange
         if (!_Skill)
         {
             Player.GetInstance.SetAttackSpeed(-25);
-        }
         Player.GetInstance._Buff.SetTrigger("BuffOff");
+        }
     }
     public override void StopCorutin() 
     {
