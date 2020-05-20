@@ -5,10 +5,10 @@ using UnityEngine.PlayerLoop;
 
 public class Berdysh : Shortrange
 {
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
-        _ItemID = 6;
+
+        _ItemID = 5;
         _ItemName = "버디슈";//아이템이름
         _ItemDescrIption = "초승달 모양의 날이 선 무기";//아이템설명
         _Type = ItemType.Spear;//아이템타입
@@ -24,18 +24,7 @@ public class Berdysh : Shortrange
     }
     public override void Attack(cMonsterBase Monster)
     {
-        int randomDamage = Random.Range((int)Player.GetInstance._MinDamage, (int)Player.GetInstance._MaxDamage);
-        if (Player.GetInstance.isCritical())
-        {
-            _Dam = (randomDamage - Monster._Defense) + (int)((float)randomDamage * ((float)Player.GetInstance._CriticalDamage / 100.0f))
-                + (int)((float)randomDamage * ((float)Player.GetInstance._Power / 100));
-            Monster.MonsterHIT(_Dam, true);
-        }
-        else
-        {
-            _Dam = (randomDamage - Monster._Defense) + (int)((float)randomDamage * ((float)Player.GetInstance._Power / 100));
-            Monster.MonsterHIT(_Dam, false);
-        }
+        base.Attack(Monster);
 
     }
     public override void Skill()
@@ -58,8 +47,5 @@ public class Berdysh : Shortrange
         Player.GetInstance._Buff.SetTrigger("BuffOff");
         }
     }
-    public override void StopCorutin() 
-    {
-        StopAllCoroutines();
-    }
+
 }

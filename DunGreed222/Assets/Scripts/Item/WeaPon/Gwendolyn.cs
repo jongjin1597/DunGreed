@@ -5,10 +5,10 @@ using UnityEngine.PlayerLoop;
 
 public class Gwendolyn : Shortrange
 {
-    protected override void Awake()
+    private void Awake()
     {
-     
-        _ItemID = 10;
+
+        _ItemID = 8;
         _ItemName = "그웬돌린";//아이템이름
         _ItemDescrIption = "마력을 흡수하는 푸른 돌을 깍아 만든 창";//아이템설명
         _Type = ItemType.Spear;//아이템타입
@@ -24,18 +24,7 @@ public class Gwendolyn : Shortrange
     }
     public override void Attack(cMonsterBase Monster)
     {
-        int randomDamage = Random.Range((int)Player.GetInstance._MinDamage, (int)Player.GetInstance._MaxDamage);
-        if (Player.GetInstance.isCritical())
-        {
-            _Dam = (randomDamage - Monster._Defense) + (int)((float)randomDamage * ((float)Player.GetInstance._CriticalDamage / 100.0f))
-                + (int)((float)randomDamage * ((float)Player.GetInstance._Power / 100));
-            Monster.MonsterHIT(_Dam, true);
-        }
-        else
-        {
-            _Dam = (randomDamage - Monster._Defense) + (int)((float)randomDamage * ((float)Player.GetInstance._Power / 100));
-            Monster.MonsterHIT(_Dam, false);
-        }
+        base.Attack(Monster);
 
     }
     public override void Skill()
@@ -59,8 +48,5 @@ public class Gwendolyn : Shortrange
         Player.GetInstance._Buff.SetTrigger("BuffOff");
         }
     }
-    public override void StopCorutin()
-    {
-        StopAllCoroutines();
-    }
+
 }

@@ -66,13 +66,12 @@ public class cSoundManager : cSingleton<cSoundManager>
     }
 
     //초기화
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _effectSoundList = new Dictionary<string, List<cSound>>();
 
-        //m_oBackgroundSound = Function.CreateGameObject<CSound>
-        //("BackgroundSound", this.gameObject);
-
+        
         GameObject obj = new GameObject();
         obj.AddComponent<cSound>();
         obj.name = "BackGroundSound";

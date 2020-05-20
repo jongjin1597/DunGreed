@@ -34,26 +34,31 @@ public class Item : MonoBehaviour
     public bool _Skill=true                          ;              //스킬사용가능여부
     public Sprite _SkillIcon                         ;              //스킬이미지
     public float _SkillCollTime                      ;              //스킬쿨타임   
-    protected  virtual void Awake()
-    {
-        
-    }
     public virtual void Skill() { }
-    public virtual void Attack(cMonsterBase Monster) { }
-    public virtual void StopCorutin() { }
+
 
 }
 public class Shortrange : Item
 {
-    protected override void Awake()
-    {
 
-    }
     public override void Skill()
     { }
-    public override void Attack(cMonsterBase Monster)
-    { }
-    public override void StopCorutin() { }
+    public virtual void Attack(cMonsterBase Monster)
+    {
+        int randomDamage = Random.Range((int)Player.GetInstance._MinDamage, (int)Player.GetInstance._MaxDamage);
+        if (Player.GetInstance.isCritical())
+        {
+            _Dam = (randomDamage - Monster._Defense) + (int)((float)randomDamage * ((float)Player.GetInstance._CriticalDamage / 100.0f))
+                + (int)((float)randomDamage * ((float)Player.GetInstance._Power / 100));
+            Monster.MonsterHIT(_Dam, true);
+        }
+        else
+        {
+            _Dam = (randomDamage - Monster._Defense) + (int)((float)randomDamage * ((float)Player.GetInstance._Power / 100));
+            Monster.MonsterHIT(_Dam, false);
+        }
+    }
+
 }
 public class Longrange : Item
 {
@@ -62,18 +67,31 @@ public class Longrange : Item
     public float _Delay;
     protected int _MaxBullet;
     protected int _CurBulletIndex = 0;     //현재 장전된 총알의 인덱스
-    protected override void Awake()
-    {
-
-    }
-
+    
     public override void Skill()
     { }
-    public override void Attack(cMonsterBase Monster)
-    { }
-    public override void StopCorutin() { }
+
     public virtual void FireBulet(Vector2 Position, float _angle)
     {
-     
+        //발사되어야할 순번의 총알이 이전에 발사한 후로 아직 날아가고 있는 중이라면, 발사를 못하게 한다.
+        if (_BulletPoll[_CurBulletIndex].gameObject.activeSelf)
+        {
+            return;
+        }
+
+        _BulletPoll[_CurBulletIndex].transform.position = Position;
+
+        _BulletPoll[_CurBulletIndex].transform.rotation = Quaternion.Euler(0f, 0f, _angle);
+        _BulletPoll[_CurBulletIndex]._Start = true;
+        _BulletPoll[_CurBulletIndex].gameObject.SetActive(true);
+        StartCoroutine("ActiveBullet", _BulletPoll[_CurBulletIndex]);
+        if (_CurBulletIndex >= _MaxBullet - 1)
+        {
+            _CurBulletIndex = 0;
+        }
+        else
+        {
+            _CurBulletIndex++;
+        }
     }
 }

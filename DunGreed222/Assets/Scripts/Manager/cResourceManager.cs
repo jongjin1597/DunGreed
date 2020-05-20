@@ -8,8 +8,9 @@ public class cResourceManager : cSingleton<cResourceManager>
     private Dictionary<string, AudioClip> _audioClipList = null;
 
     //!초기화.
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _audioClipList = new Dictionary<string, AudioClip>();
     }
 

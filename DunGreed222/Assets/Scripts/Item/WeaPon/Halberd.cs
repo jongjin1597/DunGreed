@@ -5,10 +5,10 @@ using UnityEngine.PlayerLoop;
 
 public class Halberd : Shortrange
 {
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
-        _ItemID =2;
+
+        _ItemID = 2;
         _ItemName = "미늘창";//아이템이름
         _ItemDescrIption = "도끼처럼 혹은 창처럼 사용할 수 있는 무기";//아이템설명
         _Type = ItemType.Spear;//아이템타입
@@ -25,18 +25,7 @@ public class Halberd : Shortrange
     }
     public override void Attack(cMonsterBase Monster)
     {
-        int randomDamage = Random.Range((int)Player.GetInstance._MinDamage, (int)Player.GetInstance._MaxDamage);
-        if (Player.GetInstance.isCritical())
-        {
-            _Dam = (randomDamage - Monster._Defense) + (int)((float)randomDamage * ((float)Player.GetInstance._CriticalDamage / 100.0f))
-                + (int)((float)randomDamage * ((float)Player.GetInstance._Power / 100));
-            Monster.MonsterHIT(_Dam, true);
-        }
-        else
-        {
-            _Dam = (randomDamage - Monster._Defense) + (int)((float)randomDamage * ((float)Player.GetInstance._Power / 100));
-            Monster.MonsterHIT(_Dam, false);
-        }
+        base.Attack(Monster);
 
     }
     public override void Skill()
@@ -61,8 +50,5 @@ public class Halberd : Shortrange
 
 
     }
-    public override void StopCorutin()
-    {
-        StopAllCoroutines();
-    }
+  
 }

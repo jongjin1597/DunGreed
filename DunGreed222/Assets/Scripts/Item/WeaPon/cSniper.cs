@@ -7,9 +7,9 @@ public class cSniper : Longrange
 
     //float shootDelay = 0.5f;
 
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
+
         _MaxBullet = 1;
         for (int i = 0; i < _MaxBullet; ++i)
         {
@@ -64,28 +64,7 @@ public class cSniper : Longrange
     //총알 발사
     public override  void FireBulet(Vector2 Position, float _angle)
     {
-        //발사되어야할 순번의 총알이 이전에 발사한 후로 아직 날아가고 있는 중이라면, 발사를 못하게 한다.
-        if (_BulletPoll[_CurBulletIndex].gameObject.activeSelf)
-        {
-            return;
-        }
-
-
-        _BulletPoll[_CurBulletIndex].transform.position = Position;
-
-        _BulletPoll[_CurBulletIndex].transform.rotation = Quaternion.Euler(0f, 0f, _angle);
-        _BulletPoll[_CurBulletIndex]._Start = true;
-        _BulletPoll[_CurBulletIndex].gameObject.SetActive(true);
-             StartCoroutine("ActiveBullet", _BulletPoll[_CurBulletIndex]);
-            if (_CurBulletIndex >= _MaxBullet - 1)
-            {
-            _CurBulletIndex = 0;
-            }
-            else
-            {
-            _CurBulletIndex++;
-            }
-
+        base.FireBulet(Position, _angle);
 
     }
     IEnumerator ActiveBullet(cBullet Bullet)
@@ -93,8 +72,5 @@ public class cSniper : Longrange
         yield return new WaitForSeconds(3.0f);
         Bullet.gameObject.SetActive(false);
     }
-    public override void StopCorutin()
-    {
-        StopAllCoroutines();
-    }
+
 }

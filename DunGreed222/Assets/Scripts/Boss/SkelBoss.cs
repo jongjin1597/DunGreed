@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SkelBoss : cBossMonster
 {
-    public float shootDelay = 4f; //총알 딜레이
-    float shootTimer = 0; //총알 타이머
+    //public float shootDelay = 4f; //총알 딜레이
+    //float shootTimer = 0; //총알 타이머
     public Transform BossBack;
     int SwordX = 0;
     

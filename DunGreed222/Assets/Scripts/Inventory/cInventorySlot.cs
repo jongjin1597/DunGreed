@@ -70,7 +70,7 @@ public class cInventorySlot : MonoBehaviour,IDragHandler, IPointerExitHandler,IE
             {
                 _ItemQuality = "전설 아이템";
             }
-            _Panel.SetPanel(_item._ItemName, _item._MinAttackDamage, _item._MaxAttackDamage, _item._AttackSpeed, _item._ItemDescrIption, _ItemType, _ItemQuality, _item._ItemIcon,_item._SkillText);
+            _Panel.SetPanel(_item._ItemName, _item._MinAttackDamage, _item._MaxAttackDamage, _item._AttackSpeed, _item._ItemDescrIption, _ItemType, _ItemQuality, _item._ItemIcon,_item._SkillText,_item._SkillIcon);
         }
     }
   

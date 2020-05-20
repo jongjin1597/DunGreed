@@ -7,8 +7,8 @@ public class BigSkel : cShortMonster
     Rigidbody2D _rigid;
     Vector2 dir;
 
-    float runDelay = 2f; //런 딜레이
-    float runTimer = 0; //런 타이머
+    //float runDelay = 2f; //런 딜레이
+    //float runTimer = 0; //런 타이머
     float speed = 2f;
 
     float Chack = 0f;
@@ -66,16 +66,7 @@ public class BigSkel : cShortMonster
     }
     public override void MonsterHIT(int dam, bool isCritical)
     {
-        GameObject Dam = Instantiate(_Damage);
-        Dam.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 1, this.transform.position.z);
-        Dam.GetComponent<cDamageText>().SetDamage(dam, isCritical);
-        if (_currnetHP > 0)
-        {
-            _currnetHP -= dam;
-        }
-        else if (_currnetHP <= 0)
-        {
-            Destroy(this);
-        }
+        base.MonsterHIT(dam, isCritical);
+
     }
 }

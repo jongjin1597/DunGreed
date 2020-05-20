@@ -413,15 +413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ff8bafc64b2674429065dbb81d9b20a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _item:
-    _ItemID: 0
-    _ItemName: 
-    _ItemDescrIption: 
-    _ItemIcon: {fileID: 0}
-    _Type: 0
-    _MinAttackDamage: 0
-    _MaxAttackDamage: 0
-    _AttackSpeed: 0
-    _Quality: 0
-    _ItemPrice: 0
+  _Check: 0
+  _MouseBtn: 1
+  _item: {fileID: 0}
   _SlotNum: 0

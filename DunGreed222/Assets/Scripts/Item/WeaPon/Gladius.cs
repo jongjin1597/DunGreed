@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Gladius : Shortrange
 {
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
-        _ItemID = 5;
+
+        _ItemID = 4;
         _ItemName = "글라디우스";//아이템이름
         _ItemDescrIption = "밀집된 곳에서 전투를 하기 위해 고안된 검";//아이템설명
         _ItemIcon = Resources.Load<Sprite>("Itemp/Gladius");//아이템이미지
@@ -24,18 +24,7 @@ public class Gladius : Shortrange
     }
     public override void Attack(cMonsterBase Monster)
     {
-        int randomDamage = Random.Range((int)Player.GetInstance._MinDamage, (int)Player.GetInstance._MaxDamage);
-        if (Player.GetInstance.isCritical())
-        {
-            _Dam = (randomDamage - Monster._Defense) + (int)((float)randomDamage * ((float)Player.GetInstance._CriticalDamage / 100.0f))
-                + (int)((float)randomDamage * ((float)Player.GetInstance._Power / 100));
-            Monster.MonsterHIT(_Dam, true);
-        }
-        else
-        {
-            _Dam = (randomDamage - Monster._Defense) + (int)((float)randomDamage * ((float)Player.GetInstance._Power / 100));
-            Monster.MonsterHIT(_Dam, false);
-        }
+        base.Attack(Monster);
 
     }
     public override void Skill()
@@ -59,8 +48,5 @@ public class Gladius : Shortrange
         Player.GetInstance._Buff.SetTrigger("BuffOff");
         }
     }
-    public override void StopCorutin()
-    {
-        StopAllCoroutines();
-    }
+
 }

@@ -5,9 +5,9 @@ using UnityEngine.PlayerLoop;
 
 public class cShortSward : Shortrange
 {
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
+
         _ItemID = 1;
         _ItemName = "숏소드";//아이템이름
         _ItemDescrIption = "가볍고 휘두르기 편한 검";//아이템설명
@@ -24,18 +24,7 @@ public class cShortSward : Shortrange
     }
     public override void Attack(cMonsterBase Monster)
     {
-        int randomDamage = Random.Range((int)Player.GetInstance._MinDamage, (int)Player.GetInstance._MaxDamage);
-        if (Player.GetInstance.isCritical())
-        {
-            _Dam = (randomDamage - Monster._Defense) + (int)((float)randomDamage * ((float)Player.GetInstance._CriticalDamage / 100.0f))
-                + (int)((float)randomDamage * ((float)Player.GetInstance._Power / 100));
-            Monster.MonsterHIT(_Dam, true);
-        }
-        else
-        {
-            _Dam = (randomDamage - Monster._Defense) + (int)((float)randomDamage * ((float)Player.GetInstance._Power / 100));
-            Monster.MonsterHIT(_Dam, false);
-        }
+        base.Attack(Monster);
 
     }
     public override void Skill()
@@ -59,8 +48,5 @@ public class cShortSward : Shortrange
 
 
     }
-    public override void StopCorutin()
-    {
-        StopAllCoroutines();
-    }
+
 }
