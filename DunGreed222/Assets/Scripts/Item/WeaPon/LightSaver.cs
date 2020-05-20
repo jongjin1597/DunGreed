@@ -17,7 +17,8 @@ public class LightSaver : Shortrange
         _AttackSpeed = 3.28f;//공격속도
         _Quality = ItemQuality.Unique;//아이템등급
         _ItemPrice = 2000;//아이템가격
-        _SkillText = "방어력 무시데미지를 넣는다."; 
+        _SkillText = "방어력 무시데미지를 넣는다.";
+        _SkillCollTime = 0;
 
     }
     public override void Attack(cMonsterBase Monster)
@@ -36,5 +37,8 @@ public class LightSaver : Shortrange
         }
 
     }
-  
+    public override void StopCorutin()
+    {
+        StopAllCoroutines();
+    }
 }

@@ -35,7 +35,8 @@ public class Kar98 : Longrange
         _ItemIcon = Resources.Load<Sprite>("Itemp/Crossbow/Kar98");//아이템 이미지
         _ItemPrice = 3000;//아이템가격
         _SkillText = "다음 한발의 총알의 공격력이 아주강해집니다.";
-
+        _SkillIcon = Resources.Load<Sprite>("Skill/Skill_DeadlyShot");//아이템 이미지
+        _SkillCollTime = 30;
     }
 
 
@@ -55,6 +56,10 @@ public class Kar98 : Longrange
                 _BulletPoll[_CurBulletIndex]._Start = true;
             _BulletPoll[_CurBulletIndex].gameObject.SetActive(true);
              StartCoroutine("ActiveBullet", _BulletPoll[_CurBulletIndex]);
+        if (!_Skill)
+        {
+            Player.GetInstance._Buff.SetBool("PowerBuff", false);
+        }
             if (_CurBulletIndex >= _MaxBullet - 1)
             {
             _CurBulletIndex = 0;
@@ -75,17 +80,25 @@ public class Kar98 : Longrange
     {
         if (_Skill)
         {
-            StartCoroutine("SkillCourutin");
+            StartCoroutine(SkillCourutin());
         }
     }
     IEnumerator SkillCourutin()
     {
         _Skill = false;
+        Player.GetInstance._Buff.SetTrigger("PowerBuff");
         cBullet Bullet= _BulletPoll[_CurBulletIndex];
         Bullet._Damage += 30;
          yield return new WaitForSeconds(30.0f);
+        if (!_Skill)
+        {
+            Bullet._Damage -= 30;
 
-        Bullet._Damage -= 30; 
-        _Skill = true;
+        }
+        Player.GetInstance._Buff.SetTrigger("BuffOff");
+    }
+    public override void StopCorutin()
+    {
+        StopAllCoroutines();
     }
 }

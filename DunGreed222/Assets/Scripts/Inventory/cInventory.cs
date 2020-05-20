@@ -45,10 +45,10 @@ public class cInventory :  cSingleton<cInventory>
         base.Awake();
  
         _Inventory = transform.GetChild(0);
-        _draggingItem = transform.GetChild(1);
-        _Panel = transform.GetChild(2);
+        _draggingItem = transform.GetChild(0).GetChild(1);
+        _Panel = transform.GetChild(0).GetChild(2);
         _Inventory.gameObject.SetActive(_ActiveInventory);
-        _Gold = transform.GetChild(0).GetChild(0).GetComponent<Text>();
+        _Gold = transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>();
         //아이템 슬롯 세팅
         for (int i = 0; i < 3; i++)
         {
@@ -58,7 +58,7 @@ public class cInventory :  cSingleton<cInventory>
                 Transform newSlot = Instantiate(_Slot);
               
                 newSlot.name = "Slot" + (i + 1) + "." + (j + 1);
-                newSlot.SetParent(_Inventory.transform);
+                newSlot.SetParent(_Inventory.GetChild(0).transform);
                 newSlot.localPosition= new Vector3(X,Y,0);
                 _InventorySlot.Add(newSlot.GetComponent<cInventorySlot>());
                 newSlot.GetComponent<cInventorySlot>()._number = i * 5 + j;
@@ -75,7 +75,7 @@ public class cInventory :  cSingleton<cInventory>
         {
             Transform WeaponSLot = Instantiate(_WeaPonSlot);
             WeaponSLot.name = "WeaPon" + i;
-            WeaponSLot.SetParent(_Inventory.transform);
+            WeaponSLot.SetParent(_Inventory.GetChild(0).transform);
             WeaponSLot.localPosition = new Vector3(X, Y, 0);
             _WeaPonSlotList.Add(WeaponSLot.GetComponent<cInventorySlot>());
             WeaponSLot.GetComponent<cInventorySlot>()._number = i + 1;
@@ -88,7 +88,7 @@ public class cInventory :  cSingleton<cInventory>
         {
             Transform ShildSlot = Instantiate(_ShildSlot);
             ShildSlot.name = "Shild" + i;
-            ShildSlot.SetParent(_Inventory.transform);
+            ShildSlot.SetParent(_Inventory.GetChild(0).transform);
             ShildSlot.localPosition = new Vector3(X, Y, 0);
             _ShildSlotList.Add(ShildSlot.GetComponent<cInventorySlot>());
             ShildSlot.GetComponent<cInventorySlot>()._number = i + 1;

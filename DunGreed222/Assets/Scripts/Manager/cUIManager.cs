@@ -9,7 +9,7 @@ public class cUIManager : cSingleton<cUIManager>
     private Text _Food;
     private Image _Foodgauge;
     private cWeaPonUI _WeaPonSlot;
-
+    private cSkill _Skill;
     protected override void Awake()
     {
         base.Awake();
@@ -18,8 +18,13 @@ public class cUIManager : cSingleton<cUIManager>
         _Food =transform.GetChild(4).GetChild(0).GetComponent<Text>();
          _Foodgauge =transform.GetChild(4).GetChild(1).GetComponent<Image>();
         _WeaPonSlot = transform.GetChild(5).GetComponent<cWeaPonUI>();
-        cGameManager.GetInstance._DeleGateGold += SetGold;
+        _Skill = transform.GetChild(6).GetComponent<cSkill>();
+    cGameManager.GetInstance._DeleGateGold += SetGold;
 
+    }
+    public cSkill GetSkill()
+    {
+        return _Skill;
     }
     //대쉬게이지 리턴
     public cDash GetDash()

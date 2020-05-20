@@ -53,7 +53,8 @@ public class Player : cCharacter
     private Vector2 _MousePosition;
     //발판
     public BoxCollider2D foot;
-
+    //버프
+    public Animator _Buff;
     private cWeaPon _WeaPon;
     //크리티컬확률
     public int _Critical;
@@ -83,6 +84,7 @@ public class Player : cCharacter
             _CriticalDamage = 50;
             _JumpPower = 3;
             _WeaPon = transform.GetChild(3).GetChild(1).GetComponent<cWeaPon>();
+            _Buff = transform.GetChild(6).GetComponent<Animator>();
         }
         else if (_instacne != null)
         {
@@ -147,7 +149,7 @@ public class Player : cCharacter
                 if (_isPosition)
                 {
                     transform.rotation = Quaternion.Euler(0, 180, 0);
-                    //_WeaPon.localRotation = Quaternion.Euler(-180, 0, 0);
+                   // _WeaPon.transform.localRotation = Quaternion.Euler(-180, 0, 0);
                     _isPosition = false;
                 }
             }

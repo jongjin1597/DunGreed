@@ -20,6 +20,7 @@ public class Gwendolyn : Shortrange
         _ItemPrice = 2000;//아이템가격
         _SkillText = "30초간 크리티컬 데미지 증가";
         _SkillIcon = Resources.Load<Sprite>("UI/Stat/CritcalDamage");
+        _SkillCollTime = 40;
     }
     public override void Attack(cMonsterBase Monster)
     {
@@ -41,17 +42,25 @@ public class Gwendolyn : Shortrange
     {
         if (_Skill)
         {
-            StartCoroutine("SkillCorutin");
+            StartCoroutine(SkillCorutin());
 
         }
     }
-    IEnumerable SkillCorutin()
+    IEnumerator SkillCorutin()
     {
         _Skill = false;
+        Player.GetInstance._Buff.SetTrigger("CriticalBuff");
         Player.GetInstance._CriticalDamage += 30;
         yield return new WaitForSeconds(30.0f);
+        if (!_Skill)
+        {
+            Player.GetInstance._CriticalDamage -= 30;
 
-        Player.GetInstance._CriticalDamage -= 30;
-        _Skill = true;
+        }
+        Player.GetInstance._Buff.SetTrigger("BuffOff");
+    }
+    public override void StopCorutin()
+    {
+        StopAllCoroutines();
     }
 }

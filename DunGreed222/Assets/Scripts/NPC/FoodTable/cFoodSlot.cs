@@ -99,6 +99,34 @@ public class cFoodSlot : MonoBehaviour,IPointerClickHandler,IPointerEnterHandler
                 cGameManager.GetInstance.Gold -= this._Food._FoodPrice;
                 Player.GetInstance._health.HealHP(_Food._HP, false);
 
+                if (_Food._FoodEffect1 == "크리티컬데미지")
+                {
+                    Player.GetInstance._CriticalDamage +=(int)_Food._FoodStat1;
+
+                }
+                else if (_Food._FoodEffect2 == "크리티컬데미지")
+                {
+                    Player.GetInstance._CriticalDamage += (int)_Food._FoodStat1;
+                }
+                if (_Food._FoodEffect1 == "위력")
+                {
+                    Player.GetInstance._Power+=(int)_Food._FoodStat1;
+
+                }
+                else if (_Food._FoodEffect2 == "위력")
+                {
+                    Player.GetInstance._Power += (int)_Food._FoodStat1;
+                }
+                if (_Food._FoodEffect1 == "방어력")
+                {
+                    Player.GetInstance._Defense += (int)_Food._FoodStat1;
+
+                }
+                else if (_Food._FoodEffect2 == "방어력")
+                {
+                    Player.GetInstance._Defense += (int)_Food._FoodStat1;
+                }
+
                 if (_Food._FoodEffect1 == "최대 체력")
                 {
                     Player.GetInstance._health.HealHP((int)_Food._FoodStat1, true);

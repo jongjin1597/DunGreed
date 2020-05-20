@@ -31,15 +31,16 @@ public class Item : MonoBehaviour
     public float _ItemPrice                          ;              //아이템 가격
     public string _SkillText                         ;              //스킬설명
     public int _Dam                                  ;              //공격데미지
-    public bool _Skill                               ;              //스킬사용중여부
+    public bool _Skill=true                          ;              //스킬사용가능여부
     public Sprite _SkillIcon                         ;              //스킬이미지
+    public float _SkillCollTime                      ;              //스킬쿨타임   
     protected  virtual void Awake()
     {
         
     }
     public virtual void Skill() { }
     public virtual void Attack(cMonsterBase Monster) { }
-
+    public virtual void StopCorutin() { }
 
 }
 public class Shortrange : Item
@@ -52,7 +53,7 @@ public class Shortrange : Item
     { }
     public override void Attack(cMonsterBase Monster)
     { }
-
+    public override void StopCorutin() { }
 }
 public class Longrange : Item
 {
@@ -70,7 +71,7 @@ public class Longrange : Item
     { }
     public override void Attack(cMonsterBase Monster)
     { }
-
+    public override void StopCorutin() { }
     public virtual void FireBulet(Vector2 Position, float _angle)
     {
      

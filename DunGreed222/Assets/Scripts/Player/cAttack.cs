@@ -5,7 +5,7 @@ using UnityEngine;
 public class cAttack : MonoBehaviour
 {
     //애니메이터
-    Animator _Ani;
+  public  Animator _Ani;
     //검애니
     RuntimeAnimatorController _SwardAni;
     //창애니
