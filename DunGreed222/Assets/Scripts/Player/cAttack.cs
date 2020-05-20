@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class cAttack : MonoBehaviour
 {
+    //애니메이터
     Animator _Ani;
+    //검애니
     RuntimeAnimatorController _SwardAni;
+    //창애니
     RuntimeAnimatorController _SpearAni;
-
+    //현제 아이템
+    Item _Nowitem;
+    //무기 공격범위 박스
     BoxCollider2D _HitBox;
+    //공격용 코루틴
     public delegate void _AttackStart();
     public _AttackStart _Attack;
-    int dam;
+
     void Awake()
     {
         _Attack += Attack;
@@ -21,9 +27,11 @@ public class cAttack : MonoBehaviour
         _SwardAni = Resources.Load<RuntimeAnimatorController>("Animaition/Weapon/Sward/Swing");
        _SpearAni = Resources.Load<RuntimeAnimatorController>("Animaition/Weapon/Spear/SpearAttack");
     }
+    //무기타입별로 공격모션변경
     public void SetItemMotion(Item item)
     {
-        if(item._Type == ItemType.Sword)
+        _Nowitem = item;
+        if (item._Type == ItemType.Sword)
         {
             _Ani.runtimeAnimatorController = _SwardAni;
             _Attack += cCameramanager.GetInstance.VibrateForTime;
@@ -43,30 +51,26 @@ public class cAttack : MonoBehaviour
         _Ani.speed = item._AttackSpeed;
 
     }
+    //공격애니메이션재생
 
     private void Attack()
     {
 
         _Ani.SetTrigger("AttackCheck");
     }
+    //몬스터 충돌체크
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("MonsterHitBox"))
         {
             cMonsterBase Monster = collision.GetComponent<cMonsterBase>();
-            int randomDamage = Random.Range((int)Player.GetInstance._MinDamage, (int)Player.GetInstance._MaxDamage);
-          
-            if (Player.GetInstance.isCritical())
-            {
-                dam = (randomDamage - Monster._Defense) + (int)((float)randomDamage*((float)Player.GetInstance._CriticalDamage/100.0f));
-                Monster.MonsterHIT(dam,true);
-            }
-            else
-            {
-                dam = (randomDamage - Monster._Defense);
-                Monster.MonsterHIT(dam, false);
-            }
-            
+            _Nowitem.Attack(Monster);
+
         }
+    }
+    //공격속도 버프용
+    public void SetAttackSpeed(float AttackSpeed)
+    {
+        _Ani.speed = _Ani.speed + (_Ani.speed * (AttackSpeed / 100));
     }
 }

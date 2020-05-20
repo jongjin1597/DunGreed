@@ -34,13 +34,9 @@ public class cAK47: Longrange
         _Quality = ItemQuality.Unique;//아이템등급    
         _ItemIcon = Resources.Load<Sprite>("Itemp/Rifle1");//아이템 이미지
         _ItemPrice = 2000;//아이템가격
-
+        _SkillText = "30초간 이동속도 대폭 증가";
 
     }
-
-    public override void Skill()
-    { }
-
     //총알 발사
    public override  void FireBulet(Vector2 Position, float _angle)
     {
@@ -72,5 +68,22 @@ public class cAK47: Longrange
     {
         yield return new WaitForSeconds(3.0f);
         Bullet.gameObject.SetActive(false);
+    }
+
+    public override void Skill()
+    {
+        if (_Skill)
+        {
+            StartCoroutine("SkillCourutin");
+        }
+    }
+    IEnumerator SkillCourutin()
+    {
+        _Skill = false;
+        Player.GetInstance._MoveSpeed += 6;
+        yield return new WaitForSeconds(30.0f);
+
+        Player.GetInstance._MoveSpeed += 6;
+        _Skill = true;
     }
 }

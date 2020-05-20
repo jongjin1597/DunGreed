@@ -17,8 +17,12 @@ public class cWeaPon : MonoBehaviour
     private RuntimeAnimatorController _SwardAni;
     //창 애니매이션
     private RuntimeAnimatorController _SpearAni;
+    //총 애니메이션
     private RuntimeAnimatorController _GunAni;
+    //공격모션
     private cAttack _AttackMotion;
+    public delegate void _AttackSpeed(float AttackSpeed);
+    public _AttackSpeed _Speed;
     void Awake()
     {
         _AttackMotion = FindObjectOfType<cAttack>();
@@ -27,7 +31,8 @@ public class cWeaPon : MonoBehaviour
         _SwardAni =Resources.Load<RuntimeAnimatorController>("Animaition/Weapon/Sward/Sward");
         _SpearAni = Resources.Load<RuntimeAnimatorController>("Animaition/Weapon/Spear/Spear");
         _GunAni = Resources.Load<RuntimeAnimatorController>("Animaition/Weapon/Gun/Gun");
-
+        _Speed += _AttackMotion.SetAttackSpeed;
+        _Speed += SetAttackSpeed;
     }
     //현제 무기 세팅(무기장착시 세팅)
     public void SetWeaPon(Item _WeaPon)
@@ -86,6 +91,10 @@ public class cWeaPon : MonoBehaviour
                     _Ani.SetTrigger("AttackCheck");
                 }
             }
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                _NowWeaPon.Skill();
+            }
         }
 
        
@@ -107,7 +116,12 @@ public class cWeaPon : MonoBehaviour
 
         ((Longrange)_NowWeaPon).FireBulet(_oPosition, rotateDegree);
     }
+    public void SetAttackSpeed(float AttackSpeed)
+    {
 
+        _Ani.speed = _Ani.speed + (_Ani.speed*(AttackSpeed/100));
+        
+    }
  
  
     //IEnumerator Attack()

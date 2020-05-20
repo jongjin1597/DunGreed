@@ -17,11 +17,24 @@ public class LightSaver : Shortrange
         _AttackSpeed = 3.28f;//공격속도
         _Quality = ItemQuality.Unique;//아이템등급
         _ItemPrice = 2000;//아이템가격
+        _SkillText = "방어력 무시데미지를 넣는다."; 
 
     }
-
-    public override void Skill()
+    public override void Attack(cMonsterBase Monster)
     {
+        int randomDamage = Random.Range((int)Player.GetInstance._MinDamage, (int)Player.GetInstance._MaxDamage);
+        if (Player.GetInstance.isCritical())
+        {
+            _Dam = randomDamage  + (int)((float)randomDamage * ((float)Player.GetInstance._CriticalDamage / 100.0f))
+                + (int)((float)randomDamage * ((float)Player.GetInstance._Power / 100));
+            Monster.MonsterHIT(_Dam, true);
+        }
+        else
+        {
+            _Dam = randomDamage + (int)((float)randomDamage * ((float)Player.GetInstance._Power / 100));
+            Monster.MonsterHIT(_Dam, false);
+        }
 
     }
+  
 }

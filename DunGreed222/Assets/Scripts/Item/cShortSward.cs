@@ -18,12 +18,40 @@ public class cShortSward : Shortrange
         _Quality = ItemQuality.Normal;//아이템등급    
         _ItemIcon = Resources.Load<Sprite>("Itemp/BasicShortSword_New");//아이템 이미지
         _ItemPrice = 500;//아이템가격
+        _SkillText = "10초간 공격속도 소량 증가";
        
     }
+    public override void Attack(cMonsterBase Monster)
+    {
+        int randomDamage = Random.Range((int)Player.GetInstance._MinDamage, (int)Player.GetInstance._MaxDamage);
+        if (Player.GetInstance.isCritical())
+        {
+            _Dam = (randomDamage - Monster._Defense) + (int)((float)randomDamage * ((float)Player.GetInstance._CriticalDamage / 100.0f))
+                + (int)((float)randomDamage * ((float)Player.GetInstance._Power / 100));
+            Monster.MonsterHIT(_Dam, true);
+        }
+        else
+        {
+            _Dam = (randomDamage - Monster._Defense) + (int)((float)randomDamage * ((float)Player.GetInstance._Power / 100));
+            Monster.MonsterHIT(_Dam, false);
+        }
 
+    }
     public override void Skill()
     {
+        if (_Skill)
+        {
+            StartCoroutine("SkillCourutin");
+        }
+    }
+    IEnumerator SkillCourutin()
+    {
+        _Skill = false;
+        Player.GetInstance.SetAttackSpeed(10);
+        yield return new WaitForSeconds(10.0f);
 
+        Player.GetInstance.SetAttackSpeed(-10);
+        _Skill = true;
     }
 
 }

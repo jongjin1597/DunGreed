@@ -17,11 +17,33 @@ public class Gladius : Shortrange
         _AttackSpeed = 2.5f;//공격속도
         _Quality = ItemQuality.Rare;//아이템등급
         _ItemPrice = 1000;//아이템가격
+        _SkillText = "15초 동안 위력 증가";
         
     }
+    public override void Attack(cMonsterBase Monster)
+    {
+        int randomDamage = Random.Range((int)Player.GetInstance._MinDamage, (int)Player.GetInstance._MaxDamage);
+        if (Player.GetInstance.isCritical())
+        {
+            _Dam = (randomDamage - Monster._Defense) + (int)((float)randomDamage * ((float)Player.GetInstance._CriticalDamage / 100.0f))
+                + (int)((float)randomDamage * ((float)Player.GetInstance._Power / 100));
+            Monster.MonsterHIT(_Dam, true);
+        }
+        else
+        {
+            _Dam = (randomDamage - Monster._Defense) + (int)((float)randomDamage * ((float)Player.GetInstance._Power / 100));
+            Monster.MonsterHIT(_Dam, false);
+        }
 
+    }
     public override void Skill()
     {
-
+        StartCoroutine("SkillCorutin");
+    }
+    IEnumerable SkillCorutin()
+    {
+        Player.GetInstance._Power += 20;
+        yield return new WaitForSeconds(15.0f);
+        Player.GetInstance._Power -= 20;
     }
 }

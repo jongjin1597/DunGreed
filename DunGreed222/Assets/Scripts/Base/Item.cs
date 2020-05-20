@@ -24,18 +24,21 @@ public class Item : MonoBehaviour
     public string _ItemDescrIption                   ;              //아이템설명
     public Sprite _ItemIcon                          ;              //아이템이미지
     public  ItemType _Type                           ;              //아이템타입
-    public int _MinAttackDamage                    ;              //공격최소데미지
-    public int _MaxAttackDamage                    ;              //공격최대데미지
+    public int _MinAttackDamage                      ;              //공격최소데미지
+    public int _MaxAttackDamage                      ;              //공격최대데미지
     public float _AttackSpeed                        ;              //공격속도
     public ItemQuality _Quality                      ;              //아이템등급
     public float _ItemPrice                          ;              //아이템 가격
-
+    public string _SkillText                         ;              //스킬설명
+    public int _Dam                                  ;              //공격데미지
+    public bool _Skill                               ;              //스킬사용중여부
+    public Sprite _SkillIcon                         ;              //스킬이미지
     protected  virtual void Awake()
     {
         
     }
     public virtual void Skill() { }
-    public virtual void Attack() { }
+    public virtual void Attack(cMonsterBase Monster) { }
 
 
 }
@@ -47,7 +50,7 @@ public class Shortrange : Item
     }
     public override void Skill()
     { }
-    public override void Attack()
+    public override void Attack(cMonsterBase Monster)
     { }
 
 }
@@ -65,7 +68,7 @@ public class Longrange : Item
 
     public override void Skill()
     { }
-    public override void Attack()
+    public override void Attack(cMonsterBase Monster)
     { }
 
     public virtual void FireBulet(Vector2 Position, float _angle)
