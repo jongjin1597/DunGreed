@@ -12,6 +12,13 @@ public class cBossSword : MonoBehaviour
     float shootDelay = 0;
     float _angle;
 
+    Animator _anim;
+
+    private void Awake()
+    {
+        _anim = GetComponentInChildren<Animator>();
+    }
+
     void Update()
     {
         shootDelay += Time.deltaTime;
@@ -34,21 +41,18 @@ public class cBossSword : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
-        {
+        {           
             int dam = _Damage - Player.GetInstance._Defense;
             Player.GetInstance._health.MyCurrentValue -= dam;
         }
-
-       
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == ("floor"))
+        if (collision.gameObject.tag == "floor" || collision.gameObject.tag == "Wall")
         {
-            _Start = false;
 
+            _Start = false;
         }
     }
 }

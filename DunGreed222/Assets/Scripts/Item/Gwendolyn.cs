@@ -12,7 +12,7 @@ public class Gwendolyn : Shortrange
         _ItemName = "그웬돌린";//아이템이름
         _ItemDescrIption = "마력을 흡수하는 푸른 돌을 깍아 만든 창";//아이템설명
         _Type = ItemType.Spear;//아이템타입
-        _MinAttackDamage = 15.5f;//최소데미지
+        _MinAttackDamage = 16;//최소데미지
         _MaxAttackDamage = 22;//최대데미지
         _AttackSpeed = 2f;//공격속도
         _Quality = ItemQuality.Unique;//아이템등급    

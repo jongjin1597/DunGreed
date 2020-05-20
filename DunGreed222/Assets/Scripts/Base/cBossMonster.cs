@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class cBossMonster : cMonsterBase
 {
-    protected cBossBullet _Anemybullet;
-    protected List<cBossBullet> _BulletPoll = new List<cBossBullet>();
+    protected cBullet _Anemybullet;
+    protected List<cBullet> _BulletPoll = new List<cBullet>();
     protected int _CurBulletIndex = 0;
     protected int _MaxBullet;
 

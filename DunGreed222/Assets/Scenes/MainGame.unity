@@ -703,7 +703,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfd716d1010ae504f8637e3812d4e82b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initHP: 0
+  _currnetHP: 0
+  _MaxHP: 0
   _MinAtteckDamage: 0
   _MaxAttackDamage: 0
   _MoveSpeed: 0
@@ -714,6 +715,8 @@ MonoBehaviour:
   _Food: {fileID: 340131180}
   _JumpPower: 6
   foot: {fileID: 446764515}
+  _Critical: 0
+  _CriticalDamage: 0
 --- !u!1 &146919643
 GameObject:
   m_ObjectHideFlags: 0
@@ -3865,11 +3868,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ef2c5acafdf7e347bd5e3003675bc66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initHP: 0
+  _currnetHP: 0
+  _MaxHP: 0
   _MinAtteckDamage: 0
   _MaxAttackDamage: 0
   _MoveSpeed: 0
   _Defense: 0
+  _Damage: {fileID: 0}
   shootDelay: 4
   BossBack: {fileID: 20099711}
 --- !u!50 &1311425056

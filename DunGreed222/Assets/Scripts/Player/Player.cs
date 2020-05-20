@@ -29,12 +29,12 @@ public class Player : cCharacter
     //방어력세팅
     public float Defense { set { value = _Defense; } }
     //공격력세팅
-    public float _MinDamage { get { return _MinAtteckDamage; } set { value = _MinAtteckDamage; } }
-    public float _MaxDamage { get { return _MaxAttackDamage; } set { value = _MaxAttackDamage; } }
+    public int _MinDamage { get { return _MinAtteckDamage; } set { _MinAtteckDamage=value ; } }
+    public int _MaxDamage { get { return _MaxAttackDamage; } set { _MaxAttackDamage=value; } }
     //이동
     float _horizontalMove;
     //점프파워
-    public float _JumpPower = 3f;
+    public float _JumpPower;
     //캐릭터상태
     private State _state = State.Idle;
     //리지드바디
@@ -51,9 +51,13 @@ public class Player : cCharacter
     private float _Time=0f;
     //마우스포지션
     private Vector2 _MousePosition;
+    //발판
     public BoxCollider2D foot;
-    private Transform _WeaPon;
-
+  //  private Transform _WeaPon;
+  //크리티컬확률
+    public int _Critical;
+    //크리티컬데미지
+    public int _CriticalDamage;
 
     private bool _isPosition = false;
     protected override void Awake()
@@ -64,13 +68,16 @@ public class Player : cCharacter
             base.Awake();
             _instacne = this;
             DontDestroyOnLoad(gameObject);
-            _initHP = 80;
+            _currnetHP = 80;
       
-            _health.Initialize(_initHP, _initHP);
+            _health.Initialize(_currnetHP, _currnetHP);
             _Rigidbody = gameObject.GetComponent<Rigidbody2D>();
             _DashEffect = transform.GetChild(5).GetComponent<ParticleSystem>();
             _MoveSpeed = 5.0f;
-            _WeaPon = transform.GetChild(3).GetChild(1);
+            _Critical = 20;
+            _CriticalDamage = 50;
+            _JumpPower = 3;
+           // _WeaPon = transform.GetChild(3).GetChild(1);
         }
         else if(_instacne != null)
         {
@@ -135,7 +142,7 @@ public class Player : cCharacter
                 if (_isPosition)
                 {
                     transform.rotation = Quaternion.Euler(0, 180, 0);
-                    _WeaPon.localRotation = Quaternion.Euler(-180, 0, 0);
+                    //_WeaPon.localRotation = Quaternion.Euler(-180, 0, 0);
                     _isPosition = false;
                  }
            }
@@ -145,7 +152,7 @@ public class Player : cCharacter
                 {
                     transform.rotation = Quaternion.identity;
 
-                    _WeaPon.localRotation = Quaternion.Euler(0, 0, 0);
+                   //_WeaPon.localRotation = Quaternion.Euler(0, 0, 0);
                     _isPosition = true;
                 }
             }
@@ -308,6 +315,22 @@ public class Player : cCharacter
         foot.enabled = true;
     }
 
+    public override void HIT(int dam)
+    {
+        _health.MyCurrentValue -= dam;
 
-
+    }
+    public bool isCritical()
+    {
+        float Critical;
+        Critical = Random.Range(1, 101);
+        if (Critical <= _Critical)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

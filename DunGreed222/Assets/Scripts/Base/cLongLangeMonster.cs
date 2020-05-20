@@ -13,5 +13,8 @@ public class cLongLangeMonster : cMonsterBase
         base.Awake();
 
     }
+    public override void MonsterHIT(int dam, bool isCritical)
+    {
 
+    }
 }

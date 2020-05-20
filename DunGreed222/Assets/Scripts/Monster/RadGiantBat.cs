@@ -18,7 +18,7 @@ public class RadGiantBat : cLongLangeMonster
             cBullet _Bullet = obj.GetComponent<cBullet>();
             _Bullet._Speed = 5.0f;
             // _Bullet._Damage = Random.Range(11, 14);
-            _Bullet._Player = false;
+            _Bullet._BulletState = BulletState.Monster;
             //큰박쥐는 총알 잠시 멈춘다
             _Bullet._Start = false;
             _Bullet.transform.SetParent(transform);
@@ -79,7 +79,7 @@ public class RadGiantBat : cLongLangeMonster
         _BulletPoll[_CurBulletIndex].transform.position = Dir;
 
         _BulletPoll[_CurBulletIndex].transform.rotation = Quaternion.Euler(0f, 0f, _angle);
-
+    
         _BulletPoll[_CurBulletIndex].gameObject.SetActive(true);
 
 
@@ -105,5 +105,19 @@ public class RadGiantBat : cLongLangeMonster
         yield return new WaitForSeconds(3.0f);
         Bullet._Start = false;
         Bullet.gameObject.SetActive(false);
+    }
+    public override void MonsterHIT(int dam, bool isCritical)
+    {
+        GameObject Dam = Instantiate(_Damage);
+        Dam.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 1, this.transform.position.z);
+        Dam.GetComponent<cDamageText>().SetDamage(dam, isCritical);
+        if (_currnetHP > 0)
+        {
+            _currnetHP -= dam;
+        }
+        else if (_currnetHP <= 0)
+        {
+            Destroy(this);
+        }
     }
 }

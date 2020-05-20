@@ -16,11 +16,12 @@ public class SkelBoss : cBossMonster
         for (int i = 0; i < _MaxBullet; ++i)
         {
             GameObject obj = Instantiate(Resources.Load("Prefabs/Boss/BossBullet")) as GameObject;
-            cBossBullet _Bullet = obj.GetComponent<cBossBullet>();
+            cBullet _Bullet = obj.GetComponent<cBullet>();
             _Bullet._Speed = 5.0f;
-            //_Bullet._Damage = Random.Range(11, 14);
-            //총알 발사하기 전까지는 비활성화 해준다.
-            _Bullet.transform.SetParent(transform);
+
+            _Bullet._BulletState = BulletState.Boss;
+
+            _Bullet.transform.SetParent(BossBack);
             _Bullet.gameObject.SetActive(false);
 
             _BulletPoll.Add(_Bullet);
@@ -118,23 +119,15 @@ public class SkelBoss : cBossMonster
             SwordX += 2;
             Vector3 dirVec = new Vector3(BossBack.transform.position.x + -4 + SwordX, BossBack.transform.position.y + 5, 0);
             _CurBossSwordIndex++;
-            StartCoroutine(FireSword(dirVec));
-           
+            StartCoroutine(FireSword(dirVec));           
         }
-
-       
 
     }
     
-    IEnumerator ActiveBullet(cBossBullet Bullet)
+    IEnumerator ActiveBullet(cBullet Bullet)
     {
         yield return new WaitForSeconds(3.0f);
         Bullet.gameObject.SetActive(false);
     }
 
-    IEnumerator ActiveSword(cBossSword Sword)
-    {
-        yield return new WaitForSeconds(3.0f);
-        Sword.gameObject.SetActive(false);
-    }
 }

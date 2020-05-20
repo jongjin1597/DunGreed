@@ -18,7 +18,7 @@ public class GiantBat : cLongLangeMonster
             GameObject Obj = Instantiate(Resources.Load("Prefabs/Bullet/BatBullet")) as GameObject;
             cBullet _Bullet = Obj.GetComponent<cBullet>();
             _Bullet._Speed = 5.0f;
-            _Bullet._Player = false;
+            _Bullet._BulletState = BulletState.Monster;
             //_Bullet._Damage = Random.Range(11, 14);
             _Bullet.transform.SetParent(transform);
             //총알 발사하기 전까지는 비활성화 해준다.
@@ -82,7 +82,7 @@ public class GiantBat : cLongLangeMonster
         _BulletPoll[_CurBulletIndex].transform.position = Dir;
 
         _BulletPoll[_CurBulletIndex].transform.rotation = Quaternion.Euler(0f, 0f, _angle);
-
+        _BulletPoll[_CurBulletIndex]._Start = true;
         _BulletPoll[_CurBulletIndex].gameObject.SetActive(true);
         StartCoroutine("ActiveBullet", _BulletPoll[_CurBulletIndex]);
         if (_CurBulletIndex >= _MaxBullet - 1)
@@ -100,5 +100,18 @@ public class GiantBat : cLongLangeMonster
         yield return new WaitForSeconds(3.0f);
         Bullet.gameObject.SetActive(false);
     }
-
+    public override void MonsterHIT(int dam, bool isCritical)
+    {
+        GameObject Dam = Instantiate(_Damage);
+        Dam.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 1, this.transform.position.z);
+        Dam.GetComponent<cDamageText>().SetDamage(dam, isCritical);
+        if (_currnetHP > 0)
+        {
+            _currnetHP -= dam;
+        }
+        else if (_currnetHP <= 0)
+        {
+            Destroy(this);
+        }
+    }
 }

@@ -25,18 +25,18 @@ TagManager:
   - NPC
   - Player
   - UIPanel
-  - 
+  - Bullet
   - Brige
   - Wall
   - floor
   - Bound
   - Camera
-  - 
+  - MiniMap
   - wormPassage
   - Monster
   - Door
   - Portal
-  - Sward
+  - WeaPon
   - item
   - 
   - 

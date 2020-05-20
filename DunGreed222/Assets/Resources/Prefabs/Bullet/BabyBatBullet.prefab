@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1275420907611272862}
   - component: {fileID: 4645520067910830627}
   - component: {fileID: -628443732532457603}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BabyBatBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ MonoBehaviour:
   _Damage: 0
   _Speed: 0
   _transform: {fileID: 0}
-  _Player: 1
+  _BulletState: 0
   _Start: 1
 --- !u!58 &-628443732532457603
 CircleCollider2D:

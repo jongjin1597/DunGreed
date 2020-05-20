@@ -20,7 +20,7 @@ public class Kar98 : Longrange
             _Bullet.transform.SetParent(transform);
             //총알 발사하기 전까지는 비활성화 해준다.
             _Bullet.gameObject.SetActive(false);
-
+            _Bullet._BulletState = BulletState.Player;
             _BulletPoll.Add(_Bullet);
         }
         _Delay = 0.5f;
@@ -30,6 +30,7 @@ public class Kar98 : Longrange
         _MinAttackDamage = 27;//최소데미지
         _MaxAttackDamage = 35;//최대데미지
         _AttackSpeed = 0.87f;//공격속도
+
         _Quality = ItemQuality.Unique;//아이템등급    
         _ItemIcon = Resources.Load<Sprite>("Itemp/Crossbow/Kar98");//아이템 이미지
         _ItemPrice = 3000;//아이템가격
@@ -52,8 +53,8 @@ public class Kar98 : Longrange
 
         _BulletPoll[_CurBulletIndex].transform.position = Position;
 
-            _BulletPoll[_CurBulletIndex].transform.rotation = Quaternion.Euler(0f, 0f, _angle);
-
+        _BulletPoll[_CurBulletIndex].transform.rotation = Quaternion.Euler(0f, 0f, _angle);
+                _BulletPoll[_CurBulletIndex]._Start = true;
             _BulletPoll[_CurBulletIndex].gameObject.SetActive(true);
              StartCoroutine("ActiveBullet", _BulletPoll[_CurBulletIndex]);
             if (_CurBulletIndex >= _MaxBullet - 1)

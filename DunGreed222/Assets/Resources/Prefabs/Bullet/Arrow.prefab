@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 8807917143655594553}
   - component: {fileID: -1901116039063990433}
   - component: {fileID: 8068443511490378952}
-  m_Layer: 0
+  - component: {fileID: 2275991168471114899}
+  m_Layer: 12
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +99,7 @@ MonoBehaviour:
   _Damage: 0
   _Speed: 0
   _transform: {fileID: 0}
-  _Player: 1
+  _BulletState: 0
   _Start: 1
 --- !u!61 &8068443511490378952
 BoxCollider2D:
@@ -126,3 +127,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3125, y: 0.8125}
   m_EdgeRadius: 0
+--- !u!95 &2275991168471114899
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929193190522785281}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 44c6f3c081ab9fe48bcd51c567b9f3a6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

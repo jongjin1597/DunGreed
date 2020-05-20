@@ -96,7 +96,7 @@ public class SkelDog : cShortMonster
             {
                 int Attack = Random.Range(_MinAtteckDamage, _MaxAttackDamage);
                 int _dam = Attack - Player.GetInstance._Defense;
-                Player.GetInstance._health.MyCurrentValue -= _dam;              
+                Player.GetInstance.HIT(_dam);            
             }
 
             
@@ -111,6 +111,20 @@ public class SkelDog : cShortMonster
         if (collision.gameObject.CompareTag("Player"))
         {
             Attack();
+        }
+    }
+    public override void MonsterHIT(int dam, bool isCritical)
+    {
+        GameObject Dam = Instantiate(_Damage);
+        Dam.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 1, this.transform.position.z);
+        Dam.GetComponent<cDamageText>().SetDamage(dam, isCritical);
+        if (_currnetHP > 0)
+        {
+            _currnetHP -= dam;
+        }
+        else if (_currnetHP <= 0)
+        {
+            Destroy(this);
         }
     }
 }

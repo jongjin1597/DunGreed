@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 8357689517581956827}
   - component: {fileID: 5929324602719931675}
   - component: {fileID: 197405102551623524}
-  m_Layer: 0
+  - component: {fileID: 7260327000282354003}
+  m_Layer: 12
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,5 +125,24 @@ MonoBehaviour:
   _Damage: 0
   _Speed: 0
   _transform: {fileID: 0}
-  _Player: 1
+  _BulletState: 0
   _Start: 1
+--- !u!95 &7260327000282354003
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9187709396135293248}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9bd118f86a243ae48865aca88a7a5790, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
