@@ -51,7 +51,6 @@ public class cBossSword : MonoBehaviour
     {
         if (collision.gameObject.tag == "floor" || collision.gameObject.tag == "Wall")
         {
-
             _Start = false;
         }
     }
