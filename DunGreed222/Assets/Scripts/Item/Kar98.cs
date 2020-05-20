@@ -34,12 +34,10 @@ public class Kar98 : Longrange
         _Quality = ItemQuality.Unique;//아이템등급    
         _ItemIcon = Resources.Load<Sprite>("Itemp/Crossbow/Kar98");//아이템 이미지
         _ItemPrice = 3000;//아이템가격
-
+        _SkillText = "다음 한발의 총알의 공격력이 아주강해집니다.";
 
     }
 
-    public override void Skill()
-    { }
 
     //총알 발사
    public override  void FireBulet(Vector2 Position, float _angle)
@@ -72,5 +70,22 @@ public class Kar98 : Longrange
     {
         yield return new WaitForSeconds(3.0f);
         Bullet.gameObject.SetActive(false);
+    }
+    public override void Skill()
+    {
+        if (_Skill)
+        {
+            StartCoroutine("SkillCourutin");
+        }
+    }
+    IEnumerator SkillCourutin()
+    {
+        _Skill = false;
+        cBullet Bullet= _BulletPoll[_CurBulletIndex];
+        Bullet._Damage += 30;
+         yield return new WaitForSeconds(30.0f);
+
+        Bullet._Damage -= 30; 
+        _Skill = true;
     }
 }

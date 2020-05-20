@@ -18,11 +18,39 @@ public class Berdysh : Shortrange
         _Quality = ItemQuality.Rare;//아이템등급    
         _ItemIcon = Resources.Load<Sprite>("Itemp/Berdysh");//아이템 이미지
         _ItemPrice = 1000;//아이템가격
+        _SkillText = "15초 동안 공격속도 증가";
     }
-
-public override void Skill()
+    public override void Attack(cMonsterBase Monster)
     {
+        int randomDamage = Random.Range((int)Player.GetInstance._MinDamage, (int)Player.GetInstance._MaxDamage);
+        if (Player.GetInstance.isCritical())
+        {
+            _Dam = (randomDamage - Monster._Defense) + (int)((float)randomDamage * ((float)Player.GetInstance._CriticalDamage / 100.0f))
+                + (int)((float)randomDamage * ((float)Player.GetInstance._Power / 100));
+            Monster.MonsterHIT(_Dam, true);
+        }
+        else
+        {
+            _Dam = (randomDamage - Monster._Defense) + (int)((float)randomDamage * ((float)Player.GetInstance._Power / 100));
+            Monster.MonsterHIT(_Dam, false);
+        }
 
+    }
+    public override void Skill()
+    {
+        if (_Skill)
+        {
+            StartCoroutine("SkillCourutin");
+        }
+        }
+    IEnumerator SkillCourutin()
+    {
+        _Skill = false;
+        Player.GetInstance.SetAttackSpeed(25);
+        yield return new WaitForSeconds(15.0f);
+
+        Player.GetInstance.SetAttackSpeed(-25);
+        _Skill = true;
     }
 
 }

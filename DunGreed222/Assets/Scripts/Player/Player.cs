@@ -29,8 +29,8 @@ public class Player : cCharacter
     //방어력세팅
     public float Defense { set { value = _Defense; } }
     //공격력세팅
-    public int _MinDamage { get { return _MinAtteckDamage; } set { _MinAtteckDamage=value ; } }
-    public int _MaxDamage { get { return _MaxAttackDamage; } set { _MaxAttackDamage=value; } }
+    public int _MinDamage { get { return _MinAtteckDamage; } set { _MinAtteckDamage = value; } }
+    public int _MaxDamage { get { return _MaxAttackDamage; } set { _MaxAttackDamage = value; } }
     //이동
     float _horizontalMove;
     //점프파워
@@ -42,24 +42,29 @@ public class Player : cCharacter
     //대쉬잔상
     private ParticleSystem _DashEffect;
     //최대대시횟수
-    private int _DashCount=3;
+    private int _DashCount = 3;
     //최대 점프횟수
     private int _JumpCount = 2;
     //점프상태
     private bool _isJump = false;
     //대시카운트 충전용시간
-    private float _Time=0f;
+    private float _Time = 0f;
     //마우스포지션
     private Vector2 _MousePosition;
     //발판
     public BoxCollider2D foot;
-  //  private Transform _WeaPon;
-  //크리티컬확률
+
+    private cWeaPon _WeaPon;
+    //크리티컬확률
     public int _Critical;
     //크리티컬데미지
     public int _CriticalDamage;
-
+    //위력
+    public float _Power;
+    //플레이어 회전하기위한 변수
     private bool _isPosition = false;
+    //플레이어 데미지 입는변수
+    private bool _isCrash = true;
     protected override void Awake()
     {
         //_health.Initialize(_InitHealth, _InitHealth);
@@ -69,7 +74,7 @@ public class Player : cCharacter
             _instacne = this;
             DontDestroyOnLoad(gameObject);
             _currnetHP = 80;
-      
+
             _health.Initialize(_currnetHP, _currnetHP);
             _Rigidbody = gameObject.GetComponent<Rigidbody2D>();
             _DashEffect = transform.GetChild(5).GetComponent<ParticleSystem>();
@@ -77,9 +82,9 @@ public class Player : cCharacter
             _Critical = 20;
             _CriticalDamage = 50;
             _JumpPower = 3;
-           // _WeaPon = transform.GetChild(3).GetChild(1);
+            _WeaPon = transform.GetChild(3).GetChild(1).GetComponent<cWeaPon>();
         }
-        else if(_instacne != null)
+        else if (_instacne != null)
         {
             Destroy(this.gameObject);
         }
@@ -144,15 +149,15 @@ public class Player : cCharacter
                     transform.rotation = Quaternion.Euler(0, 180, 0);
                     //_WeaPon.localRotation = Quaternion.Euler(-180, 0, 0);
                     _isPosition = false;
-                 }
-           }
+                }
+            }
             else if (_MousePosition.x > transform.position.x)
             {
                 if (!_isPosition)
                 {
                     transform.rotation = Quaternion.identity;
 
-                   //_WeaPon.localRotation = Quaternion.Euler(0, 0, 0);
+                    //_WeaPon.localRotation = Quaternion.Euler(0, 0, 0);
                     _isPosition = true;
                 }
             }
@@ -180,12 +185,12 @@ public class Player : cCharacter
 
     private void FixedUpdate()
     {
-        
-        Debug.DrawRay(_Rigidbody.position, Vector3.down *2 , new Color(0, 1, 0));
+
+        Debug.DrawRay(_Rigidbody.position, Vector3.down * 2, new Color(0, 1, 0));
 
         if (_Rigidbody.velocity.y < 0)
         {
-            RaycastHit2D rayHit = Physics2D.Raycast(_Rigidbody.position, Vector3.down *2.5f, 1, LayerMask.GetMask("floor"));
+            RaycastHit2D rayHit = Physics2D.Raycast(_Rigidbody.position, Vector3.down * 2.5f, 1, LayerMask.GetMask("floor"));
             if (rayHit.collider != null)
             {
                 if (rayHit.distance < 1.2f)
@@ -197,10 +202,10 @@ public class Player : cCharacter
         }
         Jump();
         Move();
-     
+
         if (Input.GetMouseButtonDown(1))
         {
-        
+
             if (_DashCount != 0)
             {
                 StartCoroutine("Dash");
@@ -218,8 +223,8 @@ public class Player : cCharacter
 
         _state = State.Move;
 
-        _Rigidbody.AddForce(Vector2.right * _horizontalMove*2, ForceMode2D.Impulse);
-        if(_Rigidbody.velocity.x> _MoveSpeed)
+        _Rigidbody.AddForce(Vector2.right * _horizontalMove * 2, ForceMode2D.Impulse);
+        if (_Rigidbody.velocity.x > _MoveSpeed)
         {
             _Rigidbody.velocity = new Vector2(_MoveSpeed, _Rigidbody.velocity.y);
         }
@@ -227,7 +232,7 @@ public class Player : cCharacter
         {
             _Rigidbody.velocity = new Vector2(_MoveSpeed * (-1), _Rigidbody.velocity.y);
         }
-        if(_horizontalMove ==0)
+        if (_horizontalMove == 0)
         {
             _Rigidbody.velocity = new Vector2(0, _Rigidbody.velocity.y);
         }
@@ -241,12 +246,12 @@ public class Player : cCharacter
         {
             return;
         }
-        
+
         _state = State.Jump;
         _Rigidbody.velocity = Vector3.zero;
         _Rigidbody.AddForce(Vector2.up * _JumpPower, ForceMode2D.Impulse);
         _Anim.SetBool("Jump", true);
-        _JumpCount -= 1;      
+        _JumpCount -= 1;
         _isJump = false;
         _state = State.Idle;
     }
@@ -281,7 +286,7 @@ public class Player : cCharacter
             }
             _Dash.SetEnabledfasle(_DashCount - 1);
             _DashCount -= 1;
-  
+
             _state = State.Idle;
         }
     }
@@ -317,9 +322,17 @@ public class Player : cCharacter
 
     public override void HIT(int dam)
     {
-        _health.MyCurrentValue -= dam;
-
+        if (_isCrash)
+        {
+            _health.MyCurrentValue -= dam;
+            _isCrash = false;
+            Invoke("SetCrash", 0.1f);
+        }
     }
+    private void SetCrash()
+    {
+        _isCrash = true;
+}
     public bool isCritical()
     {
         float Critical;
@@ -332,5 +345,10 @@ public class Player : cCharacter
         {
             return false;
         }
+    }
+    public void SetAttackSpeed(float AttackSpeed)
+    {
+        
+        _WeaPon._Speed(AttackSpeed);
     }
 }

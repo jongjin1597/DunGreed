@@ -18,9 +18,11 @@ public class cItemPanel : MonoBehaviour
     public Text   _ItemQuality;
     //아이템 이미지
     public Image _Icon;
+    //스킬 설명
+    public Text _SkillText;
     //판넬 세팅
     public void SetPanel
-        (string ItemName, float MinDamage, float MaxDamage, float Speed, string ItemDescrlption, string ItemType, string ItemQuality, Sprite Icon)
+        (string ItemName, float MinDamage, float MaxDamage, float Speed, string ItemDescrlption, string ItemType, string ItemQuality, Sprite Icon,string SkillText)
     {
         //아이템 등급에 따라 이름색변경
         if (ItemQuality == "전설 아이템")
@@ -42,5 +44,6 @@ public class cItemPanel : MonoBehaviour
         _ItemType.text = "<color=#8c8c8c>" + ItemType+"</color>";
         _ItemQuality.text = "<color=#8c8c8c>" + ItemQuality+"</color>";
         _Icon.sprite = Icon;
+        _SkillText.text = SkillText;
     }
 }

@@ -53,11 +53,11 @@ public class cBullet : MonoBehaviour
                 int dam = _Damage - Monster._Defense;
                 if (Player.GetInstance.isCritical())
                 {
-                    dam = (dam - Monster._Defense) + (dam * (Player.GetInstance._CriticalDamage / 100));
+                    dam = (dam - Monster._Defense) + (dam * (Player.GetInstance._CriticalDamage / 100)) + (int)((float)dam * ((float)Player.GetInstance._Power / 100));
                 }
                 else if (!Player.GetInstance.isCritical())
                 {
-                    dam = (dam - Monster._Defense);
+                    dam = (dam - Monster._Defense) + (int)((float)dam * ((float)Player.GetInstance._Power / 100));
                 }
        
                 Monster.HIT(dam);
