@@ -2,40 +2,66 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkelBoss : cLongLangeMonster
+public class SkelBoss : cBossMonster
 {
     public float shootDelay = 4f; //총알 딜레이
     float shootTimer = 0; //총알 타이머
     public Transform BossBack;
-    private float _RotateZ;
-
-    float _BulletAngle;
+    int SwordX = 0;
+    
     protected override void Awake()
     {
         base.Awake();
-        _MaxBullet =120;
+        _MaxBullet = 120;
         for (int i = 0; i < _MaxBullet; ++i)
         {
             GameObject obj = Instantiate(Resources.Load("Prefabs/Boss/BossBullet")) as GameObject;
             cBullet _Bullet = obj.GetComponent<cBullet>();
             _Bullet._Speed = 5.0f;
-            //_Bullet._Damage = Random.Range(11, 14);
+
             _Bullet._BulletState = BulletState.Boss;
-            //총알 발사하기 전까지는 비활성화 해준다.
+
             _Bullet.transform.SetParent(BossBack);
             _Bullet.gameObject.SetActive(false);
 
             _BulletPoll.Add(_Bullet);
         }
-    }   
 
-  IEnumerator AnimationEvent()
+        _MaxBossSword = 5;
+        for (int i = 0; i < _MaxBossSword; ++i)
+        {
+            GameObject obj = Instantiate(Resources.Load("Prefabs/Boss/BossSword")) as GameObject;
+            cBossSword _Sword = obj.GetComponent<cBossSword>();
+            _Sword._Speed = 20.0f;
+            //_Bullet._Damage = Random.Range(11, 14);
+            //총알 발사하기 전까지는 비활성화 해준다.
+            _Sword.transform.SetParent(transform);
+            _Sword.gameObject.SetActive(false);
+
+            _BossSwordPoll.Add(_Sword);
+        }
+
+    }
+
+    private void Start()
     {
-        _Anim.speed = 0;
+       
+        Vector3 dirVec = new Vector3(BossBack.transform.position.x + -4, BossBack.transform.position.y + 5, 0);
+       
+        StartCoroutine(FireSword(dirVec));
+    }
+
+
+    private void Update()
+    {
+       
+    }
+
+    IEnumerator AnimationEvent()
+    {
+        float _BulletAngle = 0;
         for (int j = 0; j < 30; ++j)
         {
-
-
             for (int i = 0; i < 4; ++i)
             {
                 Vector3 dirVec = BossBack.transform.position;
@@ -45,8 +71,7 @@ public class SkelBoss : cLongLangeMonster
             }
             yield return new WaitForSeconds(0.2f);
             _BulletAngle += 5;
-        }
-        _Anim.speed = 1;
+        }    
      }
     
     public void FireBulet(Vector3 Dir, float _angle)
@@ -57,7 +82,6 @@ public class SkelBoss : cLongLangeMonster
             return;
         }
 
-
         _BulletPoll[_CurBulletIndex].transform.position = Dir;
 
         _BulletPoll[_CurBulletIndex].transform.rotation = Quaternion.Euler(0f, 0f, _angle);
@@ -66,19 +90,44 @@ public class SkelBoss : cLongLangeMonster
 
         StartCoroutine("ActiveBullet", _BulletPoll[_CurBulletIndex]);
         if (_CurBulletIndex >= _MaxBullet - 1)
-        {
+        {          
             _CurBulletIndex = 0;
         }
         else
         {
             _CurBulletIndex++;
         }
-
     }
 
+    IEnumerator FireSword(Vector3 Dir)
+    {
+        _BossSwordPoll[_CurBossSwordIndex].transform.position = Dir;
+        
+
+
+        _BossSwordPoll[_CurBossSwordIndex].gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(0.2f);
+        //StartCoroutine("ActiveSword", _BossSwordPoll[_CurBossSwordIndex]);
+        if (_CurBossSwordIndex >= _MaxBossSword - 1)
+        {
+            SwordX = 0;
+            _CurBossSwordIndex = 0;
+        }
+        else
+        {
+            SwordX += 2;
+            Vector3 dirVec = new Vector3(BossBack.transform.position.x + -4 + SwordX, BossBack.transform.position.y + 5, 0);
+            _CurBossSwordIndex++;
+            StartCoroutine(FireSword(dirVec));           
+        }
+
+    }
+    
     IEnumerator ActiveBullet(cBullet Bullet)
     {
         yield return new WaitForSeconds(3.0f);
-        _BulletPoll[_CurBulletIndex].gameObject.SetActive(false);
+        Bullet.gameObject.SetActive(false);
     }
+
 }
