@@ -12,16 +12,15 @@ public class BigSkel : cShortMonster
     float speed = 2f;
 
     float Chack = 0f;
-
+    BoxCollider2D _AttackBox;
     // Start is called before the first frame update
     protected override void Awake()
     {
         base.Awake();
-
+        _AttackBox = transform.GetChild(2).GetComponent<BoxCollider2D>();
         _rigid = GetComponent<Rigidbody2D>();
         _Anim = GetComponent<Animator>();
-        //_Renderer = GetComponentInChildren<SpriteRenderer>();
-        //Footbox = gameObject.GetComponentInChildren<GameObject>();
+
         _Anim.SetBool("Run", true);
     }
 
@@ -42,28 +41,55 @@ public class BigSkel : cShortMonster
 
         if (Player.GetInstance.transform.position.x < this.transform.position.x)
         {
-            _Renderer.flipX = true;
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+            _HPBarBackGround.transform.rotation = Quaternion.identity;
         }
-        if (Player.GetInstance.transform.position.x > this.transform.position.x)
+        else if (Player.GetInstance.transform.position.x > this.transform.position.x)
         {
-            _Renderer.flipX = false;
+            transform.rotation = Quaternion.identity;
+            _HPBarBackGround.transform.rotation = Quaternion.Euler(0,180,0);
         }
 
 
     }
-
-
-    void OnTriggerStay2D(Collider2D other)
+    void Attack()
     {
         if (Chack >= 4f)
         {
-            if (other.gameObject.CompareTag("Player"))
-            {
-                _Anim.SetTrigger("Attack");                
-            }
+            _AttackBox.enabled = true;
+            StartCoroutine(BoxEnabled());
+                _Anim.SetTrigger("Attack");
             Chack = 0;
         }
     }
+    IEnumerator BoxEnabled()
+    {
+        yield return new WaitForSeconds(0.5f);
+        _AttackBox.enabled = false;
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            if (_AttackBox.enabled)
+            {
+                int Attack = Random.Range(_MinAtteckDamage, _MaxAttackDamage);
+                int _dam = Attack - Player.GetInstance._Defense;
+                Player.GetInstance.HIT(_dam);
+                _AttackBox.enabled = false;
+            }
+
+
+        }
+    }
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+
+            Attack();
+        }
+        }
     public override void MonsterHIT(int dam, bool isCritical)
     {
         base.MonsterHIT(dam, isCritical);

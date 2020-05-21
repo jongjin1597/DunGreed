@@ -4,6 +4,7 @@ using UnityEngine;
 public enum BulletState
 {
     Player,
+    PlayerSniper,
     Monster,
     Boss
 }
@@ -50,20 +51,32 @@ public class cBullet : MonoBehaviour
             {
                 cMonsterBase Monster;
                 Monster = collision.GetComponent<cMonsterBase>();
-                int dam = _Damage - Monster._Defense;
+               int RandomDamage = _Damage+Random.Range((int)Player.GetInstance._MinDamage, (int)Player.GetInstance._MaxDamage + 1);
+   
                 if (Player.GetInstance.isCritical())
                 {
-                    dam = (dam - Monster._Defense) + (dam * (Player.GetInstance._CriticalDamage / 100)) + (int)((float)dam * ((float)Player.GetInstance._Power / 100));
+                    _Damage = (RandomDamage - Monster._Defense) + (int)((float)RandomDamage * ((float)Player.GetInstance._CriticalDamage / 100.0f))
+                        + (int)((float)RandomDamage * ((float)Player.GetInstance._Power / 100));
+                    if (_Damage < 1)
+                    {
+                        _Damage = 1;
+                    }
+                    Monster.MonsterHIT(_Damage, true);
                 }
-                else if (!Player.GetInstance.isCritical())
+                else
                 {
-                    dam = (dam - Monster._Defense) + (int)((float)dam * ((float)Player.GetInstance._Power / 100));
+                    _Damage = (RandomDamage - Monster._Defense) + (int)((float)RandomDamage * ((float)Player.GetInstance._Power / 100));
+                    if (_Damage < 1)
+                    {
+                        _Damage = 1;
+                    }
+                    Monster.MonsterHIT(_Damage, false);
                 }
-       
-                Monster.HIT(dam);
                 _Anim.SetTrigger("Fire");
-                _Start = false;
 
+                this._Damage = 0;
+                if(_BulletState!=BulletState.PlayerSniper)
+                    _Start = false;
             }
         }
         else if (_BulletState == BulletState.Monster)

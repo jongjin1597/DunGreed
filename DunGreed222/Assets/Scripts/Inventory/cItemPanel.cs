@@ -22,6 +22,8 @@ public class cItemPanel : MonoBehaviour
     public Text _SkillText;
     //스킬아이콘
     public Image _SkillIcon;
+    //스킬설명창
+    public GameObject _SkillDescrlption;
     //판넬 세팅
     public void SetPanel
         (string ItemName, float MinDamage, float MaxDamage, float Speed, string ItemDescrlption, string ItemType, string ItemQuality, Sprite Icon,string SkillText,Sprite Skillicon)
@@ -46,7 +48,15 @@ public class cItemPanel : MonoBehaviour
         _ItemType.text = "<color=#8c8c8c>" + ItemType+"</color>";
         _ItemQuality.text = "<color=#8c8c8c>" + ItemQuality+"</color>";
         _Icon.sprite = Icon;
-        _SkillText.text = "<color=#FFFFFF>" + SkillText + "</color>";
-        _SkillIcon.sprite = Skillicon;
+        if (Skillicon == null)
+        {
+            _SkillDescrlption.SetActive(false);
+        }
+        else if (Skillicon != null)
+        {
+          
+            _SkillText.text = "<color=#FFFFFF>" + SkillText + "</color>";
+            _SkillIcon.sprite = Skillicon;
+        }
     }
 }

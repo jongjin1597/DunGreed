@@ -234,7 +234,7 @@ MonoBehaviour:
   _HPBarBackGround: {fileID: 0}
   _HPBar: {fileID: 0}
   shootDelay: 4
-  Skel: {fileID: 0}
+  Skel: {fileID: 7202947144607502585}
   _Radius: 0.5
 --- !u!1 &7202947143809792702
 GameObject:

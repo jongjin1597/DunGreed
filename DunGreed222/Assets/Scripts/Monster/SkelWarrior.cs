@@ -16,11 +16,11 @@ public class SkelWarrior : cShortMonster
     //float attackDelay = 3f; //런 딜레이
     //float attackTimer = 0; //런 타이머
     public float _Radius;
-
+    BoxCollider2D _AttackBox;
     protected override void Awake()
     {
         base.Awake();
-
+        _AttackBox = transform.GetChild(3).GetComponent<BoxCollider2D>();
         _rigid = GetComponent<Rigidbody2D>();
     }
     private void Update()
@@ -32,16 +32,15 @@ public class SkelWarrior : cShortMonster
         {
             _rigid.velocity = new Vector2(dir.normalized.x * speed, _rigid.position.y);           
         }
-
         if (Player.GetInstance.transform.position.x < this.transform.position.x)
         {
-            _Renderer.flipX = true;
-            sword.GetComponent<SpriteRenderer>().flipX = true;
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+            _HPBarBackGround.transform.rotation = Quaternion.identity;
         }
-        if (Player.GetInstance.transform.position.x > this.transform.position.x)
+        else   if (Player.GetInstance.transform.position.x > this.transform.position.x)
         {
-            _Renderer.flipX = false;
-            sword.GetComponent<SpriteRenderer>().flipX = false;
+            transform.rotation = Quaternion.identity;
+            _HPBarBackGround.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
 
 
@@ -49,26 +48,53 @@ public class SkelWarrior : cShortMonster
         sword.transform.position = this.transform.position + (SwordDir.normalized * _Radius);
 
     }
-
-
-    void OnTriggerStay2D(Collider2D other)
+    void Attack()
     {
         if (Chack >= 4f)
         {
-            if (other.gameObject.CompareTag("Player"))
-            {
+            _AttackBox.enabled = true;
+            StartCoroutine(BoxEnabled());
                 attack = true;
                 float swordZ = -120;
                 if (sword.GetComponent<SpriteRenderer>().flipX == true)
                 {
-                    swordZ *= -1;                 
+                    swordZ *= -1;
                 }
                 sword.transform.Rotate(new Vector3(0, 0, swordZ), Space.Self);
-            }
+            
             Invoke("swordRotate", 0.5f);
             Chack = 0;
             attack = false;
         }
+    }
+    IEnumerator BoxEnabled()
+    {
+        yield return new WaitForSeconds(0.5f);
+        _AttackBox.enabled = false;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (_AttackBox.enabled)
+            {
+                int Attack = Random.Range(_MinAtteckDamage, _MaxAttackDamage);
+                int _dam = Attack - Player.GetInstance._Defense;
+                Player.GetInstance.HIT(_dam);
+                _AttackBox.enabled = false;
+            }
+
+
+        }
+    }
+    void OnTriggerStay2D(Collider2D other)
+    {
+     
+            if (other.gameObject.CompareTag("Player"))
+            {
+            Attack();
+            }
+
     }
 
     void swordRotate()

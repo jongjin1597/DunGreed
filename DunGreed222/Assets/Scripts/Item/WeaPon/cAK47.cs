@@ -16,7 +16,7 @@ public class cAK47: Longrange
            GameObject obj = Instantiate(Resources.Load("Prefabs/Bullet/Bullet")) as GameObject;
             cBullet _Bullet = obj.GetComponent<cBullet>();
             _Bullet._Speed = 30.0f;
-            _Bullet._Damage = Random.Range(5,10);
+            _Bullet._Damage = 0;
             _Bullet.transform.SetParent(transform);
             //총알 발사하기 전까지는 비활성화 해준다.
             _Bullet.gameObject.SetActive(false);
@@ -36,7 +36,8 @@ public class cAK47: Longrange
         _ItemPrice = 2000;//아이템가격
         _SkillText = "30초간 이동속도 대폭 증가";
         _SkillIcon = Resources.Load<Sprite>("Skill/Skill_WindForce");//아이템 이미지
-        _SkillCollTime = 45;
+        _SkillCoolTime = 45;
+        _ReloadTime = 0.5f;
 
     }
     //총알 발사
@@ -47,10 +48,9 @@ public class cAK47: Longrange
 
 
     }
-    IEnumerator ActiveBullet(cBullet Bullet)
+    public override void Reload()
     {
-        yield return new WaitForSeconds(3.0f);
-        Bullet.gameObject.SetActive(false);
+        base.Reload();
     }
 
     public override void Skill()

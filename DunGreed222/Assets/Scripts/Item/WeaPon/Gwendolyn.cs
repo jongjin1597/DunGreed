@@ -20,7 +20,7 @@ public class Gwendolyn : Shortrange
         _ItemPrice = 2000;//아이템가격
         _SkillText = "30초간 크리티컬 데미지 증가";
         _SkillIcon = Resources.Load<Sprite>("UI/Stat/CritcalDamage");
-        _SkillCollTime = 40;
+        _SkillCoolTime = 40;
     }
     public override void Attack(cMonsterBase Monster)
     {

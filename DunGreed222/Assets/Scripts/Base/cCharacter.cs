@@ -10,7 +10,7 @@ public class cCharacter : MonoBehaviour
     public int _MinAtteckDamage;//최소공격력
     public int _MaxAttackDamage;//최대공격력
     public float _MoveSpeed;//이동속도
-    public int _Defense;//방어력
+    public int _Defense=0;//방어력
     protected SpriteRenderer _Renderer;
     protected Animator _Anim;
     protected virtual void Awake()

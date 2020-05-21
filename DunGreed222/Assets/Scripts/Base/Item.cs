@@ -33,7 +33,8 @@ public class Item : MonoBehaviour
     public int _Dam                                  ;              //공격데미지
     public bool _Skill=true                          ;              //스킬사용가능여부
     public Sprite _SkillIcon                         ;              //스킬이미지
-    public float _SkillCollTime                      ;              //스킬쿨타임   
+    public float _SkillCoolTime                      ;              //스킬쿨타임  
+    public float _NowCoolTIme;                                      //쿨타임이 얼마나 돌아갔나여부
     public virtual void Skill() { }
 
 
@@ -45,7 +46,7 @@ public class Shortrange : Item
     { }
     public virtual void Attack(cMonsterBase Monster)
     {
-        int randomDamage = Random.Range((int)Player.GetInstance._MinDamage, (int)Player.GetInstance._MaxDamage);
+        int randomDamage = Random.Range((int)Player.GetInstance._MinDamage, (int)Player.GetInstance._MaxDamage+1);
         if (Player.GetInstance.isCritical())
         {
             _Dam = (randomDamage - Monster._Defense) + (int)((float)randomDamage * ((float)Player.GetInstance._CriticalDamage / 100.0f))
@@ -67,10 +68,18 @@ public class Longrange : Item
     public float _Delay;
     protected int _MaxBullet;
     protected int _CurBulletIndex = 0;     //현재 장전된 총알의 인덱스
-    
+    protected float _ReloadTime;
     public override void Skill()
     { }
-
+    public virtual void Reload()
+    {
+        StartCoroutine(ReloadCourutin());
+    }
+    IEnumerator ReloadCourutin()
+    {
+        yield return new WaitForSeconds(_ReloadTime);
+        _CurBulletIndex = 0;
+    }
     public virtual void FireBulet(Vector2 Position, float _angle)
     {
         //발사되어야할 순번의 총알이 이전에 발사한 후로 아직 날아가고 있는 중이라면, 발사를 못하게 한다.
@@ -87,11 +96,16 @@ public class Longrange : Item
         StartCoroutine("ActiveBullet", _BulletPoll[_CurBulletIndex]);
         if (_CurBulletIndex >= _MaxBullet - 1)
         {
-            _CurBulletIndex = 0;
+            StartCoroutine(ReloadCourutin());
         }
         else
         {
             _CurBulletIndex++;
         }
+    }
+    IEnumerator ActiveBullet(cBullet Bullet)
+    {
+        yield return new WaitForSeconds(3.0f);
+        Bullet.gameObject.SetActive(false);
     }
 }
