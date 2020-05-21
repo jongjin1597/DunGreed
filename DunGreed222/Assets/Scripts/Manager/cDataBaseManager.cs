@@ -29,14 +29,14 @@ public class cDataBaseManager : cSingleton<cDataBaseManager>
         _ItemList.Add(this.gameObject.AddComponent<cMT8>());
         //음식 
         _FoodList.Add(new cFood("계란후라이", "위력", 10.0f, "최대 체력", 8, 60, 450, 6, Resources.Load<Sprite>("UI/food/02_FriedEgg")));
-        _FoodList.Add(new cFood("디럭스 버거", "위력", 5.0f, "방어력", 4, 55, 340, 8, Resources.Load<Sprite>("UI/food/09_DeluxeBurger")));
+        _FoodList.Add(new cFood("디럭스 버거", "위력", 5.0f, "방어력", 2, 55, 340, 8, Resources.Load<Sprite>("UI/food/09_DeluxeBurger")));
         _FoodList.Add(new cFood("매운 소스 미트볼", "위력", 20.0f, " ", 0, 40, 500, 10, Resources.Load<Sprite>("UI/food/98_HotMeatball")));
-        _FoodList.Add(new cFood("초콜릿 쿠키", "최대 체력", 8.0f, "방어력", 5, 43, 400, 4, Resources.Load<Sprite>("UI/food/10_ChocolateCookie")));
-        _FoodList.Add(new cFood("야채 살사 수프", "방어력", 20.0f, " ", 0, 60, 550, 6, Resources.Load<Sprite>("UI/food/07_VegetableSalsaSoup")));
+        _FoodList.Add(new cFood("초콜릿 쿠키", "최대 체력", 8.0f, "방어력", 1, 43, 400, 4, Resources.Load<Sprite>("UI/food/10_ChocolateCookie")));
+        _FoodList.Add(new cFood("야채 살사 수프", "방어력", 3f, " ", 0, 60, 550, 6, Resources.Load<Sprite>("UI/food/07_VegetableSalsaSoup")));
         _FoodList.Add(new cFood("양파 수프", "최대 체력", 20.0f, " ", 0, 70, 520, 10, Resources.Load<Sprite>("UI/food/05_OnionSoup")));
-        //_FoodList.Add(new cFood("계란후라이", "위력", 10.0f, "최대 체력", 8, 60, 450, 6, Resources.Load<Sprite>("UI/food/02_FriedEgg")));
-        //_FoodList.Add(new cFood("계란후라이", "위력", 10.0f, "최대 체력", 8, 60, 450, 6, Resources.Load<Sprite>("UI/food/02_FriedEgg")));
-        //_FoodList.Add(new cFood("계란후라이", "위력", 10.0f, "최대 체력", 8, 60, 450, 6, Resources.Load<Sprite>("UI/food/02_FriedEgg")));
+        _FoodList.Add(new cFood("계란후라이", "크리티컬데미지", 20.0f, " ", 0, 65, 700, 10, Resources.Load<Sprite>("UI/food/02_FriedEgg")));
+        _FoodList.Add(new cFood("계란후라이", "크리티컬데미지", 10.0f, "위력", 10, 70, 1000, 8, Resources.Load<Sprite>("UI/food/02_FriedEgg")));
+        _FoodList.Add(new cFood("계란후라이", "방어력", 10.0f, "최대 체력", 3, 35, 800, 2, Resources.Load<Sprite>("UI/food/02_FriedEgg")));
 
     }
   

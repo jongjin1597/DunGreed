@@ -20,9 +20,11 @@ public class cItemPanel : MonoBehaviour
     public Image _Icon;
     //스킬 설명
     public Text _SkillText;
+    //스킬아이콘
+    public Image _SkillIcon;
     //판넬 세팅
     public void SetPanel
-        (string ItemName, float MinDamage, float MaxDamage, float Speed, string ItemDescrlption, string ItemType, string ItemQuality, Sprite Icon,string SkillText)
+        (string ItemName, float MinDamage, float MaxDamage, float Speed, string ItemDescrlption, string ItemType, string ItemQuality, Sprite Icon,string SkillText,Sprite Skillicon)
     {
         //아이템 등급에 따라 이름색변경
         if (ItemQuality == "전설 아이템")
@@ -38,12 +40,13 @@ public class cItemPanel : MonoBehaviour
             _ItemName.text = "<color=#FFFFFF>" + ItemName+"</color>";
         }
         //아이템 세부 세팅
-        _Damage.text = "공격력 : "+ "<color=#ff0000>"+MinDamage +" ~ "+ MaxDamage + "</color>";
-        _Speed.text ="공격 속도 : "+"<color=#ff0000>" + Speed+ "</color>";
+        _Damage.text = "<color=#ffffff>"+"공격력 : "+ "</color>" + "<color=#ff0000>"+MinDamage +" ~ "+ MaxDamage + "</color>";
+        _Speed.text = "<color=#ffffff>" + "공격속도 : " + "</color>" + "<color=#ff0000>" + Speed+ "</color>";
         _ItemDescrlption.text ="<color=#46BEFF>"+ItemDescrlption+"</color>";
         _ItemType.text = "<color=#8c8c8c>" + ItemType+"</color>";
         _ItemQuality.text = "<color=#8c8c8c>" + ItemQuality+"</color>";
         _Icon.sprite = Icon;
-        _SkillText.text = SkillText;
+        _SkillText.text = "<color=#FFFFFF>" + SkillText + "</color>";
+        _SkillIcon.sprite = Skillicon;
     }
 }

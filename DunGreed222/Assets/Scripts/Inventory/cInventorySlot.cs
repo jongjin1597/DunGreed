@@ -70,7 +70,7 @@ public class cInventorySlot : MonoBehaviour,IDragHandler, IPointerExitHandler,IE
             {
                 _ItemQuality = "전설 아이템";
             }
-            _Panel.SetPanel(_item._ItemName, _item._MinAttackDamage, _item._MaxAttackDamage, _item._AttackSpeed, _item._ItemDescrIption, _ItemType, _ItemQuality, _item._ItemIcon,_item._SkillText);
+            _Panel.SetPanel(_item._ItemName, _item._MinAttackDamage, _item._MaxAttackDamage, _item._AttackSpeed, _item._ItemDescrIption, _ItemType, _ItemQuality, _item._ItemIcon,_item._SkillText,_item._SkillIcon);
         }
     }
   
@@ -78,7 +78,7 @@ public class cInventorySlot : MonoBehaviour,IDragHandler, IPointerExitHandler,IE
     public void OnDrag(PointerEventData eventData)
     {
         if (transform.childCount > 0)
-            transform.GetChild(0).parent = cInventory.GetInstance._DraggingItem;
+            transform.GetChild(0).SetParent(cInventory.GetInstance._DraggingItem);
         cInventory.GetInstance._DraggingItem.GetChild(0).position = eventData.position;
     }
     //마우스가 슬롯위에있을때 아이템이있으면 판넬로 설명창 뛰움
@@ -88,7 +88,7 @@ public class cInventorySlot : MonoBehaviour,IDragHandler, IPointerExitHandler,IE
         if (_isItem)
         {
             _Panel.gameObject.SetActive(true);
-            _Panel.transform.parent = cInventory.GetInstance._GetPanel;
+            _Panel.transform.SetParent(cInventory.GetInstance._GetPanel);
         }
     }
 
@@ -105,19 +105,20 @@ public class cInventorySlot : MonoBehaviour,IDragHandler, IPointerExitHandler,IE
     public void OnEndDrag(PointerEventData eventData)
     {
         //아까 옮긴 아이템을 다시 자기자식으로 옮김
-        cInventory.GetInstance._DraggingItem.GetChild(0).parent = transform;
+        cInventory.GetInstance._DraggingItem.GetChild(0).SetParent(transform);
         transform.GetChild(0).localPosition = Vector3.zero;
         
         if (cInventory.GetInstance._EnteredSlot != null)
         {
             //레이캐스트 타겟을 켬
             transform.GetChild(0).GetComponent<Image>().raycastTarget = true;
-     //이동하는 슬롯이 무기슬롯이고 첫번째 무기슬롯일때 무기변경하고 현제 장착중인 무기도 변경
+         //이동하는 슬롯이 무기슬롯이고 첫번째 무기슬롯일때 무기변경하고 현제 장착중인 무기도 변경
             if (cInventory.GetInstance._EnteredSlot._SlotType == SlotType.Weapon && cInventory.GetInstance._EnteredSlot == cInventory.GetInstance.GetWeaponSlot(0))
             {
                 ChangeItem();
                 _Weapon.SetWeaPon(cInventory.GetInstance._EnteredSlot._item);
                 cUIManager.GetInstance.GetWeaPonSlot().SetItem();
+                cUIManager.GetInstance.GetSkill().SetImage(cInventory.GetInstance._EnteredSlot._item);
             }
             //1번 무기 슬롯에있는걸 2번무기슬롯이 비어있을때 이동안됨
             else if (this == cInventory.GetInstance.GetWeaponSlot(0)&& cInventory.GetInstance._EnteredSlot == cInventory.GetInstance.GetWeaponSlot(1)&& cInventory.GetInstance.GetWeaponSlot(1)._item._ItemIcon == null)

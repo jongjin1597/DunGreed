@@ -13,8 +13,8 @@ public class SkelWarrior : cShortMonster
     bool attack = false;
     float Chack = 0f;
 
-    float attackDelay = 3f; //런 딜레이
-    float attackTimer = 0; //런 타이머
+    //float attackDelay = 3f; //런 딜레이
+    //float attackTimer = 0; //런 타이머
     public float _Radius;
 
     protected override void Awake()
@@ -82,16 +82,7 @@ public class SkelWarrior : cShortMonster
     }
     public override void MonsterHIT(int dam, bool isCritical)
     {
-        GameObject Dam = Instantiate(_Damage);
-        Dam.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 1, this.transform.position.z);
-        Dam.GetComponent<cDamageText>().SetDamage(dam, isCritical);
-        if (_currnetHP > 0)
-        {
-            _currnetHP -= dam;
-        }
-        else if (_currnetHP <= 0)
-        {
-            Destroy(this);
-        }
+        base.MonsterHIT(dam, isCritical);
+
     }
 }

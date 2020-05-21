@@ -5,7 +5,7 @@ using UnityEngine;
 public class cAttack : MonoBehaviour
 {
     //애니메이터
-    Animator _Ani;
+  public  Animator _Ani;
     //검애니
     RuntimeAnimatorController _SwardAni;
     //창애니
@@ -61,10 +61,11 @@ public class cAttack : MonoBehaviour
     //몬스터 충돌체크
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if(collision.gameObject.CompareTag("MonsterHitBox"))
         {
-            cMonsterBase Monster = collision.GetComponent<cMonsterBase>();
-            _Nowitem.Attack(Monster);
+            //cMonsterBase Monster = collision.GetComponent<cMonsterBase>();
+            ((Shortrange)_Nowitem).Attack(collision.GetComponent<cMonsterBase>());
 
         }
     }

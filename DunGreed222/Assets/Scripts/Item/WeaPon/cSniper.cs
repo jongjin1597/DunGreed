@@ -7,9 +7,9 @@ public class cSniper : Longrange
 
     //float shootDelay = 0.5f;
 
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
+
         _MaxBullet = 1;
         for (int i = 0; i < _MaxBullet; ++i)
         {
@@ -35,51 +35,36 @@ public class cSniper : Longrange
         _Quality = ItemQuality.Normal;//아이템등급    
         _ItemIcon = Resources.Load<Sprite>("Itemp/MatchlockGun");//아이템 이미지
         _ItemPrice = 700;//아이템가격
-        _SkillText = "5초간 장전속도 증가";
-
+        _SkillText = "5초간 공격딜레이 감소";
+        _SkillIcon = Resources.Load<Sprite>("Skill/Skill_WindForce");//아이템 이미지
+        _SkillCollTime = 10;
     }
 
     public override void Skill()
     {
         if (_Skill)
         {
-            StartCoroutine("SkillCourutin");
+            StartCoroutine(SkillCourutin());
         }
     }
     IEnumerator SkillCourutin()
     {
         _Skill = false;
-      //  Player.GetInstance._Power += 30;
+        Player.GetInstance._Buff.SetTrigger("AttackSpeedBuff");
+        _Delay = 0.5f;
         yield return new WaitForSeconds(5.0f);
+        if (!_Skill)
+        {
 
-       // Player.GetInstance._Power -= 30;
-        _Skill = true;
+            _Delay = 1f;
+        Player.GetInstance._Buff.SetTrigger("BuffOff");
+        }
+
     }
     //총알 발사
     public override  void FireBulet(Vector2 Position, float _angle)
     {
-        //발사되어야할 순번의 총알이 이전에 발사한 후로 아직 날아가고 있는 중이라면, 발사를 못하게 한다.
-        if (_BulletPoll[_CurBulletIndex].gameObject.activeSelf)
-        {
-            return;
-        }
-
-
-        _BulletPoll[_CurBulletIndex].transform.position = Position;
-
-        _BulletPoll[_CurBulletIndex].transform.rotation = Quaternion.Euler(0f, 0f, _angle);
-        _BulletPoll[_CurBulletIndex]._Start = true;
-        _BulletPoll[_CurBulletIndex].gameObject.SetActive(true);
-             StartCoroutine("ActiveBullet", _BulletPoll[_CurBulletIndex]);
-            if (_CurBulletIndex >= _MaxBullet - 1)
-            {
-            _CurBulletIndex = 0;
-            }
-            else
-            {
-            _CurBulletIndex++;
-            }
-
+        base.FireBulet(Position, _angle);
 
     }
     IEnumerator ActiveBullet(cBullet Bullet)
@@ -87,4 +72,5 @@ public class cSniper : Longrange
         yield return new WaitForSeconds(3.0f);
         Bullet.gameObject.SetActive(false);
     }
+
 }

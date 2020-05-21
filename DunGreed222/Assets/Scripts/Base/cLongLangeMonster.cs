@@ -15,6 +15,6 @@ public class cLongLangeMonster : cMonsterBase
     }
     public override void MonsterHIT(int dam, bool isCritical)
     {
-
+        base.MonsterHIT(dam, isCritical);
     }
 }
