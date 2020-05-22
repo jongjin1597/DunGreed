@@ -18,36 +18,11 @@ public class Halberd : Shortrange
         _Quality = ItemQuality.Normal;//아이템등급    
         _ItemIcon = Resources.Load<Sprite>("Itemp/Halberd");//아이템 이미지
         _ItemPrice = 500;//아이템가격
-        _SkillText = "5초간 공격속도 대폭증가";
-        _SkillIcon = Resources.Load<Sprite>("Skill/Skill_SpearWhirl");//아이템 이미지
-        _SkillCollTime = 20;
-
+    
     }
     public override void Attack(cMonsterBase Monster)
     {
         base.Attack(Monster);
-
-    }
-    public override void Skill()
-    {
-        if (_Skill)
-        {
-            StartCoroutine(SkillCourutin());
-        }
-    }
-    IEnumerator SkillCourutin()
-    {
-        _Skill = false;
-        Player.GetInstance._Buff.SetTrigger("AttackSpeedBuff");
-        Player.GetInstance.SetAttackSpeed(50);
-        yield return new WaitForSeconds(5.0f);
-        if (!_Skill)
-        {
-            Player.GetInstance.SetAttackSpeed(-50);
-
-        Player.GetInstance._Buff.SetTrigger("BuffOff");
-        }
-
 
     }
   

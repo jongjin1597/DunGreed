@@ -148,7 +148,7 @@ MonoBehaviour:
   _MaxAttackDamage: 0
   _MoveSpeed: 0
   _Defense: 0
-  _Damage: {fileID: 0}
+  _Damage: {fileID: 7941767809467408299, guid: 2e7c885260713114d910e1e5f0c89fd0, type: 3}
   _HPBarBackGround: {fileID: 0}
   _HPBar: {fileID: 0}
   shootDelay: 4

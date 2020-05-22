@@ -18,34 +18,13 @@ public class Berdysh : Shortrange
         _Quality = ItemQuality.Rare;//아이템등급    
         _ItemIcon = Resources.Load<Sprite>("Itemp/Berdysh");//아이템 이미지
         _ItemPrice = 1000;//아이템가격
-        _SkillText = "15초 동안 공격속도 증가";
-        _SkillIcon = Resources.Load<Sprite>("Skill/Skill_SpearWhirl");
-        _SkillCollTime = 20.0f;
+ 
     }
     public override void Attack(cMonsterBase Monster)
     {
         base.Attack(Monster);
 
     }
-    public override void Skill()
-    {
-        if (_Skill)
-        {
-            StartCoroutine(SkillCourutin());
-        }
-        }
-    IEnumerator SkillCourutin()
-    {
-        _Skill = false;
-        Player.GetInstance._Buff.SetTrigger("AttackSpeedBuff");
-        Player.GetInstance.SetAttackSpeed(25);
-
-        yield return new WaitForSeconds(15.0f);
-        if (!_Skill)
-        {
-            Player.GetInstance.SetAttackSpeed(-25);
-        Player.GetInstance._Buff.SetTrigger("BuffOff");
-        }
-    }
+   
 
 }

@@ -14,10 +14,11 @@ public class Minotaurs : cShortMonster
     float attackDelay = 2f; //런 딜레이
     float attackTimer = 0; //런 타이머
 
+    BoxCollider2D _AttackBox;
     protected override void Awake()
     {
         base.Awake();
-
+        _AttackBox = transform.GetChild(2).GetComponent<BoxCollider2D>();
         _rigid = GetComponent<Rigidbody2D>();
     }
 
@@ -65,6 +66,8 @@ public class Minotaurs : cShortMonster
         {
             //if (other.gameObject.CompareTag("Player"))
             //{
+            _AttackBox.enabled = true;
+            StartCoroutine(BoxEnabled());
                 _Anim.SetBool("Run", true);
                 dir = (Player.GetInstance.transform.position - this.transform.position);
                 float dashSpeed = 1.5f;
@@ -77,9 +80,33 @@ public class Minotaurs : cShortMonster
             Chack = 0;
         }
     }
+    IEnumerator BoxEnabled()
+    {
+        yield return new WaitForSeconds(1f);
+        _AttackBox.enabled = false;
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if (other.gameObject.CompareTag("Player"))
+        {
+            if (_AttackBox.enabled)
+            {
+                int Attack = Random.Range(_MinAtteckDamage, _MaxAttackDamage);
+                int _dam = Attack - Player.GetInstance._Defense;
+                Player.GetInstance.HIT(_dam);
+                _AttackBox.enabled = false;
+            }
+
+
+        }
+    }
+    void OnTriggerStay2D(Collider2D other)
+    {
+        //공격판정 스타트용
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Dash();
+        }
     }
     public override void MonsterHIT(int dam, bool isCritical)
     {

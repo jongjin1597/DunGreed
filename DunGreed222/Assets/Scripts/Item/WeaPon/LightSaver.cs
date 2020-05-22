@@ -18,7 +18,7 @@ public class LightSaver : Shortrange
         _Quality = ItemQuality.Unique;//아이템등급
         _ItemPrice = 2000;//아이템가격
         _SkillText = "방어력 무시데미지를 넣는다.";
-        _SkillCollTime = 0;
+        _SkillCoolTime = 0;
 
     }
     //방무뎀 때문에 따로해둠

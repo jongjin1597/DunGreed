@@ -10,9 +10,11 @@ public class LittleGhost : cShortMonster
     public float attackDelay = 4f; //어택 딜레이
     float attackTimer = 0; //어택 타이머
     float speed = 0.5f;
+    BoxCollider2D _AttackBox;
     protected override void Awake()
     {
         base.Awake();
+        _AttackBox = transform.GetChild(1).GetComponent<BoxCollider2D>();
         _rigid = GetComponent<Rigidbody2D>();
     }
 
@@ -34,8 +36,10 @@ public class LittleGhost : cShortMonster
 
         if (attackTimer > attackDelay) //쿨타임이 지났는지
         {
+            _AttackBox.enabled = true;
             _Anim.SetTrigger("Attack");
 
+            StartCoroutine(BoxEnabled());
             attackTimer = 0; //쿨타임 초기화
         }
 
@@ -47,6 +51,26 @@ public class LittleGhost : cShortMonster
         {
             _Renderer.flipX = false;
         }
+    }
+    IEnumerator BoxEnabled()
+    {
+        yield return new WaitForSeconds(0.3f);
+        _AttackBox.enabled = false;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (_AttackBox.enabled)
+            {
+                int Attack = Random.Range(_MinAtteckDamage, _MaxAttackDamage);
+                int _dam = Attack - Player.GetInstance._Defense;
+                Player.GetInstance.HIT(_dam);
+                _AttackBox.enabled = false;
+            }
+
+        }
+          
     }
     public override void MonsterHIT(int dam, bool isCritical)
     {

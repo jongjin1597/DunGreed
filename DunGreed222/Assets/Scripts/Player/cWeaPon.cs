@@ -24,6 +24,7 @@ public class cWeaPon : MonoBehaviour
     private cAttack _AttackMotion;
     public delegate void _AttackSpeed(float AttackSpeed);
     public _AttackSpeed _Speed;
+    private bool _OneSkillCheck =true;
     void Awake()
     {
         _AttackMotion = FindObjectOfType<cAttack>();
@@ -47,6 +48,7 @@ public class cWeaPon : MonoBehaviour
                 Player.GetInstance._Buff.SetTrigger("BuffOff");
             }
         }
+
         _NowWeaPon = _WeaPon;
         if (_WeaPon._Type == ItemType.Sword)
         {
@@ -73,8 +75,8 @@ public class cWeaPon : MonoBehaviour
 
         Player.GetInstance._MinDamage = 0;
         Player.GetInstance._MaxDamage = 0;
-     
-        
+
+
         Player.GetInstance._MinDamage += _NowWeaPon._MinAttackDamage;
         Player.GetInstance._MaxDamage += _NowWeaPon._MaxAttackDamage;
         _AttackMotion.SetItemMotion(_NowWeaPon);
@@ -106,8 +108,19 @@ public class cWeaPon : MonoBehaviour
             {
                 if (_NowWeaPon._Skill)
                 {
-                    _NowWeaPon.Skill();
-                    StartCoroutine("Colltime", _NowWeaPon._SkillCollTime);
+                    if (_OneSkillCheck)
+                    {
+
+                        _NowWeaPon.Skill();
+                        StartCoroutine(Cooltime(_NowWeaPon._SkillCoolTime));
+                    }
+                }
+            }
+           if (_NowWeaPon._Type == ItemType.Gun||_NowWeaPon._Type ==ItemType.OneShot)
+            {
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    ((Longrange)_NowWeaPon).Reload();
                 }
             }
         }
@@ -167,16 +180,20 @@ public class cWeaPon : MonoBehaviour
             yield return null;
         }
     }
-    IEnumerator Colltime(float CoolTime)
+    IEnumerator Cooltime(float CoolTime)
     {
-        _Cooltime.fillAmount = 1;
-        while (_Cooltime.fillAmount > 0)
-        {
-            _Cooltime.fillAmount -= 1 * Time.deltaTime / CoolTime;
-            yield return null;
+        _OneSkillCheck = false;
+        _Cooltime.color = new Color(0, 0, 0, 0.6f);
+            while (_Cooltime.fillAmount > 0)
+            {
+                _Cooltime.fillAmount -= 1 * Time.deltaTime / CoolTime;
 
-        }
+                yield return null;
+
+            }
+       
         yield return new WaitForFixedUpdate();
         _NowWeaPon._Skill = true;
+        _OneSkillCheck = true;
     }
 }
