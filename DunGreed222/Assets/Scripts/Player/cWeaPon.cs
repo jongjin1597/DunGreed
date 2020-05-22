@@ -39,7 +39,16 @@ public class cWeaPon : MonoBehaviour
     //현제 무기 세팅(무기장착시 세팅)
     public void SetWeaPon(Item _WeaPon)
     {
-       
+        if (_NowWeaPon != null)
+        {
+            if (!_NowWeaPon._Skill)
+            {              
+                _NowWeaPon._Skill = true;
+                _Cooltime.fillAmount = 0;
+                Player.GetInstance._Buff.SetTrigger("BuffOff");
+            }
+        }
+
         _NowWeaPon = _WeaPon;
         if (_WeaPon._Type == ItemType.Sword)
         {

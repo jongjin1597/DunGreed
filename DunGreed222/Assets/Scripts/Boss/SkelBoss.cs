@@ -8,10 +8,14 @@ public class SkelBoss : cBossMonster
     //float shootTimer = 0; //총알 타이머
     public Transform BossBack;
     int SwordX = 0;
-    
+    public GameObject SkellBossLeftHand;
+    SkellBossLaser skellBossLaser;
     protected override void Awake()
     {
         base.Awake();
+
+        skellBossLaser = SkellBossLeftHand.GetComponent<SkellBossLaser>();
+
         _MaxBullet = 120;
         for (int i = 0; i < _MaxBullet; ++i)
         {
@@ -54,7 +58,10 @@ public class SkelBoss : cBossMonster
 
     private void Update()
     {
-       
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            skellBossLaser.laserPosition();
+        }
     }
 
     IEnumerator AnimationEvent()
