@@ -52,22 +52,14 @@ public class cShopNPC : cNPC
         }
     }
     //플레이어 충돌여부 및 F버튼 활성화 여부체크
-    private  void OnTriggerEnter2D(Collider2D collision)
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            _ButtonF.SetActive(true);
-            _isPlayer = true;
-        }
+        base.OnTriggerEnter2D(collision);
 
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    protected override void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            _ButtonF.SetActive(false);
-            _isPlayer = false;
-        }
+        base.OnTriggerExit2D(collision);
     }
 }

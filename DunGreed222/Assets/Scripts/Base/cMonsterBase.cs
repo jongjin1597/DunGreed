@@ -23,7 +23,6 @@ public class cMonsterBase : cCharacter
         Dam.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 1, this.transform.position.z);
         Dam.GetComponent<cDamageText>().SetDamage(dam, isCritical);
 
-
         if (_currnetHP > 0)
         {
             _currnetHP -= dam;
@@ -32,6 +31,11 @@ public class cMonsterBase : cCharacter
         {
             Destroy(this.gameObject);
         }
-
     }
+    IEnumerator HPCourutin()
+    {
+        yield return new WaitForSeconds(2.0f);
+        _HPBarBackGround.SetActive(false);
+    }
+
 }

@@ -1,18 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class ItemDropNPC : cNPC
+
+public class cBasicBox : cNPC
 {
-    //아이템 하나만 떨어뜨리기용 변수
-    private int _ItemCount;
+    SpriteRenderer _Renderer;
     protected override void Awake()
     {
-        base.Awake();
-        _ItemCount = 0;
 
+        base.Awake();
+        _Renderer = GetComponent<SpriteRenderer>();
     }
-    
-    
+
     private void Update()
     {
         if (_isPlayer)
@@ -20,17 +19,16 @@ public class ItemDropNPC : cNPC
 
             if (Input.GetKeyDown(KeyCode.F))
             {
-                if(_ItemCount != 1)
                 ItemDrop();
-
             }
-        }
+    
+        } 
     }
-    //아이템 드랍
-    void ItemDrop()
+     void ItemDrop()
     {
-        int _RandNum = Random.Range(0, 6);         // 0 ~ 6 랜덤값 초기화
-        if (_RandNum >= 0 && _RandNum < 6)
+
+        int _RandNum = Random.Range(0, 3);         // 0 ~ 3 랜덤값 초기화
+        if (_RandNum >= 0 && _RandNum < 3)
         {
             GameObject _DropNode = null;
             _DropNode = (GameObject)Instantiate(Resources.Load("Prefabs/Item/DropNode"));
@@ -40,7 +38,7 @@ public class ItemDropNPC : cNPC
             ItemDrop a_RefItemInfo = _DropNode.GetComponent<ItemDrop>();
             if (a_RefItemInfo != null)
             {
-           
+
                 a_RefItemInfo.SetItem(_ItemValue);
                 a_RefItemInfo.transform.Rotate(new Vector3(0, 0, 90));
                 //a_RefItemInfo.StartItem();
@@ -49,12 +47,11 @@ public class ItemDropNPC : cNPC
             SpriteRenderer a_RefRender = _DropNode.GetComponent<SpriteRenderer>();
             a_RefRender.sprite = _ItemValue._ItemIcon;
 
-            _ItemCount = 1;
         }
+        _Renderer.sprite = Resources.Load<Sprite>("Itemp/BasicTresureOpened");
     }
 
 
-    //플레이어 충돌시 F버튼 보이기
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);

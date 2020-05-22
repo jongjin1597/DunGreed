@@ -13,4 +13,23 @@ public class cNPC : MonoBehaviour
     {
         _ButtonF = transform.GetChild(0).gameObject;
     }
+    //플레이어 충돌여부 및 F버튼 활성화 여부체크
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            _ButtonF.SetActive(true);
+            _isPlayer = true;
+        }
+
+    }
+
+    protected virtual void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            _ButtonF.SetActive(false);
+            _isPlayer = false;
+        }
+    }
 }

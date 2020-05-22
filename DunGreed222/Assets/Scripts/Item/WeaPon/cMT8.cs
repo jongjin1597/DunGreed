@@ -35,7 +35,7 @@ public class cMT8 : Longrange
 
         _ItemIcon = Resources.Load<Sprite>("Itemp/Rifle0");//아이템 이미지
         _ItemPrice = 1500;//아이템가격
-        _ReloadTime = 0.8f;
+        _ReloadTime = 2.1f;
     }
     public override void Reload()
     {
