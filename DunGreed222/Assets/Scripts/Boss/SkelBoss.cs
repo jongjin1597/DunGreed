@@ -32,7 +32,7 @@ public class SkelBoss : cBossMonster
         {
             GameObject obj = Instantiate(Resources.Load("Prefabs/Boss/BossSword")) as GameObject;
             cBossSword _Sword = obj.GetComponent<cBossSword>();
-            _Sword._Speed = 30.0f;
+            _Sword._Speed = 20.0f;
             //_Bullet._Damage = Random.Range(11, 14);
             //총알 발사하기 전까지는 비활성화 해준다.
             _Sword.transform.SetParent(transform);
@@ -108,8 +108,7 @@ public class SkelBoss : cBossMonster
         _BossSwordPoll[_CurBossSwordIndex].gameObject.SetActive(true);
 
         yield return new WaitForSeconds(0.2f);
-
-        StartCoroutine("ActiveSword", _BossSwordPoll[_CurBossSwordIndex]);
+        //StartCoroutine("ActiveSword", _BossSwordPoll[_CurBossSwordIndex]);
         if (_CurBossSwordIndex >= _MaxBossSword - 1)
         {
             SwordX = 0;
@@ -129,12 +128,6 @@ public class SkelBoss : cBossMonster
     {
         yield return new WaitForSeconds(3.0f);
         Bullet.gameObject.SetActive(false);
-    }
-
-    IEnumerator ActiveSword(cBossSword Sword)
-    {
-        yield return new WaitForSeconds(3.0f);
-        Sword.gameObject.SetActive(false);
     }
 
 }

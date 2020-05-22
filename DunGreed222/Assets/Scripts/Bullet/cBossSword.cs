@@ -11,7 +11,7 @@ public class cBossSword : MonoBehaviour
     public bool _Start = true;
     float shootDelay = 0;
     float _angle;
-    public BoxCollider2D[] _box;
+
     Animator _anim;
 
     private void Awake()
@@ -51,12 +51,7 @@ public class cBossSword : MonoBehaviour
     {
         if (collision.gameObject.tag == "floor" || collision.gameObject.tag == "Wall")
         {
-
-            _anim.SetTrigger("Fire");
             _Start = false;
-            _box[0].enabled = false;
-            _box[1].enabled = false;
         }
     }
-
 }
