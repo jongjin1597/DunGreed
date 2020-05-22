@@ -41,8 +41,7 @@ public class cWeaPon : MonoBehaviour
         if (_NowWeaPon != null)
         {
             if (!_NowWeaPon._Skill)
-            {
-               
+            {              
                 _NowWeaPon._Skill = true;
                 _Cooltime.fillAmount = 0;
                 Player.GetInstance._Buff.SetTrigger("BuffOff");
