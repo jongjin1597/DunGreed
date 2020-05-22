@@ -7,9 +7,9 @@ public class cMT8 : Longrange
 
     //float shootDelay = 0.5f;
 
-    private void Awake()
+    protected override void Awake()
     {
-
+        base.Awake();
         _MaxBullet = 30;
         for (int i = 0; i < _MaxBullet; ++i)
         {

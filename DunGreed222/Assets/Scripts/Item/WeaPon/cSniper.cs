@@ -7,9 +7,9 @@ public class cSniper : Longrange
 
     //float shootDelay = 0.5f;
 
-    private void Awake()
+    protected override void Awake()
     {
-
+        base.Awake();
         _MaxBullet = 3;
         for (int i = 0; i < _MaxBullet; ++i)
         {

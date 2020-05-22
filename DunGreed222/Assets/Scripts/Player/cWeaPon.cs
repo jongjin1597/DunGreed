@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class cWeaPon : MonoBehaviour
 {
     public Image _Cooltime;
-
+    Text _BulletText;
     //무기 이미지 그리기용 랜더러
     private SpriteRenderer _SpriteRend;
     //현제 아이템
@@ -25,8 +25,10 @@ public class cWeaPon : MonoBehaviour
     public delegate void _AttackSpeed(float AttackSpeed);
     public _AttackSpeed _Speed;
     private bool _OneSkillCheck =true;
+
     void Awake()
     {
+
         _AttackMotion = FindObjectOfType<cAttack>();
           _Ani =transform.GetComponent<Animator>();
           _SpriteRend = transform.GetComponent<SpriteRenderer>();
@@ -35,6 +37,7 @@ public class cWeaPon : MonoBehaviour
         _GunAni = Resources.Load<RuntimeAnimatorController>("Animaition/Weapon/Gun/Gun");
         _Speed += _AttackMotion.SetAttackSpeed;
         _Speed += SetAttackSpeed;
+        _BulletText = cUIManager.GetInstance.GetWeaPonSlot().transform.GetChild(1).GetChild(1).GetComponent<Text>();
     }
     //현제 무기 세팅(무기장착시 세팅)
     public void SetWeaPon(Item _WeaPon)
@@ -50,24 +53,26 @@ public class cWeaPon : MonoBehaviour
         }
 
         _NowWeaPon = _WeaPon;
-        if (_WeaPon._Type == ItemType.Sword)
+        if (_NowWeaPon._Type == ItemType.Sword)
         {
             _Ani.runtimeAnimatorController = _SwardAni;
             _SpriteRend.sortingOrder = 4;
             transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -90));
         }
-        else if (_WeaPon._Type == ItemType.Spear)
+        else if (_NowWeaPon._Type == ItemType.Spear)
         {
             _Ani.runtimeAnimatorController = _SpearAni;
             _SpriteRend.sortingOrder = 10;
             transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -90));
 
         }
-        else if (_WeaPon._Type == ItemType.Gun|| _WeaPon._Type ==ItemType.OneShot)
+        else if (_NowWeaPon._Type == ItemType.Gun|| _NowWeaPon._Type ==ItemType.OneShot)
         {
             _Ani.runtimeAnimatorController = _GunAni;
             _SpriteRend.sortingOrder = 10;
             transform.localRotation = Quaternion.Euler(new Vector3(0, 0,0));
+
+            _BulletText.text = ((Longrange)_NowWeaPon)._MaxBullet.ToString() + " / " + ((Longrange)_NowWeaPon)._MaxBullet.ToString();
 
         }
         _Ani.speed = _NowWeaPon._AttackSpeed;
@@ -93,8 +98,7 @@ public class cWeaPon : MonoBehaviour
                 {
                     _Ani.SetTrigger("AttackCheck");
                     StartCoroutine("Attackmotion");
-                    Debug.Log(_Ani.speed);
-                    Debug.Log(_AttackMotion._Ani.speed);
+
                 }
             }
             else if (_NowWeaPon._Type == ItemType.Gun)
@@ -102,6 +106,7 @@ public class cWeaPon : MonoBehaviour
                 if (Input.GetMouseButton(0))
                 {
                     _Ani.SetTrigger("AttackCheck");
+
                 }
             }
             if (Input.GetKeyDown(KeyCode.Q))
@@ -121,6 +126,7 @@ public class cWeaPon : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.R))
                 {
                     ((Longrange)_NowWeaPon).Reload();
+   
                 }
             }
         }
@@ -151,7 +157,7 @@ public class cWeaPon : MonoBehaviour
         
     }
 
-
+ 
     IEnumerator Attackmotion()
     {
         if (_NowWeaPon._Type == ItemType.Sword)

@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-public class cDamageText : MonoBehaviour
+public class cText : MonoBehaviour
 {
     float _MoveSpeed=1;
     float _DestroyTime =2;
     TextMeshPro _Text;
     Color _Alpha;
     float _AlphaSpeed=1;
-    int _Damage;
+    int _Value;
 
 
     void Awake()
@@ -31,7 +31,7 @@ public class cDamageText : MonoBehaviour
      }  
     public void SetDamage(int dam,bool isCritical)
     {
-        _Damage = dam;
+        _Value = dam;
         if (isCritical)
         {
             _Text.faceColor = Color.yellow;
@@ -42,7 +42,13 @@ public class cDamageText : MonoBehaviour
             _Text.faceColor = Color.white;
       
         }
-        _Text.text = _Damage.ToString();
+        _Text.text = _Value.ToString();
+    }
+    public void SetGold(int Gold)
+    {
+        _Value = Gold;
+        _Text.faceColor = Color.yellow;
+        _Text.text = _Value.ToString();
     }
     private void DestroyObject()
     {

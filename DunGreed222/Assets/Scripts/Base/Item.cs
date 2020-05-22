@@ -35,6 +35,7 @@ public class Item : MonoBehaviour
     public Sprite _SkillIcon                         ;              //스킬이미지
     public float _SkillCoolTime                      ;              //스킬쿨타임  
     public float _NowCoolTIme;                                      //쿨타임이 얼마나 돌아갔나여부
+    
     public virtual void Skill() { }
 
 
@@ -66,20 +67,28 @@ public class Longrange : Item
     protected List<cBullet> _BulletPoll = new List<cBullet>(); //풀에 담을
 
     public float _Delay;
-    protected int _MaxBullet;
-    protected int _CurBulletIndex = 0;     //현재 장전된 총알의 인덱스
-    protected float _ReloadTime;
+    public int _MaxBullet;
+    public int _CurBulletIndex = 0;     //현재 장전된 총알의 인덱스
+    public float _ReloadTime;
+    protected Text _BulletUI;
+
+    public GameObject _Reload;
+    public Image _ReloadBar;
+    protected virtual void Awake()
+    {
+        _BulletUI = cUIManager.GetInstance.GetWeaPonSlot().transform.GetChild(1).GetChild(1).GetComponent<Text>();
+        _Reload = Player.GetInstance.transform.GetChild(7).gameObject;
+        _ReloadBar = _Reload.transform.GetChild(0).GetChild(0).GetComponent<Image>();
+
+
+    }
     public override void Skill()
     { }
     public virtual void Reload()
     {
         StartCoroutine(ReloadCourutin());
     }
-    IEnumerator ReloadCourutin()
-    {
-        yield return new WaitForSeconds(_ReloadTime);
-        _CurBulletIndex = 0;
-    }
+
     public virtual void FireBulet(Vector2 Position, float _angle)
     {
         //발사되어야할 순번의 총알이 이전에 발사한 후로 아직 날아가고 있는 중이라면, 발사를 못하게 한다.
@@ -93,16 +102,39 @@ public class Longrange : Item
         _BulletPoll[_CurBulletIndex].transform.rotation = Quaternion.Euler(0f, 0f, _angle);
         _BulletPoll[_CurBulletIndex]._Start = true;
         _BulletPoll[_CurBulletIndex].gameObject.SetActive(true);
+        _BulletUI.text = (_MaxBullet - (_CurBulletIndex+1)).ToString() + "  /  " + _MaxBullet.ToString() ;
         StartCoroutine("ActiveBullet", _BulletPoll[_CurBulletIndex]);
-        if (_CurBulletIndex >= _MaxBullet - 1)
+        if (_CurBulletIndex >= _MaxBullet-1)
         {
-            StartCoroutine(ReloadCourutin());
+          StartCoroutine(ReloadCourutin());
         }
         else
         {
             _CurBulletIndex++;
         }
     }
+    IEnumerator ReloadCourutin()
+    {
+        if (_CurBulletIndex != 0)
+        {
+      
+            _Reload.gameObject.SetActive(true);
+            _ReloadBar.fillAmount = 1;
+            while (_ReloadBar.fillAmount > 0)
+            {
+     
+                _ReloadBar.fillAmount -= 1 * Time.deltaTime / _ReloadTime;
+
+                yield return null;
+
+            }
+            yield return new WaitForFixedUpdate();
+            _Reload.gameObject.SetActive(false);
+            _CurBulletIndex = 0;
+            _BulletUI.text = (_MaxBullet - _CurBulletIndex).ToString() + "  /  " + _MaxBullet.ToString();
+        }
+    }
+
     IEnumerator ActiveBullet(cBullet Bullet)
     {
         yield return new WaitForSeconds(3.0f);

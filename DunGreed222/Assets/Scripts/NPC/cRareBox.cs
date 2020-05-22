@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class cRareBox : cNPC
 {
+    int _ItemCount=0;
     SpriteRenderer _Renderer;
     protected override void Awake()
     {
@@ -26,29 +27,31 @@ public class cRareBox : cNPC
     }
      void ItemDrop()
     {
-
-        int _RandNum = Random.Range(0, 3);         // 0 ~ 3 랜덤값 초기화
-        if (_RandNum >= 0 && _RandNum < 3)
+        if (_ItemCount == 0)
         {
-            GameObject _DropNode = null;
-            _DropNode = (GameObject)Instantiate(Resources.Load("Prefabs/Item/DropNode"));
-            _DropNode.transform.position = this.transform.position;
-
-            Item _ItemValue = cDataBaseManager.GetInstance._ItemList[_RandNum];
-            ItemDrop a_RefItemInfo = _DropNode.GetComponent<ItemDrop>();
-            if (a_RefItemInfo != null)
+            int _RandNum = Random.Range(3, 6);         // 레어등급 바꾸기
+            if (_RandNum >= 3 && _RandNum < 6)
             {
+                GameObject _DropNode = null;
+                _DropNode = (GameObject)Instantiate(Resources.Load("Prefabs/Item/DropNode"));
+                _DropNode.transform.position = this.transform.position;
 
-                a_RefItemInfo.SetItem(_ItemValue);
-                a_RefItemInfo.transform.Rotate(new Vector3(0, 0, 90));
-                //a_RefItemInfo.StartItem();
+                Item _ItemValue = cDataBaseManager.GetInstance._ItemList[_RandNum];
+                ItemDrop a_RefItemInfo = _DropNode.GetComponent<ItemDrop>();
+                if (a_RefItemInfo != null)
+                {
+
+                    a_RefItemInfo.SetItem(_ItemValue);
+                    a_RefItemInfo.transform.Rotate(new Vector3(0, 0, 90));
+                }
+                // 동적으로 텍스쳐 이미지 바꾸기
+                SpriteRenderer a_RefRender = _DropNode.GetComponent<SpriteRenderer>();
+                a_RefRender.sprite = _ItemValue._ItemIcon;
+
             }
-            // 동적으로 텍스쳐 이미지 바꾸기
-            SpriteRenderer a_RefRender = _DropNode.GetComponent<SpriteRenderer>();
-            a_RefRender.sprite = _ItemValue._ItemIcon;
-
         }
-        _Renderer.sprite = Resources.Load<Sprite>("Itemp/BasicTresureOpened");
+        _ItemCount += 1;
+        _Renderer.sprite = Resources.Load<Sprite>("Itemp/EleteTresure1Opened");
     }
 
 
