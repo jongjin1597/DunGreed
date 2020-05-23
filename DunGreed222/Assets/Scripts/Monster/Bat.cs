@@ -54,4 +54,16 @@ public class Bat : cShortMonster
         base.MonsterHIT(dam, isCritical);
        
     }
+    public override void DropGold()
+    {
+        for (int i = 0; i <= 4; ++i)
+        {
+            int RandomIndex = Random.Range(1, 101);
+            if (RandomIndex >= 50 && RandomIndex <= 100)
+            {
+                GameObject obj = Instantiate(_SmallGold) as GameObject;
+                obj.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, GoldFower));
+            }
+        }
+    }
 }

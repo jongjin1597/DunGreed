@@ -17,4 +17,8 @@ public class cLongLangeMonster : cMonsterBase
     {
         base.MonsterHIT(dam, isCritical);
     }
+    public override void DropGold()
+    {
+    }
+
 }

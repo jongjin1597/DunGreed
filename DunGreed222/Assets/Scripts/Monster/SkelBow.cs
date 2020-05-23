@@ -56,4 +56,24 @@ public class SkelBow : cShortMonster
         base.MonsterHIT(dam, isCritical);
 
     }
+    public override void DropGold()
+    {
+        for (int i = 0; i <= 10; ++i)
+        {
+            int RandomIndex = Random.Range(1, 101);
+            if (RandomIndex >= 50 && RandomIndex <= 95)
+            {
+                GameObject obj = Instantiate(_SmallGold) as GameObject;
+
+                GoldX = Random.Range(-100, 100);
+                obj.GetComponent<Rigidbody2D>().AddForce(new Vector2(GoldX, GoldFower));
+            }
+            else if (RandomIndex >= 95 && RandomIndex <= 100)
+            {
+                GameObject obj = Instantiate(_BigGold) as GameObject;
+                GoldX = Random.Range(-100, 100);
+                obj.GetComponent<Rigidbody2D>().AddForce(new Vector2(GoldX, GoldFower));
+            }
+        }
+    }
 }

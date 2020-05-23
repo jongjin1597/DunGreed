@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6805635783002755932}
   - component: {fileID: 6805635783002755935}
   - component: {fileID: 6805635783002755934}
+  - component: {fileID: 3009212060459252913}
   m_Layer: 20
   m_Name: Banshee
   m_TagString: MonsterHitBox
@@ -151,7 +152,30 @@ MonoBehaviour:
   _Damage: {fileID: 7941767809467408299, guid: 2e7c885260713114d910e1e5f0c89fd0, type: 3}
   _HPBarBackGround: {fileID: 0}
   _HPBar: {fileID: 0}
+  _SmallGold: {fileID: 0}
+  _BigGold: {fileID: 0}
   shootDelay: 4
+--- !u!50 &3009212060459252913
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6805635783002755905}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &4477053436251489214
 PrefabInstance:
   m_ObjectHideFlags: 0
