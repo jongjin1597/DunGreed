@@ -5,6 +5,9 @@ using UnityEngine;
 public class SkellBossLaser : MonoBehaviour
 {
     Rigidbody2D _rigid;
+    float Speed = 5.0f;
+    public bool Fire = false;
+    Vector3 targetPosition;
 
     public Animator[] _anim;
 
@@ -14,17 +17,24 @@ public class SkellBossLaser : MonoBehaviour
     }
     private void Update()
     {
-
-    }
-
-    public void laserPosition()
-    {
-       _rigid.MovePosition(transform.position + new Vector3(_rigid.velocity.x , Player.GetInstance.transform.position.y) * Time.deltaTime);
-        _anim[0].SetTrigger("Fire");
-        for (int i = 1; i < 3; i++)
+        
+        if (Fire)
         {
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, Speed * Time.deltaTime);
 
-            StartCoroutine("StartAnimation", i);
+            if (this.transform.position == targetPosition)
+            {
+                _anim[0].SetTrigger("Fire");
+                for (int i = 1; i < 3; i++)
+                {
+                    StartCoroutine("StartAnimation", i);
+                }
+                Fire = false;
+            }
+        }
+        else if (!Fire)
+        {
+            targetPosition = new Vector3(transform.position.x, Player.GetInstance.transform.position.y, 0);
         }
     }
 
@@ -32,5 +42,6 @@ public class SkellBossLaser : MonoBehaviour
     {
         yield return new WaitForSeconds(0.8f);
         _anim[i].SetTrigger("Fire");
+       
     }
 }

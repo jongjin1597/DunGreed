@@ -2,21 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class SkelBoss : cBossMonster
 {
-    //public float shootDelay = 4f; //총알 딜레이
-    //float shootTimer = 0; //총알 타이머
+    enum State
+    {
+        Normal,
+        Bullet,
+        Sword,
+        Laser
+    }
+
     public Transform BossBack;
     int SwordX = 0;
-    public GameObject SkellBossLeftHand;
-    SkellBossLaser skellBossLaser;
+    int laserCount = 0;
+
+    State state = State.Normal;
+    public SkellBossLaser[] skellBossLasers;
+
+
     protected override void Awake()
     {
         base.Awake();
 
-        skellBossLaser = SkellBossLeftHand.GetComponent<SkellBossLaser>();
-
         _MaxBullet = 120;
+
         for (int i = 0; i < _MaxBullet; ++i)
         {
             GameObject obj = Instantiate(Resources.Load("Prefabs/Boss/BossBullet")) as GameObject;
@@ -49,18 +60,69 @@ public class SkelBoss : cBossMonster
 
     private void Start()
     {
-       
-        Vector3 dirVec = new Vector3(BossBack.transform.position.x + -4, BossBack.transform.position.y + 5, 0);
-       
-        StartCoroutine(FireSword(dirVec));
+        StartCoroutine("SkellBossState");
     }
 
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
+
+        if (state == State.Laser)
         {
-            skellBossLaser.laserPosition();
+            skellBossLasers[0].Fire = true;
+            laserCount = 0;
+            state = State.Normal;
+        }
+        else if (state == State.Bullet)
+        {
+            _Anim.SetTrigger("Attack");
+            state = State.Normal;
+        }
+        else if (state == State.Sword)
+        {
+            Vector3 dirVec = new Vector3(BossBack.transform.position.x + -4, BossBack.transform.position.y + 5, 0);
+            StartCoroutine(FireSword(dirVec));
+            state = State.Normal;
+        }
+ 
+        if (laserCount < 2)
+        {
+            if (skellBossLasers[0]._anim[2].GetCurrentAnimatorStateInfo(0).IsName("SkellBossLaserBody") &&
+               skellBossLasers[0]._anim[2].GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.98f)
+            {
+                skellBossLasers[1].Fire = true;
+                laserCount++;
+            }
+            else if (skellBossLasers[1]._anim[2].GetCurrentAnimatorStateInfo(0).IsName("SkellBossLaserBody") &&
+               skellBossLasers[1]._anim[2].GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.98f)
+            {
+                skellBossLasers[2].Fire = true;
+                laserCount++;
+                StartCoroutine("SkellBossState");
+            }
+        }
+
+        //if (!_BossSwordPoll[4].gameObject.activeSelf){
+        //    StartCoroutine("SkellBossState");
+        //}
+    }
+
+    IEnumerator SkellBossState()
+    {
+        yield return new WaitForSeconds(2.0f);
+
+        int randomNum = Random.Range(0, 3);
+        if(randomNum == 0)
+        {
+            state = State.Bullet;
+        }
+        else if (randomNum == 1)
+        {
+            state = State.Sword;
+        }
+        else if (randomNum == 2)
+        {
+            state = State.Laser;
         }
     }
 
@@ -83,11 +145,6 @@ public class SkelBoss : cBossMonster
     
     public void FireBulet(Vector3 Dir, float _angle)
     {
-        //발사되어야할 순번의 총알이 이전에 발사한 후로 아직 날아가고 있는 중이라면, 발사를 못하게 한다.
-        if (_BulletPoll[_CurBulletIndex].gameObject.activeSelf)
-        {
-            return;
-        }
 
         _BulletPoll[_CurBulletIndex].transform.position = Dir;
 
@@ -108,11 +165,9 @@ public class SkelBoss : cBossMonster
 
     IEnumerator FireSword(Vector3 Dir)
     {
-        _BossSwordPoll[_CurBossSwordIndex].transform.position = Dir;
-        
-
-
+        _BossSwordPoll[_CurBossSwordIndex].transform.position = Dir;       
         _BossSwordPoll[_CurBossSwordIndex].gameObject.SetActive(true);
+        _BossSwordPoll[_CurBossSwordIndex]._Start = true;
 
         yield return new WaitForSeconds(0.2f);
         //StartCoroutine("ActiveSword", _BossSwordPoll[_CurBossSwordIndex]);
@@ -129,6 +184,11 @@ public class SkelBoss : cBossMonster
             StartCoroutine(FireSword(dirVec));           
         }
 
+        if (_BossSwordPoll[_CurBossSwordIndex] == _BossSwordPoll[4])
+        {
+            yield return new WaitForSeconds(2.0f);
+            StartCoroutine("SkellBossState");
+        }
     }
     
     IEnumerator ActiveBullet(cBullet Bullet)
