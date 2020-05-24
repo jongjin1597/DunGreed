@@ -17,7 +17,11 @@ public class SkellBossLaser : MonoBehaviour
     }
     private void Update()
     {
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 2cefd1c6d3348cc9d50dd329fe6bfbb75ac6f2ca
         if (Fire)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, Speed * Time.deltaTime);
@@ -42,6 +46,10 @@ public class SkellBossLaser : MonoBehaviour
     {
         yield return new WaitForSeconds(0.8f);
         _anim[i].SetTrigger("Fire");
+<<<<<<< HEAD
 
+=======
+       
+>>>>>>> 2cefd1c6d3348cc9d50dd329fe6bfbb75ac6f2ca
     }
 }

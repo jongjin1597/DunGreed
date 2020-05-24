@@ -110,10 +110,16 @@ public class SkelBoss : cBossMonster
     IEnumerator SkellBossState()
     {
         yield return new WaitForSeconds(2.0f);
+<<<<<<< HEAD
         int randomNum = 2;
 
         //int randomNum = Random.Range(0, 3);
         if (randomNum == 0)
+=======
+
+        int randomNum = Random.Range(0, 3);
+        if(randomNum == 0)
+>>>>>>> 2cefd1c6d3348cc9d50dd329fe6bfbb75ac6f2ca
         {
             state = State.Bullet;
         }

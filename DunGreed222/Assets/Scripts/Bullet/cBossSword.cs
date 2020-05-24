@@ -52,6 +52,14 @@ public class cBossSword : MonoBehaviour
         if (collision.gameObject.tag == "floor" || collision.gameObject.tag == "Wall")
         {
             _Start = false;
+            _anim.SetTrigger("Fire");
+            StartCoroutine("ActiveBullet");
         }
+    }
+
+    IEnumerator ActiveBullet()
+    {
+        yield return new WaitForSeconds(2.0f);
+        this.gameObject.SetActive(false);
     }
 }
