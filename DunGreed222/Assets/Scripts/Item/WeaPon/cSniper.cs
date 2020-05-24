@@ -7,9 +7,9 @@ public class cSniper : Longrange
 
     //float shootDelay = 0.5f;
 
-    private void Awake()
+    protected override void Awake()
     {
-
+        base.Awake();
         _MaxBullet = 3;
         for (int i = 0; i < _MaxBullet; ++i)
         {
@@ -35,7 +35,7 @@ public class cSniper : Longrange
         _Quality = ItemQuality.Normal;//아이템등급    
         _ItemIcon = Resources.Load<Sprite>("Itemp/MatchlockGun");//아이템 이미지
         _ItemPrice = 700;//아이템가격
-        _ReloadTime = 1f;
+        _ReloadTime = 3f;
     }
     public override void Reload()
     {

@@ -55,26 +55,14 @@ public class ItemDropNPC : cNPC
 
 
     //플레이어 충돌시 F버튼 보이기
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (_ItemCount != 1)
-        {
-            if (collision.gameObject.tag == "Player")
-            {
-              _ButtonF.SetActive(true);
-                _isPlayer = true;
-            }
-        }
+        base.OnTriggerEnter2D(collision);
+
     }
-    //플레이어 퇴장시 F버튼끄기
-    private void OnTriggerExit2D(Collider2D collision)
+
+    protected override void OnTriggerExit2D(Collider2D collision)
     {
-    
-            if (collision.gameObject.tag == "Player")
-            {
-                _ButtonF.SetActive(false);
-                _isPlayer = false;
-            }
-        
+        base.OnTriggerExit2D(collision);
     }
 }

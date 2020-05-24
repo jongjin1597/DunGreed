@@ -12,6 +12,8 @@ TagManager:
   - Slot
   - WeaponSlot
   - MonsterHitBox
+  - MonsterMap
+  - NoMonsterMap
   layers:
   - Default
   - TransparentFX

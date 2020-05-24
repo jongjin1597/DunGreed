@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 6abdd7a3b84f46942bc8929dac4ee41f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -171,9 +171,6 @@ MonoBehaviour:
   _MaxAttackDamage: 0
   _MoveSpeed: 0
   _Defense: 0
-  _Damage: {fileID: 7941767809467408299, guid: 2e7c885260713114d910e1e5f0c89fd0, type: 3}
-  _HPBarBackGround: {fileID: 0}
-  _HPBar: {fileID: 0}
   _moveRangeX: 0
   _moveRangeY: 0
 --- !u!95 &7034763812130078895

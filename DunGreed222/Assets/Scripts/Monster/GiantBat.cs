@@ -26,6 +26,9 @@ public class GiantBat : cLongLangeMonster
 
             _BulletPoll.Add(_Bullet);
         }
+        _MaxHP = 55;
+        _currnetHP = 55;
+        _Defense = 0;
     }
 
     // Update is called once per frame
@@ -105,4 +108,26 @@ public class GiantBat : cLongLangeMonster
         base.MonsterHIT(dam, isCritical);
         
     }
+    public override void DropGold()
+    {
+        for (int i = 0; i <= 5; ++i)
+        {
+            int RandomIndex = Random.Range(1, 101);
+            if (RandomIndex >= 35 && RandomIndex <= 80)
+            {
+                GameObject obj = Instantiate(_SmallGold) as GameObject;
+                obj.transform.position = this.transform.position;
+                GoldX = Random.Range(-100, 100);
+                obj.GetComponent<Rigidbody2D>().AddForce(new Vector2(GoldX, GoldFower));
+            }
+            else if (RandomIndex >= 80 && RandomIndex <= 100)
+            {
+                GameObject obj = Instantiate(_BigGold) as GameObject;
+                obj.transform.position = this.transform.position;
+                GoldX = Random.Range(-100, 100);
+                obj.GetComponent<Rigidbody2D>().AddForce(new Vector2(GoldX, GoldFower));
+            }
+        }
+    }
+
 }

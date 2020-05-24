@@ -7,9 +7,9 @@ public class Kar98 : Longrange
 
     //float shootDelay = 0.5f;
 
-    private void Awake()
+    protected override void Awake()
     {
-
+        base.Awake();
         _MaxBullet = 5;
         for (int i = 0; i < _MaxBullet; ++i)
         {
@@ -38,7 +38,7 @@ public class Kar98 : Longrange
         _SkillText = "다음 한발의 총알의 공격력이 아주강해집니다.";
         _SkillIcon = Resources.Load<Sprite>("Skill/Skill_DeadlyShot");//아이템 이미지
         _SkillCoolTime = 30;
-        _ReloadTime = 1.2f;
+        _ReloadTime = 2.5f;
     }
 
 

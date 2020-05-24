@@ -22,6 +22,9 @@ public class BigSkel : cShortMonster
         _Anim = GetComponent<Animator>();
 
         _Anim.SetBool("Run", true);
+        _MaxHP = 75;
+        _currnetHP = 75;
+        _Defense = 1;
     }
 
     // Update is called once per frame
@@ -94,5 +97,26 @@ public class BigSkel : cShortMonster
     {
         base.MonsterHIT(dam, isCritical);
 
+    }
+    public override void DropGold()
+    {
+        for (int i = 0; i <= 10; ++i)
+        {
+            int RandomIndex = Random.Range(1, 101);
+            if (RandomIndex >= 30 && RandomIndex <= 80)
+            {
+                GameObject obj = Instantiate(_SmallGold) as GameObject;
+                obj.transform.position = this.transform.position;
+                GoldX = Random.Range(-100, 100);
+                obj.GetComponent<Rigidbody2D>().AddForce(new Vector2(GoldX, GoldFower));
+            }
+            else if (RandomIndex >= 80 && RandomIndex <= 100)
+            {
+                GameObject obj = Instantiate(_BigGold) as GameObject;
+                obj.transform.position = this.transform.position;
+                GoldX = Random.Range(-100, 100);
+                obj.GetComponent<Rigidbody2D>().AddForce(new Vector2(GoldX, GoldFower));
+            }
+        }
     }
 }

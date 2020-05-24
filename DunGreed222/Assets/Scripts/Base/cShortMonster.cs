@@ -14,4 +14,9 @@ public class cShortMonster : cMonsterBase
     {
         base.MonsterHIT(dam, isCritical);
     }
+    public override void DropGold()
+    {
+       
+    }
+
 }

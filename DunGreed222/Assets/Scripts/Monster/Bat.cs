@@ -12,6 +12,9 @@ public class Bat : cShortMonster
         base.Awake();
         _rigid = GetComponent<Rigidbody2D>();
         Invoke("MoveRange", 1);
+        _MaxHP = 15;
+        _currnetHP = 15;
+        _Defense = 0;
     }
 
     // Update is called once per frame
@@ -53,5 +56,19 @@ public class Bat : cShortMonster
     {
         base.MonsterHIT(dam, isCritical);
        
+    }
+    public override void DropGold()
+    {
+        for (int i = 0; i <= 4; ++i)
+        {
+            int RandomIndex = Random.Range(1, 101);
+            if (RandomIndex >= 50 && RandomIndex <= 100)
+            {
+                GameObject obj = Instantiate(_SmallGold) as GameObject;
+                obj.transform.position = this.transform.position;
+                GoldX = Random.Range(-100, 100);
+                obj.GetComponent<Rigidbody2D>().AddForce(new Vector2(GoldX, GoldFower));
+            }
+        }
     }
 }

@@ -7,9 +7,9 @@ public class cMT8 : Longrange
 
     //float shootDelay = 0.5f;
 
-    private void Awake()
+    protected override void Awake()
     {
-
+        base.Awake();
         _MaxBullet = 30;
         for (int i = 0; i < _MaxBullet; ++i)
         {
@@ -35,7 +35,7 @@ public class cMT8 : Longrange
 
         _ItemIcon = Resources.Load<Sprite>("Itemp/Rifle0");//아이템 이미지
         _ItemPrice = 1500;//아이템가격
-        _ReloadTime = 0.8f;
+        _ReloadTime = 2.1f;
     }
     public override void Reload()
     {

@@ -7,9 +7,9 @@ public class cAK47: Longrange
 
     //float shootDelay = 0.5f;
 
-    private void Awake()
+    protected override void Awake()
     {
-
+        base.Awake();
         _MaxBullet = 25;
         for (int i = 0; i < _MaxBullet; ++i)
         {
@@ -37,7 +37,7 @@ public class cAK47: Longrange
         _SkillText = "30초간 이동속도 대폭 증가";
         _SkillIcon = Resources.Load<Sprite>("Skill/Skill_WindForce");//아이템 이미지
         _SkillCoolTime = 45;
-        _ReloadTime = 0.5f;
+        _ReloadTime = 2f;
 
     }
     //총알 발사
