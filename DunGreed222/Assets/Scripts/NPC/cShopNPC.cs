@@ -12,6 +12,7 @@ public class cShopNPC : cNPC
     {
 
         base.Awake();
+        _Shop.SetActive(false);
     }
 
     void Update()
@@ -34,10 +35,11 @@ public class cShopNPC : cNPC
     {
         if (_isActiveShop)
         {
-            _Shop.transform.position = new Vector3(-785, 538, 0);
+ 
             cInventory.GetInstance.SetActive();
             Time.timeScale = 1;
             _isActiveShop = false;
+            _Shop.SetActive(false);
         }
     }
     //상점열기
@@ -45,10 +47,11 @@ public class cShopNPC : cNPC
     {
         if (!_isActiveShop)
         {
-            _Shop.transform.position = new Vector3(389, 538, 0);
+      
             cInventory.GetInstance.SetActive();
             Time.timeScale = 0;
             _isActiveShop = true;
+            _Shop.SetActive(true);
         }
     }
     //플레이어 충돌여부 및 F버튼 활성화 여부체크

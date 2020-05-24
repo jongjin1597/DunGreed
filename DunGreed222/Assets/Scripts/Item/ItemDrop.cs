@@ -9,9 +9,8 @@ public class ItemDrop : MonoBehaviour
     //플레이어충돌여부
     private bool _isPlayer=false;
 
-    private GameObject _ButtonF;
+    public GameObject _ButtonF;
 
-    private BoxCollider2D _Box;
 
     private Rigidbody2D _rigid;
 
@@ -19,7 +18,7 @@ public class ItemDrop : MonoBehaviour
     {
         _ButtonF = transform.GetChild(0).gameObject;
         _rigid = GetComponent<Rigidbody2D>();
-        //StartCoroutine("Dash");
+
         _rigid.velocity = new Vector2( 0 ,5.0f);
     }
 

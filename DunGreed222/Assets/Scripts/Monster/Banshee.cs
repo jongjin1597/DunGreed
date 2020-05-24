@@ -109,12 +109,14 @@ public class Banshee : cLongLangeMonster
             if (RandomIndex >= 40 && RandomIndex <= 90)
             {
                 GameObject obj = Instantiate(_SmallGold) as GameObject;
+                obj.transform.position = this.transform.position;
                  GoldX = Random.Range(-100, 100);
                 obj.GetComponent<Rigidbody2D>().AddForce(new Vector2(GoldX, GoldFower));
             }
             else if (RandomIndex >= 90 && RandomIndex <= 100)
             {
                 GameObject obj = Instantiate(_BigGold) as GameObject;
+                obj.transform.position = this.transform.position;
                 GoldX = Random.Range(-100, 100);
                 obj.GetComponent<Rigidbody2D>().AddForce(new Vector2(GoldX, GoldFower));
             }

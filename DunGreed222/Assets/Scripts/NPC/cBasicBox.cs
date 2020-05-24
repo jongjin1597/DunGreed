@@ -6,11 +6,13 @@ public class cBasicBox : cNPC
 {
     SpriteRenderer _Renderer;
     int _ItemCount = 0;
+    BoxCollider2D _Box;
     protected override void Awake()
     {
 
         base.Awake();
         _Renderer = GetComponent<SpriteRenderer>();
+        _Box = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
@@ -42,7 +44,14 @@ public class cBasicBox : cNPC
                 {
 
                     a_RefItemInfo.SetItem(_ItemValue);
-                    a_RefItemInfo.transform.Rotate(new Vector3(0, 0, 90));
+                    if (_ItemValue._Type == ItemType.Spear || _ItemValue._Type == ItemType.Sword)
+                    {
+                        a_RefItemInfo.transform.Rotate(new Vector3(0, 0, 90));
+                    }
+                    else
+                    {
+                        a_RefItemInfo._ButtonF.transform.rotation =Quaternion.identity;
+                    }
 
                 }
                 // 동적으로 텍스쳐 이미지 바꾸기
@@ -51,6 +60,8 @@ public class cBasicBox : cNPC
 
             }
             _ItemCount += 1;
+            _Box.enabled = false;
+            _ButtonF.SetActive(false);
             _Renderer.sprite = Resources.Load<Sprite>("Itemp/BasicTresureOpened");
         }
     }

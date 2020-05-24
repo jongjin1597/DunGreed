@@ -16,16 +16,21 @@ enum State
 //플레이어
 public class Player : cCharacter
 {
+    [HideInInspector]
     //현제 게이지
     public cDash _Dash;
     //싱글톤변수
     private static Player _instacne;
+    [HideInInspector]
     //이동할맵번호   
     public int _CurrentMapNum;
+    [HideInInspector]
     //체력
     public cHP _health;
+    [HideInInspector]
     //포만감
     public cFoodGauge _Food;
+    [HideInInspector]
     //방어력세팅
     public float Defense { set { value = _Defense; } }
     //공격력세팅
@@ -51,15 +56,21 @@ public class Player : cCharacter
     private float _Time = 0f;
     //마우스포지션
     private Vector2 _MousePosition;
+    [HideInInspector]
     //발판
     public BoxCollider2D foot;
+    [HideInInspector]
     //버프
     public Animator _Buff;
+    //현제 장착중인무기
     private cWeaPon _WeaPon;
+    [HideInInspector]
     //크리티컬확률
     public int _Critical;
+    [HideInInspector]
     //크리티컬데미지
     public int _CriticalDamage;
+    [HideInInspector]
     //위력
     public float _Power;
     //플레이어 회전하기위한 변수

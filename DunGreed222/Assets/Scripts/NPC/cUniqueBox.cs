@@ -6,11 +6,13 @@ public class cUniqueBox : cNPC
 {
     SpriteRenderer _Renderer;
     int _ItemCount=0;
+    BoxCollider2D _Box;
     protected override void Awake()
     {
 
         base.Awake();
         _Renderer = GetComponent<SpriteRenderer>();
+        _Box = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
@@ -42,8 +44,14 @@ public class cUniqueBox : cNPC
                 {
 
                     a_RefItemInfo.SetItem(_ItemValue);
-                    a_RefItemInfo.transform.Rotate(new Vector3(0, 0, 90));
-                    //a_RefItemInfo.StartItem();
+                    if (_ItemValue._Type == ItemType.Spear || _ItemValue._Type == ItemType.Sword)
+                    {
+                        a_RefItemInfo.transform.Rotate(new Vector3(0, 0, 90));
+                    }
+                    else
+                    {
+                        a_RefItemInfo._ButtonF.transform.rotation = Quaternion.identity;
+                    }
                 }
                 // 동적으로 텍스쳐 이미지 바꾸기
                 SpriteRenderer a_RefRender = _DropNode.GetComponent<SpriteRenderer>();
@@ -51,6 +59,9 @@ public class cUniqueBox : cNPC
 
             }
             _ItemCount += 1;
+
+            _Box.enabled = false;
+            _ButtonF.SetActive(false);
             _Renderer.sprite = Resources.Load<Sprite>("Itemp/YellowTresureOpened");
         }
     }

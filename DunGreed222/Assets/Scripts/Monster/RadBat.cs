@@ -24,7 +24,9 @@ public class RadBat : cLongLangeMonster
             //총알 발사하기 전까지는 비활성화 해준다.
             Obj.gameObject.SetActive(false);
             _BulletPoll.Add(_bullet);
-
+        _MaxHP = 20;
+        _currnetHP = 20;
+        _Defense = 0;
         _rigid = GetComponent<Rigidbody2D>();
         Invoke("MoveRange", 1);
     }
@@ -132,6 +134,7 @@ public class RadBat : cLongLangeMonster
             if (RandomIndex >= 55 && RandomIndex <= 100)
             {
                 GameObject obj = Instantiate(_SmallGold) as GameObject;
+                obj.transform.position = this.transform.position;
                 GoldX = Random.Range(-100, 100);
                 obj.GetComponent<Rigidbody2D>().AddForce(new Vector2(GoldX, GoldFower));
             }

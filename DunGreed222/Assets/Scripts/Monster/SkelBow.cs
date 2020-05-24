@@ -18,7 +18,9 @@ public class SkelBow : cShortMonster
         base.Awake();
         Skel = transform.GetChild(1);
         _Renderer = GetComponent<SpriteRenderer>();
-
+        _MaxHP = 30;
+        _currnetHP = 30;
+        _Defense = 0;
 
     }
 
@@ -58,7 +60,7 @@ public class SkelBow : cShortMonster
     }
     public override void DropGold()
     {
-        for (int i = 0; i <= 10; ++i)
+        for (int i = 0; i <= 5; ++i)
         {
             int RandomIndex = Random.Range(1, 101);
             if (RandomIndex >= 50 && RandomIndex <= 95)
@@ -71,6 +73,7 @@ public class SkelBow : cShortMonster
             else if (RandomIndex >= 95 && RandomIndex <= 100)
             {
                 GameObject obj = Instantiate(_BigGold) as GameObject;
+                obj.transform.position = this.transform.position;
                 GoldX = Random.Range(-100, 100);
                 obj.GetComponent<Rigidbody2D>().AddForce(new Vector2(GoldX, GoldFower));
             }

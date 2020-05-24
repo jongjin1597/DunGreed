@@ -5,7 +5,11 @@ using UnityEngine.UI;
 //몬스터, 플레이어 최상단
 public class cMonsterBase : cCharacter
 {
-    public GameObject _Damage;
+
+    public delegate void _MonsterDie(GameObject gameObject);
+    public _MonsterDie DIE;
+   
+   protected GameObject _Damage;
     protected GameObject _HPBarBackGround;
     protected Image _HPBar;
     protected GameObject _SmallGold;
@@ -22,8 +26,9 @@ public class cMonsterBase : cCharacter
         _HPBar.fillAmount = 1;
         _SmallGold = Resources.Load("Prefabs/Item/Bullion") as GameObject;
         _BigGold = Resources.Load("Prefabs/Item/GoldCoin") as GameObject;
+        _Damage = Resources.Load("Prefabs/Text") as GameObject;
         GoldFower = 200;
-
+        DIE += Die;
     }
     public virtual void MonsterHIT(int dam,bool isCritical)
     {
@@ -39,9 +44,13 @@ public class cMonsterBase : cCharacter
         }
         else if (_currnetHP <= 0)
         {
-            DropGold();
-            Destroy(this.gameObject);
+            DIE(this.gameObject);
         }
+    }
+    public virtual void Die(GameObject gameObject)
+    {
+        DropGold();
+        Destroy(gameObject);
     }
     IEnumerator HPCourutin()
     {
@@ -50,23 +59,6 @@ public class cMonsterBase : cCharacter
     }
     public virtual void DropGold()
     {
-        //for (int i = 0; i <= _Loop; ++i)
-        //{
-        //    int RandomIndex = Random.Range(1, 101);
-        //    if (RandomIndex >= NoonGold && RandomIndex <= NoonGold + SmallGold)
-        //    {
-        //        GameObject obj = Instantiate(_SmallGold) as GameObject;
-        //        cSmallGold GoldCoin = obj.GetComponent<cSmallGold>();
-        //        GoldCoin.transform.position = Position;
-        //        _SmallGoldRigidBody.AddForce(new Vector2(0, 1));
-        //    }
-        //    else if (RandomIndex >= NoonGold + SmallGold && RandomIndex <= NoonGold + SmallGold + BigGold)
-        //    {
-        //        GameObject obj = Instantiate(_BigGold) as GameObject;
-        //        cBigGold GoldCoin = obj.GetComponent<cBigGold>();
-        //        GoldCoin.transform.position = Position;
-        //        _BigGoldRigidBody.AddForce(new Vector2(0, 1));
-        //    }
-        //}
+        
     }
 }

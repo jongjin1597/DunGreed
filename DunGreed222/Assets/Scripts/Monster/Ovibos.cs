@@ -16,6 +16,9 @@ public class Ovibos : cShortMonster
         base.Awake();
         _AttackBox = transform.GetChild(2).GetComponent<BoxCollider2D>();
         _rigid = GetComponent<Rigidbody2D>();
+        _MaxHP = 70;
+        _currnetHP = 70;
+        _Defense = 1;
     }
 
     
@@ -107,12 +110,14 @@ public class Ovibos : cShortMonster
             if (RandomIndex >= 30 && RandomIndex <= 75)
             {
                 GameObject obj = Instantiate(_SmallGold) as GameObject;
+                obj.transform.position = this.transform.position;
                 GoldX = Random.Range(-100, 100);
                 obj.GetComponent<Rigidbody2D>().AddForce(new Vector2(GoldX, GoldFower));
             }
             else if (RandomIndex >= 75 && RandomIndex <= 100)
             {
                 GameObject obj = Instantiate(_BigGold) as GameObject;
+                obj.transform.position = this.transform.position;
                 GoldX = Random.Range(-100, 100);
                 obj.GetComponent<Rigidbody2D>().AddForce(new Vector2(GoldX, GoldFower));
             }

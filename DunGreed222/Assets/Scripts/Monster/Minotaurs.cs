@@ -20,6 +20,9 @@ public class Minotaurs : cShortMonster
         base.Awake();
         _AttackBox = transform.GetChild(2).GetComponent<BoxCollider2D>();
         _rigid = GetComponent<Rigidbody2D>();
+        _MaxHP = 80;
+        _currnetHP = 80;
+        _Defense = 1;
     }
 
     void Update()
@@ -121,12 +124,14 @@ public class Minotaurs : cShortMonster
             if (RandomIndex >= 30 && RandomIndex <= 70)
             {
                 GameObject obj = Instantiate(_SmallGold) as GameObject;
+                obj.transform.position = this.transform.position;
                 GoldX = Random.Range(-100, 100);
                 obj.GetComponent<Rigidbody2D>().AddForce(new Vector2(GoldX, GoldFower));
             }
             else if (RandomIndex >= 70 && RandomIndex <= 100)
             {
                 GameObject obj = Instantiate(_BigGold) as GameObject;
+                obj.transform.position = this.transform.position;
                 GoldX = Random.Range(-100, 100);
                 obj.GetComponent<Rigidbody2D>().AddForce(new Vector2(GoldX, GoldFower));
             }
