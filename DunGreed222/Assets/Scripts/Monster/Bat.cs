@@ -18,8 +18,9 @@ public class Bat : cShortMonster
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+   void FixedUpdate()
     {
+  
         _rigid.velocity = new Vector2(_moveRangeX, _moveRangeY);
 
         if (Player.GetInstance.transform.position.x < this.transform.position.x)
@@ -29,6 +30,14 @@ public class Bat : cShortMonster
         if (Player.GetInstance.transform.position.x > this.transform.position.x)
         {
             _Renderer.flipX = false;
+        }
+        if (_currnetHP < 1)
+        {
+            if (!_isDie)
+            {
+                Die(this.gameObject);
+                _isDie = true;
+            }
         }
     }
 

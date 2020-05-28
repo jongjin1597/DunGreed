@@ -45,7 +45,7 @@ public class cAK47: Longrange
     {
 
         base.FireBulet(Position, _angle);
-
+     
 
     }
     public override void Reload()

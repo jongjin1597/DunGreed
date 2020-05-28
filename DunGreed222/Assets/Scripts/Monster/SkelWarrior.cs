@@ -20,41 +20,53 @@ public class SkelWarrior : cShortMonster
     protected override void Awake()
     {
         base.Awake();
+        _Clip.Add(Resources.Load<AudioClip>("Sound/swing0"));
         _AttackBox = transform.GetChild(3).GetComponent<BoxCollider2D>();
         _rigid = GetComponent<Rigidbody2D>();
         _MaxHP = 30;
         _currnetHP = 30;
         _Defense = 0;
+        _AttackDamage = 4;
     }
-    private void Update()
+     void FixedUpdate()
     {
+     
         Chack += Time.deltaTime;
         dir = (Player.GetInstance.transform.position - this.transform.position);
 
         if (!attack)
         {
-            _rigid.velocity = new Vector2(dir.normalized.x * speed, _rigid.position.y);           
+            _rigid.velocity = new Vector2(dir.normalized.x * speed, 0);           
         }
         if (Player.GetInstance.transform.position.x < this.transform.position.x)
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
-            _HPBarBackGround.transform.rotation = Quaternion.identity;
+            _HPBarBackGround.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
         else   if (Player.GetInstance.transform.position.x > this.transform.position.x)
         {
             transform.rotation = Quaternion.identity;
-            _HPBarBackGround.transform.rotation = Quaternion.Euler(0, 180, 0);
+            _HPBarBackGround.transform.rotation = Quaternion.identity;
         }
 
 
         SwordDir = (Player.GetInstance.transform.position - this.transform.position);
         sword.transform.position = this.transform.position + (SwordDir.normalized * _Radius);
-
+        if (_currnetHP < 1)
+        {
+            if (!_isDie)
+            {
+                Die(this.gameObject);
+                _isDie = true;
+            }
+        }
     }
     void Attack()
     {
         if (Chack >= 4f)
         {
+            _Audio.clip = _Clip[2];
+            _Audio.Play();
             _AttackBox.enabled = true;
             StartCoroutine(BoxEnabled());
                 attack = true;
@@ -81,7 +93,7 @@ public class SkelWarrior : cShortMonster
         {
             if (_AttackBox.enabled)
             {
-                int Attack = Random.Range(_MinAtteckDamage, _MaxAttackDamage);
+                int Attack = _AttackDamage;
                 int _dam = Attack - Player.GetInstance._Defense;
                 Player.GetInstance.HIT(_dam);
                 _AttackBox.enabled = false;

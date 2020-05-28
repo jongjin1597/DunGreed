@@ -18,9 +18,8 @@ public class SkelDog : cShortMonster
     {
         base.Awake();
 
-        _MinAtteckDamage = 10;
-         _MaxAttackDamage= 12;
-        _AttackBox = transform.GetChild(2).GetComponent<BoxCollider2D>();
+        _AttackDamage = 5;
+               _AttackBox = transform.GetChild(2).GetComponent<BoxCollider2D>();
         _rigid = GetComponent<Rigidbody2D>();
         _Anim = GetComponent<Animator>();
         _Renderer = GetComponentInChildren<SpriteRenderer>();
@@ -34,6 +33,7 @@ public class SkelDog : cShortMonster
     // Update is called once per frame
     void FixedUpdate()
     {
+
         dir = (Player.GetInstance.transform.position - this.transform.position);
 
         if (_rigid.velocity.y < 0)
@@ -59,7 +59,7 @@ public class SkelDog : cShortMonster
 
         if (_Anim.GetCurrentAnimatorStateInfo(0).IsName("SkelDogRun"))
         {
-            _rigid.velocity = new Vector2(dir.normalized.x * speed, _rigid.position.y);
+            _rigid.velocity = new Vector2(dir.normalized.x * speed, 0);
         }
 
         if (Player.GetInstance.transform.position.x < this.transform.position.x)
@@ -70,7 +70,14 @@ public class SkelDog : cShortMonster
         {
             _Renderer.flipX = false;
         }
-
+        if (_currnetHP < 1)
+        {
+            if (!_isDie)
+            {
+                Die(this.gameObject);
+                _isDie = true;
+            }
+        }
     }
 
     public void Attack()
@@ -104,8 +111,8 @@ public class SkelDog : cShortMonster
         {
             if (_AttackBox.enabled)
             {
-                int Attack = Random.Range(_MinAtteckDamage, _MaxAttackDamage);
-                int _dam = Attack - Player.GetInstance._Defense;
+
+                int _dam = _AttackDamage - Player.GetInstance._Defense;
                 Player.GetInstance.HIT(_dam);
                 _AttackBox.enabled = false;
             }

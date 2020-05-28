@@ -5,7 +5,7 @@ using UnityEngine;
 public class cShopNPC : cNPC
 {
     //상점이 열려있나여부
-    bool _isActiveShop=false;
+    public bool _isActiveShop=false;
     //상점
     public GameObject _Shop;
     protected override void Awake()

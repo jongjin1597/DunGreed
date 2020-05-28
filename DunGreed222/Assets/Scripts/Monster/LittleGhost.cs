@@ -19,10 +19,13 @@ public class LittleGhost : cShortMonster
         _MaxHP = 10;
         _currnetHP = 10;
         _Defense = 0;
+        _Clip.Add(Resources.Load<AudioClip>("Sound/Ghost"));
+        _AttackDamage = 3;
     }
 
-    void FixedUpdate()
+   void FixedUpdate()
     {
+   
         if (_Anim.GetCurrentAnimatorStateInfo(0).IsName("LittleGhostAttack"))
         {
             speed = 3f;
@@ -40,6 +43,8 @@ public class LittleGhost : cShortMonster
         if (attackTimer > attackDelay) //쿨타임이 지났는지
         {
             _AttackBox.enabled = true;
+            _Audio.clip = _Clip[2];
+            _Audio.Play();
             _Anim.SetTrigger("Attack");
 
             StartCoroutine(BoxEnabled());
@@ -54,6 +59,14 @@ public class LittleGhost : cShortMonster
         {
             _Renderer.flipX = false;
         }
+        if (_currnetHP < 1)
+        {
+            if (!_isDie)
+            {
+                Die(this.gameObject);
+                _isDie = true;
+            }
+        }
     }
     IEnumerator BoxEnabled()
     {
@@ -66,8 +79,7 @@ public class LittleGhost : cShortMonster
         {
             if (_AttackBox.enabled)
             {
-                int Attack = Random.Range(_MinAtteckDamage, _MaxAttackDamage);
-                int _dam = Attack - Player.GetInstance._Defense;
+                int _dam = _AttackDamage - Player.GetInstance._Defense;
                 Player.GetInstance.HIT(_dam);
                 _AttackBox.enabled = false;
             }

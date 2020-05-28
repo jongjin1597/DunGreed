@@ -6,7 +6,7 @@ using UnityEngine.UI;
 //타이틀선택씬
 public class cSelect : MonoBehaviour
 {
-    public cPanel _Panel;
+    public cOptionPanel _Panel;
 
     public void OnButtonDown(Button Sander)
     {

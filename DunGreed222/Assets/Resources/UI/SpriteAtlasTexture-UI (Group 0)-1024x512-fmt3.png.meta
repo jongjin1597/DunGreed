@@ -38,6 +38,9 @@ TextureImporter:
   - first:
       213: -849597630450919971
     second: SpriteAtlasTexture-UI (Group 0)-1024x512-fmt3_11
+  - first:
+      213: -4755941438599318341
+    second: SpriteAtlasTexture-UI (Group 0)-1024x512-fmt3_12
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -353,7 +356,7 @@ TextureImporter:
         width: 19
         height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -374,7 +377,7 @@ TextureImporter:
         width: 113
         height: 71
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -382,6 +385,27 @@ TextureImporter:
       bones: []
       spriteID: dd595fad47f9534f0800000000000000
       internalID: -849597630450919971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-UI (Group 0)-1024x512-fmt3_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 374
+        width: 321
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb43abba5708ffdb0800000000000000
+      internalID: -4755941438599318341
       vertices: []
       indices: 
       edges: []

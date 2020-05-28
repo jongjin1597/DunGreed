@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class cInventory :  cSingleton<cInventory>
 {
+    //상점 판매
+   public cShopNPC _Shop;
     //인번토리 활성화여부
     bool _ActiveInventory = false;
     //인벤토리
@@ -43,7 +45,7 @@ public class cInventory :  cSingleton<cInventory>
     protected override void Awake()
     {
         base.Awake();
- 
+        
         _Inventory = transform.GetChild(0);
         _draggingItem = transform.GetChild(0).GetChild(1);
         _Panel = transform.GetChild(0).GetChild(2);
@@ -115,12 +117,14 @@ public class cInventory :  cSingleton<cInventory>
 
     
 }
-
+    private void Start()
+    {
+        _Shop = FindObjectOfType<cShopNPC>();
+    }
 
     //인벤토리 껏다켰다하는 함수
     public void SetActive()
     {
-        _ActiveInventory = !_ActiveInventory;
         if (_ActiveInventory)
         {
             Time.timeScale = 1;
@@ -132,7 +136,8 @@ public class cInventory :  cSingleton<cInventory>
             _Inventory.gameObject.SetActive(true);
         }
 
-       
+        _ActiveInventory = !_ActiveInventory;
+
     }
     //인벤토리에 골드 세팅하는 함수
     public void SetGold()

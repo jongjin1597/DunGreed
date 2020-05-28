@@ -39,6 +39,9 @@ public class cTitleScene : MonoBehaviour
     private Transform _Target2 = null;
     private Transform _CloudTarget1 = null;
     private Transform _CloudTarget2 = null;
+    private AudioClip _Clip;
+    private AudioSource _Source;
+
     //public cCharacterManager m_Player;
     private void Awake()
     {
@@ -46,6 +49,10 @@ public class cTitleScene : MonoBehaviour
         _Target2 =_BackGround2[0];
         _CloudTarget1 = _Cloud1[0];
         _CloudTarget2 = _Cloud2[0];
+        _Source = GetComponent<AudioSource>();
+        _Clip = Resources.Load<AudioClip>("Sound/title");
+        _Source.clip = _Clip;
+        _Source.Play();
     }
     private void FixedUpdate()
     {

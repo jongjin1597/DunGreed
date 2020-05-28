@@ -2,26 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class cMonsterBow : cLongLangeMonster
+public class cMonsterBow : MonoBehaviour
 {
 
-    protected override void Awake()
+
+    AudioSource _Audio;
+    List<AudioClip> _Clip = new List<AudioClip>();
+    void Awake()
     {
-        GameObject obj = Instantiate(Resources.Load("Prefabs/Bullet/Arrow")) as GameObject;
-        cBullet _Bullet = obj.GetComponent<cBullet>();
-        _Bullet._Speed = 5.0f;
-        _Bullet._BulletState = BulletState.Monster;
-        _Bullet._Damage = 5;
-        _Bullet.transform.SetParent(transform.parent);
-        //총알 발사하기 전까지는 비활성화 해준다.
-        _Bullet.gameObject.SetActive(false);
+ 
+      
 
-        _BulletPoll.Add(_Bullet);
-
+        _Audio = transform.parent.GetComponent<AudioSource>();
+        _Clip.Add(Resources.Load<AudioClip>("Sound/bow_crossbow_arrow_draw_stretch1_03"));
+        _Clip.Add(Resources.Load<AudioClip>("Sound/bow_crossbow_arrow_shoot_type1_03"));
 
     }
     public void AnimationEvent()
     {
+        _Audio.clip = _Clip[0];
+        _Audio.Play();
         Vector2 dir = (Player.GetInstance.transform.position - this.transform.position);
         float angle = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;
         FireBulet(angle);
@@ -32,18 +32,13 @@ public class cMonsterBow : cLongLangeMonster
     public void FireBulet(float _angle)
     {
 
-        //발사되어야할 순번의 총알이 이전에 발사한 후로 아직 날아가고 있는 중이라면, 발사를 못하게 한다.
-        if (_BulletPoll[_CurBulletIndex].gameObject.activeSelf)
-        {
-            return;
-        }
-        _BulletPoll[_CurBulletIndex].transform.position = transform.position;
+        cBullet Bullet = cMonsterBullet.GetInstance.GetObject(2);
+        Bullet.transform.position = this.transform.position;
 
-        _BulletPoll[_CurBulletIndex].transform.rotation = Quaternion.Euler(0f, 0f, _angle);
-        _BulletPoll[_CurBulletIndex]._Start = true;
-
-        _BulletPoll[_CurBulletIndex].gameObject.SetActive(true);
-        StartCoroutine("ActiveBullet", _BulletPoll[_CurBulletIndex]);
+        Bullet.transform.rotation = Quaternion.Euler(0f, 0f, _angle);
+        Bullet._Start = true;
+        Bullet.gameObject.SetActive(true);
+        StartCoroutine("ActiveBullet", Bullet);
 
     }
 

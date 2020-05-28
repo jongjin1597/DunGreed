@@ -12,27 +12,16 @@ public class GiantBat : cLongLangeMonster
    protected override void Awake()
     {
         base.Awake();
-        _MaxBullet = 12;
-        for (int i = 0; i < _MaxBullet; ++i)
-        {
-            GameObject Obj = Instantiate(Resources.Load("Prefabs/Bullet/BatBullet")) as GameObject;
-            cBullet _Bullet = Obj.GetComponent<cBullet>();
-            _Bullet._Speed = 5.0f;
-            _Bullet._BulletState = BulletState.Monster;
-            //_Bullet._Damage = Random.Range(11, 14);
-            _Bullet.transform.SetParent(transform);
-            //총알 발사하기 전까지는 비활성화 해준다.
-            _Bullet.gameObject.SetActive(false);
 
-            _BulletPoll.Add(_Bullet);
-        }
+      
+        _Clip.Add(Resources.Load<AudioClip>("Sound/monster-sound2_bat"));
         _MaxHP = 55;
         _currnetHP = 55;
         _Defense = 0;
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+
+     void Update()
     {
         shootTimer += Time.deltaTime;
 
@@ -51,10 +40,21 @@ public class GiantBat : cLongLangeMonster
         {
             _Renderer.flipX = false;
         }
+        if (_currnetHP < 1)
+        {
+            if (!_isDie)
+            {
+                Die(this.gameObject);
+                _isDie = true;
+            }
+        }
     }
 
     public void AnimationEvent()
     {
+     
+        _Audio.clip = _Clip[2];
+        _Audio.Play();
         dir = (Player.GetInstance.transform.position - this.transform.position);
         for (float i = 0f; i <= 0.8f; i += 0.4f)
         {
@@ -66,7 +66,7 @@ public class GiantBat : cLongLangeMonster
     {
         for (int i = -1; i < 2; ++i)
         {
-           
+          
             float angle = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;
             angle += 25 * i;
             FireBulet(this.transform.position, angle);
@@ -75,28 +75,14 @@ public class GiantBat : cLongLangeMonster
     public void FireBulet(Vector3 Dir, float _angle)
     {
 
-        //발사되어야할 순번의 총알이 이전에 발사한 후로 아직 날아가고 있는 중이라면, 발사를 못하게 한다.
-        if (_BulletPoll[_CurBulletIndex].gameObject.activeSelf)
-        {
-            return;
-        }
+        cBullet Bullet = cMonsterBullet.GetInstance.GetObject(4);
+        Bullet.transform.position = this.transform.position;
 
-
-        _BulletPoll[_CurBulletIndex].transform.position = Dir;
-
-        _BulletPoll[_CurBulletIndex].transform.rotation = Quaternion.Euler(0f, 0f, _angle);
-        _BulletPoll[_CurBulletIndex]._Start = true;
-        _BulletPoll[_CurBulletIndex].gameObject.SetActive(true);
-        StartCoroutine("ActiveBullet", _BulletPoll[_CurBulletIndex]);
-        if (_CurBulletIndex >= _MaxBullet - 1)
-        {
-            _CurBulletIndex = 0;
-        }
-        else
-        {
-            _CurBulletIndex++;
-        }
-
+        Bullet.transform.rotation = Quaternion.Euler(0f, 0f, _angle);
+        Bullet._Start = true;
+        Bullet.gameObject.SetActive(true);
+        StartCoroutine("ActiveBullet", Bullet);
+     
     }
     IEnumerator ActiveBullet(cBullet Bullet)
     {

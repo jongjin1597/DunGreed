@@ -13,27 +13,19 @@ public class RadBat : cLongLangeMonster
     protected override void Awake()
     {
         base.Awake();
-        _MaxBullet =1;
 
-            GameObject Obj = Instantiate(Resources.Load("Prefabs/Bullet/BabyBatBullet")) as GameObject;
-            cBullet _bullet = Obj.gameObject.GetComponent<cBullet>();
-            _bullet._Speed = 5.0f;
-            _bullet._Damage = 3;
-            _bullet._BulletState = BulletState.Monster;
-            _bullet.transform.SetParent(transform);
-            //총알 발사하기 전까지는 비활성화 해준다.
-            Obj.gameObject.SetActive(false);
-            _BulletPoll.Add(_bullet);
         _MaxHP = 20;
+        _Clip.Add(Resources.Load<AudioClip>("Sound/Bat2"));
         _currnetHP = 20;
         _Defense = 0;
         _rigid = GetComponent<Rigidbody2D>();
         Invoke("MoveRange", 1);
     }
 
-    // Update is called once per frame
+
     void FixedUpdate()
     {
+      
         shootTimer += Time.deltaTime;
         
         if (shootTimer > shootDelay) //쿨타임이 지났는지
@@ -60,6 +52,14 @@ public class RadBat : cLongLangeMonster
         {
             _Renderer.flipX = false;
         }
+        if (_currnetHP < 1)
+        {
+            if (!_isDie)
+            {
+                Die(this.gameObject);
+                _isDie = true;
+            }
+        }
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -85,36 +85,22 @@ public class RadBat : cLongLangeMonster
 
     public void AnimationEvent()
     {
-     
-            Vector2 dir = (Player.GetInstance.transform.position - this.transform.position);
+        _Audio.clip = _Clip[2];
+        _Audio.Play();
+        Vector2 dir = (Player.GetInstance.transform.position - this.transform.position);
             float angle = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;
             FireBulet( angle);
     }
     public  void FireBulet( float _angle)
     {
+        cBullet Bullet = cMonsterBullet.GetInstance.GetObject(1);
+        Bullet.transform.position = this.transform.position;
 
-        ////발사되어야할 순번의 총알이 이전에 발사한 후로 아직 날아가고 있는 중이라면, 발사를 못하게 한다.
-        if (_BulletPoll[_CurBulletIndex].gameObject.activeSelf)
-        {
-            return;
-        }
-
-
-            _BulletPoll[_CurBulletIndex].transform.position = this.transform.position;
-
-            _BulletPoll[_CurBulletIndex].transform.rotation = Quaternion.Euler(0f, 0f, _angle);
-        _BulletPoll[_CurBulletIndex]._Start = true;
-        _BulletPoll[_CurBulletIndex].gameObject.SetActive(true);
-        StartCoroutine("ActiveBullet", _BulletPoll[_CurBulletIndex]);
-        if (_CurBulletIndex >= _MaxBullet - 1)
-        {
-            _CurBulletIndex = 0;
-        }
-        else
-        {
-            _CurBulletIndex++;
-        }
-
+        Bullet.transform.rotation = Quaternion.Euler(0f, 0f, _angle);
+        Bullet._Start = true;
+        Bullet.gameObject.SetActive(true);
+        StartCoroutine("ActiveBullet", Bullet);
+     
     }
     IEnumerator ActiveBullet(cBullet Bullet)
     {

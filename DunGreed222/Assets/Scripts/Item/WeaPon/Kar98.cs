@@ -39,16 +39,45 @@ public class Kar98 : Longrange
         _SkillIcon = Resources.Load<Sprite>("Skill/Skill_DeadlyShot");//아이템 이미지
         _SkillCoolTime = 30;
         _ReloadTime = 2.5f;
+     
+   
     }
 
 
     //총알 발사
    public override  void FireBulet(Vector2 Position, float _angle)
     {
-        base.FireBulet(Position, _angle);
+        //발사되어야할 순번의 총알이 이전에 발사한 후로 아직 날아가고 있는 중이라면, 발사를 못하게 한다.
+        if (_BulletPoll[_CurBulletIndex].gameObject.activeSelf)
+        {
+            return;
+        }
+
+        _BulletPoll[_CurBulletIndex].transform.position = Position;
+
+        _BulletPoll[_CurBulletIndex].transform.rotation = Quaternion.Euler(0f, 0f, _angle);
         if (Player.GetInstance._Buff.GetCurrentAnimatorStateInfo(0).IsName("PowerBuff") &&Player.GetInstance._Buff.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1)
         {
+            _ItemSound.clip = _GunSound[3];
+            _ItemSound.Play();
             Player.GetInstance._Buff.SetTrigger("BuffOff");
+        }
+        else
+        {
+            _ItemSound.clip = _GunSound[0];
+            _ItemSound.Play();
+        }
+        _BulletPoll[_CurBulletIndex]._Start = true;
+        _BulletPoll[_CurBulletIndex].gameObject.SetActive(true);
+        _BulletUI.text = (_MaxBullet - (_CurBulletIndex + 1)).ToString() + "  /  " + _MaxBullet.ToString();
+        StartCoroutine("ActiveBullet", _BulletPoll[_CurBulletIndex]);
+        if (_CurBulletIndex >= _MaxBullet - 1)
+        {
+            Reload();
+        }
+        else
+        {
+            _CurBulletIndex++;
         }
 
     }

@@ -24,8 +24,8 @@ public class cCameramanager : cSingleton<cCameramanager>
     private float _halfHeight;
     //카메라 의 반높이 값을 구할 속성을 이용하기 위한변수
     private Camera _theCamera;
-    
-   protected override void Awake()
+
+    protected override void Awake()
     {
         base.Awake();
         _theCamera = GetComponent<Camera>();
@@ -58,7 +58,9 @@ public class cCameramanager : cSingleton<cCameramanager>
             _ShakeTime = 0f;
             transform.position = new Vector3(transform.position.x, transform.position.y, -10);
         }
-        
+        //마우스포지션 불러오기
+
+
     }
 
     public void VibrateForTime()
@@ -72,4 +74,7 @@ public class cCameramanager : cSingleton<cCameramanager>
         _minBound = Bound.bounds.min;
         _maxBound = Bound.bounds.max;
     }
+
+
+
 }

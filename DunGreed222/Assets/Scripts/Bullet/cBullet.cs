@@ -77,9 +77,11 @@ public class cBullet : MonoBehaviour
                 this._Damage = 0;
                 if(_BulletState!=BulletState.PlayerSniper)
                     _Start = false;
+              
             }
+            
         }
-        else if (_BulletState == BulletState.Monster)
+        else if (_BulletState == BulletState.Monster|| _BulletState == BulletState.Boss)
         {
             if (collision.CompareTag("Player"))
             {
@@ -87,13 +89,25 @@ public class cBullet : MonoBehaviour
                 Player.GetInstance.HIT(dam);
                 _Anim.SetTrigger("Fire");
                 _Start = false;
+
            
             }
-        }
-        else if (_BulletState == BulletState.Boss)
-        {
 
         }
+        if(_BulletState != BulletState.Boss)
+        {
+            if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("floor"))
+            {
+                _Anim.SetTrigger("Fire");
+                _Start = false;
+            }
+        }
+
+    
+    }
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+   
     }
     public void CrashBullet()
     {

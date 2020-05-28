@@ -1,0 +1,118 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+public class cObject
+{
+
+    public List<cBullet> _BulletList= new List<cBullet>();
+    public int _MaxIndex;
+    public int _index = 0;
+
+
+    public void Inititlized(ref GameObject obj,int MaxIndex, int Damage,float Speed,BulletState Type,Transform transform)
+    {
+        _MaxIndex = MaxIndex;
+        //복사본 갯수에 맞춰 만들어주기.
+        for (int i = 0; i < _MaxIndex; ++i)
+        {
+            GameObject _obj = MonoBehaviour.Instantiate(obj);
+            cBullet _Bullet = _obj.GetComponent<cBullet>();
+            _Bullet._Speed = Speed;
+            _Bullet._Damage = Damage;
+            _Bullet._BulletState = Type;
+            _Bullet._Start = false;
+            _Bullet.transform.SetParent(transform);
+            _Bullet.gameObject.SetActive(false);
+            _BulletList.Add(_Bullet);
+        }
+    }
+
+    public cBullet GetOneObject
+    {
+        get
+        {
+      
+            if (_index >= _MaxIndex)
+                _index = 0;
+
+
+            cBullet obj = _BulletList[_index];
+            if (_BulletList[_index].gameObject.activeSelf)
+            {
+                ++_index;
+            }
+    
+        
+            return obj;
+        }
+    }
+}
+
+public enum Bullet
+{
+    Benshee,
+    RedBat,
+    BigBat,
+    BigRadBat,
+    Arrow
+}
+public class cMonsterBullet : cSingleton<cMonsterBullet>
+{
+    public List<cObject> m_objects;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        m_objects = new List<cObject>();
+
+        cObject BansheeBullet = new cObject();
+        GameObject obj = Instantiate(Resources.Load("Prefabs/Bullet/BansheeBullet")) as GameObject;
+        obj.SetActive(false);
+        BansheeBullet.Inititlized(ref obj, 24,6,5, BulletState.Boss, transform);
+        m_objects.Add(BansheeBullet);
+       
+        obj = Instantiate(Resources.Load("Prefabs/Bullet/BabyBatBullet")) as GameObject;
+        obj.SetActive(false);
+        cObject BatBullet = new cObject();
+        BatBullet.Inititlized(ref obj, 15, 3, 5, BulletState.Monster, transform);
+        m_objects.Add(BatBullet);
+
+        obj = Instantiate(Resources.Load("Prefabs/Bullet/Arrow")) as GameObject;
+        obj.SetActive(false);
+        cObject Arrow = new cObject();
+        Arrow.Inititlized(ref obj, 15, 5, 5, BulletState.Monster, transform);
+        m_objects.Add(Arrow);
+
+        obj = Instantiate(Resources.Load("Prefabs/Bullet/BatBullet")) as GameObject;
+        obj.SetActive(false);
+        cObject BigRadBat = new cObject();
+        BigRadBat.Inititlized(ref obj, 40, 5, 5, BulletState.Monster, transform);
+        m_objects.Add(BigRadBat);
+
+        obj = Instantiate(Resources.Load("Prefabs/Bullet/BatBullet")) as GameObject;
+        cObject GiantBat = new cObject();
+        GiantBat.Inititlized(ref obj, 40, 5, 5, BulletState.Monster, transform);
+        m_objects.Add(GiantBat);
+
+        obj.SetActive(false);
+
+    }
+
+
+
+    public cBullet GetObject(int index)
+    {
+        cBullet obj = m_objects[index].GetOneObject;
+
+  
+  
+            return obj;
+
+    
+      
+    }
+
+}

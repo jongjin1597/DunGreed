@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class cMapManager : MonoBehaviour
+public class cMapManager : cSingleton<cMapManager>
 {
+
+    AudioSource _Audio;
+   List<AudioClip> _Clip= new List<AudioClip>();
     //현제 맵
-    private Transform _NowMap =null;
+    public Transform _NowMap =null;
     //열린맵 리스트
     public List<Transform> _OpenMapList = new List<Transform>();
     //닫힌맵리스트
@@ -34,22 +37,26 @@ public class cMapManager : MonoBehaviour
     private GameObject _NoonBox;
     //몬스터들 관리할 상위 오브젝트
     private Transform _Monster;
-    //페어리위치
-    private GameObject _Fairy;
     //작은 페어리
     private GameObject _SmallFairy;
     //큰페어리
     private GameObject _BigFairy;
     //박스 관리용 리스트
     public List<GameObject> _BoxList=new List<GameObject>();
-    private void Awake()
+    //문열고닫는거 한번만 호출되게할변수
+    bool _isOpen;
+    protected override void Awake()
     {
+        base.Awake();
         _OpenMapList.Add(transform.GetChild(0));
         for(int i =1; i < transform.childCount; ++i)
         {
             _CloseMapList.Add(transform.GetChild(i));
         }
         SetNowMap(_OpenMapList[0]);
+        _Audio = GetComponent<AudioSource>();
+        _Clip.Add(Resources.Load<AudioClip>("Sound/itembox"));
+        _Clip.Add(Resources.Load<AudioClip>("Sound/Chest2"));
 
         _NormalBox = Resources.Load("Prefabs/DunguenBox/NormalBox") as GameObject;
         _RareBox = Resources.Load("Prefabs/DunguenBox/RareBox") as GameObject;
@@ -61,24 +68,36 @@ public class cMapManager : MonoBehaviour
     }
     void Update()
     {
-        if (_NowMap != null) 
-        {
-            if (_MonsterList.Count == 0)
-            {
-                _isMonster = false;
-           
-                if (_BoxList.Count==0)
-                    SetBox();
-            }
+ 
+     if (_MonsterList.Count == 0)
+     {
+         _isMonster = false;
+
+         if (_BoxList.Count == 0)
+         {
+             int i = Random.Range(0, 2);
+             if (i == 0)
+                 SetFairy();
+             else
+             SetBox();
+         }
+     }
+
             if (!_isMonster)
             {
                 _DoorOpen?.Invoke();
-            }
+                _isOpen = true;
+             }
             else if (_isMonster)
             {
                 _DoorClose?.Invoke();
+            if (_isOpen)
+            {
+                _Audio.clip = _Clip[1];
+                _Audio.Play();
+                _isOpen = false;
             }
-        }
+            }
     }
     //문세팅
     public void DoorSetting(Transform NowMap)
@@ -123,36 +142,30 @@ public class cMapManager : MonoBehaviour
             _BoxList.Clear();
             if (_NowMap.gameObject.CompareTag("MonsterMap"))
             {
-                if (_NowMap.transform.Find("Monster") != null)
+            
+                _Monster = _NowMap.transform.Find("Monster");
+                for (int i = 0; i < _Monster.childCount; ++i)
                 {
-                    _Monster = _NowMap.transform.Find("Monster");
-                    for (int i = 0; i < _Monster.childCount; ++i)
-                    {
-                        _MonsterList.Add(_Monster.transform.GetChild(i));
-                        _Monster.transform.GetChild(i).GetComponent<cMonsterBase>().DIE += ReMoveMonster;
-                        _Monster.transform.GetChild(i).gameObject.SetActive(true);
-                    }
-                    _isMonster = true;
+                    _MonsterList.Add(_Monster.transform.GetChild(i));
+                   
+                    _Monster.transform.GetChild(i).gameObject.SetActive(true);
                 }
-                if (_NowMap.transform.Find("Box") != null)
-                {
-                    _Box = _NowMap.transform.Find("Box").gameObject;
-                    for (int i = 0; i < _Box.transform.childCount; ++i)
-                    {
-                        _BoxList.Add(_Box.transform.GetChild(0).gameObject);
-                    }
+                _isMonster = true;
 
-                }
-                if (_NowMap.transform.Find("Fairy") != null)
+
+                _Box = _NowMap.transform.Find("Box").gameObject;
+                for (int i = 0; i < _Box.transform.childCount; ++i)
                 {
-                    _Fairy = _NowMap.transform.Find("Fairy").gameObject;
+                    _BoxList.Add(_Box.transform.GetChild(0).gameObject);
                 }
+            
+        
+         
             }
-            else if (_NowMap.gameObject.CompareTag("NoMonsterMap"))
-            {
-                _Fairy = null;
-                _Box = null;
+            else if (_NowMap.gameObject.CompareTag("NoMonsterMap")|| _NowMap.gameObject.CompareTag("Shop") || _NowMap.gameObject.CompareTag("FoodShop"))
+            {    _Box = null;
                 _Monster = null;
+           
             }
             }
     }
@@ -162,7 +175,7 @@ public class cMapManager : MonoBehaviour
         if (_NowMap.gameObject.CompareTag("MonsterMap"))
         {
             int RandomIndex = Random.Range(1, 101);
-            
+            _Audio.clip = _Clip[0];
             if(RandomIndex >= 1 && RandomIndex <= 50)
             {
                 GameObject obj = Instantiate(_NoonBox) as GameObject;
@@ -176,6 +189,7 @@ public class cMapManager : MonoBehaviour
                 obj.transform.position = _Box.transform.position;
                 obj.transform.SetParent(_Box.transform);
                 _BoxList.Add(obj);
+                _Audio.Play();
 
             }
             else if (RandomIndex >= 81 && RandomIndex <= 95)
@@ -184,6 +198,7 @@ public class cMapManager : MonoBehaviour
                 obj.transform.position = _Box.transform.position;
                 obj.transform.SetParent(_Box.transform);
                 _BoxList.Add(obj);
+                _Audio.Play();
 
             }
             else if (RandomIndex >= 95 && RandomIndex <= 100)
@@ -192,35 +207,64 @@ public class cMapManager : MonoBehaviour
                 obj.transform.position = _Box.transform.position;
                 obj.transform.SetParent(_Box.transform);
                 _BoxList.Add(obj);
+                _Audio.Play();
 
             }
+  
+         
 
-            SetFairy();
+
         }
 
     }
     //페어리세팅
     void SetFairy()
     {
-        int RandomIndex = Random.Range(1, 101);
-        if (RandomIndex >= 1 && RandomIndex <= 90)
+        if (_NowMap.gameObject.CompareTag("MonsterMap"))
         {
-            GameObject obj = Instantiate(_SmallFairy) as GameObject;
+            int RandomIndex = Random.Range(1, 101);
+            _Audio.clip = _Clip[0];
+            if (RandomIndex >= 1 && RandomIndex <= 50)
+            {
+                GameObject obj = Instantiate(_NoonBox) as GameObject;
+                obj.transform.position = _Box.transform.position;
+                obj.transform.SetParent(_Box.transform);
+                _BoxList.Add(obj);
+            }
+            else if (RandomIndex >= 51 && RandomIndex <= 90)
+            {
+                GameObject obj = Instantiate(_SmallFairy) as GameObject;
 
-            obj.transform.position = _Fairy.transform.position;
-              obj.transform.SetParent(_Fairy.transform);
+                obj.transform.position = _Box.transform.position;
+                obj.transform.SetParent(_Box.transform);
+                _Audio.Play();
+                _BoxList.Add(obj);
+                GameObject Noon = Instantiate(_NoonBox) as GameObject;
+          
+                Noon.transform.SetParent(_Box.transform);
+                _BoxList.Add(Noon);
+            }
+            else if (RandomIndex >= 91 && RandomIndex <= 100)
+            {
+                GameObject obj = Instantiate(_BigFairy) as GameObject;
+                obj.transform.SetParent(_Box.transform);
+                obj.transform.position = _Box.transform.position;
+                _Audio.Play();
+                _BoxList.Add(obj);
+                //한번 갔던방에 갔다왔을떄 다시 실행안하기위해 추가하는 박스
+                GameObject Noon = Instantiate(_NoonBox) as GameObject;
+                Noon.transform.SetParent(_Box.transform);
+                _BoxList.Add(Noon);
+            }
         }
-        else if (RandomIndex >= 91 && RandomIndex <= 100)
-        {
-            GameObject obj = Instantiate(_BigFairy) as GameObject;
-            obj.transform.SetParent(_Fairy.transform);
-            obj.transform.position = _Fairy.transform.position;
-        }
-      
 
     }
 
-    void ReMoveMonster(GameObject gameObject) {
+   public void ReMoveMonster(GameObject gameObject) {
         _MonsterList.Remove(gameObject.transform);
+    }
+    public void ReMoveFairy(GameObject Fairy)
+    {
+        _BoxList.Remove(Fairy);
     }
 }

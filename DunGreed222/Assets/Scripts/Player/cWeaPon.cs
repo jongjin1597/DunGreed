@@ -6,6 +6,11 @@ using UnityEngine.UI;
 //현제 장착중인무기
 public class cWeaPon : MonoBehaviour
 {
+    AudioSource _AttackSound;
+    List<AudioClip> _Clip = new List<AudioClip>();
+    AudioClip _Sword;
+    AudioClip _Spear;
+    AudioClip _OnshotClip;
     public Image _Cooltime;
     Text _BulletText;
     //무기 이미지 그리기용 랜더러
@@ -25,10 +30,13 @@ public class cWeaPon : MonoBehaviour
     public delegate void _AttackSpeed(float AttackSpeed);
     public _AttackSpeed _Speed;
     private bool _OneSkillCheck =true;
-
+    private bool _isAttack=false;
     void Awake()
     {
+        _AttackSound = GetComponent<AudioSource>();
 
+        _Clip.Add(Resources.Load<AudioClip>("Sound/swing1"));
+        _Spear = Resources.Load<AudioClip>("Attack1");
         _AttackMotion = FindObjectOfType<cAttack>();
           _Ani =transform.GetComponent<Animator>();
           _SpriteRend = transform.GetComponent<SpriteRenderer>();
@@ -58,12 +66,14 @@ public class cWeaPon : MonoBehaviour
             _Ani.runtimeAnimatorController = _SwardAni;
             _SpriteRend.sortingOrder = 4;
             transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -90));
+            _AttackSound.clip = _Sword;
         }
         else if (_NowWeaPon._Type == ItemType.Spear)
         {
             _Ani.runtimeAnimatorController = _SpearAni;
             _SpriteRend.sortingOrder = 10;
             transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -90));
+            _AttackSound.clip = _Spear;
 
         }
         else if (_NowWeaPon._Type == ItemType.Gun|| _NowWeaPon._Type ==ItemType.OneShot)
@@ -71,7 +81,7 @@ public class cWeaPon : MonoBehaviour
             _Ani.runtimeAnimatorController = _GunAni;
             _SpriteRend.sortingOrder = 10;
             transform.localRotation = Quaternion.Euler(new Vector3(0, 0,0));
-
+            _AttackSound.clip = null;
             _BulletText.text = ((Longrange)_NowWeaPon)._MaxBullet.ToString() + " / " + ((Longrange)_NowWeaPon)._MaxBullet.ToString();
 
         }
@@ -96,9 +106,13 @@ public class cWeaPon : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    _Ani.SetTrigger("AttackCheck");
-                    StartCoroutine("Attackmotion");
-
+                    if (!_isAttack)
+                    {
+                        _Ani.SetTrigger("AttackCheck");
+                        StartCoroutine("Attackmotion");
+                        _AttackSound.Play();
+                        _isAttack = true;
+                    }
                 }
             }
             else if (_NowWeaPon._Type == ItemType.Gun)
@@ -134,13 +148,13 @@ public class cWeaPon : MonoBehaviour
        
         //WeaPon.transform.position = rotateCenter + mousePos;
     }
-    void AnimationEvent()
-    {
-       
-        StartCoroutine("Attack");
-    }
+ 
     IEnumerator Attack()
     {
+        if(_NowWeaPon._Type == ItemType.OneShot)
+        {
+
+        }
          yield return new WaitForSeconds(((Longrange)_NowWeaPon)._Delay);
         Vector3 _mousePos = Input.mousePosition; //마우스 좌표 저장
         Vector3 _oPosition = transform.position;
@@ -149,6 +163,8 @@ public class cWeaPon : MonoBehaviour
         float rotateDegree = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;
 
         ((Longrange)_NowWeaPon).FireBulet(_oPosition, rotateDegree);
+        _isAttack = false;
+
     }
     public void SetAttackSpeed(float AttackSpeed)
     {
@@ -160,31 +176,32 @@ public class cWeaPon : MonoBehaviour
  
     IEnumerator Attackmotion()
     {
-        if (_NowWeaPon._Type == ItemType.Sword)
-        {
+
+
+         if (_NowWeaPon._Type == ItemType.Sword || _NowWeaPon._Type == ItemType.Spear) {
             if (!_Ani.GetCurrentAnimatorStateInfo(0).IsName("Attack1"))
             {
                 yield return new WaitForSeconds(0.1f);
                 _AttackMotion._Attack();
+
             }
             else if (!_Ani.GetCurrentAnimatorStateInfo(0).IsName("Attack2"))
             {
+
                 yield return new WaitForSeconds(0.1f);
                 _AttackMotion._Attack();
             }
-        }
-        else if (_NowWeaPon._Type == ItemType.Spear)
-        {
-            if (!_Ani.GetCurrentAnimatorStateInfo(0).IsName("Attack1"))
+            }
+            else if (_NowWeaPon._Type == ItemType.Gun || _NowWeaPon._Type == ItemType.OneShot)
             {
-                _AttackMotion._Attack();
                 yield return null;
             }
-        }
-        else if (_NowWeaPon._Type == ItemType.Gun|| _NowWeaPon._Type == ItemType.OneShot)
-        {
-            yield return null;
-        }
+
+    }
+    void AttackReady()
+    {
+        _isAttack = false;
+
     }
     IEnumerator Cooltime(float CoolTime)
     {

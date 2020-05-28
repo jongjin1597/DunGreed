@@ -21,21 +21,24 @@ public class BigSkel : cShortMonster
         _rigid = GetComponent<Rigidbody2D>();
         _Anim = GetComponent<Animator>();
 
+        _Clip.Add(Resources.Load<AudioClip>("Sound/swing3")); 
         _Anim.SetBool("Run", true);
         _MaxHP = 75;
         _currnetHP = 75;
         _Defense = 1;
+        _AttackDamage = 7;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+
         Chack += Time.deltaTime;
         dir = (Player.GetInstance.transform.position - this.transform.position);
 
         if (_Anim.GetCurrentAnimatorStateInfo(0).IsName("BigWhiteSkelMove"))
         {
-            _rigid.velocity = new Vector2(dir.normalized.x * speed, _rigid.position.y);
+            _rigid.velocity = new Vector2(dir.normalized.x * speed,0);
         }
         if (_Anim.GetCurrentAnimatorStateInfo(0).IsName("BigWhiteSkelAttack"))
         {
@@ -45,14 +48,21 @@ public class BigSkel : cShortMonster
         if (Player.GetInstance.transform.position.x < this.transform.position.x)
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
-            _HPBarBackGround.transform.rotation = Quaternion.identity;
+            _HPBarBackGround.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
         else if (Player.GetInstance.transform.position.x > this.transform.position.x)
         {
             transform.rotation = Quaternion.identity;
-            _HPBarBackGround.transform.rotation = Quaternion.Euler(0,180,0);
+            _HPBarBackGround.transform.rotation = Quaternion.identity;
         }
-
+        if (_currnetHP < 1)
+        {
+            if (!_isDie)
+            {
+                Die(this.gameObject);
+                _isDie = true;
+            }
+        }
 
     }
     void Attack()
@@ -76,8 +86,10 @@ public class BigSkel : cShortMonster
         {
             if (_AttackBox.enabled)
             {
-                int Attack = Random.Range(_MinAtteckDamage, _MaxAttackDamage);
-                int _dam = Attack - Player.GetInstance._Defense;
+                _Audio.clip=_Clip[2];
+                _Audio.Play();
+        
+                int _dam = _AttackDamage - Player.GetInstance._Defense;
                 Player.GetInstance.HIT(_dam);
                 _AttackBox.enabled = false;
             }

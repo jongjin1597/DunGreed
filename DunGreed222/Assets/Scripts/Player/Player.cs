@@ -43,7 +43,8 @@ public class Player : cCharacter
     //캐릭터상태
     private State _state = State.Idle;
     //리지드바디
-    private Rigidbody2D _Rigidbody;
+    [HideInInspector]
+    public Rigidbody2D _Rigidbody;
     //대쉬잔상
     private ParticleSystem _DashEffect;
     //최대대시횟수
@@ -54,6 +55,8 @@ public class Player : cCharacter
     private bool _isJump = false;
     //대시카운트 충전용시간
     private float _Time = 0f;
+    public int _MinAtteckDamage;//최소공격력
+    public int _MaxAttackDamage;//최대공격력
     //마우스포지션
     private Vector2 _MousePosition;
     [HideInInspector]
@@ -77,6 +80,8 @@ public class Player : cCharacter
     private bool _isPosition = false;
     //플레이어 데미지 입는변수
     private bool _isCrash = true;
+
+    public bool MoveMap=false; 
     protected override void Awake()
     {
         //_health.Initialize(_InitHealth, _InitHealth);
@@ -86,16 +91,21 @@ public class Player : cCharacter
             _instacne = this;
             DontDestroyOnLoad(gameObject);
             _currnetHP = 80;
-
+            _Renderer = transform.GetChild(1).GetComponent<SpriteRenderer>();
             _health.Initialize(_currnetHP, _currnetHP);
             _Rigidbody = gameObject.GetComponent<Rigidbody2D>();
             _DashEffect = transform.GetChild(5).GetComponent<ParticleSystem>();
             _MoveSpeed = 5.0f;
             _Critical = 20;
             _CriticalDamage = 50;
-            _JumpPower = 3;
+            _JumpPower = 6;
             _WeaPon = transform.GetChild(3).GetChild(1).GetComponent<cWeaPon>();
             _Buff = transform.GetChild(6).GetComponent<Animator>();
+
+            _Clip.Add(Resources.Load<AudioClip>("Sound/Jumping"));
+            _Clip.Add(Resources.Load<AudioClip>("Sound/Hit_Player"));
+            _Clip.Add(Resources.Load<AudioClip>("Sound/ui-sound-13-dash"));
+
         }
         else if (_instacne != null)
         {
@@ -131,67 +141,70 @@ public class Player : cCharacter
 
         if (Time.timeScale != 0)
         {
-            //이동
-            _horizontalMove = Input.GetAxisRaw("Horizontal");
-            //점프상태
-            if (Input.GetKeyDown(KeyCode.Space) && !Input.GetKey(KeyCode.S))
+            if (!MoveMap)
             {
-                _isJump = true;
-            }
-
-            AnimationUpdate();
-            //hp확인
-            if (Input.GetKeyDown(KeyCode.O))
-            {
-                _health.MyCurrentValue -= 10;
-            }
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                _health.MyCurrentValue += 10;
-            }
-
-            //마우스포지션 불러오기
-            _MousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-
-            //마우스좌표에따라 캐릭터 회전
-            if (_MousePosition.x < transform.position.x)
-            {
-                if (_isPosition)
+                //이동
+                _horizontalMove = Input.GetAxisRaw("Horizontal");
+                //점프상태
+                if (Input.GetKeyDown(KeyCode.Space) && !Input.GetKey(KeyCode.S))
                 {
-                    transform.rotation = Quaternion.Euler(0, 180, 0);
-                   // _WeaPon.transform.localRotation = Quaternion.Euler(-180, 0, 0);
-                    _isPosition = false;
+                    _isJump = true;
                 }
-            }
-            else if (_MousePosition.x > transform.position.x)
-            {
-                if (!_isPosition)
+
+                AnimationUpdate();
+                //hp확인
+                if (Input.GetKeyDown(KeyCode.O))
                 {
-                    transform.rotation = Quaternion.identity;
-
-                    //_WeaPon.localRotation = Quaternion.Euler(0, 0, 0);
-                    _isPosition = true;
+                    _health.MyCurrentValue -= 10;
                 }
-            }
-
-            //대시횟수 충전
-            _Time += Time.deltaTime;
-            if (_Time >= 1.0f)
-            {
-
-                if (_DashCount < 3)
+                if (Input.GetKeyDown(KeyCode.P))
                 {
-                    _Dash.SetEnabled(_DashCount);
-                    _DashCount += 1;
+                    _health.MyCurrentValue += 10;
                 }
-                _Time = 0;
-            }
 
-            //HP0되면 죽는것
-            if (_health.MyCurrentValue == 0)
-            {
-                _state = State.Die;
+                //마우스포지션 불러오기
+                _MousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+
+                //마우스좌표에따라 캐릭터 회전
+                if (_MousePosition.x < transform.position.x)
+                {
+                    if (_isPosition)
+                    {
+                        transform.rotation = Quaternion.Euler(0, 180, 0);
+                        // _WeaPon.transform.localRotation = Quaternion.Euler(-180, 0, 0);
+                        _isPosition = false;
+                    }
+                }
+                else if (_MousePosition.x > transform.position.x)
+                {
+                    if (!_isPosition)
+                    {
+                        transform.rotation = Quaternion.identity;
+
+                        //_WeaPon.localRotation = Quaternion.Euler(0, 0, 0);
+                        _isPosition = true;
+                    }
+                }
+
+                //대시횟수 충전
+                _Time += Time.deltaTime;
+                if (_Time >= 1.0f)
+                {
+
+                    if (_DashCount < 3)
+                    {
+                        _Dash.SetEnabled(_DashCount);
+                        _DashCount += 1;
+                    }
+                    _Time = 0;
+                }
+
+                //HP0되면 죽는것
+                if (_health.MyCurrentValue == 0)
+                {
+                    _state = State.Die;
+                }
             }
         }
     }
@@ -201,21 +214,12 @@ public class Player : cCharacter
 
         Debug.DrawRay(_Rigidbody.position, Vector3.down * 2, new Color(0, 1, 0));
 
-        if (_Rigidbody.velocity.y < 0)
-        {
-            RaycastHit2D rayHit = Physics2D.Raycast(_Rigidbody.position, Vector3.down * 2.5f, 1, LayerMask.GetMask("floor"));
-            if (rayHit.collider != null)
-            {
-                if (rayHit.distance < 1.2f)
-                {
-                    _JumpCount = 2;
-                    _Anim.SetBool("Jump", false);
-                }
-            }
-        }
-        Jump();
-        Move();
 
+        if (!MoveMap)
+        {
+            Jump();
+            Move();
+        }
         if (Input.GetMouseButtonDown(1))
         {
 
@@ -239,10 +243,11 @@ public class Player : cCharacter
         _Rigidbody.AddForce(Vector2.right * _horizontalMove * 2, ForceMode2D.Impulse);
         if (_Rigidbody.velocity.x > _MoveSpeed)
         {
+    
             _Rigidbody.velocity = new Vector2(_MoveSpeed, _Rigidbody.velocity.y);
         }
         else if (_Rigidbody.velocity.x < _MoveSpeed * (-1))
-        {
+        { 
             _Rigidbody.velocity = new Vector2(_MoveSpeed * (-1), _Rigidbody.velocity.y);
         }
         if (_horizontalMove == 0)
@@ -252,6 +257,7 @@ public class Player : cCharacter
 
     }
 
+
     void Jump()
     {
         //점프상태가 아니거나 점프 횟수가 없으면 리턴
@@ -259,7 +265,8 @@ public class Player : cCharacter
         {
             return;
         }
-
+        _Audio.clip= _Clip[0];
+        _Audio.Play();
         _state = State.Jump;
         _Rigidbody.velocity = Vector3.zero;
         _Rigidbody.AddForce(Vector2.up * _JumpPower, ForceMode2D.Impulse);
@@ -275,6 +282,8 @@ public class Player : cCharacter
         if (_state != State.Dash)
         {
             _state = State.Dash;
+            _Audio.clip = _Clip[2];
+            _Audio.Play();
             _DashEffect.Play();
             int _Index = 0;
             Vector3 _StartPoint = transform.position;
@@ -317,6 +326,18 @@ public class Player : cCharacter
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Brige"|| collision.gameObject.tag == "floor")
+        {
+        
+                _JumpCount = 2;
+                _Anim.SetBool("Jump", false);
+  
+        }
+        _JumpCount = 2;
+        _Anim.SetBool("Jump", false);
+    }
     void OnCollisionStay2D(Collision2D other)
     {
         if (other.gameObject.tag == "Brige") {
@@ -333,19 +354,26 @@ public class Player : cCharacter
         foot.enabled = true;
     }
 
-    public override void HIT(int dam)
+    public void HIT(int dam)
     {
         if (_isCrash)
         {
+
+            _Audio.clip = _Clip[1];
+            _Audio.Play();
             _health.MyCurrentValue -= dam;
             _isCrash = false;
-            Invoke("SetCrash", 0.1f);
+            _Renderer.color = new Color(1, 1, 1, 0.5f);
+            StartCoroutine(SetCrash());
         }
     }
-    private void SetCrash()
+    IEnumerator SetCrash()
     {
+
+        yield return new WaitForSeconds(1.3f);
         _isCrash = true;
-}
+        _Renderer.color = new Color(1, 1, 1, 1);
+    }
     public bool isCritical()
     {
         float Critical;

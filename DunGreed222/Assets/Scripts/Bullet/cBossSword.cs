@@ -17,6 +17,7 @@ public class cBossSword : MonoBehaviour
     private void Awake()
     {
         _anim = GetComponentInChildren<Animator>();
+       _Damage = 9;
     }
 
     void Update()
@@ -41,9 +42,9 @@ public class cBossSword : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
-        {           
+        {
             int dam = _Damage - Player.GetInstance._Defense;
-            Player.GetInstance._health.MyCurrentValue -= dam;
+            Player.GetInstance.HIT(dam);
         }
     }
 

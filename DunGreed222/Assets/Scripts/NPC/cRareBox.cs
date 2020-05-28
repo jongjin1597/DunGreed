@@ -6,14 +6,15 @@ public class cRareBox : cNPC
 {
     int _ItemCount=0;
     SpriteRenderer _Renderer;
-    BoxCollider2D _Box;
+
+    bool _isOpen = false;
     protected override void Awake()
     {
 
         base.Awake();
 
         _Renderer = GetComponent<SpriteRenderer>();
-        _Box = GetComponent<BoxCollider2D>();
+
     }
 
     private void Update()
@@ -62,7 +63,7 @@ public class cRareBox : cNPC
         }
         _ItemCount += 1;
 
-        _Box.enabled = false;
+        _isOpen = true;
         _ButtonF.SetActive(false);
         _Renderer.sprite = Resources.Load<Sprite>("Itemp/EleteTresure1Opened");
     }
@@ -70,6 +71,7 @@ public class cRareBox : cNPC
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!_isOpen)
         base.OnTriggerEnter2D(collision);
 
     }

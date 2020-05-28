@@ -19,11 +19,13 @@ public class Ovibos : cShortMonster
         _MaxHP = 70;
         _currnetHP = 70;
         _Defense = 1;
+        _AttackDamage = 10;
     }
 
-    
-    void Update()
+
+   void FixedUpdate()
     {
+      
         Chack += Time.deltaTime;
 
         if(_rigid.velocity == Vector2.zero)
@@ -51,6 +53,14 @@ public class Ovibos : cShortMonster
                 _Renderer.flipX = false;
             }
         }
+        if (_currnetHP < 1)
+        {
+            if (!_isDie)
+            {
+                Die(this.gameObject);
+                _isDie = true;
+            }
+        }
     }
     void Attack()
     {
@@ -65,7 +75,7 @@ public class Ovibos : cShortMonster
             {
                 dashSpeed *= -1;
             }
-            _rigid.velocity = new Vector2((dir.normalized.x * speed) + dashSpeed, _rigid.position.y);
+            _rigid.velocity = new Vector2((dir.normalized.x * speed) + dashSpeed, 0);
             Chack = 0;
         }
 
@@ -83,8 +93,7 @@ public class Ovibos : cShortMonster
             if (_AttackBox.enabled)
              {
 
-                int Attack = Random.Range(_MinAtteckDamage, _MaxAttackDamage);
-                int _dam = Attack - Player.GetInstance._Defense;
+                int _dam = _AttackDamage - Player.GetInstance._Defense;
                 Player.GetInstance.HIT(_dam);
                 _AttackBox.enabled = false;
             }

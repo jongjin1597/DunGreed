@@ -46,7 +46,7 @@ public class cMT8 : Longrange
     public override  void FireBulet(Vector2 Position, float _angle)
     {
         base.FireBulet(Position, _angle);
-
+ 
     }
 
 

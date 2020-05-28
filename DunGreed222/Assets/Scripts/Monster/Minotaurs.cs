@@ -13,20 +13,23 @@ public class Minotaurs : cShortMonster
 
     float attackDelay = 2f; //런 딜레이
     float attackTimer = 0; //런 타이머
-
+    BoxCollider2D _AttackRangeBox;
     BoxCollider2D _AttackBox;
     protected override void Awake()
     {
         base.Awake();
         _AttackBox = transform.GetChild(2).GetComponent<BoxCollider2D>();
         _rigid = GetComponent<Rigidbody2D>();
+        _AttackDamage = 9;
         _MaxHP = 80;
         _currnetHP = 80;
         _Defense = 1;
+        _AttackRangeBox = transform.GetChild(3).GetComponent<BoxCollider2D>();
     }
 
-    void Update()
+  void Update()
     {
+ 
         Chack += Time.deltaTime;
 
         attackTimer += Time.deltaTime;
@@ -62,6 +65,14 @@ public class Minotaurs : cShortMonster
                 _Renderer.flipX = false;
             }
         }
+        if (_currnetHP < 1)
+        {
+            if (!_isDie)
+            {
+                Die(this.gameObject);
+                _isDie = true;
+            }
+        }
     }
     public void Dash()
     {
@@ -78,7 +89,7 @@ public class Minotaurs : cShortMonster
                 {
                     dashSpeed *= -1;
                 }
-                _rigid.velocity = new Vector2((dir.normalized.x * speed) + dashSpeed, _rigid.position.y);
+                _rigid.velocity = new Vector2((dir.normalized.x * speed) + dashSpeed, 0);
            // }
             Chack = 0;
         }
@@ -94,8 +105,7 @@ public class Minotaurs : cShortMonster
         {
             if (_AttackBox.enabled)
             {
-                int Attack = Random.Range(_MinAtteckDamage, _MaxAttackDamage);
-                int _dam = Attack - Player.GetInstance._Defense;
+                int _dam = _AttackDamage - Player.GetInstance._Defense;
                 Player.GetInstance.HIT(_dam);
                 _AttackBox.enabled = false;
             }
@@ -137,5 +147,12 @@ public class Minotaurs : cShortMonster
             }
         }
     }
-
+    void SetBoxTrue()
+    {
+        _AttackBox.enabled = true;
+    }
+    void SetBoxfalse()
+    {
+        _AttackBox.enabled = false;
+    }
 }

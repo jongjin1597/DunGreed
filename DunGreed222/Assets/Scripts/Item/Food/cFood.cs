@@ -20,9 +20,11 @@ public class cFood
     public int _FoodPrice { get; }
     //회복될 HP
     public int _HP { get; }
+    //음식 이름
+    public int _FoodID { get; }
     //음식 이미지
     public Sprite _FoodIcon { get; }
-    public cFood(string Name,string Effect1,float Stat1,string Effect2,float Stat2, int Satiey,int Price, int HP,Sprite Icon) 
+    public cFood(string Name,string Effect1,float Stat1,string Effect2,float Stat2, int Satiey,int Price, int HP,Sprite Icon,int ID) 
     {
         _FoodName = Name;
         _FoodEffect1 = Effect1;
@@ -33,6 +35,7 @@ public class cFood
         _FoodPrice = Price;
         _HP = HP;
         _FoodIcon = Icon;
+        _FoodID = ID;
     }
 
 

@@ -16,11 +16,11 @@ public class SkelBoss : cBossMonster
 
     public Transform BossBack;
     int SwordX = 0;
-    int laserCount = 0;
-
+    bool isAttack=false;
+    int _RandomIndex;
     State state = State.Normal;
-    public SkellBossLaser[] skellBossLasers;
-
+    //public List<SkellBossLaser> skellBossLasers =new List<SkellBossLaser>();
+    SkellBossLaser[] skellBossLasers =new SkellBossLaser[2];
 
     protected override void Awake()
     {
@@ -33,8 +33,8 @@ public class SkelBoss : cBossMonster
             GameObject obj = Instantiate(Resources.Load("Prefabs/Boss/BossBullet")) as GameObject;
             cBullet _Bullet = obj.GetComponent<cBullet>();
             _Bullet._Speed = 5.0f;
-
-            _Bullet._BulletState = BulletState.Boss;
+            _Bullet._Damage = 8;
+            _Bullet._BulletState = BulletState.Monster;
 
             _Bullet.transform.SetParent(BossBack);
             _Bullet.gameObject.SetActive(false);
@@ -48,13 +48,18 @@ public class SkelBoss : cBossMonster
             GameObject obj = Instantiate(Resources.Load("Prefabs/Boss/BossSword")) as GameObject;
             cBossSword _Sword = obj.GetComponent<cBossSword>();
             _Sword._Speed = 20.0f;
-            //_Bullet._Damage = Random.Range(11, 14);
-            //총알 발사하기 전까지는 비활성화 해준다.
+  
             _Sword.transform.SetParent(transform);
             _Sword.gameObject.SetActive(false);
 
             _BossSwordPoll.Add(_Sword);
         }
+        skellBossLasers[0] = transform.GetChild(2).GetComponent<SkellBossLaser>();
+        skellBossLasers[1] = transform.GetChild(3).GetComponent<SkellBossLaser>();
+        skellBossLasers[0]._SkellLaser = skellBossLasers[1];
+        skellBossLasers[0].count = 0;
+        skellBossLasers[1]._SkellLaser = skellBossLasers[0];
+        skellBossLasers[1].count = 0;
 
     }
 
@@ -64,62 +69,48 @@ public class SkelBoss : cBossMonster
     }
 
 
-    private void Update()
+    private void FixedUpdate()
     {
-
-        if (state == State.Laser)
+        if (!isAttack)
         {
-            skellBossLasers[0].Fire = true;
-            laserCount = 0;
-            state = State.Normal;
-        }
-        else if (state == State.Bullet)
-        {
-            _Anim.SetTrigger("Attack");
-            state = State.Normal;
-        }
-        else if (state == State.Sword)
-        {
-            Vector3 dirVec = new Vector3(BossBack.transform.position.x + -4, BossBack.transform.position.y + 5, 0);
-            StartCoroutine(FireSword(dirVec));
-            state = State.Normal;
-        }
- 
-        if (laserCount < 2)
-        {
-            if (skellBossLasers[0]._anim[2].GetCurrentAnimatorStateInfo(0).IsName("SkellBossLaserBody") &&
-               skellBossLasers[0]._anim[2].GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.98f)
+            if (state == State.Laser)
             {
-                skellBossLasers[1].Fire = true;
-                laserCount++;
+                _RandomIndex = Random.Range(0, 2);
+                skellBossLasers[_RandomIndex].Fire = true;
+                isAttack = true;
+               
             }
-            else if (skellBossLasers[1]._anim[2].GetCurrentAnimatorStateInfo(0).IsName("SkellBossLaserBody") &&
-               skellBossLasers[1]._anim[2].GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.98f)
+            else if (state == State.Bullet)
             {
-                skellBossLasers[2].Fire = true;
-                laserCount++;
-                StartCoroutine("SkellBossState");
+                _Anim.SetTrigger("Attack");
+                isAttack = true;
+              
+            }
+            else if (state == State.Sword)
+            {
+                Vector3 dirVec = new Vector3(BossBack.transform.position.x + -4, BossBack.transform.position.y + 5, 0);
+                StartCoroutine(FireSword(dirVec));
+                isAttack = true;
+           
             }
         }
+   
 
-        //if (!_BossSwordPoll[4].gameObject.activeSelf){
-        //    StartCoroutine("SkellBossState");
-        //}
+        if (skellBossLasers[0].count > 3|| skellBossLasers[1].count >3)
+        {
+            if(state!=State.Normal)
+            StartCoroutine("SkellBossState");
+            state = State.Normal;
+        }
+        
     }
 
     IEnumerator SkellBossState()
     {
-        yield return new WaitForSeconds(2.0f);
-<<<<<<< HEAD
+        yield return new WaitForSeconds(3.0f);
+
         int randomNum = 2;
-
-        //int randomNum = Random.Range(0, 3);
-        if (randomNum == 0)
-=======
-
-        int randomNum = Random.Range(0, 3);
         if(randomNum == 0)
->>>>>>> 2cefd1c6d3348cc9d50dd329fe6bfbb75ac6f2ca
         {
             state = State.Bullet;
         }
@@ -130,7 +121,12 @@ public class SkelBoss : cBossMonster
         else if (randomNum == 2)
         {
             state = State.Laser;
+            skellBossLasers[0].count=0;
+            skellBossLasers[1].count = 0;
+
+
         }
+        isAttack = false;
     }
 
     IEnumerator AnimationEvent()
@@ -147,8 +143,9 @@ public class SkelBoss : cBossMonster
             }
             yield return new WaitForSeconds(0.2f);
             _BulletAngle += 5;
-        }    
-     }
+        }
+        state = State.Normal;
+    }
     
     public void FireBulet(Vector3 Dir, float _angle)
     {
@@ -195,6 +192,7 @@ public class SkelBoss : cBossMonster
         {
             yield return new WaitForSeconds(2.0f);
             StartCoroutine("SkellBossState");
+            state = State.Normal;
         }
     }
     
@@ -204,4 +202,8 @@ public class SkelBoss : cBossMonster
         Bullet.gameObject.SetActive(false);
     }
 
+    public override void HIT(int dam, bool isCritical)
+    {
+        base.HIT(dam, isCritical);
+    }
 }

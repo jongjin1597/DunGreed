@@ -35,6 +35,7 @@ public class Item : MonoBehaviour
     public Sprite _SkillIcon                         ;              //스킬이미지
     public float _SkillCoolTime                      ;              //스킬쿨타임  
     public float _NowCoolTIme;                                      //쿨타임이 얼마나 돌아갔나여부
+ 
     
     public virtual void Skill() { }
 
@@ -47,17 +48,20 @@ public class Shortrange : Item
     { }
     public virtual void Attack(cMonsterBase Monster)
     {
-        int randomDamage = Random.Range((int)Player.GetInstance._MinDamage, (int)Player.GetInstance._MaxDamage+1);
-        if (Player.GetInstance.isCritical())
+        if (Monster != null)
         {
-            _Dam = (randomDamage - Monster._Defense) + (int)((float)randomDamage * ((float)Player.GetInstance._CriticalDamage / 100.0f))
-                + (int)((float)randomDamage * ((float)Player.GetInstance._Power / 100));
-            Monster.MonsterHIT(_Dam, true);
-        }
-        else
-        {
-            _Dam = (randomDamage - Monster._Defense) + (int)((float)randomDamage * ((float)Player.GetInstance._Power / 100));
-            Monster.MonsterHIT(_Dam, false);
+            int randomDamage = Random.Range((int)Player.GetInstance._MinDamage, (int)Player.GetInstance._MaxDamage + 1);
+            if (Player.GetInstance.isCritical())
+            {
+                _Dam = (randomDamage - Monster._Defense) + (int)((float)randomDamage * ((float)Player.GetInstance._CriticalDamage / 100.0f))
+                    + (int)((float)randomDamage * ((float)Player.GetInstance._Power / 100));
+                Monster.MonsterHIT(_Dam, true);
+            }
+            else
+            {
+                _Dam = (randomDamage - Monster._Defense) + (int)((float)randomDamage * ((float)Player.GetInstance._Power / 100));
+                Monster.MonsterHIT(_Dam, false);
+            }
         }
     }
 
@@ -65,7 +69,8 @@ public class Shortrange : Item
 public class Longrange : Item
 {
     protected List<cBullet> _BulletPoll = new List<cBullet>(); //풀에 담을
-
+    protected AudioSource _ItemSound;
+    protected List<AudioClip> _GunSound=new List<AudioClip>();
     public float _Delay;
     public int _MaxBullet;
     public int _CurBulletIndex = 0;     //현재 장전된 총알의 인덱스
@@ -79,7 +84,12 @@ public class Longrange : Item
         _BulletUI = cUIManager.GetInstance.GetWeaPonSlot().transform.GetChild(1).GetChild(1).GetComponent<Text>();
         _Reload = Player.GetInstance.transform.GetChild(7).gameObject;
         _ReloadBar = _Reload.transform.GetChild(0).GetChild(0).GetComponent<Image>();
-
+        _ItemSound = GetComponent<AudioSource>();
+        _GunSound.Add(Resources.Load<AudioClip>("Sound/Gun"));
+         _GunSound.Add(Resources.Load<AudioClip>("Sound/Reload"));
+        _GunSound.Add(Resources.Load<AudioClip>("Sound/Reload2"));
+        _GunSound.Add(Resources.Load<AudioClip>("Sound/50_sniper_shot-Liam-2028603980"));
+        _GunSound.Add(Resources.Load<AudioClip>("Sound/rlaunch(Hecate"));
 
     }
     public override void Skill()
@@ -100,6 +110,8 @@ public class Longrange : Item
         _BulletPoll[_CurBulletIndex].transform.position = Position;
 
         _BulletPoll[_CurBulletIndex].transform.rotation = Quaternion.Euler(0f, 0f, _angle);
+        _ItemSound.clip = _GunSound[0];
+        _ItemSound.Play();
         _BulletPoll[_CurBulletIndex]._Start = true;
         _BulletPoll[_CurBulletIndex].gameObject.SetActive(true);
         _BulletUI.text = (_MaxBullet - (_CurBulletIndex+1)).ToString() + "  /  " + _MaxBullet.ToString() ;
@@ -117,7 +129,8 @@ public class Longrange : Item
     {
         if (_CurBulletIndex != 0)
         {
-      
+            _ItemSound.clip = _GunSound[1];
+            _ItemSound.Play();
             _Reload.gameObject.SetActive(true);
             _ReloadBar.fillAmount = 1;
             while (_ReloadBar.fillAmount > 0)
@@ -130,6 +143,8 @@ public class Longrange : Item
             }
             yield return new WaitForFixedUpdate();
             _Reload.gameObject.SetActive(false);
+            _ItemSound.clip = _GunSound[2];
+            _ItemSound.Play();
             _CurBulletIndex = 0;
             _BulletUI.text = (_MaxBullet - _CurBulletIndex).ToString() + "  /  " + _MaxBullet.ToString();
         }

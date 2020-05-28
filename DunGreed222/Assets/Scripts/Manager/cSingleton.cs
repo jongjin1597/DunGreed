@@ -31,11 +31,16 @@ public class cSingleton<T> : MonoBehaviour where T: MonoBehaviour
     //여기도 중요!
     protected virtual void Awake()
     {
-        
+        if (_instacne == null)
+        {
             _instacne = Create();
             //삭제 하지 말라.
             DontDestroyOnLoad(gameObject);
-        
+        }
+        else if(_instacne != null)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     public static T Create()

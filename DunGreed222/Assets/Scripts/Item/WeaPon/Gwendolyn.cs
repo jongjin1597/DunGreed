@@ -25,6 +25,7 @@ public class Gwendolyn : Shortrange
     public override void Attack(cMonsterBase Monster)
     {
         base.Attack(Monster);
+ 
 
     }
     public override void Skill()

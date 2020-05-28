@@ -36,7 +36,7 @@ public class LightSaver : Shortrange
             _Dam = randomDamage + (int)((float)randomDamage * ((float)Player.GetInstance._Power / 100));
             Monster.MonsterHIT(_Dam, false);
         }
-
+   
     }
 
 }

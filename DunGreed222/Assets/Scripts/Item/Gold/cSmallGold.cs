@@ -16,11 +16,13 @@ public class cSmallGold : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+          
             GameObject Dam = Instantiate(_GoldText);
             Dam.transform.position = Player.GetInstance.transform.position;
             Dam.GetComponent<cText>().SetGold(_Gold);
             cGameManager.GetInstance.Gold += _Gold;
             cGameManager.GetInstance._DeleGateGold();
+
             Destroy(this.gameObject);
         }
     }

@@ -96,6 +96,7 @@ public class cShop : MonoBehaviour,IPointerEnterHandler
             if (_ShopSlotList[i]._Check)
             {
                 _ShopSlotList.Remove(_ShopSlotList[i]);
+              
             }
             Setting();
         }

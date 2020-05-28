@@ -23,6 +23,7 @@ public class Gladius : Shortrange
     {
         base.Attack(Monster);
 
+
     }
   
 }

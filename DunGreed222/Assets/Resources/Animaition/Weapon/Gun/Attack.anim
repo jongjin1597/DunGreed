@@ -52,7 +52,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 1
-    functionName: AnimationEvent
+    functionName: Attack
     data: 
     objectReferenceParameter: {fileID: 11500000, guid: 326a5ec51c9bcd04c8e319c484a83369,
       type: 3}

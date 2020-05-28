@@ -9,7 +9,7 @@ public class SkelBow : cShortMonster
     public float shootDelay = 4f; //총알 딜레이
     float shootTimer = 0; //총알 타이머
 
-
+    private Animator _BowAnimator;
     public Transform Skel;
     public float _Radius;
 
@@ -18,20 +18,25 @@ public class SkelBow : cShortMonster
         base.Awake();
         Skel = transform.GetChild(1);
         _Renderer = GetComponent<SpriteRenderer>();
+        _BowAnimator = Skel.GetComponent<Animator>();
         _MaxHP = 30;
         _currnetHP = 30;
         _Defense = 0;
-
+        _Clip.Add(Resources.Load<AudioClip>("Sound/bow_crossbow_arrow_draw_stretch1_03"));
+        _Clip.Add(Resources.Load<AudioClip>("Sound/bow_crossbow_arrow_shoot_type1_03"));
     }
 
     // Update is called once per frame
     void Update()
     {
+
         shootTimer += Time.deltaTime;
 
         if (shootTimer > shootDelay) //쿨타임이 지났는지
         {
-            _Anim.SetTrigger("Fire");
+            _Audio.clip = _Clip[2];
+            _Audio.Play();
+            _BowAnimator.SetTrigger("Fire");
             shootTimer = 0; //쿨타임 초기화
         }
 
@@ -50,7 +55,14 @@ public class SkelBow : cShortMonster
 
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         Skel.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
+        if (_currnetHP < 1)
+        {
+            if (!_isDie)
+            {
+                Die(this.gameObject);
+                _isDie = true;
+            }
+        }
     }
 
     public override void MonsterHIT(int dam, bool isCritical)
@@ -66,7 +78,7 @@ public class SkelBow : cShortMonster
             if (RandomIndex >= 50 && RandomIndex <= 95)
             {
                 GameObject obj = Instantiate(_SmallGold) as GameObject;
-
+                obj.transform.position = this.transform.position;
                 GoldX = Random.Range(-100, 100);
                 obj.GetComponent<Rigidbody2D>().AddForce(new Vector2(GoldX, GoldFower));
             }

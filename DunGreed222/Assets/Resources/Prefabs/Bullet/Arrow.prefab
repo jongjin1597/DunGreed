@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Damage: 0
   _Speed: 0
-  _transform: {fileID: 0}
+  _ChildBullet: {fileID: 0}
   _BulletState: 0
   _Start: 1
 --- !u!61 &8068443511490378952

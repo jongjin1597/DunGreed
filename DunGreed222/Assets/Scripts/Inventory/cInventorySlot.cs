@@ -9,8 +9,12 @@ public enum SlotType
     Weapon,
     Shild
 }
-public class cInventorySlot : MonoBehaviour,IDragHandler, IPointerExitHandler,IEndDragHandler,IPointerEnterHandler,IBeginDragHandler
+public class cInventorySlot : MonoBehaviour,IDragHandler, IPointerExitHandler,IEndDragHandler,IPointerEnterHandler,IBeginDragHandler,IPointerClickHandler
 {
+    //우클릭체크용
+    public PointerEventData.InputButton _MouseBtn = PointerEventData.InputButton.Right;
+    //빈칸에 채워놓을 빈아이템
+    private GameObject _EmptyItem;
     //무기변경용
     private cWeaPon _Weapon;
     //슬롯넘버
@@ -27,13 +31,19 @@ public class cInventorySlot : MonoBehaviour,IDragHandler, IPointerExitHandler,IE
     private string _ItemQuality;
     //아이템 타입
     private string _ItemType;
+
+    AudioSource _SellSound;
+    AudioClip _SellClip;
     private void Awake()
     {
 
         _Panel.gameObject.SetActive(false);
-
-        _Weapon = FindObjectOfType<cWeaPon>();
+        _EmptyItem = Resources.Load("Inventory/EmptyItem") as GameObject;
+        _SellSound = GetComponent<AudioSource>();
+        _SellClip = Resources.Load<AudioClip>("Sound/coin2");
+         _Weapon = FindObjectOfType<cWeaPon>();
     }
+
     //아이템 판넬에 셋팅
     public void SetItem(Item _Item)
     {
@@ -164,5 +174,24 @@ public class cInventorySlot : MonoBehaviour,IDragHandler, IPointerExitHandler,IE
     public void OnBeginDrag(PointerEventData eventData)
     {
         transform.GetChild(0).GetComponent<Image>().raycastTarget = false;
+    }
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.button == _MouseBtn)
+        {
+            if (cInventory.GetInstance._Shop._isActiveShop)
+            {
+                if (this._item != _EmptyItem)
+                {
+                    cGameManager.GetInstance.Gold += this._item._ItemPrice / 2;
+                    cGameManager.GetInstance._DeleGateGold();
+                    this._item = _EmptyItem.GetComponent<Item>();
+                    _SellSound.clip = _SellClip;
+                    _SellSound.Play();
+                    }
+            }
+
+
+        }
     }
 }

@@ -26,13 +26,18 @@ public class cShopSLot : MonoBehaviour, IPointerExitHandler, IPointerEnterHandle
     //델리게이트
     public delegate void SlotSetting(PointerEventData eventData);
     public SlotSetting _SlotSetting;
+   
+    AudioSource _ShopAudio;
+    AudioClip _ShopClip;
     private void Awake()
     {
         _OutLine = transform.GetChild(1).GetComponent<Outline>();
         _ItemIcon = transform.GetChild(0).GetComponent<Image>();
         _ItemName = transform.GetChild(1).GetChild(0).GetComponent<Text>();
         _ItemPrice = transform.GetChild(1).GetChild(1).GetComponent<Text>();
-        _SlotSetting += OnPointerClick;
+        _ShopAudio = GetComponent<AudioSource>();
+        _ShopClip = Resources.Load<AudioClip>("Sound/coin");
+    
     }
   //아이템세팅
     public void SetItem()
@@ -75,8 +80,11 @@ public class cShopSLot : MonoBehaviour, IPointerExitHandler, IPointerEnterHandle
             {
                 cGameManager.GetInstance.Gold -= this._item._ItemPrice;
                 cInventory.GetInstance.AddItem(this._item);
+                _ShopAudio.clip = _ShopClip;
+                _ShopAudio.Play();
                 _Check = true;
-                Destroy(this.gameObject);
+                _SlotSetting(eventData);
+                this.gameObject.SetActive(false);
                 cGameManager.GetInstance._DeleGateGold();
             }
 

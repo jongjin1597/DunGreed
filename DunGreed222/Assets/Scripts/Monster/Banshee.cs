@@ -8,33 +8,22 @@ public class Banshee : cLongLangeMonster
 
     public float shootDelay = 4f; //총알 딜레이
     float shootTimer = 0; //총알 타이머
-    private List<GameObject> _BulletList = new List<GameObject>();
+
    protected override void Awake()
     {
         base.Awake();
-        _MaxBullet = 12;
-        for (int i = 0; i < _MaxBullet; ++i)
-        {
-            GameObject obj = Instantiate(Resources.Load("Prefabs/Bullet/BansheeBullet")) as GameObject;
-            cBullet _Bullet = obj.GetComponent<cBullet>();
-            _Bullet._Speed = 5.0f;
-            _Bullet._Damage = 9;
-            _Bullet._BulletState = BulletState.Monster;
-            //총알 발사하기 전까지는 비활성화 해준다.
-            _Bullet.transform.SetParent(transform);
-            _Bullet.gameObject.SetActive(false);
-
-            _BulletPoll.Add(_Bullet);
-        }
+       
         _MaxHP = 60;
         _currnetHP = 60;
         _Defense = 1;
+        _Clip.Add(Resources.Load<AudioClip>("Sound/high_pitch_scream_gverb"));
 
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    private void Update()
     {
+  
         shootTimer += Time.deltaTime;
 
         if (shootTimer > shootDelay) //쿨타임이 지났는지
@@ -52,45 +41,43 @@ public class Banshee : cLongLangeMonster
         {
             _Renderer.flipX = false;
         }
+        if (_currnetHP < 1)
+        {
+            if (!_isDie)
+            {
+                Die(this.gameObject);
+                _isDie = true;
+            }
+        }
+
     }
 
     public void AnimationEvent()
     {
-        for (int i = 0; i < _MaxBullet; ++i)
+        _Audio.clip= _Clip[2];
+        _Audio.Play();
+        for (int i = 0; i < 12; ++i)
         {
-           // Vector3 dirVec = new Vector3(Mathf.Cos(Mathf.PI * 2 * i / 12), Mathf.Sin(Mathf.PI * 2 * i / 12));
+
             Vector3 dirVec = this.transform.position;
             float angle = 30 * i;
             FireBulet(dirVec,angle);
         }
     }
-        public  void FireBulet(Vector3 Dir, float _angle)
+    public void FireBulet(Vector3 Dir, float _angle)
     {
-      
-            //발사되어야할 순번의 총알이 이전에 발사한 후로 아직 날아가고 있는 중이라면, 발사를 못하게 한다.
-            if (_BulletPoll[_CurBulletIndex].gameObject.activeSelf)
-            {
-                return;
-            }
+
+        cBullet Bullet = cMonsterBullet.GetInstance.GetObject(0);
+        Bullet.transform.position = this.transform.position;
+        Bullet.transform.rotation = Quaternion.Euler(0f, 0f, _angle);
+        Bullet._Start = true;
+        Bullet._ChildBullet.rotation = Quaternion.Euler(0f, 0f, 0);
+        Bullet.gameObject.SetActive(true);
 
 
-            _BulletPoll[_CurBulletIndex].transform.position = Dir;
-            _BulletPoll[_CurBulletIndex].transform.rotation = Quaternion.Euler(0f, 0f, _angle);
-            _BulletPoll[_CurBulletIndex]._Start = true;
-            _BulletPoll[_CurBulletIndex]._ChildBullet.rotation = Quaternion.Euler(0f, 0f, 0);
-             _BulletPoll[_CurBulletIndex].gameObject.SetActive(true);
-
-          StartCoroutine("ActiveBullet", _BulletPoll[_CurBulletIndex]);
-            if (_CurBulletIndex >= _MaxBullet - 1)
-            {
-                _CurBulletIndex = 0;
-            }
-            else
-            {
-                _CurBulletIndex++;
-            }
-
+        StartCoroutine(ActiveBullet(Bullet));
     }
+    
 
     IEnumerator ActiveBullet(cBullet Bullet)
     {
@@ -101,6 +88,7 @@ public class Banshee : cLongLangeMonster
     {
         base.MonsterHIT(dam, isCritical);
     }
+ 
     public override void DropGold()
     {
         for (int i = 0; i <= 10; ++i)
@@ -119,7 +107,9 @@ public class Banshee : cLongLangeMonster
                 obj.transform.position = this.transform.position;
                 GoldX = Random.Range(-100, 100);
                 obj.GetComponent<Rigidbody2D>().AddForce(new Vector2(GoldX, GoldFower));
+                    
             }
         }
     }
+
 }

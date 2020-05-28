@@ -6,13 +6,13 @@ public class cBasicBox : cNPC
 {
     SpriteRenderer _Renderer;
     int _ItemCount = 0;
-    BoxCollider2D _Box;
+    bool _isOpen =false;
     protected override void Awake()
     {
 
         base.Awake();
         _Renderer = GetComponent<SpriteRenderer>();
-        _Box = GetComponent<BoxCollider2D>();
+      
     }
 
     private void Update()
@@ -59,8 +59,9 @@ public class cBasicBox : cNPC
                 a_RefRender.sprite = _ItemValue._ItemIcon;
 
             }
+            cSoundManager.GetInstance.PlayEffectSound("Sound/itembox");
             _ItemCount += 1;
-            _Box.enabled = false;
+            _isOpen = true;
             _ButtonF.SetActive(false);
             _Renderer.sprite = Resources.Load<Sprite>("Itemp/BasicTresureOpened");
         }
@@ -69,12 +70,14 @@ public class cBasicBox : cNPC
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
+        if(!_isOpen)
         base.OnTriggerEnter2D(collision);
 
     }
 
     protected override void OnTriggerExit2D(Collider2D collision)
     {
+
         base.OnTriggerExit2D(collision);
     }
 }

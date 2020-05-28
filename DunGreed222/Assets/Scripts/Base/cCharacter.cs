@@ -7,21 +7,18 @@ public class cCharacter : MonoBehaviour
 {
     public int _currnetHP;//체력
     public int _MaxHP;//최대체력
-    public int _MinAtteckDamage;//최소공격력
-    public int _MaxAttackDamage;//최대공격력
+
     public float _MoveSpeed;//이동속도
-    public int _Defense=0;//방어력
+    public int _Defense = 0;//방어력
     protected SpriteRenderer _Renderer;
     protected Animator _Anim;
+    protected AudioSource _Audio;
+    protected List<AudioClip> _Clip = new List<AudioClip>();
     protected virtual void Awake()
     {
 
         _Renderer = gameObject.GetComponentInChildren<SpriteRenderer>();
-
+        _Audio = gameObject.GetComponent<AudioSource>();
         _Anim = gameObject.GetComponentInChildren<Animator>();
-    }
-    public virtual void  HIT(int dam)
-    {
-
     }
 }

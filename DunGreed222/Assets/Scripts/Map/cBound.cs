@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class cBound : MonoBehaviour
 {
-    
 
+    private cMapManager _Map;
+    private void Awake()
+    {
+        _Map = transform.parent.parent.GetComponent<cMapManager>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -13,11 +17,18 @@ public class cBound : MonoBehaviour
 
             cCameramanager.GetInstance.SetBound(this.gameObject.GetComponent<BoxCollider2D>());
 
-                transform.parent.parent.GetComponent<cMapManager>().SetNowMap(this.transform.parent);
+            _Map.SetNowMap(this.transform.parent);
  
 
         }
-
+        if (_Map._NowMap.gameObject.CompareTag("FoodShop") )
+        {
+           cGameManager.GetInstance.SetBackGruond("Sound/Foodshop");
+        }
+        if(_Map._NowMap.gameObject.CompareTag("Shop"))
+        {
+            cGameManager.GetInstance.SetBackGruond("Sound/Shop");
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -25,15 +36,18 @@ public class cBound : MonoBehaviour
         {
 
 
-            Transform Map = transform.parent.parent.GetComponent<cMapManager>()._CloseMapList.Find(x => x == transform.parent);
+            Transform Map = _Map._CloseMapList.Find(x => x == transform.parent);
             if (Map)
             {
-                transform.parent.parent.GetComponent<cMapManager>()._CloseMapList.Remove(Map);
-                transform.parent.parent.GetComponent<cMapManager>()._OpenMapList.Add(Map);
+                _Map._CloseMapList.Remove(Map);
+                _Map._OpenMapList.Add(Map);
             }
 
         }
-
+        if (_Map._NowMap.gameObject.CompareTag("FoodShop")|| _Map._NowMap.gameObject.CompareTag("Shop"))
+        {
+            cGameManager.GetInstance.SetBackGruond("Sound/1.JailField");
+        }
     }
 
 }

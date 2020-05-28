@@ -11,29 +11,17 @@ public class RadGiantBat : cLongLangeMonster
     protected override void Awake()
     {
         base.Awake();
-        _MaxBullet = 10;
-        for (int i = 0; i < _MaxBullet; ++i)
-        {
-            GameObject obj = Instantiate(Resources.Load("Prefabs/Bullet/BatBullet")) as GameObject;
-            cBullet _Bullet = obj.GetComponent<cBullet>();
-            _Bullet._Speed = 5.0f;
-            // _Bullet._Damage = Random.Range(11, 14);
-            _Bullet._BulletState = BulletState.Monster;
-            //큰박쥐는 총알 잠시 멈춘다
-            _Bullet._Start = false;
-            _Bullet.transform.SetParent(transform);
-            //총알 발사하기 전까지는 비활성화 해준다.
-            _Bullet.gameObject.SetActive(false);
 
-            _BulletPoll.Add(_Bullet);
-        }
+      
+        _Clip.Add(Resources.Load<AudioClip>("Sound/monster-sound2_bat"));
         _MaxHP = 40;
         _currnetHP = 40;
         _Defense =0;
     }
 
-    void FixedUpdate()
+    void Update()
     {
+     
         shootTimer += Time.deltaTime;
 
         if (shootTimer > shootDelay) //쿨타임이 지났는지
@@ -51,10 +39,20 @@ public class RadGiantBat : cLongLangeMonster
         {
             _Renderer.flipX = false;
         }
+        if (_currnetHP < 1)
+        {
+            if (!_isDie)
+            {
+                Die(this.gameObject);
+                _isDie = true;
+            }
+        }
     }
 
     void AnimationEvent()
     {
+        _Audio.clip = _Clip[2];
+        _Audio.Play();
         _Dir = (Player.GetInstance.transform.position - this.transform.position);
 
         StartCoroutine("Attack");
@@ -62,7 +60,8 @@ public class RadGiantBat : cLongLangeMonster
     IEnumerator Attack()
     {
         _Anim.speed = 0;
-        for (int i = 0; i < _MaxBullet; ++i)
+
+        for (int i = 0; i < 10; ++i)
         {
             Vector3 dirVec = new Vector3(Mathf.Cos(Mathf.PI * 2 * i / 10), Mathf.Sin(Mathf.PI * 2 * i / 10));
             dirVec += this.transform.position;
@@ -79,29 +78,13 @@ public class RadGiantBat : cLongLangeMonster
     {
 
 
-        _BulletPoll[_CurBulletIndex].transform.position = Dir;
+      cBullet Bullet = cMonsterBullet.GetInstance.GetObject(4);
+        Bullet.transform.position = this.transform.position;
 
-        _BulletPoll[_CurBulletIndex].transform.rotation = Quaternion.Euler(0f, 0f, _angle);
-    
-        _BulletPoll[_CurBulletIndex].gameObject.SetActive(true);
-
-
-
-        if (_CurBulletIndex >= _MaxBullet - 1)
-        {
-
-            for (int i = 0; i < _MaxBullet; ++i)
-            {
-                _BulletPoll[i]._Start = true;
-                StartCoroutine("ActiveBullet", _BulletPoll[i]);
-            }
-            _CurBulletIndex = 0;
-        }
-        else
-        {
-            _CurBulletIndex++;
-        }
-
+        Bullet.transform.rotation = Quaternion.Euler(0f, 0f, _angle);
+        Bullet._Start = true;
+        Bullet.gameObject.SetActive(true);
+        StartCoroutine("ActiveBullet", Bullet);
     }
     IEnumerator ActiveBullet(cBullet Bullet)
     {

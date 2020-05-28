@@ -35,6 +35,8 @@ public class cFoodSlot : MonoBehaviour,IPointerClickHandler,IPointerEnterHandler
     //음식이 팔렸나 여부
     bool _isFood=false;
     //
+    AudioSource _EatAudio;
+   List<AudioClip> _EatClip=new List<AudioClip>();
     //cFoodSlotList _FoodSlotList;
     public delegate void NowFood(PointerEventData eventData);
     public NowFood _NowFood;
@@ -50,7 +52,10 @@ public class cFoodSlot : MonoBehaviour,IPointerClickHandler,IPointerEnterHandler
         _FoodPrice      = transform.GetChild(6).GetComponent<Text>();
         _HPImage        = transform.GetChild(7).GetComponent<Image>();
         _SatietyIamge   = transform.GetChild(8).GetComponent<Image>();
-        _PriceImage     =transform.GetChild(9).GetComponent<Image>(); 
+        _PriceImage     =transform.GetChild(9).GetComponent<Image>();
+        _EatAudio = GetComponent<AudioSource>();
+        _EatClip.Add(Resources.Load<AudioClip>("Sound/FoodEat"));
+        _EatClip.Add(Resources.Load<AudioClip>("Sound/FoodEat2"));
     }
     
     //음식 세팅
@@ -99,44 +104,76 @@ public class cFoodSlot : MonoBehaviour,IPointerClickHandler,IPointerEnterHandler
                 cGameManager.GetInstance.Gold -= this._Food._FoodPrice;
                 Player.GetInstance._health.HealHP(_Food._HP, false);
 
-                if (_Food._FoodEffect1 == "크리티컬데미지")
+                switch (_Food._FoodID)
                 {
-                    Player.GetInstance._CriticalDamage +=(int)_Food._FoodStat1;
+                    case 1:
+                    {
+                            Player.GetInstance._Power += (int)_Food._FoodStat1;
+                            Player.GetInstance._health.HealHP((int)_Food._FoodStat2, true);
+                            _EatAudio.clip = _EatClip[0];
+   
+                            break;
+                    }
+                    case 2:
+                    {
+                            Player.GetInstance._Power += (int)_Food._FoodStat1;
+                            Player.GetInstance._Defense += (int)_Food._FoodStat2;
+                            _EatAudio.clip = _EatClip[1];
 
-                }
-                else if (_Food._FoodEffect2 == "크리티컬데미지")
-                {
-                    Player.GetInstance._CriticalDamage += (int)_Food._FoodStat1;
-                }
-                if (_Food._FoodEffect1 == "위력")
-                {
-                    Player.GetInstance._Power+=(int)_Food._FoodStat1;
+                            break;
+                    }
+                    case 3:
+                    {
+                            Player.GetInstance._Power += (int)_Food._FoodStat1;
+                            _EatAudio.clip = _EatClip[0];
 
-                }
-                else if (_Food._FoodEffect2 == "위력")
-                {
-                    Player.GetInstance._Power += (int)_Food._FoodStat1;
-                }
-                if (_Food._FoodEffect1 == "방어력")
-                {
-                    Player.GetInstance._Defense += (int)_Food._FoodStat1;
+                            break;
+                    }
+                    case 4:
+                    {
+                            Player.GetInstance._health.HealHP((int)_Food._FoodStat1, true);
+                            Player.GetInstance._Defense += (int)_Food._FoodStat2;
+                            _EatAudio.clip = _EatClip[1];
 
-                }
-                else if (_Food._FoodEffect2 == "방어력")
-                {
-                    Player.GetInstance._Defense += (int)_Food._FoodStat1;
-                }
+                            break;
+                    }
+                    case 5:
+                    {
+                            Player.GetInstance._Defense += (int)_Food._FoodStat1;
+                            _EatAudio.clip = _EatClip[0];
 
-                if (_Food._FoodEffect1 == "최대 체력")
-                {
-                    Player.GetInstance._health.HealHP((int)_Food._FoodStat1, true);
+                            break;
+                    }
+                    case 6:
+                    {
+                            Player.GetInstance._health.HealHP((int)_Food._FoodStat1, true);
+                            _EatAudio.clip = _EatClip[1];
 
-                }
-                else if (_Food._FoodEffect2 == "최대 체력")
-                {
-                    Player.GetInstance._health.HealHP((int)_Food._FoodStat2, true);
-                }
+                            break;
+                    }
+                    case 7:
+                    {
+                            Player.GetInstance._CriticalDamage += (int)_Food._FoodStat1;
+                            _EatAudio.clip = _EatClip[0];
 
+                            break;
+                    }
+                    case 8:
+                    {
+
+                            Player.GetInstance._CriticalDamage += (int)_Food._FoodStat1;
+                            Player.GetInstance._Power += (int)_Food._FoodStat1;
+                            _EatAudio.clip = _EatClip[1];
+
+                            break;
+                    }
+                    case 9:
+                    {
+                            Player.GetInstance._Food._MyCurrentValue -= 30;
+                        break;
+                    }
+                }
+              
                 Player.GetInstance._Food._MyCurrentValue += _Food._Satiety;
                 ClearSlot();
                 cGameManager.GetInstance._DeleGateGold();
