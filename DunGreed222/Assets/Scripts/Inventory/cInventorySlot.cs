@@ -14,7 +14,7 @@ public class cInventorySlot : MonoBehaviour,IDragHandler, IPointerExitHandler,IE
     //우클릭체크용
     public PointerEventData.InputButton _MouseBtn = PointerEventData.InputButton.Right;
     //빈칸에 채워놓을 빈아이템
-    private GameObject _EmptyItem;
+    public GameObject _EmptyItem;
     //무기변경용
     private cWeaPon _Weapon;
     //슬롯넘버
@@ -38,7 +38,7 @@ public class cInventorySlot : MonoBehaviour,IDragHandler, IPointerExitHandler,IE
     {
 
         _Panel.gameObject.SetActive(false);
-        _EmptyItem = Resources.Load("Inventory/EmptyItem") as GameObject;
+        _EmptyItem = Resources.Load("Prefabs/Inventory/EmptyItem") as GameObject;
         _SellSound = GetComponent<AudioSource>();
         _SellClip = Resources.Load<AudioClip>("Sound/coin2");
          _Weapon = FindObjectOfType<cWeaPon>();

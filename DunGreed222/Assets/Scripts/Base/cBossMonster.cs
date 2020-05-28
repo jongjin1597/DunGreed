@@ -33,7 +33,8 @@ public class cBossMonster : cMonsterBase
              _Audio.clip = _Clip[0];
              _Audio.Play();
              GameObject Dam = Instantiate(_Damage);
-             Dam.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 1, this.transform.position.z);
+             Dam.transform.position = new Vector3(this.transform.position.x+1, this.transform.position.y-1, this.transform.position.z);
+            Dam.transform.localScale = new Vector3(1.5f, 1.5f, 0);
              Dam.GetComponent<cText>().SetDamage(dam, isCritical);
             _Renderer.color = new Color(1, 0, 0, 1);
             _currnetHP -= dam;

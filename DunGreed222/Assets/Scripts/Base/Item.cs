@@ -77,6 +77,7 @@ public class Longrange : Item
     public float _ReloadTime;
     protected Text _BulletUI;
 
+    protected bool _isReload=false;
     public GameObject _Reload;
     public Image _ReloadBar;
     protected virtual void Awake()
@@ -101,34 +102,37 @@ public class Longrange : Item
 
     public virtual void FireBulet(Vector2 Position, float _angle)
     {
-        //발사되어야할 순번의 총알이 이전에 발사한 후로 아직 날아가고 있는 중이라면, 발사를 못하게 한다.
-        if (_BulletPoll[_CurBulletIndex].gameObject.activeSelf)
+        if (!_isReload)
         {
-            return;
-        }
+            if (_CurBulletIndex == _MaxBullet)
+            {
+                return;
+            }
 
-        _BulletPoll[_CurBulletIndex].transform.position = Position;
+            _BulletPoll[_CurBulletIndex].transform.position = Position;
 
-        _BulletPoll[_CurBulletIndex].transform.rotation = Quaternion.Euler(0f, 0f, _angle);
-        _ItemSound.clip = _GunSound[0];
-        _ItemSound.Play();
-        _BulletPoll[_CurBulletIndex]._Start = true;
-        _BulletPoll[_CurBulletIndex].gameObject.SetActive(true);
-        _BulletUI.text = (_MaxBullet - (_CurBulletIndex+1)).ToString() + "  /  " + _MaxBullet.ToString() ;
-        StartCoroutine("ActiveBullet", _BulletPoll[_CurBulletIndex]);
-        if (_CurBulletIndex >= _MaxBullet-1)
-        {
-          StartCoroutine(ReloadCourutin());
-        }
-        else
-        {
-            _CurBulletIndex++;
+            _BulletPoll[_CurBulletIndex].transform.rotation = Quaternion.Euler(0f, 0f, _angle);
+            _ItemSound.clip = _GunSound[0];
+            _ItemSound.Play();
+            _BulletPoll[_CurBulletIndex]._Start = true;
+            _BulletPoll[_CurBulletIndex].gameObject.SetActive(true);
+            _BulletUI.text = (_MaxBullet - (_CurBulletIndex + 1)).ToString() + "  /  " + _MaxBullet.ToString();
+            StartCoroutine("ActiveBullet", _BulletPoll[_CurBulletIndex]);
+            if (_CurBulletIndex >= _MaxBullet - 1)
+            {
+                StartCoroutine(ReloadCourutin());
+            }
+            else
+            {
+                _CurBulletIndex++;
+            }
         }
     }
     IEnumerator ReloadCourutin()
     {
         if (_CurBulletIndex != 0)
         {
+            _isReload = true;
             _ItemSound.clip = _GunSound[1];
             _ItemSound.Play();
             _Reload.gameObject.SetActive(true);
@@ -147,6 +151,7 @@ public class Longrange : Item
             _ItemSound.Play();
             _CurBulletIndex = 0;
             _BulletUI.text = (_MaxBullet - _CurBulletIndex).ToString() + "  /  " + _MaxBullet.ToString();
+            _isReload = false;
         }
     }
 

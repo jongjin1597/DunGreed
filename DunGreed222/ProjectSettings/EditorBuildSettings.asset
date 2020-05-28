@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Play.unity
     guid: 8763185d14af8174ea12a8c4bf3fe499
+  - enabled: 1
+    path: Assets/Scenes/LoadingScene.unity
+    guid: 82bfef7e72614a843925032471eba8c3
+  - enabled: 1
+    path: Assets/Scenes/BossMap.unity
+    guid: 5d88c00ea7939874d92a5d2a31aa3d81
   m_configObjects: {}

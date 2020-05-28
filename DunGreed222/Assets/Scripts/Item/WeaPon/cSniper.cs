@@ -45,30 +45,32 @@ public class cSniper : Longrange
     //총알 발사
     public override  void FireBulet(Vector2 Position, float _angle)
     {
-        //발사되어야할 순번의 총알이 이전에 발사한 후로 아직 날아가고 있는 중이라면, 발사를 못하게 한다.
-        if (_BulletPoll[_CurBulletIndex].gameObject.activeSelf)
+        if (!_isReload)
         {
-            return;
-        }
+            if (_CurBulletIndex == _MaxBullet)
+            {
+                return;
+            }
 
-        _BulletPoll[_CurBulletIndex].transform.position = Position;
 
-        _BulletPoll[_CurBulletIndex].transform.rotation = Quaternion.Euler(0f, 0f, _angle);
-        _ItemSound.clip = _GunSound[4];
-        _ItemSound.Play();
-        _BulletPoll[_CurBulletIndex]._Start = true;
-        _BulletPoll[_CurBulletIndex].gameObject.SetActive(true);
-        _BulletUI.text = (_MaxBullet - (_CurBulletIndex + 1)).ToString() + "  /  " + _MaxBullet.ToString();
-        StartCoroutine("ActiveBullet", _BulletPoll[_CurBulletIndex]);
-        if (_CurBulletIndex >= _MaxBullet - 1)
-        {
-            Reload();
-        }
-        else
-        {
-            _CurBulletIndex++;
-        }
+            _BulletPoll[_CurBulletIndex].transform.position = Position;
 
+            _BulletPoll[_CurBulletIndex].transform.rotation = Quaternion.Euler(0f, 0f, _angle);
+            _ItemSound.clip = _GunSound[4];
+            _ItemSound.Play();
+            _BulletPoll[_CurBulletIndex]._Start = true;
+            _BulletPoll[_CurBulletIndex].gameObject.SetActive(true);
+            _BulletUI.text = (_MaxBullet - (_CurBulletIndex + 1)).ToString() + "  /  " + _MaxBullet.ToString();
+            StartCoroutine("ActiveBullet", _BulletPoll[_CurBulletIndex]);
+            if (_CurBulletIndex >= _MaxBullet - 1)
+            {
+                Reload();
+            }
+            else
+            {
+                _CurBulletIndex++;
+            }
+        }
 
     }
 

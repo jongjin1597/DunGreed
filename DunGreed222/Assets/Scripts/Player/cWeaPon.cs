@@ -8,9 +8,7 @@ public class cWeaPon : MonoBehaviour
 {
     AudioSource _AttackSound;
     List<AudioClip> _Clip = new List<AudioClip>();
-    AudioClip _Sword;
-    AudioClip _Spear;
-    AudioClip _OnshotClip;
+
     public Image _Cooltime;
     Text _BulletText;
     //무기 이미지 그리기용 랜더러
@@ -36,7 +34,8 @@ public class cWeaPon : MonoBehaviour
         _AttackSound = GetComponent<AudioSource>();
 
         _Clip.Add(Resources.Load<AudioClip>("Sound/swing1"));
-        _Spear = Resources.Load<AudioClip>("Attack1");
+        _Clip.Add(Resources.Load<AudioClip>("Sound/swish-1"));
+       // _Clip.Add(Resources.Load<AudioClip>("Sound/Reload"));
         _AttackMotion = FindObjectOfType<cAttack>();
           _Ani =transform.GetComponent<Animator>();
           _SpriteRend = transform.GetComponent<SpriteRenderer>();
@@ -46,6 +45,7 @@ public class cWeaPon : MonoBehaviour
         _Speed += _AttackMotion.SetAttackSpeed;
         _Speed += SetAttackSpeed;
         _BulletText = cUIManager.GetInstance.GetWeaPonSlot().transform.GetChild(1).GetChild(1).GetComponent<Text>();
+        //_AttackMotion._Attack += AttackMotion;
     }
     //현제 무기 세팅(무기장착시 세팅)
     public void SetWeaPon(Item _WeaPon)
@@ -66,14 +66,14 @@ public class cWeaPon : MonoBehaviour
             _Ani.runtimeAnimatorController = _SwardAni;
             _SpriteRend.sortingOrder = 4;
             transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -90));
-            _AttackSound.clip = _Sword;
+            _AttackSound.clip = _Clip[0];
         }
         else if (_NowWeaPon._Type == ItemType.Spear)
         {
             _Ani.runtimeAnimatorController = _SpearAni;
             _SpriteRend.sortingOrder = 10;
             transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -90));
-            _AttackSound.clip = _Spear;
+            _AttackSound.clip = _Clip[1];
 
         }
         else if (_NowWeaPon._Type == ItemType.Gun|| _NowWeaPon._Type ==ItemType.OneShot)
@@ -107,10 +107,9 @@ public class cWeaPon : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     if (!_isAttack)
-                    {
-                        _Ani.SetTrigger("AttackCheck");
+                    { 
                         StartCoroutine("Attackmotion");
-                        _AttackSound.Play();
+                
                         _isAttack = true;
                     }
                 }
@@ -151,10 +150,7 @@ public class cWeaPon : MonoBehaviour
  
     IEnumerator Attack()
     {
-        if(_NowWeaPon._Type == ItemType.OneShot)
-        {
-
-        }
+ 
          yield return new WaitForSeconds(((Longrange)_NowWeaPon)._Delay);
         Vector3 _mousePos = Input.mousePosition; //마우스 좌표 저장
         Vector3 _oPosition = transform.position;
@@ -173,31 +169,41 @@ public class cWeaPon : MonoBehaviour
         
     }
 
- 
+
     IEnumerator Attackmotion()
     {
 
 
-         if (_NowWeaPon._Type == ItemType.Sword || _NowWeaPon._Type == ItemType.Spear) {
-            if (!_Ani.GetCurrentAnimatorStateInfo(0).IsName("Attack1"))
-            {
+        if (_NowWeaPon._Type == ItemType.Sword || _NowWeaPon._Type == ItemType.Spear)
+        {
+               if (!_Ani.GetCurrentAnimatorStateInfo(0).IsName("Attack1")){
                 yield return new WaitForSeconds(0.1f);
+                _Ani.SetTrigger("AttackCheck");
                 _AttackMotion._Attack();
+                _AttackSound.Play();
 
             }
+
+                        
             else if (!_Ani.GetCurrentAnimatorStateInfo(0).IsName("Attack2"))
             {
 
                 yield return new WaitForSeconds(0.1f);
+                _Ani.SetTrigger("AttackCheck");
                 _AttackMotion._Attack();
+                _AttackSound.Play();
+
+
+
             }
-            }
-            else if (_NowWeaPon._Type == ItemType.Gun || _NowWeaPon._Type == ItemType.OneShot)
-            {
-                yield return null;
-            }
+        }
+        else if (_NowWeaPon._Type == ItemType.Gun || _NowWeaPon._Type == ItemType.OneShot)
+        {
+            yield return null;
+        }
 
     }
+
     void AttackReady()
     {
         _isAttack = false;

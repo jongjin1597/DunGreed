@@ -16,16 +16,16 @@ public class cGameStart : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            Player.GetInstance._CurrentMapNum = 1;
 
             DungeonEat.transform.position = new Vector3(Player.GetInstance.transform.position.x, DungeonEat.transform.position.y, 0);
             DunGeonAnim.SetTrigger("Open");
 
-
-
+            cUIManager.GetInstance.gameObject.SetActive(false);
+            Player.GetInstance._Ani.StopPlayback();
             Player.GetInstance.MoveMap = true;
             Player.GetInstance._Rigidbody.velocity = Vector3.zero;
-            cSceneManager.GetInstance.ChangeScene("Play", null, 2);
+            //cSceneManager.GetInstance.ChangeScene("Play", null, 2);
+          
         }
     }
 

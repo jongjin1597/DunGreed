@@ -2,6 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+public enum BackGroundSound
+{
+    Bilizy,
+    Dungeun,
+    Shop,
+    FoodShop
+
+    }
+
 //게임매니저
 public class cGameManager : cSingleton<cGameManager>
 {
@@ -16,8 +25,8 @@ public class cGameManager : cSingleton<cGameManager>
     //골드 딜리게이트
     public delegate void Gold_Del();
     public Gold_Del _DeleGateGold;
-    AudioSource _BackGroundSound;
-    AudioClip _BackGroundClip;
+    AudioSource _BackGround;
+    List<AudioClip> _BackGroundClip = new List<AudioClip>();
 
     //마우스커서
     public Texture2D _CursorTexture;
@@ -26,13 +35,16 @@ public class cGameManager : cSingleton<cGameManager>
     protected override void Awake()
     {
         base.Awake();
-        _BackGroundSound = GetComponent<AudioSource>();
-        _BackGroundClip = Resources.Load<AudioClip>("Sound/0.Town");
-        _BackGroundSound.clip = _BackGroundClip;
-        _BackGroundSound.Play();
-        _WeaponNum = 0;
-        _CursorTexture = Resources.Load<Texture2D>("UI/BasicCursor");
-        _ClickTexture = Resources.Load<Texture2D>("UI/BasicCursor");
+        _BackGround = GetComponent<AudioSource>();
+        _BackGroundClip.Add(Resources.Load<AudioClip>("Sound/0.Town"));
+        _BackGroundClip.Add(Resources.Load<AudioClip>("Sound/1.JailField"));
+        _BackGroundClip.Add(Resources.Load<AudioClip>("Sound/Shop"));
+        _BackGroundClip.Add(Resources.Load<AudioClip>("Sound/Foodshop"));
+        //_BackGround.clip = _BackGroundClip[0];
+        //_BackGround.Play();
+         _WeaponNum = 0;
+        //_CursorTexture = Resources.Load<Texture2D>("UI/BasicCursor");
+        //_ClickTexture = Resources.Load<Texture2D>("UI/BasicCursor");
         Cursor.SetCursor(_CursorTexture, Vector2.zero, _CursorMode);
         _StopPanel.SetActive(false);
     }
@@ -78,13 +90,37 @@ public class cGameManager : cSingleton<cGameManager>
         {
             Cursor.SetCursor(_CursorTexture, Vector2.zero, _CursorMode);
         }
+        if (Player.GetInstance._state == State.Die)
+        {
+            _BackGround.Stop();
+            _BackGround.loop = false;
+            Player.GetInstance.transform.rotation = Quaternion.Euler(0, 0, 90);
+            // 죽는소리재생
+        }
     }
 
-    public void SetBackGruond(string path)
+    public void SetBackGruond(BackGroundSound back)
     {
-        _BackGroundClip = Resources.Load<AudioClip>(path);
-        _BackGroundSound.clip = _BackGroundClip;
-        _BackGroundSound.Play();
+        _BackGround.loop = true;
+        if (back == BackGroundSound.Bilizy) 
+        {
+            _BackGround.clip = _BackGroundClip[0];
+        }
+        else if (back == BackGroundSound.Dungeun) 
+        {
+            _BackGround.clip = _BackGroundClip[1];
+        }
+        else if (back == BackGroundSound.Shop)
+        {
+            _BackGround.clip = _BackGroundClip[2];
+        }
+        else if (back == BackGroundSound.FoodShop) 
+        {
+            _BackGround.clip = _BackGroundClip[3];
+        }
+
+
+        _BackGround.Play();
     }
     public void SetCursor(Texture2D Cuser, Texture2D Click)
     {

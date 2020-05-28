@@ -13,7 +13,7 @@ public class SkelBoss : cBossMonster
         Sword,
         Laser
     }
-    bool _isDie=false;
+  
     public Transform BossBack;
     int SwordX = 0;
     bool isAttack=false;
@@ -150,7 +150,7 @@ public class SkelBoss : cBossMonster
     {
 
 
-        cBullet Bullet = cMonsterBullet.GetInstance.GetObject(0);
+        cBullet Bullet = cMonsterBullet.GetInstance.GetObject(5);
         Bullet.transform.position = Dir;
         Bullet.transform.rotation = Quaternion.Euler(0f, 0f, _angle);
         Bullet._Start = true;

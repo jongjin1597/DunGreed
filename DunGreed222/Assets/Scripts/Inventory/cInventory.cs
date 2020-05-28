@@ -21,7 +21,7 @@ public class cInventory :  cSingleton<cInventory>
     //현재 마우스가 올려져있는 슬롯
     public cInventorySlot _EnteredSlot;
     //아이템 슬롯 리스트
-    private List<cInventorySlot> _InventorySlot = new List<cInventorySlot>();
+    public List<cInventorySlot> _InventorySlot = new List<cInventorySlot>();
     //무기슬롯 리스트
     private List<cInventorySlot> _WeaPonSlotList = new List<cInventorySlot>();
     //방어구 슬롯 리스트
@@ -97,8 +97,15 @@ public class cInventory :  cSingleton<cInventory>
             X += 353.0f;
         }
 
-     
 
+
+        //옵저버패턴
+        cGameManager.GetInstance._DeleGateGold += SetGold;
+
+
+    }
+    private void Start()
+    {
         _WeaPonSlotList[0]._item = cDataBaseManager.GetInstance._ItemList[0];
         ItemImageChange(_WeaPonSlotList[0]);
         _NowWeaPon.SetWeaPon(_WeaPonSlotList[0]._item);
@@ -112,13 +119,7 @@ public class cInventory :  cSingleton<cInventory>
         AddItem(cDataBaseManager.GetInstance._ItemList[7]);
         AddItem(cDataBaseManager.GetInstance._ItemList[8]);
         AddItem(cDataBaseManager.GetInstance._ItemList[9]);
-        //옵저버패턴
-        cGameManager.GetInstance._DeleGateGold += SetGold;
-
-    
-}
-    private void Start()
-    {
+   
         _Shop = FindObjectOfType<cShopNPC>();
     }
 

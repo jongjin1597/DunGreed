@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-enum State
+public enum State
 {
     Idle=0,
     Move,
@@ -22,9 +22,6 @@ public class Player : cCharacter
     //싱글톤변수
     private static Player _instacne;
     [HideInInspector]
-    //이동할맵번호   
-    public int _CurrentMapNum;
-    [HideInInspector]
     //체력
     public cHP _health;
     [HideInInspector]
@@ -41,7 +38,7 @@ public class Player : cCharacter
     //점프파워
     public float _JumpPower;
     //캐릭터상태
-    private State _state = State.Idle;
+    public State _state = State.Idle;
     //리지드바디
     [HideInInspector]
     public Rigidbody2D _Rigidbody;
@@ -67,6 +64,7 @@ public class Player : cCharacter
     public Animator _Buff;
     //현제 장착중인무기
     private cWeaPon _WeaPon;
+    private SpriteRenderer _WeaPonRenderer;
     [HideInInspector]
     //크리티컬확률
     public int _Critical;
@@ -80,7 +78,7 @@ public class Player : cCharacter
     private bool _isPosition = false;
     //플레이어 데미지 입는변수
     private bool _isCrash = true;
-
+    public Animator _Ani { get { return _Anim; } }
     public bool MoveMap=false; 
     protected override void Awake()
     {
@@ -105,7 +103,7 @@ public class Player : cCharacter
             _Clip.Add(Resources.Load<AudioClip>("Sound/Jumping"));
             _Clip.Add(Resources.Load<AudioClip>("Sound/Hit_Player"));
             _Clip.Add(Resources.Load<AudioClip>("Sound/ui-sound-13-dash"));
-
+            _WeaPonRenderer = _WeaPon.GetComponent<SpriteRenderer>();
         }
         else if (_instacne != null)
         {
@@ -141,7 +139,7 @@ public class Player : cCharacter
 
         if (Time.timeScale != 0)
         {
-            if (!MoveMap)
+            if (!MoveMap||_state != State.Die)
             {
                 //이동
                 _horizontalMove = Input.GetAxisRaw("Horizontal");
@@ -172,8 +170,8 @@ public class Player : cCharacter
                     if (_isPosition)
                     {
                         transform.rotation = Quaternion.Euler(0, 180, 0);
-                        // _WeaPon.transform.localRotation = Quaternion.Euler(-180, 0, 0);
-                        _isPosition = false;
+                        _WeaPonRenderer.flipY = true;
+                           _isPosition = false;
                     }
                 }
                 else if (_MousePosition.x > transform.position.x)
@@ -182,7 +180,7 @@ public class Player : cCharacter
                     {
                         transform.rotation = Quaternion.identity;
 
-                        //_WeaPon.localRotation = Quaternion.Euler(0, 0, 0);
+                        _WeaPonRenderer.flipY = false;
                         _isPosition = true;
                     }
                 }

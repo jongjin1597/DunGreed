@@ -45,7 +45,7 @@ public class cBullet : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (_BulletState == BulletState.Player)
+        if (_BulletState == BulletState.Player||_BulletState ==BulletState.PlayerSniper)
         {
             if (collision.CompareTag("MonsterHitBox"))
             {

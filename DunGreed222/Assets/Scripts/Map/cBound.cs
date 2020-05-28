@@ -23,11 +23,11 @@ public class cBound : MonoBehaviour
         }
         if (_Map._NowMap.gameObject.CompareTag("FoodShop") )
         {
-           cGameManager.GetInstance.SetBackGruond("Sound/Foodshop");
+           cGameManager.GetInstance.SetBackGruond(BackGroundSound.FoodShop);
         }
         if(_Map._NowMap.gameObject.CompareTag("Shop"))
         {
-            cGameManager.GetInstance.SetBackGruond("Sound/Shop");
+            cGameManager.GetInstance.SetBackGruond(BackGroundSound.Shop);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -46,7 +46,7 @@ public class cBound : MonoBehaviour
         }
         if (_Map._NowMap.gameObject.CompareTag("FoodShop")|| _Map._NowMap.gameObject.CompareTag("Shop"))
         {
-            cGameManager.GetInstance.SetBackGruond("Sound/1.JailField");
+            cGameManager.GetInstance.SetBackGruond(BackGroundSound.Dungeun);
         }
     }
 
