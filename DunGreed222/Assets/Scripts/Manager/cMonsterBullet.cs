@@ -93,11 +93,21 @@ public class cMonsterBullet : cSingleton<cMonsterBullet>
         m_objects.Add(BigRadBat);
 
         obj = Instantiate(Resources.Load("Prefabs/Bullet/BatBullet")) as GameObject;
+        obj.SetActive(false);
         cObject GiantBat = new cObject();
         GiantBat.Inititlized(ref obj, 40, 5, 5, BulletState.Monster, transform);
         m_objects.Add(GiantBat);
 
+
+
+        obj = Instantiate(Resources.Load("Prefabs/Boss/BossBullet")) as GameObject;
         obj.SetActive(false);
+        cObject BossBullet = new cObject();
+        BossBullet.Inititlized(ref obj, 120, 9, 5, BulletState.Boss, transform);
+        m_objects.Add(BossBullet);
+       
+
+
 
     }
 

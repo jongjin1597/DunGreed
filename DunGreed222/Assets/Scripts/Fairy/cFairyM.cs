@@ -19,7 +19,7 @@ public class cFairyM : MonoBehaviour
           
             _Audio.Play();
             cSoundManager.GetInstance.PlayEffectSound("Sound/Get_Fairy");
-            cMapManager.GetInstance.ReMoveFairy(this.gameObject);
+            transform.parent.parent.parent.GetComponent<cMapManager>().ReMoveFairy(this.gameObject);
             Player.GetInstance._health.HealHP(20, false);
            Destroy(this.gameObject);
         }

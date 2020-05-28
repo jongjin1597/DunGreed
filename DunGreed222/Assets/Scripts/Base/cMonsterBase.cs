@@ -60,8 +60,8 @@ public class cMonsterBase : cCharacter
    
     public virtual void Die(GameObject gameObject)
     {
-        cMapManager.GetInstance.ReMoveMonster(gameObject);
         DropGold();
+        transform.parent.parent.parent.GetComponent<cMapManager>().ReMoveMonster(gameObject);
         _Audio.clip = _Clip[1];
         _Audio.Play();
         _Anim.SetTrigger("Die");

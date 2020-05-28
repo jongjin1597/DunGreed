@@ -18,7 +18,7 @@ public class cFairyS : MonoBehaviour
     
             _Audio.Play();
             Player.GetInstance._health.HealHP(10, false);
-            cMapManager.GetInstance.ReMoveFairy(this.gameObject);
+            transform.parent.parent.parent.GetComponent<cMapManager>().ReMoveFairy(this.gameObject);
             Destroy(this.gameObject);
         }
     }

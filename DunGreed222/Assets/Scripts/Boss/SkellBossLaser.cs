@@ -12,13 +12,16 @@ public class SkellBossLaser : MonoBehaviour
     public int count;
     public int _Damage;
     public Animator[] _anim;
-    [HideInInspector]
+    
+
+    //[HideInInspector]
     public SkellBossLaser _SkellLaser;
     private void Awake()
     {
         _HitBox = GetComponent<BoxCollider2D>();
         _HitBox.enabled = false;
         _Damage = 9;
+  
     }
     private void FixedUpdate()
     {

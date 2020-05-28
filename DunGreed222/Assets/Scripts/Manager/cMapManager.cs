@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class cMapManager : cSingleton<cMapManager>
+public class cMapManager : MonoBehaviour
 {
 
     AudioSource _Audio;
@@ -45,9 +45,9 @@ public class cMapManager : cSingleton<cMapManager>
     public List<GameObject> _BoxList=new List<GameObject>();
     //문열고닫는거 한번만 호출되게할변수
     bool _isOpen;
-    protected override void Awake()
+     void Awake()
     {
-        base.Awake();
+     
         _OpenMapList.Add(transform.GetChild(0));
         for(int i =1; i < transform.childCount; ++i)
         {

@@ -13,7 +13,7 @@ public class SkelBoss : cBossMonster
         Sword,
         Laser
     }
-
+    bool _isDie=false;
     public Transform BossBack;
     int SwordX = 0;
     bool isAttack=false;
@@ -25,22 +25,6 @@ public class SkelBoss : cBossMonster
     protected override void Awake()
     {
         base.Awake();
-
-        _MaxBullet = 120;
-
-        for (int i = 0; i < _MaxBullet; ++i)
-        {
-            GameObject obj = Instantiate(Resources.Load("Prefabs/Boss/BossBullet")) as GameObject;
-            cBullet _Bullet = obj.GetComponent<cBullet>();
-            _Bullet._Speed = 5.0f;
-            _Bullet._Damage = 8;
-            _Bullet._BulletState = BulletState.Monster;
-
-            _Bullet.transform.SetParent(BossBack);
-            _Bullet.gameObject.SetActive(false);
-
-            _BulletPoll.Add(_Bullet);
-        }
 
         _MaxBossSword = 5;
         for (int i = 0; i < _MaxBossSword; ++i)
@@ -60,7 +44,8 @@ public class SkelBoss : cBossMonster
         skellBossLasers[0].count = 0;
         skellBossLasers[1]._SkellLaser = skellBossLasers[0];
         skellBossLasers[1].count = 0;
-
+        _MaxHP = 400;
+        _currnetHP = 400;
     }
 
     private void Start()
@@ -102,7 +87,18 @@ public class SkelBoss : cBossMonster
             StartCoroutine("SkellBossState");
             state = State.Normal;
         }
-        
+        else if (_currnetHP <= 0)
+        {
+            if (!_isDie)
+            {
+                Die(this.gameObject);
+                _isDie = true;
+            }
+        }
+        if(Input.GetKeyDown(KeyCode.O))
+        {
+            _currnetHP -= 10;
+        }
     }
 
     IEnumerator SkellBossState()
@@ -146,25 +142,23 @@ public class SkelBoss : cBossMonster
         }
         state = State.Normal;
     }
-    
+    public override void MonsterHIT(int dam, bool isCritical)
+    {
+        base.MonsterHIT(dam, isCritical);
+    }
     public void FireBulet(Vector3 Dir, float _angle)
     {
 
-        _BulletPoll[_CurBulletIndex].transform.position = Dir;
 
-        _BulletPoll[_CurBulletIndex].transform.rotation = Quaternion.Euler(0f, 0f, _angle);
+        cBullet Bullet = cMonsterBullet.GetInstance.GetObject(0);
+        Bullet.transform.position = Dir;
+        Bullet.transform.rotation = Quaternion.Euler(0f, 0f, _angle);
+        Bullet._Start = true;
+        Bullet._ChildBullet.rotation = Quaternion.Euler(0f, 0f, 0);
+        Bullet.gameObject.SetActive(true);
 
-        _BulletPoll[_CurBulletIndex].gameObject.SetActive(true);
 
-        StartCoroutine("ActiveBullet", _BulletPoll[_CurBulletIndex]);
-        if (_CurBulletIndex >= _MaxBullet - 1)
-        {          
-            _CurBulletIndex = 0;
-        }
-        else
-        {
-            _CurBulletIndex++;
-        }
+        StartCoroutine(ActiveBullet(Bullet));
     }
 
     IEnumerator FireSword(Vector3 Dir)
@@ -199,11 +193,10 @@ public class SkelBoss : cBossMonster
     IEnumerator ActiveBullet(cBullet Bullet)
     {
         yield return new WaitForSeconds(3.0f);
+        Bullet._Start = false;
         Bullet.gameObject.SetActive(false);
+        
     }
 
-    public override void HIT(int dam, bool isCritical)
-    {
-        base.HIT(dam, isCritical);
-    }
+
 }

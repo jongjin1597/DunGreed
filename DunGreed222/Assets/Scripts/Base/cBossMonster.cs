@@ -2,27 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class cBossMonster : cCharacter
+public class cBossMonster : cMonsterBase
 {
-    protected cBullet _Anemybullet;
-    protected List<cBullet> _BulletPoll = new List<cBullet>();
-    protected int _CurBulletIndex = 0;
-    protected int _MaxBullet;
 
     protected cBossSword _BossSword;
     protected List<cBossSword> _BossSwordPoll = new List<cBossSword>();
     protected int _CurBossSwordIndex = 0;
     protected int _MaxBossSword;
 
-    protected GameObject _Damage;
-    protected GameObject _HPBarBackGround;
-    protected Image _HPBar;
-    protected GameObject _SmallGold;
-    protected GameObject _BigGold;
-    protected Rigidbody2D _SmallGoldRigidBody;
-    protected Rigidbody2D _BigGoldRigidBody;
-    protected int GoldFower;
-    protected int GoldX;
+ 
+    DieEffect _DieEffect;
     protected override void Awake()
     {
         base.Awake();
@@ -33,20 +22,19 @@ public class cBossMonster : cCharacter
         _HPBar = transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Image>();
         _HPBar.fillAmount = 1;
         _BigGold = Resources.Load("Prefabs/Item/Bullion") as GameObject;
-        _SmallGold = Resources.Load("Prefabs/Item/GoldCoin") as GameObject;
-        _Damage = Resources.Load("Prefabs/Text") as GameObject;
+          _Damage = Resources.Load("Prefabs/Text") as GameObject;
         GoldFower = 200;
+        _DieEffect = FindObjectOfType<DieEffect>();
     }
-    public virtual void HIT(int dam, bool isCritical)
+    public override void MonsterHIT(int dam, bool isCritical)
     {
-        _Audio.clip = _Clip[0];
-        _Audio.Play();
-        GameObject Dam = Instantiate(_Damage);
-        Dam.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 1, this.transform.position.z);
-        Dam.GetComponent<cText>().SetDamage(dam, isCritical);
-
         if (_currnetHP > 0)
         {
+             _Audio.clip = _Clip[0];
+             _Audio.Play();
+             GameObject Dam = Instantiate(_Damage);
+             Dam.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 1, this.transform.position.z);
+             Dam.GetComponent<cText>().SetDamage(dam, isCritical);
             _Renderer.color = new Color(1, 0, 0, 1);
             _currnetHP -= dam;
             _HPBarBackGround.SetActive(true);
@@ -54,10 +42,7 @@ public class cBossMonster : cCharacter
             StartCoroutine(SetRed());
   
         }
-        else if (_currnetHP <= 0)
-        {
-            Die(this.gameObject);
-        }
+       
     }
     IEnumerator SetRed()
     {
@@ -66,10 +51,10 @@ public class cBossMonster : cCharacter
     }
     public virtual void Die(GameObject gameObject)
     {
-        DropGold();
         _Audio.clip = _Clip[1];
         _Audio.Play();
-        //_Anim.SetTrigger("Die");
+        _DieEffect.Die();
+        DropGold();
 
     }
     void SetActive()
@@ -77,9 +62,16 @@ public class cBossMonster : cCharacter
         this.gameObject.SetActive(false);
     }
 
-    public virtual void DropGold()
+    IEnumerator DropGold()
     {
-
+        for (int i = 0; i < 20; ++i)
+        {
+            GameObject obj = Instantiate(_BigGold) as GameObject;
+            obj.transform.position = this.transform.position;
+            GoldX = Random.Range(-100, 100);
+            obj.GetComponent<Rigidbody2D>().AddForce(new Vector2(GoldX, GoldFower));
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 
 }
